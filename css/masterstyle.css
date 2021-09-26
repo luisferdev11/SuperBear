@@ -36,6 +36,7 @@ a, a:visited{
 nav{
     display: flex;
     background-color: var(--color-1);
+    align-items: center;
 }
 
 nav a{
@@ -44,7 +45,24 @@ nav a{
     padding: 1rem;
 }
 
+nav a img{
+    padding: none;
+    height: 1rem;
+}
+
 nav a:hover{
     background-color: var(--hover);
 }
 
+.container-main{
+    margin-inline: 10%;
+    align-items: center;
+}
+
+.center{
+    text-align: center;
+}
+
+[class|="grid"]{
+    display: grid;
+}
