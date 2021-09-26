@@ -16,6 +16,9 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
     --color-4: #00415a;
     --color-5: #001f2b;
     --hover: var(--color-2);
+    --input-bg: #00b8ff;
+    --gray: #bbb;
+    --outline: var(var(--fuente-color));
 }
 
 h1, h2{
@@ -25,6 +28,7 @@ h1, h2{
 
 body{
     font-family: var(--fuente-texto);
+    margin-bottom: 3rem;
 }
 
 a, a:visited{
