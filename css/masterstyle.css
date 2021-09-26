@@ -41,17 +41,27 @@ nav{
     display: flex;
     background-color: var(--color-1);
     align-items: center;
+    padding: 0;
 }
 
 nav a{
-    width: 25%;
+    width: 40%;
     text-align: center;
-    padding: 1rem;
+    padding: 1.2rem;
 }
 
 nav a img{
-    padding: none;
-    height: 1rem;
+    margin-top: auto;
+    height: 2.9rem;
+}
+
+.arrow{
+    height: 3.05rem;
+}
+
+.image{
+    padding: 0;
+    padding-top: .2rem;
 }
 
 nav a:hover{
