@@ -1,3 +1,18 @@
+/*
+
+Los menus desplegables funcionan mediante un checkbox (.menu-button)
+y un label (.menu-label), al hacer focus al checkbox mediante el label
+el menu (.menu-content) se vuelve visible
+
+el simbolo ~ es un selector de css
+se refiere a elementos que esten "a la misma altura"
+dentro de otra etiqueta
+
+el [id|="menu"] se refiere a todos los elementos cuyo id
+comienze con "menu" (recordar que el id de cada grupo debe ser diferent) 
+
+*/
+
 .menu-button{
     height: 0;
     width: 0;
