@@ -24,10 +24,11 @@ header a img{
 
 .group{
    border-radius: 1rem;
+   box-shadow: 0 0 .5rem var(--gray);
 }
 
 .name{
-    border: 2px solid var(--fuente-color);
+    /*border: 2px solid var(--fuente-color);*/
     background-color: var(--gray);
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
@@ -48,8 +49,8 @@ header a img{
 .content{
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    border: 2px solid var(--fuente-color);
-    border-top: none;
+    /*border: 2px solid var(--fuente-color);
+    border-top: none;*/
     padding: 1rem;
     padding-bottom: 0;
 }   
