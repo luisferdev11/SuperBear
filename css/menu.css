@@ -19,6 +19,7 @@
     padding: 1rem;
     padding-bottom: 0;
     list-style-type: none;
+    box-shadow: 0 0 .5rem var(--fuente-color);
 }
 
 .menu-label li{
