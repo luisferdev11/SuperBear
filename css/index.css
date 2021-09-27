@@ -1,0 +1,27 @@
+nav a{
+    width: 50%;
+}
+
+.circulo{
+    
+    background-color: var(--color-1);
+
+    border-radius: 100%;
+    width: 5rem;
+    height: 5rem;
+
+    margin:auto;
+    display: grid;
+    align-items: center;
+}
+
+h1 a{
+    background-color: var(--color-1);
+    border-radius: 1rem;
+    padding: .5rem;
+    padding-inline: 1rem;
+}
+
+h1 a:hover{
+    background-color: var(--hover);
+}
