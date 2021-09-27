@@ -20,7 +20,6 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
     --gray: #bbb;
     --outline: var(var(--fuente-color));
 }
-
 h1, h2{
     font-family: var(--fuente-titulo);
     color: var(--fuente-color);

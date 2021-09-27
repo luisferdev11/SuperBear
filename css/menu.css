@@ -1,0 +1,32 @@
+.menu-button{
+    height: 0;
+    width: 0;
+}
+
+.menu-content{
+    display: none;
+}
+
+[id|="menu"]:focus ~ .menu-content{
+    display: block;
+    position: absolute;
+    z-index: 9;
+    transform: translateX(-60%);
+}
+
+.menu-label ul{
+    background-color: var(--gray);
+    padding: 1rem;
+    padding-bottom: 0;
+    list-style-type: none;
+}
+
+.menu-label li{
+    padding-bottom: 1rem;
+}
+
+hr{
+    height: 2px;
+    background-color: var(--fuente-color);
+    border: none;
+}

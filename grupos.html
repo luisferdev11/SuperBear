@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/masterstyle.css">
     <link rel="stylesheet" href="css/gruposYListas.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="shortcut icon" href="assets/images/icon.jpg">
     <title>Mis Grupos</title>
 </head>
@@ -24,9 +25,37 @@
             </a>
         </header>
     </div>
+
+    <!--
+        Para que los menus desplegables funcionen
+        todos los grupos deben tener su propio
+        id en el radiobutton y label
+        no se pueden repetir en diferentes grupos
+        porque porque solo funcionaria uno
+    -->
+
     <div class="grid-gyl">
+
         <div class="group">
-            <h1 class="name">Pantitlán</h1>
+            <div class="name">
+                <h1>Pantitlán</h1>
+                <div>
+                    <a class="center" href="miembros.html">
+                        <img class="users" src="assets/images/userIcon.jpg">
+                        <br>
+                        9 Miembros
+                    </a>
+                </div>
+                <label for="menu-1" class="menu-label">
+                    <input id="menu-1" class="menu-button" type="checkbox">
+                    <img class="options" src="assets/svg/options.svg">
+                    <ul class="menu-content">
+                        <li><a>Renombrar Familia</a></li>
+                        <li><hr></li>
+                        <li><a>Borrar Familia</a></li>
+                    </ul>
+                </label>
+            </div>
             <div class="content">
                 <a href="lista.html">
                     <div class="content-content">Comida</div>
@@ -42,8 +71,27 @@
                 </a>
             </div>
         </div>
+
         <div class="group">
-            <h1 class="name">Pantitlán</h1>
+            <div class="name">
+                <h1>Pantitlán</h1>
+                <div>
+                    <a class="center" href="miembros.html">
+                        <img class="users" src="assets/images/userIcon.jpg">
+                        <br>
+                        9 Miembros
+                    </a>
+                </div>
+                <label for="menu-2" class="menu-label">
+                    <input id="menu-2" class="menu-button" type="checkbox">
+                    <img class="options" src="assets/svg/options.svg">
+                    <ul class="menu-content">
+                        <li><a>Renombrar Familia</a></li>
+                        <li><hr></li>
+                        <li><a>Borrar Familia</a></li>
+                    </ul>
+                </label>
+            </div>
             <div class="content">
                 <a href="lista.html">
                     <div class="content-content">Comida</div>
@@ -59,8 +107,27 @@
                 </a>
             </div>
         </div>
+
         <div class="group">
-            <h1 class="name">Pantitlán</h1>
+            <div class="name">
+                <h1>Pantitlán</h1>
+                <div>
+                    <a class="center" href="miembros.html">
+                        <img class="users" src="assets/images/userIcon.jpg">
+                        <br>
+                        9 Miembros
+                    </a>
+                </div>
+                <label for="menu-3" class="menu-label">
+                    <input id="menu-3" class="menu-button" type="checkbox">
+                    <img class="options" src="assets/svg/options.svg">
+                    <ul class="menu-content">
+                        <li><a>Renombrar Familia</a></li>
+                        <li><hr></li>
+                        <li><a>Borrar Familia</a></li>
+                    </ul>
+                </label>
+            </div>
             <div class="content">
                 <a href="lista.html">
                     <div class="content-content">Comida</div>
@@ -76,74 +143,7 @@
                 </a>
             </div>
         </div>
-        <div class="group">
-            <h1 class="name">Pantitlán</h1>
-            <div class="content">
-                <a href="lista.html">
-                    <div class="content-content">Comida</div>
-                    <div class="content-content">0/10 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Jabones</div>
-                    <div class="content-content">15/20 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Carnes Frias</div>
-                    <div class="content-content">9/10 Completado</div>
-                </a>
-            </div>
-        </div>
-        <div class="group">
-            <h1 class="name">Pantitlán</h1>
-            <div class="content">
-                <a href="lista.html">
-                    <div class="content-content">Comida</div>
-                    <div class="content-content">0/10 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Jabones</div>
-                    <div class="content-content">15/20 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Carnes Frias</div>
-                    <div class="content-content">9/10 Completado</div>
-                </a>
-            </div>
-        </div>
-        <div class="group">
-            <h1 class="name">Pantitlán</h1>
-            <div class="content">
-                <a href="lista.html">
-                    <div class="content-content">Comida</div>
-                    <div class="content-content">0/10 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Jabones</div>
-                    <div class="content-content">15/20 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Carnes Frias</div>
-                    <div class="content-content">9/10 Completado</div>
-                </a>
-            </div>
-        </div>
-        <div class="group">
-            <h1 class="name">Pantitlán</h1>
-            <div class="content">
-                <a href="lista.html">
-                    <div class="content-content">Comida</div>
-                    <div class="content-content">0/10 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Jabones</div>
-                    <div class="content-content">15/20 Completado</div>
-                </a>
-                <a href="lista.html">
-                    <div class="content-content">Carnes Frias</div>
-                    <div class="content-content">9/10 Completado</div>
-                </a>
-            </div>
-        </div>
+
     </div>
 </body>
 </html>
