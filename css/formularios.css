@@ -1,4 +1,4 @@
-.contenedor-Formulario{
+.contenedor-formulario{
     display: grid;
     grid-template-columns: minmax(0px, 4000px) minmax(200px, 500px) minmax(0px, 4000px);
 }
