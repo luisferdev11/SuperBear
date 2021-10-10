@@ -20,6 +20,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
 
 body{
     font-family: var(--f-texto);
+    margin-bottom: 1rem;
 }
 
 .principal{
@@ -48,4 +49,24 @@ nav a{
 
 nav a:hover{
     background-color: var(--hover-1);
+}
+
+/* Alinear y dar caracteristicas */
+
+.centro{
+    text-align: center;
+}
+
+.izquierda{
+    text-align: left;
+}
+
+.b{
+    font-weight: bold;
+}
+
+/* Proidedades concretas */
+
+::placeholder{
+    color: black;
 }
