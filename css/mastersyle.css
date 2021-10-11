@@ -13,6 +13,8 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
     --color-4: #fff;
     --gray: #bbb;
 
+    --fondo: #FFF9F1;
+
     --hover-1: var(--color-1);
     --hover-2: var(--color-2);
 }
@@ -22,6 +24,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
 body{
     font-family: var(--f-texto);
     margin-bottom: 1rem;
+    background-color: var(--fondo);
 }
 
 .principal{
@@ -119,6 +122,7 @@ header div a img{
 .menu-contenido{
     display: none;
     background-color: var(--color-1);
+    box-shadow: 0 0 .5rem black;
 }
 
 [id|="menu"]:focus ~ .menu-contenido{
