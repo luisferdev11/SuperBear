@@ -11,6 +11,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
     --color-2: #FFC278;
     --color-3: #FFE3C1;
     --color-4: #fff;
+    --gray: #bbb;
 
     --hover-1: var(--color-1);
     --hover-2: var(--color-2);
@@ -33,12 +34,16 @@ a, a:visited{
     color: black;
 }
 
+h1{
+    font-family: var(--f-titulo);
+}
+
 /* Barra de navegacion */
 
 nav{
     background-color: var(--color-2);
     display: grid;
-    grid-template-columns: 45% 45% 10%;
+    grid-template-columns: 40% 40% 20%;
 }
 
 nav a{
@@ -46,6 +51,15 @@ nav a{
     padding-block: 1rem;
     text-align: center;
     height: 1rem;
+}
+
+.icono{
+    padding-block: .1rem;
+    height: 2.8rem;
+}
+
+nav a img{
+    height: 2.8rem;
 }
 
 nav a:hover{
@@ -70,4 +84,56 @@ nav a:hover{
 
 ::placeholder{
     color: black;
+}
+
+/* Contenedores con grid y eso */
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
+    grid-gap: 1rem;
+    margin-inline: 1rem;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+/* Header */
+
+header div a img{
+    margin-block: 1.4rem;
+    width: 3rem;
+}
+
+/* Menu desplegable solamente funciona por la gracia del señor */
+
+.menu-boton{
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-contenido{
+    display: none;
+    background-color: var(--color-1);
+}
+
+[id|="menu"]:focus ~ .menu-contenido{
+    display: block;
+    position: absolute;
+    z-index: 9;
+    transform: translateX(-60%);
+}
+
+.menu-contenido ul{
+    padding-inline: 1rem;
+}
+
+hr{
+    height: 2px;
+    background-color: black;
+    border: none;
 }
