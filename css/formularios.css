@@ -1,0 +1,73 @@
+nav{
+    grid-template-columns: 15%;
+}
+
+nav a img{
+    width: 1rem;
+    height: 1rem;
+}
+
+.contenedor-formulario{
+    display: grid;
+    grid-template-columns: minmax(0px, 4000px) minmax(200px, 500px) minmax(0px, 4000px);
+}
+
+form{
+    grid-column: 2;
+}
+
+.seccion{
+    margin-left: 1rem;
+}
+
+input{
+    width: calc(100% - 2rem);
+    border-radius: 1rem;
+    border: none;
+    background-color: var(--color-2);
+    padding-block: .5rem;
+    padding-inline: 1rem;
+}
+
+select{
+    border-radius: 1rem;
+    border: none;
+    background-color: var(--color-2);
+    padding-block: .5rem;
+    padding-inline: 1rem;
+}
+
+option:hover{
+    background-color: var(--hover-1);
+}
+
+.no{
+    display: none;
+}
+
+input[type="radio"]{
+    display: none;
+}
+label, input[type="submit"]{
+    background-color: var(--color-2);
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    border-radius: 1rem;
+}
+
+label:hover, input[type="submit"]:hover{
+    background-color: var(--hover-1);
+}
+
+input[type="radio"]:checked + label{
+    background-color: var(--color-1);
+    font-weight: bold;
+}
+
+input[type="checkbox"], input[type="submit"]{
+    width: fit-content;
+}
+
+.contenedor-boton{
+    text-align: right;
+}

@@ -1,27 +1,36 @@
-nav a{
-    width: 50%;
+.principal{
+    text-align: center;
+}
+
+nav{
+    grid-template-columns: 50% 50%;
 }
 
 .circulo{
-    
     background-color: var(--color-1);
-
-    border-radius: 100%;
-    width: 5rem;
-    height: 5rem;
-
-    margin:auto;
     display: grid;
     align-items: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    margin: auto;
 }
 
-h1 a{
+.circulo h1{
+    color: var(--color-4);
+}
+
+.boton{
     background-color: var(--color-1);
+    padding-inline: 2rem;
+    padding-block: 1rem;
     border-radius: 1rem;
-    padding: .5rem;
-    padding-inline: 1rem;
 }
 
-h1 a:hover{
-    background-color: var(--hover);
+.boton:hover{
+    background-color: var(--hover-2);
+}
+
+.iniciarSesion{
+    text-decoration: underline;
 }
