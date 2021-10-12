@@ -1,0 +1,49 @@
+
+.contenedor-noticias, .contenedor-twitter{
+    margin-left: calc(10% + 1rem);
+}
+
+aside{
+    float: left;
+    width: 10%;
+    position: fixed;
+}
+
+.boton-1, .boton-2{
+    background-color: var(--color-2);
+    height: 4rem;
+}
+
+.etiqueta{
+    display: block;
+    width: 100%;
+}
+
+input[type="radio"]:checked ~ .etiqueta{
+    background-color: var(--color-1);
+}
+
+input[type="radio"]{
+    height: 0;
+    width: 0;
+}
+
+[class|="boton"]{
+    display: flex;
+}
+
+.etiqueta:hover{
+    background-color: var(--color-1);
+}
+
+.noticia{
+    background-color: var(--color-2);
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.fecha{
+    font-size: .8rem;
+    text-align: right;
+}
