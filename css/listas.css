@@ -1,11 +1,15 @@
 .lista{
     border-radius: 1rem;
     box-shadow: 0 0 .5rem var(--gray);
-    background-color: var(--color-2);
 }
 
 .nombre-lista{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background-color: var(--color-1);
     padding: 1rem;
+    padding-bottom: 0;
+    margin-bottom: 1rem;
     display: grid;
     grid-template-columns: 80% 20%;
 }
@@ -25,7 +29,7 @@
 }
 
 .producto{
-    background-color: var(--color-1);
+    background-color: var(--color-2);
     text-align: center;
     border-radius: 1rem;
 }
