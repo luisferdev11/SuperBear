@@ -1,3 +1,6 @@
+/*.grid{
+    grid-template-columns: repeat(auto-fit, minmax(50px, 350px));
+}*/
 
 .contenedor-noticias, .contenedor-twitter{
     margin-left: calc(10% + 1rem);
@@ -10,8 +13,11 @@ aside{
 }
 
 .boton-1, .boton-2{
-    background-color: var(--color-2);
     height: 4rem;
+}
+
+label{
+    background-color: var(--color-2);
 }
 
 .etiqueta{
@@ -46,4 +52,12 @@ input[type="radio"]{
 .fecha{
     font-size: .8rem;
     text-align: right;
+}
+
+label[for="noticias"]{
+    border-top-right-radius: 1rem;
+}
+
+label[for="twitter"]{
+    border-bottom-right-radius: 1rem;
 }
