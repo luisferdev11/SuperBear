@@ -71,3 +71,7 @@ input[type="checkbox"], input[type="submit"]{
 .contenedor-boton{
     text-align: right;
 }
+
+:read-only{
+    outline: none;
+}
