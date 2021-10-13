@@ -83,6 +83,10 @@ nav a:hover{
     font-weight: bold;
 }
 
+.pequeño{
+    font-size: .8rem;
+}
+
 /* Proidedades concretas */
 
 ::placeholder{
