@@ -26,14 +26,14 @@ header{
 }
 
 .caja{
-    background-color: var(--color-2);
+    background-color: var(--color-1);
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: .5rem;
 }
 
-input[type="checkbox"]:checked + .caja{
-    background-color: var(--color-1);
+input[type="checkbox"]:checked + label .caja{
+    background-color: var(--color-2);
     background-image: url(../assets/svg/x.svg);
     background-size: 100%;
 }
@@ -80,4 +80,10 @@ input[type="checkbox"]{
 
 .grid{
     grid-column-gap: 2rem;
+}
+
+/* color objetos marcados */
+
+input[type="checkbox"]:checked ~ .producto .header-producto{
+    background-color: var(--color-2);
 }
