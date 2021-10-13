@@ -1,0 +1,21 @@
+.miembro{
+    display: grid;
+    grid-template-columns: 3rem calc(70% - 5rem) 30%;
+    grid-gap: 1rem;
+    align-items: center;
+}
+
+.miembro img{
+    width: 100%;
+}
+
+.boton-miembro{
+    background-color: var(--color-2);
+    text-align: center;
+    padding-block: .1rem;
+    border-radius: 1rem;
+}
+
+.boton-miembro:hover{
+    background-color: var(--color-1);
+}
