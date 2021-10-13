@@ -114,34 +114,40 @@ header div a img{
     width: 3rem;
 }
 
-/* Menu desplegable solamente funciona por la gracia del señor */
+/* Menu desplegable que solamente funciona gracias a que dios es grande conmigo */
 
-.menu-boton{
+.desplegable{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 0 .5rem black;
+    background-color: var(--color-1);
+    border-radius: 1rem;
+}
+
+[id|="menu"]:hover + .desplegable{
+    display: flex;
+    transform: translateY(-40%) translateX(-80%);
+    flex-direction: column;
+    animation-name: entrada;
+    animation-duration: .5s;
+}
+
+.desplegable a{
+    padding-inline: 1rem;
+    padding-block: 1rem;
+}
+
+[id|="menu"]{
     height: 0;
     width: 0;
-    padding: 0;
-    margin: 0;
 }
 
-.menu-contenido{
-    display: none;
-    background-color: var(--color-1);
-    box-shadow: 0 0 .5rem black;
-}
-
-[id|="menu"]:focus ~ .menu-contenido{
-    display: block;
-    position: absolute;
-    z-index: 9;
-    transform: translateX(-60%);
-}
-
-.menu-contenido ul{
-    padding-inline: 1rem;
-}
-
-hr{
-    height: 2px;
-    background-color: black;
-    border: none;
+@keyframes entrada{
+    from{
+        transform: translateX(-80%);
+    }
+    to{
+        transform: translateY(-40%) translateX(-80%);
+    }
 }
