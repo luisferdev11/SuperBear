@@ -11,6 +11,9 @@
 </head>
 
 <body>
+    <!--Cada grupo debe tener su propio menu
+    para eso es necesario que cada input tenga un id diferentes
+    los for del label deben coincidir con el del input-->
     <nav>
         <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
         <a href="consultarGrupos.html"><b>Grupos</b></a>
@@ -33,24 +36,17 @@
                 <h2>
                     Comida
                 </h2>
-                <label>
-                    <img src="assets/svg/options.svg">
-                    <input id="menu" class="menu-boton" type="checkbox">
-                    <li class="menu-contenido">
-                        <ul>
-                            <a class="b">
-                                Duplicar lista
-                            </a>
-                        </ul>
-                        <ul>
-                            <hr>
-                        </ul>
-                        <ul>
-                            <a class="b">
-                                Borrar Lista
-                            </a>
-                        </ul>
-                    </li>
+                <label for="menu-1">
+                    <img class="opciones" src="assets/svg/options.svg">
+                    <input id="menu-1" type="checkbox">
+                    <div class="desplegable">
+                        <a href="consultarListasDeGrupo.html" class="b">
+                            Duplicar Lista
+                        </a>
+                        <a href="consultarListasDeGrupo.html" class="b">
+                            Borrar Lista
+                        </a>
+                    </div>
                 </label>
             </div>
             <a class="contenido-lista">

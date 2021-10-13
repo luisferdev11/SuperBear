@@ -7,11 +7,10 @@
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     background-color: var(--color-1);
-    padding: 1rem;
-    padding-bottom: 0;
+    padding-inline: 1rem;
     margin-bottom: 1rem;
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: calc(100% - 2rem) 2rem;
 }
 
 .nombre-lista label img{
@@ -32,4 +31,8 @@
     background-color: var(--color-2);
     text-align: center;
     border-radius: 1rem;
+}
+
+.opciones{
+    padding-top: 1rem;
 }
