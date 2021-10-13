@@ -2,6 +2,23 @@ header{
     grid-template-columns: 20% calc(60% - 2rem) 20%;
 }
 
+.header-producto{
+    display: grid;
+    grid-template-columns: calc(100% - 2rem) 2rem;
+    background-color: var(--color-1);
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding-right: 1rem;
+}
+
+.header-producto a img{
+    width: 100%;
+}
+
+.header-producto a{
+    margin-top: 1rem;
+}
+
 .contenedor-producto{
     display: grid;
     grid-template-columns: 10% calc(90% - 1rem);
@@ -23,12 +40,6 @@ input[type="checkbox"]:checked + .caja{
 
 input[type="checkbox"]{
     display: none;
-}
-
-.nombre-producto{
-    background-color: var(--color-1);
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
 }
 
 .nombre-producto a h2{
