@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mastersyle.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/datosProducto.css">
+    <style>
+        
+    </style>
+    <title>Editar Producto | SuperBear</title>
+</head>
+<body>
+    <nav class="flecha">
+        <a href="consultarProductosDeLista.html">
+            <img src="assets/svg/flecha.svg">
+        </a>
+    </nav>
+    <div class="principal">
+        <h1 class="centro">
+            Editar Producto
+        </h1>
+    </div>
+    <div class="contenedor-formulario">
+        <form action="consultarProductosDeLista.html">
+            <p class="seccion">
+                Nombre
+            </p>
+            <input type="text" placeholder="Nombre">
+            <p class="seccion">
+                Marca
+            </p>
+            <input type="text" placeholder="Marca">
+            <p class="seccion">
+                Supermercado
+            </p>
+            <input type="text" placeholder="Supermercado">
+            <p class="seccion">
+                Departamento
+            </p>
+            <select>
+                <option selected class="no">Departamento</option>
+                <option>Frutas y Verduras</option>
+                <option>Videojuegos</option>
+            </select>
+            <p class="seccion">
+                Cantidad
+            </p>
+            <input type="number" placeholder="Cantidad">
+            <p class="seccion">
+                Unidad
+            </p>
+            <select>
+                <option selected>Unidad</option>
+                <option>Kilogramo</option>
+                <option>Litro</option>
+            </select>
+            <p class="seccion">
+                Precio
+            </p>
+            <input type="number" placeholder="Precio $">
+            <p class="seccion">
+                Anotaciones
+            </p>
+            <input type="text" placeholder="Anotaciones">
+            <br>
+            <br>
+            <div class="contenedor-boton">
+                <input class="b" type="submit" value='Guardar'>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
