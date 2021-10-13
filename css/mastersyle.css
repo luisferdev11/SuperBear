@@ -102,18 +102,6 @@ nav a:hover{
     margin-inline: 1rem;
 }
 
-header{
-    display: grid;
-    grid-template-columns: 80% 20%;
-}
-
-/* Header */
-
-header div a img{
-    margin-block: 1.4rem;
-    width: 3rem;
-}
-
 /* Menu desplegable que solamente funciona gracias a que dios es grande conmigo */
 
 .desplegable{
@@ -150,4 +138,17 @@ header div a img{
     to{
         transform: translateY(-40%) translateX(-80%);
     }
+}
+
+/* Header */
+
+header{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+}
+
+header div a img{
+    margin-block: 1.4rem;
+    width: 3rem;
 }
