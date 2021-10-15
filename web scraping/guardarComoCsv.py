@@ -4,7 +4,7 @@ import pandas
 contenidoJS = "todo, tu, contenido"
 # Separa la variable en un array usando la ","
 # como referencia
-separado = contenidoJS.split(",");
+separado = contenidoJS.split(",")
 # Imprime el array en la consola
 print(separado)
 # Convierte el array en un data frame
