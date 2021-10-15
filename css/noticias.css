@@ -61,3 +61,7 @@ label[for="noticias"]{
 label[for="twitter"]{
     border-bottom-right-radius: 1rem;
 }
+
+aside{
+    margin-top: 5rem;
+}
