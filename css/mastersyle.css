@@ -23,7 +23,9 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
 
 body{
     font-family: var(--f-texto);
+    /*
     margin-bottom: 1rem;
+    */
     background-color: var(--fondo);
 }
 
@@ -151,4 +153,33 @@ header{
 header div a img{
     margin-block: 1.4rem;
     width: 3rem;
+}
+
+/* Footer */
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    margin-top: auto;
+    background-color: var(--color-2);
+}
+
+footer a{
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-block: 1rem;
+}
+
+footer a:hover{
+    background-color: var(--hover-1);
+}
+
+footer a img{
+    height: 3rem;
 }
