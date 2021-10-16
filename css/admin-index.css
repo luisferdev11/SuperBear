@@ -1,0 +1,10 @@
+.tarjeta{
+    background-color: var(--color-2);
+    border-radius: 1rem;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.tarjeta h3{
+    text-align: center;
+}
