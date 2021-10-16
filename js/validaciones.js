@@ -1,13 +1,13 @@
 function validarEmail(email) {
-  var regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
   return regex.test(email) ? true : false;
 }
 function validarNombres(Nombre) {
-  var regex = /^[A-Z]+$/i;
+  var regex = /^[A-Z]{1,32}$/i;
   return regex.test(Nombre) ? true : false;
 }
 function validarContraseñas(Contraseña) {
-  var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
+  var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,64}$/;
   return regex.test(Contraseña) ? true : false;
 }
 
@@ -49,10 +49,7 @@ function Validar(event) {
   } else {
     alert("El nombre " + document.getElementById("inputNombre").value + " es incorrecto.");
   }
-  alert(document.getElementById("inputContraseña1").value);
-  alert(document.getElementById("inputContraseña2").value);
-  alert(contraseña);
-  alert(confirmacion);
+
   if (contraseña == true && confirmacion == true && document.getElementById("inputContraseña1").value==document.getElementById("inputContraseña2").value) {
     alert("Las contraseñas "  + " son correctas.");
   } else {
