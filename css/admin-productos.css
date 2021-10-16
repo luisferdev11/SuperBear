@@ -1,0 +1,22 @@
+header{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+}
+
+header a img{
+    width: 3rem;
+}
+
+.producto-predeterminado{
+    padding-inline: 1rem;
+    border-radius: 1rem;
+    background-color: var(--color-2);
+    display: grid;
+    grid-template-columns: calc(100% - 2rem) 2rem;
+}
+
+.producto-predeterminado label img{
+    margin-top: 1rem;
+    width: 100%;
+}
