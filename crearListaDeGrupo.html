@@ -20,15 +20,17 @@
         <div class="contenedor-formulario">
             <form action="consultarListasDeGrupo.html">
                 <p class="centro">Escribe el nombre de la nueva lista</p>
-                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Nombre" id="inputNombre">
                 <br>
                 <br>
                 <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Crear'>
+                    <input class="b" type="submit" value='Crear' onclick="ValidarLista(event)">
                 </div>
             </form>
         </div>
     </div>
     <br>
+    <script src="js/validaciones.js"></script>
+
 </body>
 </html>

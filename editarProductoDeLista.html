@@ -28,16 +28,16 @@
         <form action="consultarProductosDeLista.html">
             <p class="seccion">
                 Nombre
-            </p>
-            <input type="text" placeholder="Nombre">
+            </p> 
+            <input type="text" placeholder="Nombre" id="inputnombre">
             <p class="seccion">
                 Marca
             </p>
-            <input type="text" placeholder="Marca">
+            <input type="text" placeholder="Marca" id="inputmarca">
             <p class="seccion">
                 Supermercado
             </p>
-            <input type="text" placeholder="Supermercado">
+            <input type="text" placeholder="Supermercado" id="inputsuper">
             <p class="seccion">
                 Departamento
             </p>
@@ -49,7 +49,7 @@
             <p class="seccion">
                 Cantidad
             </p>
-            <input type="number" placeholder="Cantidad">
+            <input type="number" placeholder="Cantidad" id="inputcantidad">
             <p class="seccion">
                 Unidad
             </p>
@@ -61,18 +61,20 @@
             <p class="seccion">
                 Precio
             </p>
-            <input type="number" placeholder="Precio $">
+            <input type="number" placeholder="Precio $" id="inputprecio">
             <p class="seccion">
                 Anotaciones
             </p>
-            <input type="text" placeholder="Anotaciones">
+            <input type="text" placeholder="Anotaciones" id="inputanotaciones">
             <br>
             <br>
             <div class="contenedor-boton">
-                <input class="b" type="submit" value='Guardar'>
+                <input class="b" type="submit" value='Guardar' onclick="ValidarObjetoLista(event)">
             </div>
         </form>
     </div>
     <br>
+    <script src="js/validaciones.js"></script>
+
 </body>
 </html>

@@ -18,14 +18,14 @@
     <div class="principal">
         <h1 class="centro">Iniciar Sesión</h1>
         <div class="contenedor-formulario">
-            <form action="consultarGrupos.html">
+            <form action="consultarGrupos.html" id="LoginForm" name="LoginForm">
                 <p class="seccion">Correo Electrónico</p>
-                <input placeholder="Correo Electrónico" type="email">
+                <input placeholder="Correo Electrónico" type="email" id="inputemail">
                 <p class="seccion">Contraseña</p>
-                <input placeholder="Contraseña" type="password">
+                <input placeholder="Contraseña" type="password" id="inputContraseña">
                 <br><br>
                 <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Acceder'>
+                    <input class="b" type="submit" value='Acceder' onclick="ValidarLogin(event)">
                 </div>
                 <p>¿No tienes una cuenta? 
                     <a href="registro.html"><b>
@@ -42,5 +42,7 @@
             <h3>SuperBear Team</h3>
         </a>
     </footer>
+    <script src="js/validaciones.js"></script>
+
 </body>
 </html>
