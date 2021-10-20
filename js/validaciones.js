@@ -22,63 +22,96 @@ function SuperObjeto(Nombre) {
   var regex = /^[A-Z0-9-]{0,15}$/i;
   return regex.test(Nombre) ? true : false;
 }
-function CantidadObjeto(Nombre) {
+function CantidadObjeto(Cantidad) {
   var regex = /^[0-9]{0,5}$/i;
-  return regex.test(Nombre) ? true : false;
+  return regex.test(Cantidad) ? true : false;
 }
-function PrecioObjeto(Nombre) {
+function PrecioObjeto(Precio) {
   var regex = /^[0-9]{0,6}$/i;
+  return regex.test(Precio) ? true : false;
+}
+function AnotacionesObjeto(Anotaciones) {
+  var regex = /^[A-Z0-9-]{0,32}$/i;
+  return regex.test(Anotaciones) ? true : false;
+}
+function nombreGrupo(Nombre) {
+  var regex = /^[A-Z]{1,20}$/i;
   return regex.test(Nombre) ? true : false;
 }
-function AnotacionesObjeto(Nombre) {
-  var regex = /^[A-Z0-9-]{0,32}$/i;
-  return regex.test(Nombre) ? true : false;
+function codigoGrupo(Codigo) {
+  var regex = /^[A-Z0-9-]{5}$/i;
+  return regex.test(Codigo) ? true : false;
 }
 function validarContraseñas(Contraseña) {
   var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,64}$/;
   return regex.test(Contraseña) ? true : false;
 }
+
+function validarCodigoGrupo(event) {
+  var nombre = codigoGrupo(document.getElementById('inputcodigo').value);
+  if (nombre == true) {
+    document.getElementById('msgerror1').innerHTML = "";
+
+  } else {
+    document.getElementById('msgerror1').innerHTML = "El codigo del grupo solo puede contener numeros y letras con longitud no mayor a 5, si no tienes codigo crea un grupo";
+
+    event.preventDefault();
+  }
+
+}
+function validarNombreGrupo(event) {
+  var nombre = nombreGrupo(document.getElementById('inputgrupo').value);
+  if (nombre == true) {
+    document.getElementById('msgerror2').innerHTML = "";
+
+  } else {
+    document.getElementById('msgerror2').innerHTML = "El nombre del grupo solo puede contener letras con longitud no mayor a 20";
+
+    event.preventDefault();
+  }
+
+}
 function ValidarObjetoLista(event) {
-  var nombre = NombreObjeto(document.getElementById('inputnombre').value);
+  var nombre = NombreObjeto(document.getElementById('inputNombre').value);
   var marca = MarcaObjeto(document.getElementById('inputmarca').value);
   var Super = SuperObjeto(document.getElementById('inputsuper').value);
   var Cantidad = CantidadObjeto(document.getElementById('inputcantidad').value);
   var Precio = PrecioObjeto(document.getElementById('inputprecio').value);
   var Anotaciones = AnotacionesObjeto(document.getElementById('inputanotaciones').value);
   if (nombre == true) {
-    alert('El nombre ' + document.getElementById('inputnombre').value + ' es correcto.');
+    document.getElementById('msgerror1').innerHTML = "";
     if (marca == true) {
-      alert('La marca ' + document.getElementById('inputmarca').value + ' es correcta.');
+      document.getElementById('msgerror2').innerHTML = "";
       if (Super == true) {
-        alert('El Supermercado ' + document.getElementById('inputsuper').value + ' es correcta.');
+        document.getElementById('msgerror3').innerHTML = "";
         if (Cantidad == true) {
-          alert('La cantidad ' + document.getElementById('inputcantidad').value + ' es correcta.');
+          document.getElementById('msgerror4').innerHTML = "";
           if (Precio == true) {
-            alert('El precio ' + document.getElementById('inputprecio').value + ' es correcta.');
+            document.getElementById('msgerror5').innerHTML = "";
             if (Anotaciones == true) {
-              alert('Las anotaciones ' + document.getElementById('inputprecio').value + ' son correctas.');
+              document.getElementById('msgerror6').innerHTML = "";
             } else {
-              alert('Las anotaciones ' + document.getElementById('inputprecio').value + ' son incorrectas.');
+              document.getElementById('msgerror6').innerHTML = "Las anotaciones solo pueden contener caracteres alfanumericos y no debe de ser mayor a 32 caracteres";
               event.preventDefault();
             }
           } else {
-            alert('El precio ' + document.getElementById('inputprecio').value + ' es incorrecta.');
+            document.getElementById('msgerror5').innerHTML = "El precio solo puede contener numeros y no puede ser mayor de 6 cifras";
             event.preventDefault();
           }
         } else {
-          alert('La cantidad ' + document.getElementById('inputcantidad').value + ' es incorrecta.');
+          document.getElementById('msgerror4').innerHTML = "La cantidad solo puede contener numeros y no puede ser mayor de 5 cifras";
           event.preventDefault();
         }
       } else {
-        alert('El Supermercado ' + document.getElementById('inputsuper').value + ' es incorrecta.');
+        document.getElementById('msgerror3').innerHTML = "El supermercado solo pueden contener caracteres alfanumericos y no debe de ser mayor a 15 caracteres";
         event.preventDefault();
       }
     } else {
-      alert('La marca ' + document.getElementById('inputmarca').value + ' es incorrecta.');
+      document.getElementById('msgerror2').innerHTML = "La marca solo pueden contener caracteres alfanumericos y no debe de ser mayor a 10 caracteres";
       event.preventDefault();
     }
   } else {
-    alert('El nombre ' + document.getElementById('inputnombre').value + ' es incorrecto.');
+    document.getElementById('msgerror1').innerHTML = "El nombre puede contener entre 1 y 45 caracteres alfanumericos";
     event.preventDefault();
   }
 
@@ -99,11 +132,14 @@ function CalcularEdad(fecha_nacimiento) {
 function ValidarLogin(event) {
   var email = validarEmail(document.getElementById('inputemail').value);
   if (email == true) {
-    alert('La dirección de email ' + document.getElementById('inputemail').value + ' es correcta.');
+    document.getElementById('msgerror1').innerHTML = "";
+
   } else {
-    alert('La dirección de email ' + document.getElementById('inputemail').value + ' es incorrecta.');
+    document.getElementById('msgerror1').innerHTML = "El correo debe de tener el siguiente formato correo@correo.correo";
+
     event.preventDefault();
   }
+
 }
 
 function ValidarRegistro(event) {
@@ -118,37 +154,49 @@ function ValidarRegistro(event) {
   //colocar lo que va a hacer en caso de que las validaciones sean correctas o incorrectas
 
   if (email == true) {
-    alert('La dirección de email ' + document.getElementById('inputemail').value + ' es correcta.');
+    document.getElementById('msgerror1').innerHTML = "";
+
     if (nombre == true) {
-      alert('El nombre ' + document.getElementById('inputNombre').value + ' es correcto.');
+      document.getElementById('msgerror2').innerHTML = "";
+
       if (contraseña == true && confirmacion == true && document.getElementById('inputContraseña1').value == document.getElementById('inputContraseña2').value) {
-        alert('Las contraseñas ' + ' son correctas.');
+        document.getElementById('msgerror3').innerHTML = "";
+
         if (edad >= 18) {
-          alert('Eres mayor de edad');
-          if (document.registroForm.SelectAlcaldia.value == 0 || document.registroForm.SelectAlcaldia.value == 'Alcaldía') {
-            alert('Selecciona una alcaldia');
+          document.getElementById('msgerror4').innerHTML = "";
+
+          if (document.registroForm.SelectAlcaldia.value != 0 && document.registroForm.SelectAlcaldia.value != 'Alcaldía') {
+            document.getElementById('msgerror5').innerHTML = "";
+
             if (isChecked) {
-              alert('Has leido y aceptas el aviso de privacidad');
+              document.getElementById('msgerror6').innerHTML = "";
+
               // Todo ha sido validado
             } else {
-              alert('no has leido y no aceptas el aviso de privacidad');
+              document.getElementById('msgerror6').innerHTML = 'Para continuar debes leer y aceptar el aviso de privacidad';
               event.preventDefault();
             }
+          } else {
+            document.getElementById('msgerror5').innerHTML = 'Elige una alcaldia para continuar';
+            event.preventDefault();
           }
         } else {
-          alert('Eres menor de edad ');
+          document.getElementById('msgerror4').innerHTML = 'Debes de ser mayor de edad para poder crear tu cuenta';
+
           event.preventDefault();
         }
       } else {
-        alert('Las contraseñas ' + ' son incorrectas.');
-        event.preventDefault()
+
+        document.getElementById('msgerror3').innerHTML = 'Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$';
+        event.preventDefault();
       }
     } else {
-      alert('El nombre ' + document.getElementById('inputNombre').value + ' es incorrecto.');
+      document.getElementById('msgerror2').innerHTML = 'El nombre solo puede tener letras y un maximo de 32 caracteres';
       event.preventDefault();
     }
   } else {
-    alert('La dirección de email ' + document.getElementById('inputemail').value + ' es incorrecta.');
+    document.getElementById('msgerror1').innerHTML = "El correo debe de tener el siguiente formato correo@correo.correo";
+    // document.getElementById('msgerror1').innerHTML='El correo debe de tener el siguiente formato correo@correo.correo');
     event.preventDefault();
   }
 
@@ -156,9 +204,55 @@ function ValidarRegistro(event) {
 function ValidarLista(event) {
   var nombreLista = validarNombreLista(document.getElementById('inputNombre').value);
   if (nombreLista == true) {
-    alert('El nombre ' + document.getElementById('inputNombre').value + ' es correcto.');
+    document.getElementById('msgerror1').innerHTML = "";
+
   } else {
-    alert('El nombre ' + document.getElementById('inputNombre').value + ' es incorrecto.');
+    document.getElementById('msgerror1').innerHTML = "El nombre de la lista solo puede contener letras con longitud no mayor a 20";
+
     event.preventDefault();
   }
 }
+function ValidarEditar(event) {
+
+  var nombre = validarNombres(document.getElementById('inputNombre').value);
+  var contraseña = validarContraseñas(document.getElementById('inputContraseña1').value);
+  var confirmacion = validarContraseñas(document.getElementById('inputContraseña2').value);
+  var edad = CalcularEdad(document.getElementById('inputdate').value);
+
+  //colocar lo que va a hacer en caso de que las validaciones sean correctas o incorrectas
+
+
+  if (nombre == true) {
+    document.getElementById('msgerror1').innerHTML = "";
+    if (contraseña == true && confirmacion == true && document.getElementById('inputContraseña1').value == document.getElementById('inputContraseña2').value) {
+      document.getElementById('msgerror2').innerHTML = "";
+      if (edad >= 18) {
+        document.getElementById('msgerror3').innerHTML = "";
+        if (document.editarForm.SelectAlcaldia.value == 0 || document.editarForm.SelectAlcaldia.value == 'Alcaldía') {
+          document.getElementById('msgerror4').innerHTML = 'Elige una alcaldia para continuar';
+          if (document.registroForm.SelectAlcaldia.value != 0 && document.registroForm.SelectAlcaldia.value != 'Alcaldía') {
+            document.getElementById('msgerror4').innerHTML = "";
+
+          } else {
+            document.getElementById('msgerror4').innerHTML = 'Para continuar debes leer y aceptar el aviso de privacidad';
+            event.preventDefault();
+          }
+        } else {
+          document.getElementById('msgerror5').innerHTML = 'Elige una alcaldia para continuar';
+          event.preventDefault();
+        }
+      } else {
+        document.getElementById('msgerror3').innerHTML = 'Debes de ser mayor de edad para continuar';
+        event.preventDefault();
+      }
+    } else {
+      document.getElementById('msgerror2').innerHTML = 'Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$';
+      event.preventDefault()
+    }
+  } else {
+    document.getElementById('msgerror1').innerHTML = 'El nombre solo puede tener letras y un maximo de 32 caracteres';
+    event.preventDefault();
+  }
+}
+
+

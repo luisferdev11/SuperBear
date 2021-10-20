@@ -75,3 +75,6 @@ input[type="checkbox"], input[type="submit"]{
 :read-only{
     outline: none;
 }
+.rojo{
+    color: red;
+}

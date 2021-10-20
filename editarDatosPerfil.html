@@ -18,18 +18,26 @@
     <div class="principal">
         <h1 class="centro">Editar Datos</h1>
         <div class="contenedor-formulario">
-            <form action="consultarDatosPerfil.html">
+            <form action="consultarDatosPerfil.html" id="editarForm" name="editarForm">
                 <b>Datos Personales</b>
                 <p class="seccion">Correo Electrónico</p>
                 <input placeholder="Correo Electrónico" type="email">
                 <p class="seccion">Nombre</p>
-                <input placeholder="Nombre" type="text">
-                <p class="seccion">Contraseña</p>
-                <input placeholder="Contraseña" type="password">
+                <input placeholder="Nombre" type="text" id="inputNombre">
+                <p class="rojo" id="msgerror1"></p>
+                <p class="seccion">Contraseña Actual</p>
+                <input placeholder="Contraseña  Actual" type="password">
+                <p class="seccion">Nueva contraseña</p>
+                <input placeholder="Nueva contraseña" type="password" id="inputContraseña1">
+                <p class="seccion">Confirmar contraseña</p>
+                <input placeholder="Nueva contraseña" type="password" id="inputContraseña2">
+                <p class="rojo" id="msgerror2"></p>
                 <p class="seccion">Fecha de Nacimiento</p>
-                <input type="date">
+                <input type="date" id="inputdate">
+                <p class="rojo" id="msgerror3"></p>
+
                 <p class="seccion">Alcaldía</p>
-                <select>
+                <select name="SelectAlcaldia">
                     <option class="no" disabled selected>Alcaldía</option>
                     <option>Álvaro Obregón</option>
                     <option>Azcapotzalco</option>
@@ -48,6 +56,8 @@
                     <option>Venustiano Carranza</option>
                     <option>Xochimilco</option>
                 </select>
+                <p class="rojo" id="msgerror4"></p>
+
                 <p>Género</p>
                 <br>
                 <div>
@@ -69,11 +79,13 @@
                 <br>
                 <br>
                 <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Guardar'>
+                    <input class="b" type="submit" value='Guardar' onclick="ValidarEditar(event)">
                 </div>
             </form>
         </div>
     </div>
     <br>
+    <script src="js/validaciones.js"></script>
+
 </body>
 </html>

@@ -26,11 +26,12 @@
                         Pidele el código de grupo a un administrador
                     </p>
                     <form action="consultarGrupos.html">
-                        <input type="text" placeholder="Código">
+                        <input type="text" placeholder="Código" id="inputcodigo">
+                        <p class="rojo" id="msgerror1"></p>
                         <br>
                         <br>
                         <div class="contenedor-boton">
-                            <input class="b" type="submit" value='Unirte'>
+                            <input class="b" type="submit" value='Unirte' onclick="validarCodigoGrupo(event)">
                         </div>
                     </form>
                     <p class="pequeño">
@@ -43,11 +44,13 @@
                 <div class="nuevo-grupo">
                     <h3>Nombre del grupo</h3>
                     <form action="consultarGrupos.html">
-                        <input type="text" placeholder="Nombre">
+                        <input type="text" placeholder="Nombre" id="inputgrupo">
+                        <p class="rojo" id="msgerror2"></p>
+
                         <br>
                         <br>
                         <div class="contenedor-boton">
-                            <input class="b" type="submit" value='Crear'>
+                            <input class="b" type="submit" value='Crear' onclick="validarNombreGrupo(event)">
                         </div>
                     </form>
                     <p class="pequeño">
@@ -57,5 +60,7 @@
             </div>
         </div>
     </div>
+    <script src="js/validaciones.js"></script>
+
 </body>
 </html>
