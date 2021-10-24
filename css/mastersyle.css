@@ -23,7 +23,9 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
 
 body{
     font-family: var(--f-texto);
+    /*
     margin-bottom: 1rem;
+    */
     background-color: var(--fondo);
 }
 
@@ -83,6 +85,10 @@ nav a:hover{
     font-weight: bold;
 }
 
+.pequeño{
+    font-size: .8rem;
+}
+
 /* Proidedades concretas */
 
 ::placeholder{
@@ -98,46 +104,82 @@ nav a:hover{
     margin-inline: 1rem;
 }
 
-header{
-    display: grid;
-    grid-template-columns: 80% 20%;
+/* Menu desplegable que solamente funciona gracias a que dios es grande conmigo */
+
+.desplegable{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 0 .5rem black;
+    background-color: var(--color-1);
+    border-radius: 1rem;
+}
+
+[id|="menu"]:hover + .desplegable{
+    display: flex;
+    transform: translateY(-40%) translateX(-80%);
+    flex-direction: column;
+    animation-name: entrada;
+    animation-duration: .5s;
+}
+
+.desplegable a{
+    padding-inline: 1rem;
+    padding-block: 1rem;
+}
+
+[id|="menu"]{
+    height: 0;
+    width: 0;
+}
+
+@keyframes entrada{
+    from{
+        transform: translateX(-80%);
+    }
+    to{
+        transform: translateY(-40%) translateX(-80%);
+    }
 }
 
 /* Header */
+
+header{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+}
 
 header div a img{
     margin-block: 1.4rem;
     width: 3rem;
 }
 
-/* Menu desplegable solamente funciona por la gracia del señor */
+/* Footer */
 
-.menu-boton{
-    height: 0;
-    width: 0;
-    padding: 0;
-    margin: 0;
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.menu-contenido{
-    display: none;
-    background-color: var(--color-1);
-    box-shadow: 0 0 .5rem black;
+footer{
+    margin-top: auto;
+    background-color: var(--color-2);
 }
 
-[id|="menu"]:focus ~ .menu-contenido{
-    display: block;
-    position: absolute;
-    z-index: 9;
-    transform: translateX(-60%);
+footer a{
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-block: 1rem;
 }
 
-.menu-contenido ul{
-    padding-inline: 1rem;
+footer a:hover{
+    background-color: var(--hover-1);
 }
 
-hr{
-    height: 2px;
-    background-color: black;
-    border: none;
+footer a img{
+    height: 3rem;
 }

@@ -6,64 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/mastersyle.css">
     <link rel="stylesheet" href="css/grupos.css">
+    <link rel="shortcut icon" href="assets/svg/logo.svg">
     <title>Mis Grupos | SuperBear</title>
 </head>
 <body>
     <nav>
-        <a><b>Noticias</b></a>
-        <a><b>Grupos</b></a>
-        <a class="icono"><img src="assets/images/userIcon.jpg"></a>
+        <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
+        <a href="consultarGrupos.html"><b>Grupos</b></a>
+        <a class="icono" href="consultarDatosPerfil.html"><img src="assets/images/userIcon.jpg"></a>
     </nav>
     <div class="principal">
         <header>
             <h1>Mis Grupos</h1>
             <div>
-                <a href="xd"><img src="assets/svg/plus.svg"></a>
+                <a href="ingresar-crearGrupo.html"><img src="assets/svg/plus.svg"></a>
             </div>
         </header>
     </div>
     <!--Cada grupo debe tener su propio menu
     para eso es necesario que cada input tenga un id diferentes
     los for del label deben coincidir con el del input-->
-    <!--
-        Edit: Al parecer no es necesario xd
-        la primera prueba que hice no funiono y ahora si funciona xd
-        dios en ti confio
-    -->
     <div class="grid">
         <div class="grupo">
             <div class="nombre-grupo">
-                <h1>
-                    Pantitlan
-                </h1>
-                <a>
+                <a href="consultarListasDeGrupo.html">
+                    <h1>
+                        Pantitlan
+                    </h1>
+                </a>
+                <a href="consultarMiembrosyCodigoDeGrupo-administadorDeGrupo.html">
                     <img src="assets/images/userIcon.jpg">
                     <b>
                         10 miembros
                     </b>
                 </a>
-                <label>
-                    <input id="menu-1" class="menu-boton" type="checkbox">
-                    <img src="assets/svg/options.svg">
-                    <li class="menu-contenido">
-                        <ul>
-                            <a class="b">
-                                Renombrar Familia
-                            </a>
-                        </ul>
-                        <ul>
-                            <hr>
-                        </ul>
-                        <ul>
-                            <a class="b">
-                                Borrar Familia
-                            </a>
-                        </ul>
-                    </li>
+                <label for="menu-1">
+                    <img class="opciones" src="assets/svg/options.svg">
+                    <input id="menu-1" type="checkbox">
+                    <div class="desplegable">
+                        <a href="editarNombreGrupo-administradorDeGrupo.html" class="b">
+                            Renombrar Grupo
+                        </a>
+                        <a href="consultarGrupos.html" class="b">
+                            Borrar Grupo
+                        </a>
+                    </div>
                 </label>
             </div>
             <div class="contenido-grupo">
-                <a>
+                <a href="consultarProductosDeLista.html">
                     <div>
                         <b>Jabones</b>
                     </div>
@@ -71,7 +62,7 @@
                         <b>10/15 Completado</b>
                     </div>
                 </a>
-                <a>
+                <a href="consultarProductosDeLista.html">
                     <div>
                         <b>Carnes frías</b>
                     </div>
@@ -83,37 +74,32 @@
         </div>
         <div class="grupo">
             <div class="nombre-grupo">
-                <h1>
-                    Pantitlan
-                </h1>
-                <a>
+                <a href="consultarListasDeGrupo.html">
+                    <h1>
+                        Pantitlan
+                    </h1>
+                </a>
+                <a href="consultarMiembrosDeGrupo-miembroDeGrupo.html">
                     <img src="assets/images/userIcon.jpg">
                     <b>
                         10 miembros
                     </b>
                 </a>
-                <label>
-                    <input id="menu-1" class="menu-boton" type="checkbox">
-                    <img src="assets/svg/options.svg">
-                    <li class="menu-contenido">
-                        <ul>
-                            <a class="b">
-                                Renombrar Familia
-                            </a>
-                        </ul>
-                        <ul>
-                            <hr>
-                        </ul>
-                        <ul>
-                            <a class="b">
-                                Borrar Familia
-                            </a>
-                        </ul>
-                    </li>
+                <label for="menu-2">
+                    <img class="opciones" src="assets/svg/options.svg">
+                    <input id="menu-2" type="checkbox">
+                    <div class="desplegable">
+                        <a href="editarNombreGrupo-administradorDeGrupo.html" class="b">
+                            Renombrar Grupo
+                        </a>
+                        <a href="consultarGrupos.html" class="b">
+                            Borrar Grupo
+                        </a>
+                    </div>
                 </label>
             </div>
             <div class="contenido-grupo">
-                <a>
+                <a href="consultarProductosDeLista.html">
                     <div>
                         <b>Jabones</b>
                     </div>
@@ -121,157 +107,7 @@
                         <b>10/15 Completado</b>
                     </div>
                 </a>
-                <a>
-                    <div>
-                        <b>Carnes frías</b>
-                    </div>
-                    <div>
-                        <b>10/15 Completado</b>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="grupo">
-            <div class="nombre-grupo">
-                <h1>
-                    Pantitlan
-                </h1>
-                <a>
-                    <img src="assets/images/userIcon.jpg">
-                    <b>
-                        10 miembros
-                    </b>
-                </a>
-                <label>
-                    <input id="menu-1" class="menu-boton" type="checkbox">
-                    <img src="assets/svg/options.svg">
-                    <li class="menu-contenido">
-                        <ul>
-                            <a class="b">
-                                Renombrar Familia
-                            </a>
-                        </ul>
-                        <ul>
-                            <hr>
-                        </ul>
-                        <ul>
-                            <a class="b">
-                                Borrar Familia
-                            </a>
-                        </ul>
-                    </li>
-                </label>
-            </div>
-            <div class="contenido-grupo">
-                <a>
-                    <div>
-                        <b>Jabones</b>
-                    </div>
-                    <div>
-                        <b>10/15 Completado</b>
-                    </div>
-                </a>
-                <a>
-                    <div>
-                        <b>Carnes frías</b>
-                    </div>
-                    <div>
-                        <b>10/15 Completado</b>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="grupo">
-            <div class="nombre-grupo">
-                <h1>
-                    Pantitlan
-                </h1>
-                <a>
-                    <img src="assets/images/userIcon.jpg">
-                    <b>
-                        10 miembros
-                    </b>
-                </a>
-                <label>
-                    <input id="menu-1" class="menu-boton" type="checkbox">
-                    <img src="assets/svg/options.svg">
-                    <li class="menu-contenido">
-                        <ul>
-                            <a class="b">
-                                Renombrar Familia
-                            </a>
-                        </ul>
-                        <ul>
-                            <hr>
-                        </ul>
-                        <ul>
-                            <a class="b">
-                                Borrar Familia
-                            </a>
-                        </ul>
-                    </li>
-                </label>
-            </div>
-            <div class="contenido-grupo">
-                <a>
-                    <div>
-                        <b>Jabones</b>
-                    </div>
-                    <div>
-                        <b>10/15 Completado</b>
-                    </div>
-                </a>
-                <a>
-                    <div>
-                        <b>Carnes frías</b>
-                    </div>
-                    <div>
-                        <b>10/15 Completado</b>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="grupo">
-            <div class="nombre-grupo">
-                <h1>
-                    Pantitlan
-                </h1>
-                <a>
-                    <img src="assets/images/userIcon.jpg">
-                    <b>
-                        10 miembros
-                    </b>
-                </a>
-                <label>
-                    <input id="menu-1" class="menu-boton" type="checkbox">
-                    <img src="assets/svg/options.svg">
-                    <li class="menu-contenido">
-                        <ul>
-                            <a class="b">
-                                Renombrar Familia
-                            </a>
-                        </ul>
-                        <ul>
-                            <hr>
-                        </ul>
-                        <ul>
-                            <a class="b">
-                                Borrar Familia
-                            </a>
-                        </ul>
-                    </li>
-                </label>
-            </div>
-            <div class="contenido-grupo">
-                <a>
-                    <div>
-                        <b>Jabones</b>
-                    </div>
-                    <div>
-                        <b>10/15 Completado</b>
-                    </div>
-                </a>
-                <a>
+                <a href="consultarProductosDeLista.html">
                     <div>
                         <b>Carnes frías</b>
                     </div>
@@ -282,5 +118,12 @@
             </div>
         </div>
     </div>
+    <br>
+    <footer>
+        <a href="miembros.html">
+            <img src="assets/svg/logo.svg">
+            <h3>SuperBear Team</h3>
+        </a>
+    </footer>
 </body>
 </html>

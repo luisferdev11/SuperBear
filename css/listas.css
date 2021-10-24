@@ -1,0 +1,38 @@
+.lista{
+    border-radius: 1rem;
+    box-shadow: 0 0 .5rem var(--gray);
+}
+
+.nombre-lista{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background-color: var(--color-1);
+    padding-inline: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: calc(100% - 2rem) 2rem;
+}
+
+.nombre-lista label img{
+    width: 100%;
+}
+
+.contenido-lista{
+    padding: 1rem;
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: .5rem;
+    align-items: center;
+}
+
+.producto{
+    background-color: var(--color-2);
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.opciones{
+    padding-top: 1rem;
+}
