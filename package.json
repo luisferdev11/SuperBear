@@ -1,0 +1,25 @@
+{
+  "name": "superbear",
+  "version": "1.0.0",
+  "description": "Software enfocado en la realizacion de listas de compras compartidas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisferdev11/SuperBear.git"
+  },
+  "author": "BearTual",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisferdev11/SuperBear/issues"
+  },
+  "homepage": "https://github.com/luisferdev11/SuperBear#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1"
+  }
+}
