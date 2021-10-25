@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/miembros.css">
     <link rel="shortcut icon" href="assets/svg/logo.svg">
     <title>Miembros de Pantitlan | SuperBear</title>
+    <style id="estilo"></style>
 </head>
 <body>
     <nav class="flecha">
@@ -60,7 +61,7 @@
     <div class="contenedor-formulario">
         <form>
             <h2 class="centro">Código de Grupo</h2>
-            <input class="centro" type="text" readonly value="4ED5X">
+            <input id="codigo" class="centro" type="text" readonly value="4ED5X">
             <p class="centro">
                 Comparte este código para que otros se puedan unir al grupo.
             </p>
@@ -68,11 +69,15 @@
     </div>
     <div class="grid" style="place-content: center; grid-gap: 0;">
         <div class="contenedor-compartir">
-            <a><img src="assets/svg/portapapeles.svg"></a>
+            <a onclick="copiar()"><img src="assets/svg/portapapeles.svg"></a>
             <a><img src="assets/images/capitan watsap.png"></a>
             <a class="fb"><img src="assets/svg/facebook.svg"></a>
         </div>
     </div>
+    <b class="toast">
+        Código copiado al portapapeles
+    </b>
     <br>
+    <script src="js/copiarCodigo.js"></script>
 </body>
 </html>

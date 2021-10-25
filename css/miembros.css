@@ -48,3 +48,16 @@
     width: 80% !important;
     margin: auto;
 }
+
+.toast{
+    display: none;
+    position: fixed;
+    margin-inline: 10%;
+    bottom: 3rem;
+    background-color: var(--color-2);
+    padding: 1rem;
+    align-self: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem var(--gray);
+    text-align: center;
+}
