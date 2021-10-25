@@ -23,3 +23,28 @@
 .grid{
     place-content: center;
 }
+
+.contenedor-compartir{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10%;   
+}
+
+.contenedor-compartir a img{
+    width: 100%;
+}
+
+.contenedor-compartir a:hover{
+    background-color: var(--hover-2);
+    border-radius: 1rem;
+}
+
+.fb{
+    display:grid;
+    align-items: center;
+}
+
+.fb img{
+    width: 80% !important;
+    margin: auto;
+}
