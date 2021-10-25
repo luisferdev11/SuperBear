@@ -131,9 +131,17 @@ function CalcularEdad(fecha_nacimiento) {
 //Falta añadir una funcion de parte del backend para que valide que el correo no halla sido utilizado
 function ValidarLogin(event) {
   var email = validarEmail(document.getElementById('inputemail').value);
+  var contraseña = validarContraseñas(document.getElementById('inputContraseña').value);
+
   if (email == true) {
     document.getElementById('msgerror1').innerHTML = "";
+    if (contraseña == true && confirmacion == true && document.getElementById('inputContraseña1').value == document.getElementById('inputContraseña2').value) {
+      document.getElementById('msgerror2').innerHTML = "";
+    } else {
 
+      document.getElementById('msgerror2').innerHTML = 'Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$';
+      event.preventDefault();
+    }
   } else {
     document.getElementById('msgerror1').innerHTML = "El correo debe de tener el siguiente formato correo@correo.correo";
 
