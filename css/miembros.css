@@ -19,3 +19,7 @@
 .boton-miembro:hover{
     background-color: var(--color-1);
 }
+
+.grid{
+    place-content: center;
+}
