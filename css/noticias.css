@@ -1,6 +1,6 @@
-/*.grid{
-    grid-template-columns: repeat(auto-fit, minmax(50px, 350px));
-}*/
+.grid{
+    place-content: center;
+}
 
 .contenedor-noticias, .contenedor-twitter{
     margin-left: calc(10% + 1rem);
