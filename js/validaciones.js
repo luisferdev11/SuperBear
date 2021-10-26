@@ -11,15 +11,15 @@ function validarNombreLista(Nombre) {
   return regex.test(Nombre) ? true : false;
 }
 function NombreObjeto(Nombre) {
-  var regex = /^[A-Z0-9-]{1,45}$/i;
+  var regex = /^[A-Z0-9-]{1,64}$/i;
   return regex.test(Nombre) ? true : false;
 }
 function MarcaObjeto(Nombre) {
-  var regex = /^[A-Z0-9-]{0,10}$/i;
+  var regex = /^[A-Z0-9-]{0,25}$/i;
   return regex.test(Nombre) ? true : false;
 }
 function SuperObjeto(Nombre) {
-  var regex = /^[A-Z0-9-]{0,15}$/i;
+  var regex = /^[A-Z0-9-]{0,25}$/i;
   return regex.test(Nombre) ? true : false;
 }
 function CantidadObjeto(Cantidad) {
@@ -31,7 +31,7 @@ function PrecioObjeto(Precio) {
   return regex.test(Precio) ? true : false;
 }
 function AnotacionesObjeto(Anotaciones) {
-  var regex = /^[A-Z0-9-]{0,32}$/i;
+  var regex = /^[A-Z0-9-]{0,64}$/i;
   return regex.test(Anotaciones) ? true : false;
 }
 function nombreGrupo(Nombre) {
