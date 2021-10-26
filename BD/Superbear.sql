@@ -232,7 +232,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SuperBear`.`CMarca` (
   `id_mar` INT NOT NULL,
-  `Marca` VARCHAR(10) NOT NULL,
+  `Marca` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`id_mar`))
 ENGINE = InnoDB;
 
@@ -272,7 +272,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SuperBear`.`DProducto` (
   `id_pro` INT NOT NULL AUTO_INCREMENT,
-  `nom_pro` VARCHAR(45) NOT NULL,
+  `nom_pro` VARCHAR(64) NOT NULL,
   `can_pro` INT NULL,
   `precio_pro` DOUBLE NULL,
   `notas_pro` VARCHAR(64) NULL,
