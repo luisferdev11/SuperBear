@@ -242,7 +242,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SuperBear`.`CDepartamento` (
   `id_dep` INT NOT NULL,
-  `nom_dep` VARCHAR(20) NOT NULL,
+  `nom_dep` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`id_dep`))
 ENGINE = InnoDB;
 
@@ -262,7 +262,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SuperBear`.`CSupermercado` (
   `id_sup` INT NOT NULL,
-  `nom_sup` VARCHAR(15) NOT NULL,
+  `nom_sup` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`id_sup`))
 ENGINE = InnoDB;
 
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `SuperBear`.`DProducto` (
   `nom_pro` VARCHAR(45) NOT NULL,
   `can_pro` INT NULL,
   `precio_pro` DOUBLE NULL,
-  `notas_pro` VARCHAR(32) NULL,
+  `notas_pro` VARCHAR(64) NULL,
   `id_tip` INT NULL,
   `id_mar` INT NULL,
   `id_dep` INT NULL,
