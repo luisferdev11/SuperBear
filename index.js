@@ -10,7 +10,7 @@ const { Passport } = require('passport');
 const pool = require('./database');
 
 app.use(express.static(path.join(__dirname, 'views')));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 //configuracion de un secreto
 app.use(cookieParser('hola marinin marinin platano'));
 app.use(session({
@@ -22,21 +22,26 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new passportlocal(async function (username, password, done) {
-
-
-
     if (username.length > 0 && password.length > 0) {
-        const identificador = await pool.query('SELECT id_usu FROM musuario WHERE cor_usu = ?', [username]);
-        const User = await pool.query('SELECT cor_usu FROM musuario WHERE cor_usu = ?', [username]);
-        const pass = await pool.query('SELECT cor_usu FROM musuario WHERE con_usu = ?', [password]);
-        const nombre = await pool.query('SELECT nom_usu FROM musuario WHERE cor_usu = ?', [username]);
-        const idpass= identificador[0].id_usu;
-        const namepass=nombre[0].nom_usu;
-        
-        if (username == User[0].cor_usu && username == pass[0].cor_usu)
+        try {
+            const identificador = await pool.query('SELECT id_usu FROM musuario WHERE cor_usu = ?', [username]);
+            const User = await pool.query('SELECT cor_usu FROM musuario WHERE cor_usu = ?', [username]);
+            const pass = await pool.query('SELECT cor_usu FROM musuario WHERE con_usu = ?', [password]);
+            const nombre = await pool.query('SELECT nom_usu FROM musuario WHERE cor_usu = ?', [username]);
+            const idpass = await identificador[0].id_usu;
+            const namepass = await nombre[0].nom_usu;
 
-            return done(null, { id:idpass, name: namepass  });
-        done(null, false);
+            if (username == User[0].cor_usu && username == pass[0].cor_usu)
+
+                return done(null, { id: idpass, name: namepass });
+
+
+        } catch (error) {
+            done(null, false);
+
+        }
+
+
     }
 }));
 
@@ -46,7 +51,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-    done(null, {  id:1, name: "no se para que sirve esto pero lo debemos de configurar"  });
+    done(null, { id: 1, name: "no se para que sirve esto pero lo debemos de configurar" });
 
 });
 

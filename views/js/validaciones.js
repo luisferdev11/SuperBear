@@ -1,3 +1,5 @@
+let formulario = document.getElementById("LoginForm");
+
 function validarEmail(email) {
   var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
   return regex.test(email) ? true : false;
@@ -131,14 +133,26 @@ function CalcularEdad(fecha_nacimiento) {
 //Falta añadir una funcion de parte del backend para que valide que el correo no halla sido utilizado
 function ValidarLogin(event) {
   var email = validarEmail(document.getElementById('inputemail').value);
+  var contraseña = validarContraseñas(document.getElementById('inputContraseña').value);
+
   if (email == true) {
     document.getElementById('msgerror1').innerHTML = "";
+    if (contraseña == true ) {
+      document.getElementById('msgerror2').innerHTML = "";
+      formulario.setAttribute("action", "/login");
 
+    } else {
+
+      document.getElementById('msgerror2').innerHTML = 'Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$';
+      event.preventDefault();
+    }
   } else {
     document.getElementById('msgerror1').innerHTML = "El correo debe de tener el siguiente formato correo@correo.correo";
 
     event.preventDefault();
   }
+  
+  
 
 }
 
