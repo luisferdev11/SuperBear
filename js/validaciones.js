@@ -135,7 +135,7 @@ function ValidarLogin(event) {
 
   if (email == true) {
     document.getElementById('msgerror1').innerHTML = "";
-    if (contraseña == true && confirmacion == true && document.getElementById('inputContraseña1').value == document.getElementById('inputContraseña2').value) {
+    if (contraseña == true) {
       document.getElementById('msgerror2').innerHTML = "";
     } else {
 
