@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mastersyle.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/miembros.css">
+    <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <title>Crea una lista conmigo | SuperBear</title>
+    <style id="estilo"></style>
+</head>
+<body>
+    <nav>
+        <a href="registro.html"><b>Regístrate</b></a>
+        <a href="iniciarSesion.html"><b>Accede</b></a>
+    </nav>
+    <div class="principal">
+        <h1>Bienvenido a SuperBear</h1>
+        <h2>Te han invitado a un grupo</h2>
+    </div>
+    <div class="contenedor-formulario">
+        <form>
+            <p class="centro">
+                    Puedes usar este codigo para unirte
+            </p>
+            <input id="codigo" class="centro" type="text" readonly>
+        </form>
+    </div>
+    <div class="grid" style="place-content: center; grid-gap: 0; margin-top: 1rem;">
+        <div class="contenedor-compartir">
+            <a style="grid-column:2;" onclick="copiar()"><img src="assets/svg/portapapeles.svg"></a>
+        </div>
+    </div>
+    <b class="toast">
+        Código copiado al portapapeles
+    </b>
+    <br>
+    <script src="js/copiarCodigo.js"></script>
+    <script src="js/obtenerCodigo.js"></script>
+</body>
+</html>
