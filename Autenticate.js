@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const session = require('express-session');
+//const session = require('express-session');
 const passportlocal = require('passport-local');
 const { Passport } = require('passport');
 const pool = require('./database');
@@ -8,13 +8,13 @@ const app = express();
 var router = express.Router();
 const path = require('path');
 
-router.use(session({
-    secret: 'hola marinin marinin platano',
-    resave: true,
-    saveUninitialized: true
-}));
+//router.use(session({
+  //  secret: 'hola marinin marinin platano',
+ //   resave: true,
+ //   saveUninitialized: true
+//}));
 router.use(passport.initialize());
-router.use(passport.session());
+//router.use(passport.session());
 
 passport.use(new passportlocal(async function (username, password, done) {
     if (username.length > 0 && password.length > 0) {
@@ -30,13 +30,10 @@ passport.use(new passportlocal(async function (username, password, done) {
 
                 return done(null, { id: idpass, name: namepass });
 
-
         } catch (error) {
             done(null, false);
 
         }
-
-
     }
 }));
 

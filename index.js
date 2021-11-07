@@ -6,8 +6,7 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.urlencoded({ extended: true }));
-//configuracion de un secreto
- 
+
 
 app.get('/', function (req, res) {
     res.render('index.html');
