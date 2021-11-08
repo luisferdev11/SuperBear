@@ -3,10 +3,10 @@ const passport = require("passport");
 //const session = require('express-session');
 const passportlocal = require("passport-local");
 const { Passport } = require("passport");
-const pool = require("./database");
+const pool = require("../../database");
 const app = express();
 var router = express.Router();
-const path = require("path");
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"));
 

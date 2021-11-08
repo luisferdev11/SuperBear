@@ -18,10 +18,10 @@
     <div class="principal">
         <h1 class="centro">Regístrate</h1>
         <div class="contenedor-formulario">
-            <form action="iniciarSesion.html" id="registroForm" name="registroForm">
+            <form method="POST" id="registroForm" name="registroForm">
                 <b>Datos Personales</b>
                 <p class="seccion">Correo Electrónico</p>
-                <input placeholder="Correo Electrónico" type="email" id="inputemail">
+                <input placeholder="Correo Electrónico" type="email" id="inputemail" name="email">
                 <p class="rojo" id="msgerror1"></p>
 
                 <p class="seccion">Nombre</p>
@@ -29,54 +29,54 @@
                 <p class="rojo" id="msgerror2"></p>
 
                 <p class="seccion">Contraseña</p>
-                <input placeholder="Contraseña" type="password" id="inputContraseña1">
+                <input placeholder="Contraseña" type="password" id="inputContraseña1"name="Contraseña1">
 
                 <p class="seccion">Confirmar Contraseña</p>
-                <input placeholder="Contraseña" type="password" id="inputContraseña2">
+                <input placeholder="Contraseña" type="password" id="inputContraseña2" name="Contraseña2">
                 <p class="rojo" id="msgerror3"></p>
 
                 <p class="seccion">Fecha de Nacimiento</p>
-                <input type="date" id="inputdate">
+                <input type="date" id="inputdate" name="fecha">
                 <p class="rojo" id="msgerror4"></p>
 
                 <p class="seccion">Alcaldía</p>
                 <select name="SelectAlcaldia">
                     <option class="no" disabled selected>Alcaldía</option>
-                    <option>Álvaro Obregón</option>
-                    <option>Azcapotzalco</option>
-                    <option>Benito Juárez</option>
-                    <option>Coyoacán</option>
-                    <option>Cuajimalpa de Morelos</option>
-                    <option>Cuauhtémoc</option>
-                    <option>Gustavo A. Madero</option>
-                    <option>Iztacalco</option>
-                    <option>Iztapalapa</option>
-                    <option>Magdalena Contreras</option>
-                    <option>Miguel Hidalgo</option>
-                    <option>Milpa Alta</option>
-                    <option>Tláhuac</option>
-                    <option>Tlalpan</option>
-                    <option>Venustiano Carranza</option>
-                    <option>Xochimilco</option>
+                    <option value=1>Álvaro Obregón</option>
+                    <option value=2>Azcapotzalco</option>
+                    <option value=3>Benito Juárez</option>
+                    <option value=4>Coyoacán</option>
+                    <option value=5>Cuajimalpa de Morelos</option>
+                    <option value=6>Cuauhtémoc</option>
+                    <option value=7>Gustavo A. Madero</option>
+                    <option value=8>Iztacalco</option>
+                    <option value=9>Iztapalapa</option>
+                    <option value=10>Magdalena Contreras</option>
+                    <option value=11>Miguel Hidalgo</option>
+                    <option value=12>Milpa Alta</option>
+                    <option value=13>Tláhuac</option>
+                    <option value=14>Tlalpan</option>
+                    <option value=15>Venustiano Carranza</option>
+                    <option value=16>Xochimilco</option>
                 </select>
                 <p class="rojo" id="msgerror5"></p>
 
                 <p>Género</p>
                 <br>
                 <div>
-                    <input type="radio" id="masculino" name="genero">
+                    <input type="radio" id="masculino" name="genero" value=1>
                     <label for="masculino">Masculino</label>
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="radio" id="femenino" name="genero">
+                    <input type="radio" id="femenino" name="genero" value=2>
                     <label for="femenino">Femenino</label>
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input checked type="radio" id="otro" name="genero">
+                    <input checked type="radio" id="otro" name="genero" value=3>
                     <label for="otro">Otro</label>
                 </div>
                 <br>

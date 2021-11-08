@@ -1,11 +1,10 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + "/views"));
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,11 +21,12 @@ app.listen(app.get("port"), function () {
         "or 5000"
     );
 });
+//estoy en VS code
+app.get("/login", require("./modules/usuario/login"));
+app.post("/login", require("./modules/usuario/login"));
 
-app.get("/login", require("./Autenticate"));
-app.post("/login", require("./Autenticate"));
-
+app.get("/sign-up", require("./modules/usuario/sign-up"));
+app.post("/sign-up", require("./modules/usuario/sign-up"));
 app.get("/Misgrupos", (req, res) => {
     res.render("consultarGrupos");
-
 });

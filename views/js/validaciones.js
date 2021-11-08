@@ -1,5 +1,5 @@
 let formulario = document.getElementById("LoginForm");
-
+let formsignup = document.getElementById("registroForm");
 function validarEmail(email) {
   var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
   return regex.test(email) ? true : false;
@@ -184,6 +184,7 @@ function ValidarRegistro(event) {
 
             if (isChecked) {
               document.getElementById('msgerror6').innerHTML = "";
+              formsignup.setAttribute("action", "/sign-up");
 
               // Todo ha sido validado
             } else {
