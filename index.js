@@ -27,6 +27,5 @@ app.post("/login", require("./modules/usuario/login"));
 
 app.get("/sign-up", require("./modules/usuario/sign-up"));
 app.post("/sign-up", require("./modules/usuario/sign-up"));
-app.get("/Misgrupos", (req, res) => {
-    res.render("consultarGrupos");
-});
+
+app.get("/Misgrupos", require("./modules/grupos/grupos"));
