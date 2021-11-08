@@ -1,16 +1,13 @@
 const express = require("express");
-const passport = require("passport");
+
 //const session = require('express-session');
-const passportlocal = require("passport-local");
-const { Passport } = require("passport");
+
 const pool = require("../../database");
 const app = express();
 var router = express.Router();
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"));
-
-router.use(passport.initialize());
 
 
 router.post(
