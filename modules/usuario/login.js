@@ -31,8 +31,8 @@ passport.use(
                     [username]
                 );
                 const pass = await pool.query(
-                    "SELECT cor_usu FROM musuario WHERE con_usu = ?",
-                    [password]
+                    "SELECT con_usu FROM musuario WHERE cor_usu = ?",
+                    [username]
                 );
                 const nombre = await pool.query(
                     "SELECT nom_usu FROM musuario WHERE cor_usu = ?",
@@ -41,7 +41,7 @@ passport.use(
                 const idpass = await identificador[0].id_usu;
                 const namepass = await nombre[0].nom_usu;
 
-                if (username == User[0].cor_usu && username == pass[0].cor_usu)
+                if (username == User[0].cor_usu && password == pass[0].con_usu)
                     return done(null, { id: idpass, name: namepass });
             } catch (error) {
                 done(null, false);
