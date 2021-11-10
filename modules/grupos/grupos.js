@@ -7,7 +7,7 @@ var router = express.Router();
 function generarCodigo() {
 
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let Cod = ' ';
+    let Cod = '';
     const charactersLength = characters.length;
     for (let i = 0; i < 5; i++) {
         Cod += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -19,13 +19,11 @@ function generarCodigo() {
 }
 async function comprobarCodigo(codigo) {
     let respuesta ;
-    let consultacod =await pool.query("SELECT cod_grp FROM mgrupo WHERE cod_grp=?", [codigo])
+    let consultacod =await pool.query("SELECT cod_grp FROM mgrupo WHERE cod_grp=?", [codigo]);
     if (consultacod.length == 0) {
-        console.log("verdadero");
         respuesta = true;
     } else {
         respuesta = false;
-        console.log("false");
 
     }
     return respuesta;
@@ -44,21 +42,21 @@ router.post("/nuevogrupo", async (req, res) => {
     //await pool.query("SELECT cod_grp FROM mgrupo WHERE cod_grp=?",)
     //for (let i = 0; i == 1;) {
     let codigo = generarCodigo();
-    comprobarCodigo(codigo);
 
-    if (comprobarCodigo(codigo) == true) {
+    if (await comprobarCodigo(codigo) == true) {
         console.log("se le retorna la respuesta");
         let Arraycodigo = [
             nombreGrupo,
             codigo
         ];
         try {
+            console.log(codigo.length);
             await pool.query("INSERT INTO mgrupo (nom_grp ,cod_grp) VALUES (?,?)", Arraycodigo);
             i = 1;
             res.render("consultarGrupos");
         } catch (err) {
             console.log(err);
-            res.render("index");
+            res.render("error");
         }
     } else {
         res.render("error");
