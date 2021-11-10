@@ -29,3 +29,6 @@ app.get("/sign-up", require("./modules/usuario/sign-up"));
 app.post("/sign-up", require("./modules/usuario/sign-up"));
 
 app.get("/Misgrupos", require("./modules/grupos/grupos"));
+
+app.get("/nuevogrupo", require("./modules/grupos/grupos"));
+app.post("/nuevogrupo", require("./modules/grupos/grupos"));

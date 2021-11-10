@@ -1,14 +1,7 @@
 const express = require("express");
-
 //const session = require('express-session');
-
 const pool = require("../../database");
-const app = express();
 var router = express.Router();
-
-app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/views"));
-
 
 router.post(
     "/sign-up", async (req, res) => {

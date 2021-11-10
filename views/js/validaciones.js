@@ -1,5 +1,7 @@
 let formulario = document.getElementById("LoginForm");
 let formsignup = document.getElementById("registroForm");
+let formgrupo1 = document.getElementById("NewGrupoForm");
+
 function validarEmail(email) {
   var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
   return regex.test(email) ? true : false;
@@ -65,6 +67,7 @@ function validarNombreGrupo(event) {
   var nombre = nombreGrupo(document.getElementById('inputgrupo').value);
   if (nombre == true) {
     document.getElementById('msgerror2').innerHTML = "";
+    formgrupo1.setAttribute("action", "/nuevogrupo");
 
   } else {
     document.getElementById('msgerror2').innerHTML = "El nombre del grupo solo puede contener letras con longitud no mayor a 20";

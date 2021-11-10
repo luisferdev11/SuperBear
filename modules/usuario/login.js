@@ -4,19 +4,10 @@ const passport = require("passport");
 const passportlocal = require("passport-local");
 const { Passport } = require("passport");
 const pool = require("../../database");
-const app = express();
 var router = express.Router();
 
-app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/views"));
 
-//router.use(session({
-//  secret: 'hola marinin marinin platano',
-//   resave: true,
-//   saveUninitialized: true
-//}));
 router.use(passport.initialize());
-//router.use(passport.session());
 
 passport.use(
     new passportlocal(async function (username, password, done) {
@@ -44,6 +35,7 @@ passport.use(
                 if (username == User[0].cor_usu && password == pass[0].con_usu)
                     return done(null, { id: idpass, name: namepass });
             } catch (error) {
+                console.log(error);
                 done(null, false);
             }
         }
