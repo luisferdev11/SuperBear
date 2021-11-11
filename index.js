@@ -11,6 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", function (req, res) {
     res.render("index");
 });
+app.get("/error", function (req, res) {
+    res.render("error");
+});
 app.set("port", process.env.PORT || 5000);
 app.listen(app.get("port"), function () {
     console.log(
