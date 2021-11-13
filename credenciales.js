@@ -1,9 +1,9 @@
 module.exports = {
     database: {
         connectionLimit: 25,
-        host: "localhost",
+        host: "superbears.mysql.database.azure.com",
         database: "superbear",
-        user: "root",
-        password: "maika",
+        user: "alexisluisedgarmauriciomiguel",
+        password: "Beartual5$",
     },
 };
