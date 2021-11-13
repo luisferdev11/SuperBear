@@ -22,4 +22,8 @@ insert into calcaldia (id_alc,nom_alc) values(	14	,	"	Tlalpan	"	);
 insert into calcaldia (id_alc,nom_alc) values(	15	,	"	Venustiano Carranza	"	);
 insert into calcaldia (id_alc,nom_alc) values(	16	,	"	Xochimilco	"	);
 
+SCRIPT CATALOGO SEXO
+insert into csexo (id_sex,sexo) values(	1	,	"	Masculino	"	);
+insert into csexo (id_sex,sexo) values(	2	,	"	Femenino	"	);
+insert into csexo (id_sex,sexo) values(	3	,	"	Otro	"	);
 
