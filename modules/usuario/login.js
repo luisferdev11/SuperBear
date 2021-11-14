@@ -1,72 +1,90 @@
 const express = require("express");
-const passport = require("passport");
-//const session = require('express-session');
-const passportlocal = require("passport-local");
-const { Passport } = require("passport");
+const jwt = require("jsonwebtoken");
+const bcryptjs = require("bcryptjs");
 const pool = require("../../database");
 var router = express.Router();
 
+router.post("/login", async (req, res) => {
+    try {
+        const user = req.body.username;
+        const pass = req.body.password;
 
-router.use(passport.initialize());
+        if (!user || !pass) {
+            res.render("login", {
+                alert: true,
+                alertTitle: "Advertencia",
+                alertMessage: "Ingrese un usuario y password",
+                alertIcon: "info",
+                showConfirmButton: true,
+                timer: false,
+                ruta: "login",
+            });
+        } else {
+            pool.query(
+                "SELECT * FROM musuario WHERE cor_usu = ?",
+                [user],
+                async (error, results) => {
+                    console.log(pass);
+                    console.log(results[0].con_usu);
+                    if (results.length == 0 || pass != results[0].con_usu) {
+                        //     results.length == 0 ||
+                        //     !(await bcryptjs.compare(pass, results[0].pass))
+                        // ) {
+                        res.render("login", {
+                            alert: true,
+                            alertTitle: "Error",
+                            alertMessage: "Usuario y/o Password incorrectas",
+                            alertIcon: "error",
+                            showConfirmButton: true,
+                            timer: false,
+                            ruta: "login",
+                        });
+                    } else {
+                        //inicio de sesión OK
+                        const id = results[0].id;
+                        const token = jwt.sign(
+                            { id: id },
+                            process.env.JWT_SECRETO,
+                            {
+                                expiresIn: process.env.JWT_TIEMPO_EXPIRA,
+                            }
+                        );
+                        //generamos el token SIN fecha de expiracion
+                        //const token = jwt.sign({id: id}, process.env.JWT_SECRETO)
+                        console.log(
+                            "TOKEN: " + token + " para el USUARIO : " + user
+                        );
 
-passport.use(
-    new passportlocal(async function (username, password, done) {
-        if (username.length > 0 && password.length > 0) {
-            try {
-                const identificador = await pool.query(
-                    "SELECT id_usu FROM musuario WHERE cor_usu = ?",
-                    [username]
-                );
-                const User = await pool.query(
-                    "SELECT cor_usu FROM musuario WHERE cor_usu = ?",
-                    [username]
-                );
-                const pass = await pool.query(
-                    "SELECT con_usu FROM musuario WHERE cor_usu = ?",
-                    [username]
-                );
-                const nombre = await pool.query(
-                    "SELECT nom_usu FROM musuario WHERE cor_usu = ?",
-                    [username]
-                );
-                const idpass = await identificador[0].id_usu;
-                const namepass = await nombre[0].nom_usu;
-
-                if (username == User[0].cor_usu && password == pass[0].con_usu)
-                    return done(null, { id: idpass, name: namepass });
-            } catch (error) {
-                console.log(error);
-                done(null, false);
-            }
+                        const cookiesOptions = {
+                            expires: new Date(
+                                Date.now() +
+                                    process.env.JWT_COOKIE_EXPIRES *
+                                        24 *
+                                        60 *
+                                        60 *
+                                        1000
+                            ),
+                            httpOnly: true,
+                        };
+                        res.cookie("jwt", token, cookiesOptions);
+                        res.render("login", {
+                            alert: true,
+                            alertTitle: "Conexión exitosa",
+                            alertMessage: "¡LOGIN CORRECTO!",
+                            alertIcon: "success",
+                            showConfirmButton: false,
+                            timer: 800,
+                            ruta: "",
+                        });
+                    }
+                }
+            );
         }
-    })
-);
-
-passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    } catch (error) {
+        console.log(error);
+    }
 });
 
-passport.deserializeUser(async (id, done) => {
-    const identificador = await pool.query(
-        "SELECT id_usu FROM musuario WHERE id_usu = ?",
-        [id]
-    );
-    const nombre = await pool.query(
-        "SELECT nom_usu FROM musuario WHERE id_usu = ?",
-        [id]
-    );
-    const idpass = await identificador[0].id_usu;
-    const namepass = await nombre[0].nom_usu;
-
-    done(null, { id: idpass, name: namepass });
-});
-router.post(
-    "/login",
-    passport.authenticate("local", {
-        successRedirect: "/Misgrupos",
-        failureRedirect: "/login",
-    })
-);
 router.get("/login", (req, res) => {
     res.render("iniciarSesion");
     //res.sendFile(path.join(__dirname, '/views/iniciarSesion.html'));
