@@ -14,7 +14,9 @@ router.post("/sign-up", async (req, res) => {
     const { SelectAlcaldia } = req.body;
     const { genero } = req.body;
 
-    let newUser = [email, nombre, fecha, Password2, SelectAlcaldia, genero];
+    let passHash = await bcryptjs.hash(Password2, 8);
+
+    let newUser = [email, nombre, fecha, passHash, SelectAlcaldia, genero];
     try {
         await pool.query(
             "INSERT INTO musuario (cor_usu, nom_usu, fec_nac, con_usu, id_alc, id_sex) VALUES (?,?,?,?,?,?)",
