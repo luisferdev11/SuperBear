@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const app = express();
 const path = require("path");
 
@@ -7,6 +8,9 @@ app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/views"));
 
 app.use(express.urlencoded({ extended: true }));
+
+//para poder trabajar con las cookies
+app.use(cookieParser());
 
 app.get("/", function (req, res) {
     res.render("index");
