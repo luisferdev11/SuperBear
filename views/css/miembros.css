@@ -19,3 +19,45 @@
 .boton-miembro:hover{
     background-color: var(--color-1);
 }
+
+.grid{
+    place-content: center;
+}
+
+.contenedor-compartir{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10%;   
+}
+
+.contenedor-compartir a img{
+    width: 100%;
+}
+
+.contenedor-compartir a:hover{
+    background-color: var(--hover-2);
+    border-radius: 1rem;
+}
+
+.fb{
+    display:grid;
+    align-items: center;
+}
+
+.fb img{
+    width: 80% !important;
+    margin: auto;
+}
+
+.toast{
+    display: none;
+    position: fixed;
+    margin-inline: 10%;
+    bottom: 3rem;
+    background-color: var(--color-2);
+    padding: 1rem;
+    align-self: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem var(--gray);
+    text-align: center;
+}

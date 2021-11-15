@@ -14,6 +14,9 @@ app.get("/", function (req, res) {
 app.get("/error", function (req, res) {
     res.render("error");
 });
+app.get("/miembros", function (req, res) {
+    res.render("miembros");
+});
 app.set("port", process.env.PORT || 5000);
 app.listen(app.get("port"), function () {
     console.log(
@@ -31,7 +34,10 @@ app.post("/login", require("./modules/usuario/login"));
 app.get("/sign-up", require("./modules/usuario/sign-up"));
 app.post("/sign-up", require("./modules/usuario/sign-up"));
 
-app.get("/Misgrupos", require("./modules/grupos/grupos"));
+app.get("/misgrupos", require("./modules/grupos/grupos"));
 
 app.get("/nuevogrupo", require("./modules/grupos/grupos"));
 app.post("/nuevogrupo", require("./modules/grupos/grupos"));
+
+app.get("/miembros", require("./modules/grupos/miembros"));
+app.get("/consultarmiembros", require("./modules/grupos/miembros"));

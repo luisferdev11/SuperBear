@@ -28,8 +28,7 @@ async function comprobarCodigo(codigo) {
     }
     return respuesta;
 }
-router.get("/Misgrupos", (req, res) => {
-    const hola="hola"
+router.get("/misgrupos", (req, res) => {
     res.render("consultarGrupos");
     
 });
@@ -46,7 +45,6 @@ router.post("/nuevogrupo", async (req, res) => {
 
         if (await comprobarCodigo(codigo) == true) {
             var confirmacion = true;
-            console.log("se le retorna la respuesta");
             let Arraycodigo = [
                 nombreGrupo,
                 codigo
