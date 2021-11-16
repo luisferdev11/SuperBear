@@ -35,9 +35,10 @@ app.get("/sign-up", require("./modules/usuario/sign-up"));
 app.post("/sign-up", require("./modules/usuario/sign-up"));
 
 app.get("/misgrupos", require("./modules/grupos/grupos"));
+app.post("/ingresargrupo", require("./modules/grupos/grupos"));
 
 app.get("/nuevogrupo", require("./modules/grupos/grupos"));
 app.post("/nuevogrupo", require("./modules/grupos/grupos"));
 
-app.get("/miembros", require("./modules/grupos/miembros"));
+app.get("/miembrosdegrupo", require("./modules/grupos/miembros"));
 app.get("/consultarmiembros", require("./modules/grupos/miembros"));

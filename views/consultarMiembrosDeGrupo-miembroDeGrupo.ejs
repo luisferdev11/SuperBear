@@ -20,32 +20,24 @@
         <h1 class="centro">Miembros del Grupo Pantitlan</h1>
     </div>
     <div class="grid">
-        <div class="miembro">
-            <img src="assets/images/userIcon.jpg">
-            <b>
-                Juan Perez
-            </b>
-            <b class="centro" href="consultarMiembrosyCodigoDeGrupo-administadorDeGrupo.html">
-                admin
-            </b>
-        </div>
-        <div class="miembro">
-            <img src="assets/images/userIcon.jpg">
-            <b>
-                Juan Perez
-            </b>
-        </div>
-        <div class="miembro">
-            <img src="assets/images/userIcon.jpg">
-            <b>
-                Juan Perez
-            </b>
-        </div>
-        <div class="miembro">
-            <img src="assets/images/userIcon.jpg">
-            <b>
-                Juan Perez
-            </b>
+        <%
+
+        for (let i = 0; i < data.length; i++) {
+            
+        %>
+
+
+    <div class="miembro">
+        <img src="assets/images/userIcon.jpg">
+        <b>
+            <%=data[i]%>
+        </b>
+        <b class="centro" href="consultarMiembrosyCodigoDeGrupo-administadorDeGrupo.html">
+           
+        </b>
+    </div>
+            
+        <%}%>
         </div>
     </div>
     <br>

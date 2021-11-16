@@ -17,6 +17,8 @@
         </a>
     </nav>
     <div class="principal">
+    <p class="rojo"><%=error%></p>
+
         <div class="grid">
             <div>
                 <h2>Ingresar a un Grupo</h2>
@@ -25,8 +27,8 @@
                     <p>
                         Pidele el código de grupo a un administrador
                     </p>
-                    <form action="consultarGrupos.html">
-                        <input type="text" placeholder="Código" id="inputcodigo">
+                    <form method="POST" id="ingresarGrupoForm" name="ingresarGrupoForm">
+                        <input type="text" placeholder="Código" id="inputcodigo" name="codigo">
                         <p class="rojo" id="msgerror1"></p>
                         <br>
                         <br>

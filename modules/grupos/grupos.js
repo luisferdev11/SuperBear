@@ -33,7 +33,26 @@ router.get("/misgrupos", (req, res) => {
     
 });
 router.get("/nuevogrupo", (req, res) => {
-    res.render("ingresar-crearGrupo");
+
+
+    res.render("ingresar-crearGrupo",{error:""});
+});
+router.post("/ingresargrupo", async (req, res) => {
+//en id_usuario se debe de igualar al id que se pasara mediante las sesiones
+try {
+    const id_usuario=2;
+    const { codigo } = req.body;
+    const id_grupo = await pool.query(
+        "SELECT id_grp FROM mgrupo WHERE cod_grp = ?", [codigo]
+    );
+    const grupo=id_grupo[0].id_grp;
+    await pool.query("INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",[id_usuario,grupo,2]);
+    //"INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)"
+    res.redirect("/misgrupos");
+} catch (error) {
+    res.render("ingresar-crearGrupo",{error:"No se encontro el codigo de grupo"});
+}
+    
 });
 
 router.post("/nuevogrupo", async (req, res) => {

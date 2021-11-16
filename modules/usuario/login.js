@@ -35,7 +35,6 @@ passport.use(
                 if (username == User[0].cor_usu && password == pass[0].con_usu)
                     return done(null, { id: idpass, name: namepass });
             } catch (error) {
-                console.log(error);
                 done(null, false);
             }
         }

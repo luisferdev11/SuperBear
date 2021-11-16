@@ -5,5 +5,12 @@ module.exports = {
         database: "superbear",
         user: "alexisluisedgarmauriciomiguel",
         password: "Beartual5$",
-    },
+    }/*
+    database: {
+        connectionLimit: 25,
+        host: "localhost",
+        database: "superbear",
+        user: "root",
+        password: "maika",
+    }*/
 };

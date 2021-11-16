@@ -1,7 +1,7 @@
 let formulario = document.getElementById("LoginForm");
 let formsignup = document.getElementById("registroForm");
 let formgrupo1 = document.getElementById("NewGrupoForm");
-
+let formingresargrupo= document.getElementById("ingresarGrupoForm")
 function validarEmail(email) {
   var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
   return regex.test(email) ? true : false;
@@ -55,7 +55,7 @@ function validarCodigoGrupo(event) {
   var nombre = codigoGrupo(document.getElementById('inputcodigo').value);
   if (nombre == true) {
     document.getElementById('msgerror1').innerHTML = "";
-
+    formingresargrupo.setAttribute("action", "/ingresargrupo");
   } else {
     document.getElementById('msgerror1').innerHTML = "El codigo del grupo solo puede contener numeros y letras con longitud no mayor a 5, si no tienes codigo crea un grupo";
 
