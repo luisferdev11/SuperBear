@@ -12,9 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 //para poder trabajar con las cookies
 app.use(cookieParser());
 
-app.get("/", function (req, res) {
-    res.render("index");
-});
+// app.get("/", function (req, res) {
+//     res.render("index");
+// });
+
 app.get("/error", function (req, res) {
     res.render("error");
 });
@@ -29,11 +30,7 @@ app.listen(app.get("port"), function () {
     );
 });
 //estoy en VS code
-app.get("/login", require("./modules/usuario/login"));
-app.post("/login", require("./modules/usuario/login"));
-
-app.get("/sign-up", require("./modules/usuario/sign-up"));
-app.post("/sign-up", require("./modules/usuario/sign-up"));
+app.use("/", require("./modules/usuario/routes"));
 
 app.get("/Misgrupos", require("./modules/grupos/grupos"));
 
