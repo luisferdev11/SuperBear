@@ -1,37 +1,35 @@
 const express = require("express");
 //const session = require('express-session');
 const pool = require("../../database");
+const auth = require("../usuario/controller");
 var router = express.Router();
 
-
 function generarCodigo() {
-
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let Cod = '';
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let Cod = "";
     const charactersLength = characters.length;
     for (let i = 0; i < 5; i++) {
         Cod += characters.charAt(Math.floor(Math.random() * charactersLength));
-
     }
 
     return Cod;
-
 }
 async function comprobarCodigo(codigo) {
     let respuesta;
-    let consultacod = await pool.query("SELECT cod_grp FROM mgrupo WHERE cod_grp=?", [codigo]);
+    let consultacod = await pool.query(
+        "SELECT cod_grp FROM mgrupo WHERE cod_grp=?",
+        [codigo]
+    );
     if (consultacod.length == 0) {
         respuesta = true;
     } else {
         respuesta = false;
-
     }
     return respuesta;
 }
-router.get("/Misgrupos", (req, res) => {
-    const hola="hola"
-    res.render("consultarGrupos");
-    
+router.get("/Misgrupos", auth.isAuthenticated, (req, res) => {
+    res.render("consultarGrupos"), { user: "Pepe" };
 });
 router.get("/nuevogrupo", (req, res) => {
     res.render("ingresar-crearGrupo");
@@ -41,19 +39,18 @@ router.post("/nuevogrupo", async (req, res) => {
     do {
         const { nombreGrupo } = req.body;
 
-
         let codigo = generarCodigo();
 
-        if (await comprobarCodigo(codigo) == true) {
+        if ((await comprobarCodigo(codigo)) == true) {
             var confirmacion = true;
             console.log("se le retorna la respuesta");
-            let Arraycodigo = [
-                nombreGrupo,
-                codigo
-            ];
+            let Arraycodigo = [nombreGrupo, codigo];
             try {
                 console.log(codigo);
-                await pool.query("INSERT INTO mgrupo (nom_grp ,cod_grp) VALUES (?,?)", Arraycodigo);
+                await pool.query(
+                    "INSERT INTO mgrupo (nom_grp ,cod_grp) VALUES (?,?)",
+                    Arraycodigo
+                );
 
                 res.redirect("/misgrupos");
             } catch (err) {
@@ -63,12 +60,13 @@ router.post("/nuevogrupo", async (req, res) => {
             confirmacion == true;
         } else {
             res.redirect("/error");
-            console.log("ya existe ese codigo o no se genero el codigo de manera correcta")
+            console.log(
+                "ya existe ese codigo o no se genero el codigo de manera correcta"
+            );
         }
-    } while (confirmacion == false) {
-console.log("Se asigno codigo de manera correcta")
+    } while (confirmacion == false);
+    {
+        console.log("Se asigno codigo de manera correcta");
     }
-
-
 });
 module.exports = router;

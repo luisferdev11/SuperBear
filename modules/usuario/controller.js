@@ -13,6 +13,7 @@ module.exports = {
         const { SelectAlcaldia } = req.body;
         const { genero } = req.body;
 
+        //funcion hash para encriptar la contraseña de tal forma que sea seguro y lo podamos recuperar despues
         let passHash = await bcryptjs.hash(Password2, 8);
 
         let newUser = [email, nombre, fecha, passHash, SelectAlcaldia, genero];
@@ -99,6 +100,7 @@ module.exports = {
                             return next();
                         }
                         req.user = results[0];
+                        console.log(`req.user es ${req.user}`);
                         return next();
                     }
                 );

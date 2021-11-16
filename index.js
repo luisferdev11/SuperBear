@@ -36,3 +36,7 @@ app.get("/Misgrupos", require("./modules/grupos/grupos"));
 
 app.get("/nuevogrupo", require("./modules/grupos/grupos"));
 app.post("/nuevogrupo", require("./modules/grupos/grupos"));
+
+app.get("/datos-perfil", (req, res) => {
+    res.render("consultarDatosPerfil");
+});

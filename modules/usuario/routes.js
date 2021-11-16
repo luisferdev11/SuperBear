@@ -17,12 +17,12 @@ router.get("/login", (req, res) => {
     res.render("iniciarSesion");
 });
 
+router.get("/logout", controller.logout);
+
 // AQUI VAN LOS POST
 
 router.post("/sign-up", controller.signUp);
 
 router.post("/login", controller.login);
-
-router.post("/logout", controller.logout);
 
 module.exports = router;
