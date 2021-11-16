@@ -27,3 +27,8 @@ insert into csexo (id_sex,sexo) values(	1	,	"	Masculino	"	);
 insert into csexo (id_sex,sexo) values(	2	,	"	Femenino	"	);
 insert into csexo (id_sex,sexo) values(	3	,	"	Otro	"	);
 
+SCRIPT CATALOGO PRIVILEGIOS
+
+insert into cprivilegio (id_priv,priv_grp) values(	1	,	"Admin"	);
+insert into cprivilegio (id_priv,priv_grp) values(	2	,	"Miembro"	);
+
