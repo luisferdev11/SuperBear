@@ -32,15 +32,7 @@
 
 
     </div>
-    <div class="contenedor-formulario">
-        <form>
-            <h2 class="centro">Código de Grupo</h2>
-            <input id="codigo" class="centro" type="text" readonly value="<%=data%>">
-            <p class="centro">
-                Comparte este código para que otros se puedan unir al grupo.
-            </p>
-        </form>
-    </div>
+    
     <div class="grid" style="place-content: center; grid-gap: 0;">
 
         <% for (let i=0; i < miembros.length; i++) { %>
@@ -61,6 +53,15 @@
             </div>
 
             <%}%>
+        </div>
+        <div class="contenedor-formulario">
+            <form>
+                <h2 class="centro">Código de Grupo</h2>
+                <input id="codigo" class="centro" type="text" readonly value="<%=data%>">
+                <p class="centro">
+                    Comparte este código para que otros se puedan unir al grupo.
+                </p>
+            </form>
         </div>
         <div class="grid" style="place-content: center; grid-gap: 0;">
                 <div class="contenedor-compartir">

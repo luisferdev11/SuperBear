@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="shortcut icon" href="assets/svg/logo.svg">
     <title>Miembros de Pantitlan | SuperBear</title>
 </head>
+
 <body>
     <nav class="flecha">
         <a href="consultarGrupos.html">
@@ -20,26 +22,27 @@
         <h1 class="centro">Miembros del Grupo Pantitlan</h1>
     </div>
     <div class="grid">
-        <%
-
-        for (let i = 0; i < data.length; i++) {
-            
-        %>
+        <% for (let i=0; i < miembros.length; i++) { %>
 
 
-    <div class="miembro">
-        <img src="assets/images/userIcon.jpg">
-        <b>
-            <%=data[i]%>
-        </b>
-        <b class="centro" href="consultarMiembrosyCodigoDeGrupo-administadorDeGrupo.html">
-           
-        </b>
+            <div class="miembro">
+                <img src="assets/images/userIcon.jpg">
+                <b>
+                    <%=miembros[i]%>
+                </b>
+                <b class="centro" href="consultarMiembrosyCodigoDeGrupo-administadorDeGrupo.html">
+                    <% if(privilegio[i]==1){ %>
+                        <%="Admin"%>
+                            <% }else{ %>
+                                <%="Miembro"%>
+                                    <% } %>
+                </b>
+            </div>
+
+            <%}%>
     </div>
-            
-        <%}%>
-        </div>
     </div>
     <br>
 </body>
+
 </html>

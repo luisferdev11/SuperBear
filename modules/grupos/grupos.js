@@ -40,7 +40,7 @@ router.get("/nuevogrupo", (req, res) => {
 router.post("/ingresargrupo", async (req, res) => {
 //en id_usuario se debe de igualar al id que se pasara mediante las sesiones
 try {
-    const id_usuario=2;
+    const id_usuario=1;
     const { codigo } = req.body;
     const id_grupo = await pool.query(
         "SELECT id_grp FROM mgrupo WHERE cod_grp = ?", [codigo]
