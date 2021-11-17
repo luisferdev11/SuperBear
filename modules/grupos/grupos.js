@@ -1,7 +1,7 @@
 const express = require("express");
 //const session = require('express-session');
 const pool = require("../../database");
-const auth = require("../usuario/controller");
+const auth = require("../auth/auth");
 var router = express.Router();
 
 function generarCodigo() {
@@ -29,7 +29,7 @@ async function comprobarCodigo(codigo) {
     return respuesta;
 }
 router.get("/Misgrupos", auth.isAuthenticated, (req, res) => {
-    res.render("consultarGrupos"), { user: "Pepe" };
+    res.render("consultarGrupos", { user: "Pepe" });
 });
 router.get("/nuevogrupo", (req, res) => {
     res.render("ingresar-crearGrupo");
