@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const app = express();
 const path = require("path");
 
@@ -8,14 +9,15 @@ app.use(express.static(__dirname + "/views"));
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", function (req, res) {
-    res.render("index");
-});
+//para poder trabajar con las cookies
+app.use(cookieParser());
+
+// app.get("/", function (req, res) {
+//     res.render("index");
+// });
+
 app.get("/error", function (req, res) {
     res.render("error");
-});
-app.get("/miembros", function (req, res) {
-    res.render("miembros");
 });
 app.set("port", process.env.PORT || 5000);
 app.listen(app.get("port"), function () {
@@ -28,11 +30,7 @@ app.listen(app.get("port"), function () {
     );
 });
 //estoy en VS code
-app.get("/login", require("./modules/usuario/login"));
-app.post("/login", require("./modules/usuario/login"));
-
-app.get("/sign-up", require("./modules/usuario/sign-up"));
-app.post("/sign-up", require("./modules/usuario/sign-up"));
+app.use("/", require("./modules/usuario/routes"));
 
 app.get("/misgrupos", require("./modules/grupos/grupos"));
 app.post("/ingresargrupo", require("./modules/grupos/grupos"));
@@ -42,3 +40,7 @@ app.post("/nuevogrupo", require("./modules/grupos/grupos"));
 
 app.get("/miembrosdegrupo", require("./modules/grupos/miembros"));
 app.get("/consultarmiembros", require("./modules/grupos/miembros"));
+
+app.get("/datos-perfil", (req, res) => {
+    res.render("consultarDatosPerfil");
+});

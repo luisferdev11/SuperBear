@@ -49,9 +49,6 @@ router.get("/consultarmiembros", async (req, res) => {
             arrprivilegios.push(id_miembros[i].id_priv);
 
         }
-
-        
-
         const codigo_grupo = await pool.query(
             "SELECT cod_grp FROM mgrupo WHERE id_grp = ?", [grupo]
 
