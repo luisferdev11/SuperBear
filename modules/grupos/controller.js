@@ -90,7 +90,7 @@ module.exports = {
         try {
             const grupo = 3;
             const id_miembros = await pool.query(
-                "SELECT id_usu FROM egrupo WHERE id_grp = ?",
+                "SELECT * FROM egrupo WHERE id_grp = ?",
                 [grupo]
             );
 
@@ -102,7 +102,7 @@ module.exports = {
                     "SELECT * FROM musuario WHERE id_usu = ?",
                     [miembro]
                 );
-                arrmiembros.push(datosmiembro[0].nom_usu);
+                arrmiembros.push(datosmiembro[i].nom_usu);
                 arrprivilegios.push(id_miembros[i].id_priv);
             }
 
