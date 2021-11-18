@@ -90,7 +90,7 @@ module.exports = {
         try {
             const grupo = 3;
             const id_miembros = await pool.query(
-                "SELECT id_usu FROM egrupo WHERE id_grp = ?",
+                "SELECT * FROM egrupo WHERE id_grp = ?",
                 [grupo]
             );
 
