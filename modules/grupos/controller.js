@@ -99,7 +99,7 @@ module.exports = {
             for (let i = 0; i < id_miembros.length; i++) {
                 const miembro = id_miembros[i].id_usu;
                 var datosmiembro = await pool.query(
-                    "SELECT * FROM musuario WHERE id_usu = ?",
+                    "SELECT id_usu FROM musuario WHERE id_usu = ?",
                     [miembro]
                 );
                 arrmiembros.push(datosmiembro[i].nom_usu);
@@ -127,7 +127,7 @@ module.exports = {
             for (let i = 0; i < id_miembros.length; i++) {
                 const miembro = id_miembros[i].id_usu;
                 var datosmiembro = await pool.query(
-                    "SELECT * FROM musuario WHERE id_usu = ?",
+                    "SELECT id_usu FROM musuario WHERE id_usu = ?",
                     [miembro]
                 );
                 arrmiembros.push(datosmiembro[i].nom_usu);
