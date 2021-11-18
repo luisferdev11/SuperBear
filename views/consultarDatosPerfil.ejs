@@ -32,15 +32,16 @@
             <form action="verificarContraseña.html">
                 <b>Datos Personales</b>
                 <p class="seccion">Correo Electrónico</p>
-                <input type="email" value="juanperez@gmail.com" readonly>
+                <input type="email" value=<%= user.cor_usu %> readonly>
                 <p class="seccion">Nombre</p>
-                <input type="text" value="Juan Perez" readonly>
+                <input type="text" value=<%= user.nom_usu %> readonly>
                 <p class="seccion">Alcaldía</p>
-                <input type="text" value="Iztacalco" readonly>
+                <input type="text" value="Iztacalco Esto no lo he cambiado <%= user.id_alc %>" readonly>
                 <p class="seccion">Fecha de Nacimiento</p>
-                <input type="text" value="20/10/1990" readonly>
+                <input type="date" id="inputdate" name="fecha" value="<%= user.fec_nac %>" readonly>
+                
                 <p class="seccion">Género</p>
-                <input type="text" value="Masculino" readonly>
+                <input type="text" value="Masculino esto tampoco lo he cambiado <%= user.id_sex %>" readonly>
                 <br>
                 <br>
                 <div class="contenedor-boton">

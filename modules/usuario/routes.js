@@ -6,7 +6,7 @@ const auth = require("../auth/auth");
 
 // NO SE COMO QUIERAN PONERLOS, SI POR CASO DE USO, POR METODO O EN ARCHIVOS DISTINTOS
 
-router.get("/", auth.isAuthenticated, (req, res) => {
+router.get("/", (req, res) => {
     res.render("index");
 });
 
@@ -18,10 +18,10 @@ router.get("/login", (req, res) => {
     res.render("iniciarSesion");
 });
 
-router.get("/logout", controller.logout);
+router.get("/logout", auth.isAuthenticated, controller.logout);
 
-router.get("/datos-perfil", (req, res) => {
-    res.render("consultarDatosPerfil");
+router.get("/datos-perfil", auth.isAuthenticated, (req, res) => {
+    res.render("consultarDatosPerfil", { user: req.user });
 });
 
 // AQUI VAN LOS POST
