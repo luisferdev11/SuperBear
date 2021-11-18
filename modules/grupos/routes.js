@@ -7,12 +7,16 @@ const auth = require("../auth/auth");
 // GET
 
 router.get("/misgrupos", auth.isAuthenticated, (req, res) => {
-    res.render("consultarGrupos");
+    res.render("consultarGrupos", { user: req.user });
 });
-router.get("/nuevogrupo", (req, res) => {
+router.get("/nuevogrupo", auth.isAuthenticated, (req, res) => {
     res.render("ingresar-crearGrupo", { error: "" });
 });
-router.get("/miembrosdegrupo", controller.miembrosdegrupo);
+router.get(
+    "/miembrosdegrupo",
+    auth.isAuthenticated,
+    controller.miembrosdegrupo
+);
 router.get("/consultarmiembros", controller.consultarmiembros);
 //POST
 
