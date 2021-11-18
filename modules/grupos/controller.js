@@ -112,8 +112,8 @@ module.exports = {
                     "SELECT nom_usu FROM musuario WHERE id_usu = ?",
                     [miembro]
                 );
-                arrid.push(miembro);
-                arrmiembros.push(datosmiembro[0].nom_usu);
+
+                arrmiembros.push(datosmiembro[i].nom_usu);
                 arrprivilegios.push(id_miembros[i].id_priv);
             }
 

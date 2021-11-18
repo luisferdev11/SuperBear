@@ -20,29 +20,35 @@
         <h1 class="centro">Agregar Producto</h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="consultarProductosDeLista.html">
+        <form method="POST" id="CrearProForm" name="CrearProForm">
             <p class="seccion">
                 Nombre
             </p>
-            <input type="text" placeholder="Nombre" id="inputNombre">
+            <input type="text" placeholder="Nombre" id="inputNombre" name="nombre">
             <p class="rojo" id="msgerror1"></p>
 
             <p class="seccion">
                 Marca
             </p>
+
             <input type="text" placeholder="Marca" id="inputmarca">
+            
             <p class="rojo" id="msgerror2"></p>
 
             <p class="seccion">
                 Supermercado
             </p>
-            <input type="text" placeholder="Supermercado" id="inputsuper">
+            <select name="supermercado">
+                <option selected class="no">Departamento</option>
+                <option>Frutas y Verduras</option>
+                <option>Videojuegos</option>
+            </select>
                         <p class="rojo" id="msgerror3"></p>
 
             <p class="seccion">
                 Departamento
             </p>
-            <select>
+            <select name="Depa">
                 <option selected class="no">Departamento</option>
                 <option>Frutas y Verduras</option>
                 <option>Videojuegos</option>
@@ -50,14 +56,14 @@
             <p class="seccion">
                 Cantidad
             </p>
-            <input type="number" placeholder="Cantidad" id="inputcantidad">
+            <input type="number" placeholder="Cantidad" id="inputcantidad" name="Cant">
             <p class="rojo" id="msgerror4"></p>
 
             <p class="seccion">
                 Unidad
             </p>
-            <select>
-                <option selected>Unidad</option>
+            <select name="Unidad">
+                <option selected>Unidades</option>
                 <option>Kilogramo</option>
                 <option>Litro</option>
             </select>
