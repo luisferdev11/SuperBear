@@ -84,7 +84,7 @@ module.exports = {
                 arrlistas.push(datoslista[i]);
             }
 
-            res.render("consultarMiembrosDeGrupo-miembroDeGrupo", {
+            res.render("consultarListaDeGrupo", {
                 listas: arrlistas
             });
         } catch (err) {
