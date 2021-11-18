@@ -23,4 +23,7 @@ router.get("/consultarmiembros", controller.consultarmiembros);
 router.post("/ingresargrupo",auth.isAuthenticated, controller.ingresargrupo);
 router.post("/nuevogrupo",auth.isAuthenticated, controller.nuevogrupo);
 
+
+router.get('/delete/:id',auth.isAuthenticated, controller.delete);
+
 module.exports = router;
