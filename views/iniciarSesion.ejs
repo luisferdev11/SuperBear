@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mastersyle.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <title>Iniciar Sesión | SuperBear</title>
+</head>
+<body>
+    <nav class="flecha">
+        <a href="/">
+            <img src="assets/svg/flecha.svg">
+        </a>
+    </nav>
+    <div class="principal">
+        <h1 class="centro">Iniciar Sesión</h1>
+        <div class="contenedor-formulario">
+            <form method="POST" id="LoginForm" name="LoginForm">
+                <p class="seccion">Correo Electrónico</p>
+                <input placeholder="Correo Electrónico" type="email" id="inputemail" name="username">
+                <p class="rojo" id="msgerror1"></p>
+                <p class="seccion">Contraseña</p>
+                <input placeholder="Contraseña" type="password" id="inputContraseña" name="password">
+                <p class="rojo" id="msgerror2"></p>
+
+                <br><br>
+                <div class="contenedor-boton">
+                    <input class="b" type="submit" value='Acceder'onclick="ValidarLogin(event)"><!--onclick="ValidarLogin(event)"--> 
+                </div>
+                <p>¿No tienes una cuenta? 
+                    <a href="/sign-up"><b>
+                        Regístrate
+                    </b></a>
+                </p>
+            </form>
+        </div>
+    </div>
+    <br>
+    <footer>
+        <%- include('partials/footer') %>
+    </footer>
+    <script src="js/validaciones.js"></script>
+
+</body>
+</html>

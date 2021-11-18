@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mastersyle.css">
+    <link rel="stylesheet" href="css/noticias.css">
+    <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <title>Noticias | SuperBear</title>
+    <style id="estilo">
+        .contenedor-noticias{
+            display: block;
+        }
+        
+        .contenedor-twitter{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
+        <a href="consultarGrupos.html"><b>Grupos</b></a>
+        <a class="icono" href="consultarDatosPerfil.html"><img src="assets/images/userIcon.jpg"></a>
+    </nav>
+    <h1 class="centro">Noticias</h1>
+    <aside>
+        <div class="boton-1">
+            <input value="noticias" checked id="noticias" type="radio" name="selector">
+            <label for="noticias" class="etiqueta">
+                &nbsp
+            </label>
+        </div>
+        <div class="boton-2">
+            <input value="twitter" id="twitter" type="radio" name="selector">
+            <label for="twitter" class="etiqueta">
+                &nbsp
+            </label>
+        </div>
+    </aside>
+    <div class="contenedor-noticias">
+            <div class="grid">
+                <div class="noticia">
+                    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
+                    <br>
+                    <div class="fecha">
+                        Hace 10 días
+                    </div>
+                </div>
+                <div class="noticia">
+                    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
+                    <br>
+                    <div class="fecha">
+                        Hace 10 días
+                    </div>
+                </div>
+                <div class="noticia">
+                    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
+                    <br>
+                    <div class="fecha">
+                        Hace 10 días
+                    </div>
+                </div>
+                <div class="noticia">
+                    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
+                    <br>
+                    <div class="fecha">
+                        Hace 10 días
+                    </div>
+                </div>
+                <div class="noticia">
+                    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
+                    <br>
+                    <div class="fecha">
+                        Hace 10 días
+                    </div>
+                </div>
+                <div class="noticia">
+                    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
+                    <br>
+                    <div class="fecha">
+                        Hace 10 días
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="contenedor-twitter">
+        <div class="grid">
+            <a class="twitter-timeline" href="https://twitter.com/Profeco?ref_src=twsrc%5Etfw">Tweets by Profeco</a>
+        </div>
+    </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="js/cambioPaginas.js"></script>
+    <br>
+    <footer>
+        <%- include('partials/footer') %>
+    </footer>
+</body>
+</html>
