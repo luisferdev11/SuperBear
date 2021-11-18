@@ -7,6 +7,7 @@ const { env } = require("../../credenciales");
 module.exports = {
     async CrearProducto(req, res) {
         const id = req.user.id_usu;
+        const idl = req.id_lis;
         const { nombre } = req.body;
         const {Marca} = req.body;
         const {Super} = req.body;
@@ -16,22 +17,17 @@ module.exports = {
         const {precio} = req.body;
         const {Notas} = req.body;
 
-        let newList = [nombre];
+        let newP = [nombre, Marca, Super, Depa, cantidad, unidad, precio, Notas];
         try {
+            const id_lista = await pool.query(
+                "select id_eli from ELista where id_lis = ?",
+                idl
+            );
             await pool.query(
-                "INSERT INTO ELista (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esp) VALUES (?,?,?,?,?,?,?,?,?,?,1)",
-                newList
+                "INSERT INTO DProducto (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esp) VALUES (?,?,?,?,?,?,?,?,?,?,1)",
+                [id_lista, newP]
             );
-            const {id_lista} = await pool.query(
-                "select id from mlista where id_lis = (select MAX(id) from mlista)",
-                
-            );
-            let union = [idg, id_lista];
-            await pool.query(
-                "INSERT INTO ELista (id_grp, id_lis) VALUES (?,?)",
-                union
-            );
-            res.render("consultarListaDeGrupo");
+            res.render("consultarProductosDeLista");
         } catch (err) {
             res.render("error");
             console.log(err);
