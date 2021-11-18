@@ -22,7 +22,7 @@ module.exports = {
                             return next();
                         }
                         req.user = results[0];
-                        console.log(`req.user es ${req.user}`);
+                        console.log(`req.user es ${JSON.stringify(req.user)}`);
                         return next();
                     }
                 );

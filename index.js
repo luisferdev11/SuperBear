@@ -30,17 +30,8 @@ app.listen(app.get("port"), function () {
     );
 });
 //estoy en VS code
-app.use("/", require("./modules/usuario/routes"));
-
-app.get("/misgrupos", require("./modules/grupos/grupos"));
-app.post("/ingresargrupo", require("./modules/grupos/grupos"));
-
-app.get("/nuevogrupo", require("./modules/grupos/grupos"));
-app.post("/nuevogrupo", require("./modules/grupos/grupos"));
-
-app.get("/miembrosdegrupo", require("./modules/grupos/miembros"));
-app.get("/consultarmiembros", require("./modules/grupos/miembros"));
-
-app.get("/datos-perfil", (req, res) => {
-    res.render("consultarDatosPerfil");
-});
+app.use(
+    "/",
+    require("./modules/usuario/routes"),
+    require("./modules/grupos/routes")
+);

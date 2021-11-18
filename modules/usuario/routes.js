@@ -20,6 +20,10 @@ router.get("/login", (req, res) => {
 
 router.get("/logout", controller.logout);
 
+router.get("/datos-perfil", (req, res) => {
+    res.render("consultarDatosPerfil");
+});
+
 // AQUI VAN LOS POST
 
 router.post("/sign-up", controller.signUp);
