@@ -20,7 +20,7 @@ router.get(
 router.get("/consultarmiembros", controller.consultarmiembros);
 //POST
 
-router.post("/ingresargrupo", controller.ingresargrupo);
-router.post("/nuevogrupo", controller.nuevogrupo);
+router.post("/ingresargrupo",auth.isAuthenticated, controller.ingresargrupo);
+router.post("/nuevogrupo",auth.isAuthenticated, controller.nuevogrupo);
 
 module.exports = router;

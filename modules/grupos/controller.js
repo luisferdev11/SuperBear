@@ -1,39 +1,40 @@
 const pool = require("../../database");
 const { env } = require("../../credenciales");
-
-module.exports = {
-    generarCodigo() {
-        const characters =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        let Cod = "";
-        const charactersLength = characters.length;
-        for (let i = 0; i < 5; i++) {
-            Cod += characters.charAt(
-                Math.floor(Math.random() * charactersLength)
-            );
-        }
-
-        return Cod;
-    },
-
-    async comprobarCodigo(codigo) {
-        let respuesta;
-        let consultacod = await pool.query(
-            "SELECT cod_grp FROM mgrupo WHERE cod_grp=?",
-            [codigo]
+function generarCodigo() {
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let Cod = "";
+    const charactersLength = characters.length;
+    for (let i = 0; i < 5; i++) {
+        Cod += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
         );
-        if (consultacod.length == 0) {
-            respuesta = true;
-        } else {
-            respuesta = false;
-        }
-        return respuesta;
-    },
+    }
+
+    return Cod;
+}
+async function comprobarCodigo(codigo) {
+    let respuesta;
+    let consultacod = await pool.query(
+        "SELECT cod_grp FROM mgrupo WHERE cod_grp=?",
+        [codigo]
+    );
+    if (consultacod.length == 0) {
+        respuesta = true;
+    } else {
+        respuesta = false;
+    }
+    return respuesta;
+}
+module.exports = {
+    
+
+    
 
     async ingresargrupo(req, res) {
         //en id_usuario se debe de igualar al id que se pasara mediante las sesiones
         try {
-            const id_usuario = 1;
+            const id_usuario = req.user.id_usu;
             const { codigo } = req.body;
             const id_grupo = await pool.query(
                 "SELECT id_grp FROM mgrupo WHERE cod_grp = ?",
@@ -47,6 +48,7 @@ module.exports = {
             //"INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)"
             res.redirect("/misgrupos");
         } catch (error) {
+            console.log(error);
             res.render("ingresar-crearGrupo", {
                 error: "No se encontro el codigo de grupo",
             });
@@ -54,6 +56,7 @@ module.exports = {
     },
 
     async nuevogrupo(req, res) {
+        
         do {
             const { nombreGrupo } = req.body;
 
