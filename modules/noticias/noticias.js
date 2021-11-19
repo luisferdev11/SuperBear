@@ -1,8 +1,4 @@
-const jwt = require("jsonwebtoken");
-const bcryptjs = require("bcryptjs");
 const pool = require("../../database");
-const { promisify } = require("util");
-const { env } = require("../../credenciales");
 
 module.exports = {
 
