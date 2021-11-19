@@ -6,13 +6,11 @@ const auth = require("../auth/auth");
 
 // NO SE COMO QUIERAN PONERLOS, SI POR CASO DE USO, POR METODO O EN ARCHIVOS DISTINTOS
 
-router.get("/CrearProducto", auth.isAuthenticated, (req, res) => {
-    res.render("agregarProductoALista");
-});
-router.get('/ConsultarProductos/:id', controller.ConsultarProductos);
+router.get("/CrearProducto/:id_lis", auth.isAuthenticated, res.render("agregarProductoALista"));
+router.get('/ConsultarProductos/:id_lis', controller.ConsultarProductos);
 
 // AQUI VAN LOS POST
 
-router.post("/CrearProducto", controller.CrearProducto);
+router.post("/CrearProducto/:id_lis", controller.CrearProducto);
 
 module.exports = router;

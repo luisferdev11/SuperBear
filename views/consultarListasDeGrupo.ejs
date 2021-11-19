@@ -22,7 +22,7 @@
     </nav>
     <div class="principal">
         <header>
-            <h1>Listas de Pantitlan</h1>
+            <h1>Listas de <%= nombre %></h1>
             <div>
                 <a href="/crearlista/<%= idg %>"><img src="assets/svg/plus.svg"></a>
             </div>
@@ -48,7 +48,7 @@
                         <a href="/Duplicarlista/<%= listas[i].id_lis %>" class="b">
                             Duplicar Lista
                         </a>
-                        <a href="/Borrarlista/<%= listas[i].id_lis %>" class="b">
+                        <a href="/Borrarlista/<%= listas[i].id_lis %>/<%= idg %>" class="b">
                             Borrar Lista
                         </a>
                     </div>
@@ -86,7 +86,7 @@
                             <a href="/Duplicarlista/<%= listas[i].id_lis %>" class="b">
                                 Duplicar Lista
                             </a>
-                            <a href="/Borrarlista/<%= listas[i].id_lis %>" class="b">
+                            <a href="/Borrarlista/<%= listas[i].id_lis %>/<%= idg %>" class="b">
                                 Borrar Lista
                             </a>
                         </div>

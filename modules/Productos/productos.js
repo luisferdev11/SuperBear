@@ -7,7 +7,7 @@ const { env } = require("../../credenciales");
 module.exports = {
     async CrearProducto(req, res) {
         const id = req.user.id_usu;
-        const idl = req.id_lis;
+        const idl = req.params;
         const { nombre } = req.body;
         const {Marca} = req.body;
         const {Super} = req.body;

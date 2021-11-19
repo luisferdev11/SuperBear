@@ -223,7 +223,7 @@ function ValidarLista(event) {
   var nombreLista = validarNombreLista(document.getElementById('inputNombre').value);
   if (nombreLista == true) {
     document.getElementById('msgerror1').innerHTML = "";
-    formsignup.setAttribute("action", "/crearlista/:id");
+    formsignup.setAttribute("action", "/crearlista");
 
 
   } else {

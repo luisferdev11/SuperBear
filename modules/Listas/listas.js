@@ -29,8 +29,12 @@ module.exports = {
             res.render("error");
             console.log(err);
         }
-    },
-    async editarLista(req, res){
+    },async grupo(req, res) {
+        const idg = req.params;
+        res.render("crearListaDeGrupo",{
+            grupo: idg
+        });
+    }, async editarLista(req, res){
         const id = req.user.id_usu;
         const {idl} = req.body;
         const { nombre } = req.body;
@@ -99,17 +103,14 @@ module.exports = {
     },
     async DuplicarLista(req, res){
         const id = req.user.id_usu;
-        const idg = req.params;
-        const idl = req.body;
+        const idg = req.params.id_grp;
+        const idl = req.params.id_lis;
         try {
             const {Clista} = await pool.query(
                 "select * from mlista where id_lis = ?",
                 idl
             );
-            const {Plista} = await pool.query(
-                "select * from DProducto where id_pro = ?",
-                
-            );
+            
             const {Nombre} = Clista.nom_lis;
             await pool.query(
                 "INSERT INTO mlista (nom_lis, fec_lis, id_esl, tot_list) VALUES (?,CURDATE(),1,0.0)",
@@ -127,6 +128,10 @@ module.exports = {
             const {id_elista} = await pool.query(
                 "select id_eli from ELista where id = (select MAX(id) from mlista)",
                 
+            );
+            const {Plista} = await pool.query(
+                "select * from DProducto where id_eli = ?",
+                id_elista
             );
             for (let i = 0; i < Plista.length; i++) {
                 const nombre = Plista[i].nom_pro;
