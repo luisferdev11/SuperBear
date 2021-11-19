@@ -8,7 +8,7 @@ module.exports = {
     async crearLista(req, res) {
         const id = req.user.id_usu;
         const { nombre } = req.body;
-        const {idg} = 1;
+        const {idg} = req.params;
 
         let newList = [nombre];
         try {
@@ -68,7 +68,7 @@ module.exports = {
     }, 
     async ConsultarListas(req, res){
         const id = req.user.id_usu;
-        const idg = req.body;
+        const idg = req.params;
         try {
             const id_lista = await pool.query(
                 "SELECT * FROM ELista WHERE id_grp = ?",
@@ -85,7 +85,8 @@ module.exports = {
             }
 
             res.render("consultarListaDeGrupo", {
-                listas: arrlistas
+                listas: arrlistas,
+                idg: idg
             });
         } catch (err) {
             res.render("error");
@@ -94,7 +95,7 @@ module.exports = {
     },
     async DuplicarLista(req, res){
         const id = req.user.id_usu;
-        const idg = req.body;
+        const idg = req.params;
         const idl = req.body;
         try {
             const {Clista} = await pool.query(
