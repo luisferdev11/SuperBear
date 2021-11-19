@@ -29,7 +29,7 @@
     <div class="principal">
         <h1 class="centro">Mi Perfil</h1>
         <div class="contenedor-formulario">
-            <form action="verificarContraseña.html">
+            <form >
                 <b>Datos Personales</b>
                 <p class="seccion">Correo Electrónico</p>
                 <input type="email" value=<%= user.cor_usu %> readonly>
@@ -45,9 +45,13 @@
                 <br>
                 <br>
                 <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Editar Datos'>
                     <br>
-                    <br><a class="b" href="logout">Cerrar Sesión</a>
+                    <a class="b input" href="verificarpswd">Editar datos</a>
+                    <br>
+                    
+                    <br>
+                    <br>
+                    <br><a class="b input" href="logout">Cerrar Sesión</a>
                 </div>
             </form>
         </div>

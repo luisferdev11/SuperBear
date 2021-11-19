@@ -51,4 +51,9 @@ module.exports = {
             res.redirect("/login");
         }
     },
+
+    verificarpswd(req, res) {
+        console.log(req.user);
+        return res.render("verificarContraseña");
+    },
 };
