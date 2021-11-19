@@ -19,7 +19,7 @@ router.get('/DuplicarLista/:id', controller.DuplicarLista);
 
 router.post("/crearlista/:id", controller.crearLista);
 
-router.post("/consultarlistas/:id", controller.borrarLista);
-router.post("/consultarlistas/:id", controller.DuplicarLista);
+router.post("/consultarlistasB/:id", controller.borrarLista);
+router.post("/consultarlistasD/:id", controller.DuplicarLista);
 
 module.exports = router;
