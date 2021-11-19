@@ -95,22 +95,27 @@ module.exports = {
     },
 
     async datosperfil(req, res, next) {
-        pool.query(
-            "SELECT * FROM calcaldia WHERE id_alc = ?",
-            [req.user.id_alc],
-            async (error, results) => {
-                if (!results) {
-                    return next();
-                }
+        try {
+            pool.query(
+                "SELECT * FROM calcaldia WHERE id_alc = ?",
+                [req.user.id_alc],
+                async (error, results) => {
+                    if (!results) {
+                        return next();
+                    }
 
-                req.user.alc = results[0].nom_alc.trim();
-                req.user.sexo = await getSex(req.user.id_sex);
-                console.log(
-                    `req.user.alc es ${req.user.alc} y ${req.user.sexo}`
-                );
-                next();
-            }
-        );
+                    req.user.alc = results[0].nom_alc.trim();
+                    req.user.sexo = await getSex(req.user.id_sex);
+                    console.log(
+                        `req.user.alc es ${req.user.alc} y ${req.user.sexo}`
+                    );
+                    next();
+                }
+            );
+        } catch (error) {
+            console.error(error);
+        }
+
         // console.log(`req.user es ${JSON.stringify(req.user)}`);
         // res.render("consultarDatosPerfil", { user: req.user });
     },

@@ -158,25 +158,29 @@ module.exports = {
         }
     },
     async misgrupos(req, res, next) {
-        console.log(req.user.id_usu);
-        pool.query(
-            `SELECT cod_grp, nom_grp, nom_usu FROM mgrupo m
+        try {
+            console.log(req.user.id_usu);
+            pool.query(
+                `SELECT cod_grp, nom_grp, nom_usu FROM mgrupo m
             INNER JOIN egrupo e
                 ON m.id_grp = e.id_grp
             INNER JOIN musuario mu
                 ON e.id_usu = mu.id_usu
                 WHERE mu.id_usu = ?`,
-            [req.user.id_usu],
-            async (error, results) => {
-                if (!results) {
-                    return next();
+                [req.user.id_usu],
+                async (error, results) => {
+                    if (!results || results.length === 0) {
+                        return next();
+                    }
+                    console.log(JSON.stringify(results));
+                    req.user.grps = results;
+                    console.log(req.user.grps.length);
+                    next();
                 }
-                console.log(JSON.stringify(results));
-                req.user.grps = results;
-                console.log(JSON.stringify(req.user.grps[0].nom_grp));
-                console.log(req.user.grps.length);
-                next();
-            }
-        );
+            );
+        } catch (error) {
+            console.error(error);
+            next();
+        }
     },
 };
