@@ -15,4 +15,6 @@ router.get("/crearNoticia", auth.isAuthenticated, (req, res) => {
 });
 
 router.post("/crearNoticia", auth.isAuthenticated, setNoticia);
+router.get("/borrarNoticia/:id", auth.isAuthenticated, controller.borrarNoticia);
+
 module.exports = router;

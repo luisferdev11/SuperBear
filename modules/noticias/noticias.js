@@ -30,5 +30,16 @@ module.exports = {
             res.redirect('/admin-consultarNoticias');
         }
         
+    },
+
+    async borrarNoticia(req, res){
+        let { id } = req.params;
+        // No revisa si existe el usuario
+        // No revisa si es admin
+        let validacion = true;
+        if(validacion == true){
+            pool.query('delete from dnoticias where idDNoticias=' + id + ';');
+            res.redirect('/admin-consultarNoticias');
+        }
     }
 }
