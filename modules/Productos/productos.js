@@ -59,6 +59,25 @@ module.exports = {
             res.render("error");
             console.log(err);
         }
+    },async ConsultarCatalogo (req, res){
+        try {
+        const id = req.user.id_usu;
+        const ideli = req.params;
+        const Marca = await getAllMarca();
+        const Depa = await getAllDepa();
+        const Uni = await getAllUni();
+        const Super = await getAllSuper();
+        res.render("agregarProductoALista", { 
+            id: ideli,
+            Marca: Marca,
+            Depa: Depa,
+            Uni: Uni,
+            Super: Super
+        });
+        } catch (err) {
+            res.render("error");
+            console.log(err);
+        }
     },
     async ConsultarProductos (req, res){
         try {
