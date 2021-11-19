@@ -1,19 +1,15 @@
-const jwt = require("jsonwebtoken");
-const bcryptjs = require("bcryptjs");
 const pool = require("../../database");
-const { promisify } = require("util");
 const { env } = require("../../credenciales");
 
 module.exports = {
     async crearLista(req, res) {
-        const id = req.user.id_usu;
         const { nombre } = req.body;
         const {idg} = req.body;
 
         let newList = [nombre];
         try {
             await pool.query(
-                "INSERT INTO mlista (nom_lis, fec_lis, id_esl, tot_list) VALUES (?,CURDATE(),1,0.0)",
+                "INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)",
                 newList
             );
             const {id_lista} = await pool.query(
@@ -35,7 +31,6 @@ module.exports = {
             grupo: idg
         });
     }, async editarLista(req, res){
-        const id = req.user.id_usu;
         const {idl} = req.body;
         const { nombre } = req.body;
         
@@ -70,16 +65,16 @@ module.exports = {
         }
     }, 
     async ConsultarListas(req, res){
-        const id = req.user.id_usu;
-        const idg = req.params;
+        const idgrupo = req.params;
         try {
-            const nomGrp = await pool.query(
-                "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
-                idg
-            );
+            
             const id_lista = await pool.query(
                 "SELECT * FROM ELista WHERE id_grp = ?",
-                idg
+                idgrupo
+            );
+            const nomGrp = await pool.query(
+                "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
+                idgrupo
             );
             var arrlistas = [];
             for (let i = 0; i < id_lista.length; i++) {
@@ -91,11 +86,14 @@ module.exports = {
                 arrlistas.push(datoslista[i]);
             }
 
-            res.render("consultarListaDeGrupo", {
+            res.render("consultarListasDeGrupo", {
                 listas: arrlistas,
-                idg: idg,
-                nombre: nomGrp
+                idgrupo: idgrupo,
+                nombre: nomGrp,
             });
+            console.log(listas);
+            console.log(idg);
+            console.log(nombre);
         } catch (err) {
             res.render("error");
             console.log(err);

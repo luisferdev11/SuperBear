@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/listas.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg">
-    <title>Listas de <%= nombre %></title>
+    <link rel="stylesheet" href="../css/mastersyle.css">
+    <link rel="stylesheet" href="../css/listas.css">
+    <link rel="shortcut icon" href="../assets/svg/logo.svg">
+    <title>Listas del grupo</title>
 </head>
 
 <body>
@@ -18,13 +18,13 @@
     <nav>
         <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
         <a href="consultarGrupos.html"><b>Grupos</b></a>
-        <a class="icono" href="consultarDatosPerfil.html"><img src="assets/images/userIcon.jpg"></a>
+        <a class="icono" href="consultarDatosPerfil.html"><img src="../assets/images/userIcon.jpg"></a>
     </nav>
     <div class="principal">
         <header>
-            <h1>Listas de <%= nombre %></h1>
+            <h1>Listas de <%=nombre%></h1>
             <div>
-                <a href="/crearlista/<%= idg %>"><img src="assets/svg/plus.svg"></a>
+                <a href="/crearlista/"><img src="../assets/svg/plus.svg"></a>
             </div>
         </header>
     </div>
@@ -42,7 +42,7 @@
                     </h2>
                 </a>
                 <label for="menu-1">
-                    <img class="opciones" src="assets/svg/options.svg">
+                    <img class="opciones" src="../assets/svg/options.svg">
                     <input id="menu-1" type="checkbox">
                     <div class="desplegable">
                         <a href="/Duplicarlista/<%= listas[i].id_lis %>" class="b">
