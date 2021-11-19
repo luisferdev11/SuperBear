@@ -4,6 +4,33 @@ const pool = require("../../database");
 const { promisify } = require("util");
 const { env } = require("../../credenciales");
 
+async function getAllMarca() {
+    const marca = await pool.query(
+        `SELECT * FROM cmarca`
+    );
+    return marca[0].marca.trim();
+}
+
+async function getAllDepa() {
+    const depa = await pool.query(
+        `SELECT * FROM CDepartamento`
+    );
+    return depa[0].depa.trim();
+}
+async function getAllUni() {
+    const unidad = await pool.query(
+        `SELECT * FROM CUnidad`
+    );
+    return unidad[0].unidad.trim();
+}
+
+async function getAllSuper() {
+    const Sup = await pool.query(
+        `SELECT * FROM CSupermercado`
+    );
+    return Sup[0].Sup.trim();
+}
+
 module.exports = {
     async CrearProducto(req, res) {
         const id = req.user.id_usu;
