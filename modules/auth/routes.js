@@ -7,4 +7,13 @@ router.get("/verificarpswd", auth.isAuthenticated, (req, res) => {
     res.render("verificarContraseña");
 });
 
+router.post(
+    "/verificarpswd",
+    auth.isAuthenticated,
+    auth.verificarpswd,
+    (req, res) => {
+        res.redirect("editarperfil");
+    }
+);
+
 module.exports = router;

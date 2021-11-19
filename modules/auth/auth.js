@@ -52,15 +52,15 @@ module.exports = {
         }
     },
 
-    async verificarpswd(req, res) {
+    async verificarpswd(req, res, next) {
         try {
             const user = req.user.cor_usu;
-            const { pass } = req.body;
+            const pass = req.body.pswd;
 
             console.log(user + pass);
 
             if (!user || !pass) {
-                res.render("iniciarSesion");
+                res.redirect("verificarpswd");
             } else {
                 pool.query(
                     "SELECT * FROM musuario WHERE cor_usu = ?",
@@ -70,11 +70,10 @@ module.exports = {
                             results.length == 0 ||
                             !(await bcryptjs.compare(pass, results[0].con_usu))
                         ) {
-                            res.render("iniciarSesion");
+                            res.redirect("verificarpswd");
                         } else {
                             //inicio de sesión OK
-
-                            res.redirect("Misgrupos");
+                            next();
                         }
                     }
                 );

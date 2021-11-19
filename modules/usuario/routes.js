@@ -23,7 +23,7 @@ router.get("/logout", auth.isAuthenticated, controller.logout);
 router.get("/datos-perfil", auth.isAuthenticated, controller.datosperfil);
 
 router.get("/editarperfil", (req, res) => {
-    res.render("consultarDatosPerfil");
+    res.render("editarDatosPerfil");
 });
 
 // AQUI VAN LOS POST
