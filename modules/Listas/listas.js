@@ -67,13 +67,12 @@ module.exports = {
     async ConsultarListas(req, res){
         const idgrupo = req.params;
         try {
-            
-            const id_lista = await pool.query(
-                "SELECT * FROM ELista WHERE id_grp = ?",
+            const {nomGrp} = await pool.query(
+                "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
                 idgrupo
             );
-            const nomGrp = await pool.query(
-                "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
+            const {id_lista} = await pool.query(
+                "SELECT * FROM ELista WHERE id_grp = ?",
                 idgrupo
             );
             var arrlistas = [];
@@ -85,15 +84,16 @@ module.exports = {
                 );
                 arrlistas.push(datoslista[i]);
             }
+            console.log(arrlistas);
+            console.log(idgrupo);
+            console.log(nomGrp);
 
             res.render("consultarListasDeGrupo", {
                 listas: arrlistas,
                 idgrupo: idgrupo,
                 nombre: nomGrp,
             });
-            console.log(listas);
-            console.log(idg);
-            console.log(nombre);
+            
         } catch (err) {
             res.render("error");
             console.log(err);
