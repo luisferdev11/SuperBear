@@ -9,7 +9,7 @@ const auth = require("../auth/auth");
 router.get("/CrearProducto", auth.isAuthenticated, (req, res) => {
     res.render("agregarProductoALista");
 });
-
+router.get('/ConsultarProductos/:id', controller.ConsultarProductos);
 
 // AQUI VAN LOS POST
 

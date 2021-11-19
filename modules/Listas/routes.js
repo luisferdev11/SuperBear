@@ -11,6 +11,8 @@ router.get("/consultarlistas/:id", controller.ConsultarListas);
 router.get("/crearlista/:id", auth.isAuthenticated, (req, res) => {
     res.render("crearListaDeGrupo");
 });
+router.get('/BorrarLista/:id', controller.borrarLista);
+router.get('/DuplicarLista/:id', controller.DuplicarLista);
 
 
 // AQUI VAN LOS POST

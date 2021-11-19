@@ -32,5 +32,25 @@ module.exports = {
             res.render("error");
             console.log(err);
         }
+    },
+    async ConsultarProductos (req, res){
+        try {
+        const id = req.user.id_usu;
+        const idl = req.params;
+        const eli = await pool.query(
+            "select id_eli from elista where id_lis = ?",
+            [idl]
+        );
+        const productos = await pool.query(
+            "select * from dproducto where id_eli = ?",
+            [eli]
+        );
+        res.render("consultarProductosDeLista", { 
+            producto: productos
+        });
+        } catch (err) {
+            res.render("error");
+            console.log(err);
+        }
     }
 };

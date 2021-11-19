@@ -17,8 +17,7 @@ module.exports = {
                 newList
             );
             const {id_lista} = await pool.query(
-                "select id from mlista where id_lis = (select MAX(id) from mlista)",
-                
+                "select id_lis from mlista where id_lis = (select MAX(id) from mlista)"
             );
             let union = [idg, id_lista];
             await pool.query(
@@ -50,7 +49,7 @@ module.exports = {
     },
     async borrarLista(req, res){
         const id = req.user.id_usu;
-        const idl = req.body;
+        const idl = req.params;
         try {
             await pool.query(
                 "DELETE from MLista where id_lis = ?",
