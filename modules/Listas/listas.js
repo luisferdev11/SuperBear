@@ -65,33 +65,30 @@ module.exports = {
         }
     }, 
     async ConsultarListas(req, res){
-        const idgrupo = req.params;
         try {
-            const {nomGrp} = await pool.query(
+            const idgrupo = req.params.id_grp;
+            const nomGrp = await pool.query(
                 "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
-                idgrupo
+                [idgrupo]
             );
-            const {id_lista} = await pool.query(
-                "SELECT * FROM ELista WHERE id_grp = ?",
-                idgrupo
+            console.log(nomGrp[0].nom_grp);
+            const grupo = nomGrp[0].nom_grp;
+            const id_lista = await pool.query(
+                "SELECT id_lst FROM ELista WHERE id_grp = ?",
+                [idgrupo]
             );
-            var arrlistas = [];
-            for (let i = 0; i < id_lista.length; i++) {
-                const lista = id_lista[i].id_lis;
-                var datoslista = await pool.query(
+            console.log("-------"+ JSON.stringify(id_lista.id_lst));
+            const listas = await pool.query(
                     "SELECT * FROM MLista WHERE id_lis = ?",
-                    [lista]
-                );
-                arrlistas.push(datoslista[i]);
-            }
-            console.log(arrlistas);
+                    [id_lista.id_lst]
+            );
+            console.log(JSON.stringify(listas));
             console.log(idgrupo);
-            console.log(nomGrp);
 
             res.render("consultarListasDeGrupo", {
-                listas: arrlistas,
+                listas: listas,
                 idgrupo: idgrupo,
-                nombre: nomGrp,
+                nombre: grupo,
             });
             
         } catch (err) {
