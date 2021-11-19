@@ -14,7 +14,7 @@ router.get("/crearNoticia", auth.isAuthenticated, (req, res) => {
     res.render("admin-crearNoticia");
 });
 
-router.post("/crearNoticia", auth.isAuthenticated, setNoticia);
+router.post("/crearNoticia", auth.isAuthenticated, controller.setNoticia);
 router.get("/borrarNoticia/:id", auth.isAuthenticated, controller.borrarNoticia);
-
+router.get("/editarNoticia/:id", auth.isAuthenticated, controller.redirectEditar);
 module.exports = router;
