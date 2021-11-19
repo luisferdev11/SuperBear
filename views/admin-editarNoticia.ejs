@@ -20,7 +20,7 @@
         <h1 class="centro">Editar Noticia</h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="admin-consultarNoticias.html">
+        <form action="/editarNoticia/<%= noticia[0].idDNoticias %>" method="post">
             <p class="seccion">
                 Titulo:
             </p>
@@ -29,7 +29,6 @@
                 Contenido:
             </p>
             <input type="text" name="contenido" placeholder="Noticia" value="<%= noticia[0].cont_not %>">
-            <input type="text" name="id" value="<%= noticia[0].idDNoticias %>" readonly style="display: none;">
             <br>
             <br>
             <div class="contenedor-boton">
