@@ -6,14 +6,7 @@ const auth = require("../auth/auth");
 
 // GET
 
-router.get(
-    "/misgrupos",
-    auth.isAuthenticated,
-    controller.misgrupos,
-    (req, res) => {
-        res.render("consultarGrupos", { user: req.user });
-    }
-);
+router.get("/misgrupos", auth.isAuthenticated, controller.misgrupos);
 router.get("/nuevogrupo", auth.isAuthenticated, (req, res) => {
     res.render("ingresar-crearGrupo", { error: "" });
 });

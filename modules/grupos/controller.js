@@ -170,17 +170,17 @@ module.exports = {
                 [req.user.id_usu],
                 async (error, results) => {
                     if (!results || results.length === 0) {
-                        return next();
+                        res.render("consultarGrupos", { user: req.user });
                     }
                     console.log(JSON.stringify(results));
                     req.user.grps = results;
                     console.log(req.user.grps.length);
-                    next();
+                    res.render("consultarGrupos", { user: req.user });
                 }
             );
         } catch (error) {
             console.error(error);
-            next();
+            res.render("consultarGrupos", { user: req.user });
         }
     },
 };
