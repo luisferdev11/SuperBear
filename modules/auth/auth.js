@@ -52,8 +52,35 @@ module.exports = {
         }
     },
 
-    verificarpswd(req, res) {
-        console.log(req.user);
-        return res.render("verificarContraseña");
+    async verificarpswd(req, res) {
+        try {
+            const user = req.user.cor_usu;
+            const { pass } = req.body;
+
+            console.log(user + pass);
+
+            if (!user || !pass) {
+                res.render("iniciarSesion");
+            } else {
+                pool.query(
+                    "SELECT * FROM musuario WHERE cor_usu = ?",
+                    [user],
+                    async (error, results) => {
+                        if (
+                            results.length == 0 ||
+                            !(await bcryptjs.compare(pass, results[0].con_usu))
+                        ) {
+                            res.render("iniciarSesion");
+                        } else {
+                            //inicio de sesión OK
+
+                            res.redirect("Misgrupos");
+                        }
+                    }
+                );
+            }
+        } catch (error) {
+            console.log(error);
+        }
     },
 };
