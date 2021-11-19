@@ -27,15 +27,16 @@
         </header>
     </div>
     <div class="grid">
+        <% noticias.forEach(element => { %>
         <div class="producto-predeterminado">
             <p>
-                
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid deleniti ea obcaecati. Temporibus harum sed deleniti molestiae. Libero odio minima nemo est dolorum modi! Natus dignissimos recusandae ut voluptatum eaque!
-
+                <b><%= element.tit_not %></b>
+                <br><br>
+                <%= element.cont_not %>
             </p>
-            <label for="menu-1">
+            <label for="menu-<%= element.idDNoticias %>">
                 <img class="opciones" src="assets/svg/options.svg">
-                <input id="menu-1" type="checkbox">
+                <input id="menu-<%= element.idDNoticias %>" type="checkbox">
                 <div class="desplegable">
                     <a href="admin-editarNoticia.html" class="b">
                         Editar Noticia
@@ -46,44 +47,7 @@
                 </div>
             </label>
         </div>
-        <div class="producto-predeterminado">
-            <p>
-                
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid deleniti ea obcaecati. Temporibus harum sed deleniti molestiae. Libero odio minima nemo est dolorum modi! Natus dignissimos recusandae ut voluptatum eaque!
-
-            </p>
-            <label for="menu-2">
-                <img class="opciones" src="assets/svg/options.svg">
-                <input id="menu-2" type="checkbox">
-                <div class="desplegable">
-                    <a href="admin-editarNoticia.html" class="b">
-                        Editar Noticia
-                    </a>
-                    <a href="" class="b">
-                        Borrar Noticia
-                    </a>
-                </div>
-            </label>
-        </div>
-        <div class="producto-predeterminado">
-            <p>
-                
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid deleniti ea obcaecati. Temporibus harum sed deleniti molestiae. Libero odio minima nemo est dolorum modi! Natus dignissimos recusandae ut voluptatum eaque!
-
-            </p>
-            <label for="menu-3">
-                <img class="opciones" src="assets/svg/options.svg">
-                <input id="menu-3" type="checkbox">
-                <div class="desplegable">
-                    <a href="admin-editarNoticia.html" class="b">
-                        Editar Noticia
-                    </a>
-                    <a href="" class="b">
-                        Borrar Noticia
-                    </a>
-                </div>
-            </label>
-        </div>
+        <% }); %>
     </div>
 </body>
 </html>

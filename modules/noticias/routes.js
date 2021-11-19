@@ -5,4 +5,6 @@ const controller = require('./noticias');
 
 router.get("/consultarNoticias-usuario", auth.isAuthenticated, controller.getNoticias);
 
+router.get("/admin-consultarNoticias", auth.isAuthenticated, controller.getNoticiasAdmin);
+
 module.exports = router;
