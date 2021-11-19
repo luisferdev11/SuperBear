@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/mastersyle.css">
     <link rel="stylesheet" href="css/listas.css">
     <link rel="shortcut icon" href="assets/svg/logo.svg">
-    <title>Listas de Pantitlan</title>
+    <title>Listas de <%= nombre %></title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
         <header>
             <h1>Listas de Pantitlan</h1>
             <div>
-                <a href="crearListaDeGrupo.html"><img src="assets/svg/plus.svg"></a>
+                <a href="/crearlista/<%= idg %>"><img src="assets/svg/plus.svg"></a>
             </div>
         </header>
     </div>
@@ -32,58 +32,77 @@
         <h2>Listas Pendientes</h2>
     </div>
     <div class="grid">
+        <% for (let i=0; i < listas.length; i++) {%>
+            <% if (listas[i].id_esl == 1){%>
         <div class="lista">
             <div class="nombre-lista">
-                <a href="consultarProductosDeLista.html">
+                <a href="/ConsultarProductos/<%= listas[i].id_lis %>">
                     <h2>
-                        Comida
+                        <%= listas[i].nom_lis %>
                     </h2>
                 </a>
                 <label for="menu-1">
                     <img class="opciones" src="assets/svg/options.svg">
                     <input id="menu-1" type="checkbox">
                     <div class="desplegable">
-                        <a href="consultarListasDeGrupo.html" class="b">
+                        <a href="/Duplicarlista/<%= listas[i].id_lis %>" class="b">
                             Duplicar Lista
                         </a>
-                        <a href="consultarListasDeGrupo.html" class="b">
+                        <a href="/Borrarlista/<%= listas[i].id_lis %>" class="b">
                             Borrar Lista
                         </a>
                     </div>
                 </label>
             </div>
-            <a class="contenido-lista" href="consultarProductosDeLista.html">
+            <a class="contenido-lista" href="/ConsultarProductos/<%= listas[i].id_lis %>">
                 <span class="producto">
                     Manzanas
                 </span>
                 <span class="producto">
                     1kg
                 </span>
-                <span class="producto">
-                    Leche
-                </span>
-                <span class="producto">
-                    1L
-                </span>
-                <span class="producto">
-                    Huevos
-                </span>
-                <span class="producto">
-                    .5kg
-                </span>
-                <span class="producto">
-                    Cereal
-                </span>
-                <span class="producto">
-                    1u
-                </span>
             </a>
         </div>
+        <% }%>
+        <% }%>
     </div>
         <div class="principal">
             <h2>Listas Completadas</h2>
         </div>
         <div class="grid">
+            <% for (let i=0; i < listas.length; i++) {%>
+                <% if (listas[i].id_esl == 0){%>
+            <div class="lista">
+                <div class="nombre-lista">
+                    <a href="/ConsultarProductos/<%= listas[i].id_lis %>">
+                        <h2>
+                            <%= listas[i].nom_lis %>
+                        </h2>
+                    </a>
+                    <label for="menu-1">
+                        <img class="opciones" src="assets/svg/options.svg">
+                        <input id="menu-1" type="checkbox">
+                        <div class="desplegable">
+                            <a href="/Duplicarlista/<%= listas[i].id_lis %>" class="b">
+                                Duplicar Lista
+                            </a>
+                            <a href="/Borrarlista/<%= listas[i].id_lis %>" class="b">
+                                Borrar Lista
+                            </a>
+                        </div>
+                    </label>
+                </div>
+                <a class="contenido-lista" href="/ConsultarProductos/<%= listas[i].id_lis %>">
+                    <span class="producto">
+                        Manzanas
+                    </span>
+                    <span class="producto">
+                        1kg
+                    </span>
+                </a>
+            </div>
+            <% }%>
+            <% }%>
 
         </div>
         <br>
