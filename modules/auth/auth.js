@@ -36,7 +36,7 @@ module.exports = {
                             "-" +
                             validarLongitud(req.user.fec_nac.getMonth() + 1) +
                             "-" +
-                            req.user.fec_nac.getDate();
+                            validarLongitud(req.user.fec_nac.getDate());
 
                         console.log(req.user.fec_nac);
                         console.log(`req.user es ${JSON.stringify(req.user)}`);

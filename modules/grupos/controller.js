@@ -1,14 +1,12 @@
 const pool = require("../../database");
-const { env } = require("../../credenciales");
+
 function generarCodigo() {
     const characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let Cod = "";
     const charactersLength = characters.length;
     for (let i = 0; i < 5; i++) {
-        Cod += characters.charAt(
-            Math.floor(Math.random() * charactersLength)
-        );
+        Cod += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
 
     return Cod;
@@ -27,12 +25,7 @@ async function comprobarCodigo(codigo) {
     return respuesta;
 }
 
-
 module.exports = {
-
-
-
-
     async ingresargrupo(req, res) {
         //en id_usuario se debe de igualar al id que se pasara mediante las sesiones
         try {
@@ -59,11 +52,10 @@ module.exports = {
     async delete(req, res) {
         //falta hacer un for que nos de todos los ids de los que tienen admin y un if(si arridpriv[i]==req.user.id_usu{})
         const { id } = req.params;
-        await pool.query('delete from egrupo where id_usu=?', [id]);
-        res.redirect("/consultarmiembros")
+        await pool.query("delete from egrupo where id_usu=?", [id]);
+        res.redirect("/consultarmiembros");
     },
     async nuevogrupo(req, res) {
-
         do {
             const { nombreGrupo } = req.body;
 
@@ -103,7 +95,7 @@ module.exports = {
                 "SELECT * FROM egrupo WHERE id_grp = ?",
                 [grupo]
             );
-            var arrid=[];    
+            var arrid = [];
             var arrmiembros = [];
             var arrprivilegios = [];
             for (let i = 0; i < id_miembros.length; i++) {
@@ -113,13 +105,14 @@ module.exports = {
                     [miembro]
                 );
 
-                arrmiembros.push(datosmiembro[i].nom_usu);
+                arrmiembros.push(datosmiembro[0].nom_usu);
                 arrprivilegios.push(id_miembros[i].id_priv);
             }
 
             res.render("consultarMiembrosDeGrupo-miembroDeGrupo", {
                 miembros: arrmiembros,
-                privilegio: arrprivilegios,id:arrid
+                privilegio: arrprivilegios,
+                id: arrid,
             });
         } catch (error) {
             console.log(error);
@@ -145,7 +138,6 @@ module.exports = {
                 arrid.push(miembro);
                 arrmiembros.push(datosmiembro[0].nom_usu);
                 arrprivilegios.push(id_miembros[i].id_priv);
-
             }
             const codigo_grupo = await pool.query(
                 "SELECT cod_grp FROM mgrupo WHERE id_grp = ?",
@@ -156,12 +148,39 @@ module.exports = {
             res.render("consultarMiembrosyCodigoDeGrupo-administadorDeGrupo", {
                 data: code,
                 miembros: arrmiembros,
-                privilegio: arrprivilegios,id:arrid
+                privilegio: arrprivilegios,
+                id: arrid,
             });
         } catch (error) {
             console.log(error);
             console.log("El id asignado no existe");
             res.redirect("/error");
+        }
+    },
+    async misgrupos(req, res, next) {
+        try {
+            console.log(req.user.id_usu);
+            pool.query(
+                `SELECT cod_grp, nom_grp, nom_usu FROM mgrupo m
+            INNER JOIN egrupo e
+                ON m.id_grp = e.id_grp
+            INNER JOIN musuario mu
+                ON e.id_usu = mu.id_usu
+                WHERE mu.id_usu = ?`,
+                [req.user.id_usu],
+                async (error, results) => {
+                    if (!results || results.length === 0) {
+                        return next();
+                    }
+                    console.log(JSON.stringify(results));
+                    req.user.grps = results;
+                    console.log(req.user.grps.length);
+                    next();
+                }
+            );
+        } catch (error) {
+            console.error(error);
+            next();
         }
     },
 };

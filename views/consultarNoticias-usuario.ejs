@@ -20,11 +20,7 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
-        <a href="consultarGrupos.html"><b>Grupos</b></a>
-        <a class="icono" href="consultarDatosPerfil.html"><img src="assets/images/userIcon.jpg"></a>
-    </nav>
+    <%- include('partials/navegacionNormal') %>
     <h1 class="centro">Noticias</h1>
     <aside>
         <div class="boton-1">
@@ -42,54 +38,19 @@
     </aside>
     <div class="contenedor-noticias">
             <div class="grid">
+                <% noticias.forEach(element => { %>
                 <div class="noticia">
-                    
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
+                    <h3 style="margin-top: 0;">
+                        <%= element.tit_not %>
+                    </h3>
+                    <%= element.cont_not %>
                     <br>
                     <div class="fecha">
-                        Hace 10 días
+                        <% let mes = parseInt(element.fec_not.getMonth()) + 1 %>
+                        <%= element.fec_not.getDate() + '-' + mes + '-' + element.fec_not.getFullYear() %>
                     </div>
                 </div>
-                <div class="noticia">
-                    
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
-                    <br>
-                    <div class="fecha">
-                        Hace 10 días
-                    </div>
-                </div>
-                <div class="noticia">
-                    
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
-                    <br>
-                    <div class="fecha">
-                        Hace 10 días
-                    </div>
-                </div>
-                <div class="noticia">
-                    
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
-                    <br>
-                    <div class="fecha">
-                        Hace 10 días
-                    </div>
-                </div>
-                <div class="noticia">
-                    
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
-                    <br>
-                    <div class="fecha">
-                        Hace 10 días
-                    </div>
-                </div>
-                <div class="noticia">
-                    
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat ipsum molestiae optio consequuntur eligendi eum ducimus deleniti culpa nobis, nemo cupiditate at labore exercitationem quo nihil! Labore quibusdam optio veritatis?
-                    <br>
-                    <div class="fecha">
-                        Hace 10 días
-                    </div>
-                </div>
+                <% }); %>
             </div>
     </div>
     <div class="contenedor-twitter">

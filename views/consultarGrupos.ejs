@@ -36,54 +36,60 @@
     para eso es necesario que cada input tenga un id diferentes
     los for del label deben coincidir con el del input-->
         <div class="grid">
+            <% if (user.grps) { %>
+                <% for (let i=0; i < user.grps.length;  i++ ) { %>
+                    
+                    <div class="grupo">
+                        <div class="nombre-grupo">
+                            <a href="consultarListasDeGrupo.html">
+                                <h1><%= user.grps[i].nom_grp %></h1>
+                            </a>
+                            <a href="/miembrosdegrupo">
+                                <img src="assets/images/userIcon.jpg" />
+                                <b> 10 miembros </b>
+                            </a>
+                            <label for="menu-1">
+                                <img class="opciones" src="assets/svg/options.svg" />
+                                <input id="menu-1" type="checkbox" />
+                                <div class="desplegable">
+                                    <a
+                                        href="editarNombreGrupo-administradorDeGrupo.html"
+                                        class="b"
+                                    >
+                                        Renombrar Grupo
+                                    </a>
+                                    <a href="consultarGrupos.html" class="b">
+                                        Borrar Grupo
+                                    </a>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="contenido-grupo">
+                            <a href="consultarProductosDeLista.html">
+                                <div>
+                                    <b>Jabones</b>
+                                </div>
+                                <div>
+                                    <b>10/15 Completado</b>
+                                </div>
+                            </a>
+                            <a href="consultarProductosDeLista.html">
+                                <div>
+                                    <b>Carnes frías</b>
+                                </div>
+                                <div>
+                                    <b>10/15 Completado</b>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+            <!-- Este grupo es solamente para ver lo que habia hecho el mau, este aún no es dinámico -->
             <div class="grupo">
                 <div class="nombre-grupo">
                     <a href="consultarListasDeGrupo.html">
-                        <h1>Pantitlan</h1>
-                    </a>
-                    <a href="/miembrosdegrupo">
-                        <img src="assets/images/userIcon.jpg" />
-                        <b> 10 miembros </b>
-                    </a>
-                    <label for="menu-1">
-                        <img class="opciones" src="assets/svg/options.svg" />
-                        <input id="menu-1" type="checkbox" />
-                        <div class="desplegable">
-                            <a
-                                href="editarNombreGrupo-administradorDeGrupo.html"
-                                class="b"
-                            >
-                                Renombrar Grupo
-                            </a>
-                            <a href="consultarGrupos.html" class="b">
-                                Borrar Grupo
-                            </a>
-                        </div>
-                    </label>
-                </div>
-                <div class="contenido-grupo">
-                    <a href="consultarProductosDeLista.html">
-                        <div>
-                            <b>Jabones</b>
-                        </div>
-                        <div>
-                            <b>10/15 Completado</b>
-                        </div>
-                    </a>
-                    <a href="consultarProductosDeLista.html">
-                        <div>
-                            <b>Carnes frías</b>
-                        </div>
-                        <div>
-                            <b>10/15 Completado</b>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="grupo">
-                <div class="nombre-grupo">
-                    <a href="consultarListasDeGrupo.html">
-                        <h1>Pantitlan</h1>
+                        <h1>Prueba pa ver el admin</h1>
                     </a>
                     <a href="/consultarmiembros">
                         <img src="assets/images/userIcon.jpg" />
