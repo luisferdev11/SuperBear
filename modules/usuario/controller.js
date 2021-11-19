@@ -1,8 +1,14 @@
 const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 const pool = require("../../database");
-const { promisify } = require("util");
 const { env } = require("../../credenciales");
+
+async function getSex(id_sex) {
+    const sexo = await pool.query(
+        `SELECT * FROM csexo WHERE id_sex =${id_sex}`
+    );
+    return sexo[0].sexo.trim();
+}
 
 module.exports = {
     async signUp(req, res) {
@@ -86,5 +92,26 @@ module.exports = {
     logout(req, res) {
         res.clearCookie("jwt");
         return res.redirect("/");
+    },
+
+    async datosperfil(req, res, next) {
+        pool.query(
+            "SELECT * FROM calcaldia WHERE id_alc = ?",
+            [req.user.id_alc],
+            async (error, results) => {
+                if (!results) {
+                    return next();
+                }
+
+                req.user.alc = results[0].nom_alc.trim();
+                req.user.sexo = await getSex(req.user.id_sex);
+                console.log(
+                    `req.user.alc es ${req.user.alc} y ${req.user.sexo}`
+                );
+                next();
+            }
+        );
+        // console.log(`req.user es ${JSON.stringify(req.user)}`);
+        // res.render("consultarDatosPerfil", { user: req.user });
     },
 };

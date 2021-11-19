@@ -36,12 +36,12 @@
                 <p class="seccion">Nombre</p>
                 <input type="text" value=<%= user.nom_usu %> readonly>
                 <p class="seccion">Alcaldía</p>
-                <input type="text" value="Iztacalco Esto no lo he cambiado <%= user.id_alc %>" readonly>
+                <input type="text" value="<%= user.alc %>" readonly>
                 <p class="seccion">Fecha de Nacimiento</p>
                 <input type="date" id="inputdate" name="fecha" value="<%= user.fec_nac %>" readonly>
                 
                 <p class="seccion">Género</p>
-                <input type="text" value="Masculino esto tampoco lo he cambiado <%= user.id_sex %>" readonly>
+                <input type="text" value="<%= user.sexo %>" readonly>
                 <br>
                 <br>
                 <div class="contenedor-boton">
