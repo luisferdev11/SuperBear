@@ -20,11 +20,15 @@
         <h1 class="centro">Crear Noticia</h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="admin-consultarNoticias.html">
+        <form action="/crearNoticia" method="post">
             <p class="seccion">
-                Noticia:
+                Titulo:
             </p>
-            <input type="text" placeholder="Noticia">
+            <input type="text" name="titulo" placeholder="Titulo">
+            <p class="seccion">
+                Contenido:
+            </p>
+            <input type="text" name="contenido" placeholder="Noticia">
             <br>
             <br>
             <div class="contenedor-boton">
