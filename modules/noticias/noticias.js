@@ -38,8 +38,33 @@ module.exports = {
         // No revisa si es admin
         let validacion = true;
         if(validacion == true){
-            pool.query('delete from dnoticias where idDNoticias=' + id + ';');
+            pool.query('delete from dnoticias where idDNoticias=' + id );
+            res.redirect('/admin-consultarNoticias');
+        }
+    },
+
+    async redirectEditar(req, res){
+        let { id } = req.params;
+        let validacion = true;
+        // No revisa si existe el usuario
+        // No revisa si es admin
+        if(validacion == true){
+            let noticia = await pool.query("select idDNoticias, tit_not, cont_not from dnoticias where idDNoticias =" + id + ";");
+            res.render('admin-editarNoticia', { noticia });
+        }
+    },
+
+    async editarNoticia(req, res){
+        let { contenido } = req.body;
+        let { titulo } = req.body;
+        let { id } = req.params;
+        let validacion = true;
+        // No revisa si existe el usuario
+        // No revisa si es admin
+        if(validacion == true){
+            await pool.query('update dnoticias set cont_not = "' + contenido + '", tit_not = "' + titulo + '" where idDNoticias =' + id + ";");
             res.redirect('/admin-consultarNoticias');
         }
     }
+
 }
