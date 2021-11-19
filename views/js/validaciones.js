@@ -223,6 +223,8 @@ function ValidarLista(event) {
   var nombreLista = validarNombreLista(document.getElementById('inputNombre').value);
   if (nombreLista == true) {
     document.getElementById('msgerror1').innerHTML = "";
+    formsignup.setAttribute("action", "/crearlista/:id");
+
 
   } else {
     document.getElementById('msgerror1').innerHTML = "El nombre de la lista solo puede contener letras con longitud no mayor a 20";

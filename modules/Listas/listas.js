@@ -8,7 +8,7 @@ module.exports = {
     async crearLista(req, res) {
         const id = req.user.id_usu;
         const { nombre } = req.body;
-        const {idg} = 1;
+        const {idg} = req.body;
 
         let newList = [nombre];
         try {
@@ -17,8 +17,7 @@ module.exports = {
                 newList
             );
             const {id_lista} = await pool.query(
-                "select id from mlista where id_lis = (select MAX(id) from mlista)",
-                
+                "select id_lis from mlista where id_lis = (select MAX(id) from mlista)"
             );
             let union = [idg, id_lista];
             await pool.query(
@@ -50,7 +49,7 @@ module.exports = {
     },
     async borrarLista(req, res){
         const id = req.user.id_usu;
-        const idl = req.body;
+        const idl = req.params;
         try {
             await pool.query(
                 "DELETE from MLista where id_lis = ?",
@@ -68,8 +67,12 @@ module.exports = {
     }, 
     async ConsultarListas(req, res){
         const id = req.user.id_usu;
-        const idg = req.body;
+        const idg = req.params;
         try {
+            const nomGrp = await pool.query(
+                "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
+                idg
+            );
             const id_lista = await pool.query(
                 "SELECT * FROM ELista WHERE id_grp = ?",
                 idg
@@ -85,7 +88,9 @@ module.exports = {
             }
 
             res.render("consultarListaDeGrupo", {
-                listas: arrlistas
+                listas: arrlistas,
+                idg: idg,
+                nombre: nomGrp
             });
         } catch (err) {
             res.render("error");
@@ -94,7 +99,7 @@ module.exports = {
     },
     async DuplicarLista(req, res){
         const id = req.user.id_usu;
-        const idg = req.body;
+        const idg = req.params;
         const idl = req.body;
         try {
             const {Clista} = await pool.query(
