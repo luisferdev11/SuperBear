@@ -30,8 +30,9 @@
     para eso es necesario que cada input tenga un id diferentes
     los for del label deben coincidir con el del input-->
         <div class="grid">
+            <% let i = 0 %> 
             <% if (user.grps) { %>
-                <% for (let i=0; i < user.grps.length;  i++ ) { %>
+                <% for (i ; i < user.grps.length;  i++ ) { %>
                     
                     <div class="grupo">
                         <div class="nombre-grupo">
@@ -39,12 +40,12 @@
                                 <h1><%= user.grps[i].nom_grp %></h1>
                             </a>
                             <a href="/miembrosdegrupo/<%=user.grps[i].id_grp %>">
-                                <img src="assets/images/userIcon.jpg" />
+                                <img src="assets/svg/IconoGruposSuperBear.svg" />
                                 <b> 10 miembros </b>
                             </a>
-                            <label for="menu-1">
+                            <label for="menu-<%= i %>">
                                 <img class="opciones" src="assets/svg/options.svg" />
-                                <input id="menu-1" type="checkbox" />
+                                <input id="menu-<%= i %>" type="checkbox" />
                                 <div class="desplegable">
                                     <a
                                         href="editarNombreGrupo-administradorDeGrupo.html"
@@ -89,9 +90,9 @@
                         <img src="assets/images/userIcon.jpg" />
                         <b> 10 miembros </b>
                     </a>
-                    <label for="menu-2">
+                    <label for="menu-<%= i+1 %>">
                         <img class="opciones" src="assets/svg/options.svg" />
-                        <input id="menu-2" type="checkbox" />
+                        <input id="menu-<%= i+1 %>" type="checkbox" />
                         <div class="desplegable">
                             <a
                                 href="editarNombreGrupo-administradorDeGrupo.html"
