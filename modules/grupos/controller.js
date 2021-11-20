@@ -59,7 +59,7 @@ module.exports = {
         do {
             const { nombreGrupo } = req.body;
 
-            let codigo = generarCodigo();
+            var codigo = generarCodigo();
 
             if ((await comprobarCodigo(codigo)) == true) {
                 var confirmacion = true;
@@ -70,6 +70,22 @@ module.exports = {
                         "INSERT INTO mgrupo (nom_grp ,cod_grp) VALUES (?,?)",
                         Arraycodigo
                     );
+
+                    const id_usuario = req.user.id_usu;
+                    
+                    const id_grupo = await pool.query(
+                        "SELECT id_grp FROM mgrupo WHERE cod_grp = ?",
+                        [codigo]
+                    );
+                    const grupo = id_grupo[0].id_grp;
+                    await pool.query(
+                        "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
+                        [id_usuario, grupo, 1]
+                    );
+
+
+
+
 
                     res.redirect("/misgrupos");
                 } catch (err) {
@@ -170,17 +186,17 @@ module.exports = {
                 [req.user.id_usu],
                 async (error, results) => {
                     if (!results || results.length === 0) {
-                        return next();
+                        res.render("consultarGrupos", { user: req.user });
                     }
                     console.log(JSON.stringify(results));
                     req.user.grps = results;
                     console.log(req.user.grps.length);
-                    next();
+                    res.render("consultarGrupos", { user: req.user });
                 }
             );
         } catch (error) {
             console.error(error);
-            next();
+            res.render("consultarGrupos", { user: req.user });
         }
     },
 };

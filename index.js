@@ -36,5 +36,6 @@ app.use(
     require("./modules/grupos/routes"),
     require("./modules/Listas/routes"),
     require("./modules/Productos/routes"),
-    require("./modules/noticias/routes")
+    require("./modules/noticias/routes"),
+    require("./modules/auth/routes")
 );
