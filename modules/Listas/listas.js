@@ -3,24 +3,58 @@ const { env } = require("../../credenciales");
 
 module.exports = {
     async crearLista(req, res) {
-        const {nombre}  = req.body;
-        const {grupo} = req.body;
-        let nom = [nombre];
-
         try {
+            const {nombre}  = req.body;
+            const {grupo} = req.body;
+            let nom = [nombre];
+            console.log("id "+grupo);
             await pool.query(
                 "INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)",
                 [nom]
             );
-            const id_lista = await pool.query(
+            const id_list = await pool.query(
                 "select id_lis from mlista where id_lis = (select MAX(id_lis) from mlista)"
             );
-            let union = [parseInt(grupo), id_lista[0].id_lis];
+            let union = [grupo, id_list[0].id_lis];
             await pool.query(
                 "INSERT INTO ELista (id_grp, id_lst) VALUES (?)",
                 [union]
             );
-            res.render("consultarListasDeGrupo");
+            const nomGrp = await pool.query(
+                "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
+                [grupo]
+            );
+            console.log(nomGrp[0].nom_grp);
+            const id_lista = await pool.query(
+                "SELECT id_lst FROM ELista WHERE id_grp = ?",
+                [grupo]
+            );
+            console.log("-------"+ JSON.stringify(id_lista));
+            var id_e = [];
+            for (let i = 0; i < id_lista.length; i++) {
+                const miembro = id_lista[i].id_lst;
+                id_e.push(miembro);
+            }
+            console.log(id_e);
+            var listas = [];
+            for (let i = 0; i < id_e.length; i++) {
+                const miembro = id_e[i];
+                const list = await pool.query(
+                    "SELECT * FROM MLista WHERE id_lis = ?",
+                    [miembro]
+                    );
+                listas.push(list[0]);
+            }
+
+            console.log(JSON.stringify(listas));
+
+            res.render("consultarListasDeGrupo", {
+                listas: listas,
+                idgrupo: grupo,
+                nombre: nomGrp
+            });
+            
+            
         } catch (err) {
             res.render("error");
             console.log(err);
@@ -99,7 +133,7 @@ module.exports = {
             res.render("consultarListasDeGrupo", {
                 listas: listas,
                 idgrupo: idgrupo,
-                nombre: grupo,
+                nombre: grupo
             });
             
         } catch (err) {
