@@ -15,12 +15,12 @@ module.exports = {
             const id_lista = await pool.query(
                 "select id_lis from mlista where id_lis = (select MAX(id_lis) from mlista)"
             );
-            let union = [grupo, id_lista[0].id_lis];
+            let union = [parseInt(grupo), id_lista[0].id_lis];
             await pool.query(
-                "INSERT INTO ELista (id_grp, id_lst) VALUES (?,?)",
+                "INSERT INTO ELista (id_grp, id_lst) VALUES (?)",
                 [union]
             );
-            res.render("consultarListaDeGrupo");
+            res.render("consultarListasDeGrupo");
         } catch (err) {
             res.render("error");
             console.log(err);
