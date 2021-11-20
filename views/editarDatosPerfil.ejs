@@ -21,59 +21,58 @@
             <form action="consultarDatosPerfil.html" id="editarForm" name="editarForm">
                 <b>Datos Personales</b>
                 <p class="seccion">Correo Electrónico</p>
-                <input placeholder="Correo Electrónico" type="email">
+                <input placeholder="Correo Electrónico" value=<%= user.cor_usu %> type="email">
                 <p class="seccion">Nombre</p>
-                <input placeholder="Nombre" type="text" id="inputNombre">
+                <input placeholder="Nombre" value=<%= user.nom_usu %> type="text" id="inputNombre">
                 <p class="rojo" id="msgerror1"></p>
-                <p class="seccion">Contraseña Actual</p>
-                <input placeholder="Contraseña  Actual" type="password">
                 <p class="seccion">Nueva contraseña</p>
                 <input placeholder="Nueva contraseña" type="password" id="inputContraseña1">
                 <p class="seccion">Confirmar contraseña</p>
                 <input placeholder="Nueva contraseña" type="password" id="inputContraseña2">
                 <p class="rojo" id="msgerror2"></p>
                 <p class="seccion">Fecha de Nacimiento</p>
-                <input type="date" id="inputdate">
+                <input type="date" id="inputdate" name="fecha" value="<%= user.fec_nac %>">
                 <p class="rojo" id="msgerror3"></p>
 
                 <p class="seccion">Alcaldía</p>
                 <select name="SelectAlcaldia">
-                    <option class="no" disabled selected>Alcaldía</option>
-                    <option>Álvaro Obregón</option>
-                    <option>Azcapotzalco</option>
-                    <option>Benito Juárez</option>
-                    <option>Coyoacán</option>
-                    <option>Cuajimalpa de Morelos</option>
-                    <option>Cuauhtémoc</option>
-                    <option>Gustavo A. Madero</option>
-                    <option>Iztacalco</option>
-                    <option>Iztapalapa</option>
-                    <option>Magdalena Contreras</option>
-                    <option>Miguel Hidalgo</option>
-                    <option>Milpa Alta</option>
-                    <option>Tláhuac</option>
-                    <option>Tlalpan</option>
-                    <option>Venustiano Carranza</option>
-                    <option>Xochimilco</option>
+                    <option class="no" disabled >Alcaldía</option>
+                    <option value=1 <%= user.id_alc == '1' ? 'selected' : ''%>>Álvaro Obregón</option>
+                    <option value=2 <%= user.id_alc == '2' ? 'selected' : ''%>>Azcapotzalco</option>
+                    <option value=3 <%= user.id_alc == '3' ? 'selected' : ''%>>Benito Juárez</option>
+                    <option value=4 <%= user.id_alc == '4' ? 'selected' : ''%>>Coyoacán</option>
+                    <option value=5 <%= user.id_alc == '5' ? 'selected' : ''%>>Cuajimalpa de Morelos</option>
+                    <option value=6 <%= user.id_alc == '6' ? 'selected' : ''%>>Cuauhtémoc</option>
+                    <option value=7 <%= user.id_alc == '7' ? 'selected' : ''%>>Gustavo A. Madero</option>
+                    <option value=8 <%= user.id_alc == '8' ? 'selected' : ''%>>Iztacalco</option>
+                    <option value=9 <%= user.id_alc == '9' ? 'selected' : ''%>>Iztapalapa</option>
+                    <option value=10 <%= user.id_alc == '10' ? 'selected' : ''%>>Magdalena Contreras</option>
+                    <option value=11 <%= user.id_alc == '11' ? 'selected' : ''%>>Miguel Hidalgo</option>
+                    <option value=12 <%= user.id_alc == '12' ? 'selected' : ''%>>Milpa Alta</option>
+                    <option value=13 <%= user.id_alc == '13' ? 'selected' : ''%>>Tláhuac</option>
+                    <option value=14 <%= user.id_alc == '14' ? 'selected' : ''%>>Tlalpan</option>
+                    <option value=15 <%= user.id_alc == '15' ? 'selected' : ''%>>Venustiano Carranza</option>
+                    <option value=16 <%= user.id_alc == '16' ? 'selected' : ''%>>Xochimilco</option>
                 </select>
                 <p class="rojo" id="msgerror4"></p>
 
+                
                 <p>Género</p>
                 <br>
                 <div>
-                    <input type="radio" id="masculino" name="genero">
+                    <input type="radio" <%= user.id_sex == '1' ? 'checked' : ''%> id="masculino" name="genero">
                     <label for="masculino">Masculino</label>
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="radio" id="femenino" name="genero">
+                    <input type="radio" <%= user.id_sex == '2' ? 'checked' : ''%> id="femenino" name="genero">
                     <label for="femenino">Femenino</label>
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input checked type="radio" id="otro" name="genero">
+                    <input type="radio" <%= user.id_sex == '3' ? 'checked' : ''%> id="otro" name="genero">
                     <label for="otro">Otro</label>
                 </div>
                 <br>

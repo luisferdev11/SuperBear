@@ -101,7 +101,7 @@ module.exports = {
                 [req.user.id_alc],
                 async (error, results) => {
                     if (!results) {
-                        res.render("consultarDatosPerfil", { user: req.user });
+                        next();
                     }
 
                     req.user.alc = results[0].nom_alc.trim();
@@ -109,12 +109,12 @@ module.exports = {
                     console.log(
                         `req.user.alc es ${req.user.alc} y ${req.user.sexo}`
                     );
-                    res.render("consultarDatosPerfil", { user: req.user });
+                    next();
                 }
             );
         } catch (error) {
             console.error(error);
-            res.render("consultarDatosPerfil", { user: req.user });
+            next();
         }
 
         // console.log(`req.user es ${JSON.stringify(req.user)}`);
