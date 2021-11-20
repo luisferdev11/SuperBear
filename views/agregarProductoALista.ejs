@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="flecha">
-        <a href="consultarProductosDeLista.html">
+        <a href="/ConsultarProductos/<%=id.id_lis%>">
             <img src="../assets/svg/flecha.svg">
         </a>
     </nav>
@@ -31,7 +31,11 @@
                 Marca
             </p>
 
-            <input type="text" placeholder="Marca" id="inputmarca">
+            <select name="Marca">
+                <% Marca.forEach(element => { %>
+                    <option value="<%=element.id_mar %>"><%=element.id_mar %> x<%=element.Marca%></option>
+                    <%}); %>
+            </select>
             
             <p class="rojo" id="msgerror2"></p>
 
@@ -39,9 +43,9 @@
                 Supermercado
             </p>
             <select name="supermercado">
-                <option selected class="no">Departamento</option>
-                <option>Frutas y Verduras</option>
-                <option>Videojuegos</option>
+                <% Super.forEach(element => { %>
+                <option value="<%=element.id_sup %>"><%=element.id_sup%> x<%=element.nom_sup%></option>
+                <%}); %>
             </select>
                         <p class="rojo" id="msgerror3"></p>
 
@@ -49,9 +53,9 @@
                 Departamento
             </p>
             <select name="Depa">
-                <option selected class="no">Departamento</option>
-                <option>Frutas y Verduras</option>
-                <option>Videojuegos</option>
+                <% Depa.forEach(element => { %>
+                    <option value=" <%=element.id_dep %>"><%=element.id_dep%> x<%=element.nom_dep%></option>
+                    <%}); %>
             </select>
             <p class="seccion">
                 Cantidad
@@ -63,22 +67,22 @@
                 Unidad
             </p>
             <select name="Unidad">
-                <option selected>Unidades</option>
-                <option>Kilogramo</option>
-                <option>Litro</option>
+                <% Uni.forEach(element => { %>
+                    <option value=" <%=element.id_uni %>"><%=element.id_uni%> x<%=element.unidad%></option>
+                    <%}); %>
             </select>
             <p class="seccion">
                 Precio
             </p>
-            <input type="number" placeholder="Precio $" id="inputprecio">
+            <input type="number" placeholder="Precio $" id="inputprecio" name="Precio">
             <p class="rojo" id="msgerror5"></p>
 
             <p class="seccion">
                 Anotaciones
             </p>
-            <input type="text" placeholder="Anotaciones" id="inputanotaciones">
+            <input type="text" placeholder="Anotaciones" id="inputanotaciones" name="Anotaciones">
             <p class="rojo" id="msgerror6"></p>
-
+            <input type="text" value="<%=id.id_lis%>" readonly name="id_lis" >
             <br>
             <br>
             <div class="contenedor-boton">

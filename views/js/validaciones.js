@@ -100,6 +100,7 @@ function ValidarObjetoLista(event) {
                         document.getElementById("msgerror5").innerHTML = "";
                         if (Anotaciones == true) {
                             document.getElementById("msgerror6").innerHTML = "";
+                            CrearProForm.setAttribute("action", "/CrearProducto");
                         } else {
                             document.getElementById("msgerror6").innerHTML =
                                 "Las anotaciones solo pueden contener caracteres alfanumericos y no debe de ser mayor a 32 caracteres";

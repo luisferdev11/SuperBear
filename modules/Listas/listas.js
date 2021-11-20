@@ -51,7 +51,7 @@ module.exports = {
             res.render("consultarListasDeGrupo", {
                 listas: listas,
                 idgrupo: grupo,
-                nombre: nomGrp
+                nombre: nomGrp[0].nom_grp
             });
             
             
@@ -145,36 +145,40 @@ module.exports = {
         }
     },
     async DuplicarLista(req, res){
-        const id = req.user.id_usu;
-        const idg = req.params.id_grp;
-        const idl = req.params.id_lis;
         try {
-            const {Clista} = await pool.query(
+            const id = req.user.id_usu;
+            const idg = req.params.id_grp;
+            const idl = req.params.id_lis;
+        
+            const Clista = await pool.query(
                 "select * from mlista where id_lis = ?",
-                idl
+                [idl]
+            );
+            const Edup = await pool.query(
+                "select id_eli from elista where id_lst = ?",
+                [idl]
             );
             
-            const {Nombre} = Clista.nom_lis;
+            const Nombre = Clista.nom_lis;
             await pool.query(
                 "INSERT INTO mlista (nom_lis, fec_lis, id_esl, tot_list) VALUES (?,CURDATE(),1,0.0)",
-                Nombre
+                [Nombre]
             );
-            const {id_lista} = await pool.query(
-                "select id_lis from mlista where id = (select MAX(id) from mlista)",
+            const id_lista = await pool.query(
+                "select id_lis from mlista where id_lis = (select MAX(id_lis) from mlista)",
                 
             );
-            let union = [idg, id_lista];
             await pool.query(
-                "INSERT INTO ELista (id_grp, id_lis) VALUES (?,?)",
-                union
+                "INSERT INTO ELista (id_grp, id_lst) VALUES (?,?)",
+                [idg, id_lista]
             );
-            const {id_elista} = await pool.query(
-                "select id_eli from ELista where id = (select MAX(id) from mlista)",
+            const id_elista = await pool.query(
+                "select id_eli from ELista where id = (select MAX(id_eli) from mlista)",
                 
             );
-            const {Plista} = await pool.query(
+            const Plista = await pool.query(
                 "select * from DProducto where id_eli = ?",
-                id_elista
+                Edup
             );
             for (let i = 0; i < Plista.length; i++) {
                 const nombre = Plista[i].nom_pro;
@@ -188,11 +192,11 @@ module.exports = {
                 const tipo = plista[i].id_tip;
 
                 var datoslista = await pool.query(
-                    "INSERT INTO ELista (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esp) VALUES (?,?,?,?,?,?,?,?,?,?,1)",
+                    "INSERT INTO dproducto (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esp) VALUES (?,?,?,?,?,?,?,?,?,?,1)",
                     [id_elista, nombre, marca, sup, dep, uni, can, precio, notas, tipo]
                 );
             }
-            res.render("consultarListaDeGrupo");
+            res.redirect("/consultarlistas/"+idg);
         } catch (err) {
             res.render("error");
             console.log(err);
