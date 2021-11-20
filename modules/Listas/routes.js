@@ -14,7 +14,7 @@ router.get('/DuplicarLista/:id_lis/:id_grp', controller.DuplicarLista);
 
 // AQUI VAN LOS POST
 
-router.post("/crearlista", controller.crearLista);
+router.post("/crearlista/:id_grp", controller.crearLista);
 
 
 module.exports = router;

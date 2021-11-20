@@ -3,22 +3,22 @@ const { env } = require("../../credenciales");
 
 module.exports = {
     async crearLista(req, res) {
-        const { nombre } = req.body;
-        const {idg} = req.body;
+        const {nombre}  = req.body;
+        const {grupo} = req.body;
+        let nom = [nombre];
 
-        let newList = [nombre];
         try {
             await pool.query(
                 "INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)",
-                newList
+                [nom]
             );
-            const {id_lista} = await pool.query(
-                "select id_lis from mlista where id_lis = (select MAX(id) from mlista)"
+            const id_lista = await pool.query(
+                "select id_lis from mlista where id_lis = (select MAX(id_lis) from mlista)"
             );
-            let union = [idg, id_lista];
+            let union = [grupo, id_lista[0].id_lis];
             await pool.query(
-                "INSERT INTO ELista (id_grp, id_lis) VALUES (?,?)",
-                union
+                "INSERT INTO ELista (id_grp, id_lst) VALUES (?,?)",
+                [union]
             );
             res.render("consultarListaDeGrupo");
         } catch (err) {
@@ -26,7 +26,7 @@ module.exports = {
             console.log(err);
         }
     },async grupo(req, res) {
-        const idg = req.params;
+        const idg = req.params.id_grp;
         res.render("crearListaDeGrupo",{
             grupo: idg
         });
@@ -50,11 +50,11 @@ module.exports = {
         const idl = req.params.id_lis;
         try {
             await pool.query(
-                "DELETE from MLista where id_lis = ?",
+                "DELETE from ELista where id_lis = ?",
                 idl
             );
             await pool.query(
-                "DELETE from ELista where id_lis = ?",
+                "DELETE from MLista where id_lis = ?",
                 idl
             );
             res.render("consultarListasDeGrupo");
