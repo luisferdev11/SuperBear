@@ -41,10 +41,10 @@
                     
                     <div class="grupo">
                         <div class="nombre-grupo">
-                            <a href="consultarListasDeGrupo.html">
+                            <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
                                 <h1><%= user.grps[i].nom_grp %></h1>
                             </a>
-                            <a href="/miembrosdegrupo">
+                            <a href="/miembrosdegrupo/<%=user.grps[i].id_grp %>">
                                 <img src="assets/images/userIcon.jpg" />
                                 <b> 10 miembros </b>
                             </a>
@@ -65,7 +65,7 @@
                             </label>
                         </div>
                         <div class="contenido-grupo">
-                            <a href="consultarProductosDeLista.html">
+                            <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
                                 <div>
                                     <b>Jabones</b>
                                 </div>
@@ -73,7 +73,7 @@
                                     <b>10/15 Completado</b>
                                 </div>
                             </a>
-                            <a href="consultarProductosDeLista.html">
+                            <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
                                 <div>
                                     <b>Carnes frías</b>
                                 </div>
