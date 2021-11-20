@@ -82,11 +82,6 @@ module.exports = {
                         "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
                         [id_usuario, grupo, 1]
                     );
-
-
-
-
-
                     res.redirect("/misgrupos");
                 } catch (err) {
                     console.log(err);
@@ -106,7 +101,7 @@ module.exports = {
     },
     async miembrosdegrupo(req, res) {
         try {
-            const grupo = 3;
+            const {grupo} = req.params;
             const id_miembros = await pool.query(
                 "SELECT * FROM egrupo WHERE id_grp = ?",
                 [grupo]
