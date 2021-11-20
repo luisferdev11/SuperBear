@@ -20,24 +20,24 @@
             <div>
                 <a href="/consultarlistas/<%=grupo%>"><img src="../assets/svg/flecha.svg"></a>
             </div>
-            <h1><%=name.nom_lis%></h1>
+            <h1><%=name%></h1>
             <div>
                 <a href="/CrearProducto/<%=idLista%>"><img src="../assets/svg/plus.svg"></a>
             </div>
         </header>
     </div>
-    <% if(productos.length = 0){%>
+    <% if(productos.length == 0){%>
         <h1>Aun no hay productos en esta lista</h1>
         <%}else{%>
     <form class="grid">
         <% productos.forEach(element => { %>
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
-            
-            <input id="producto<%=element.id_pro %>" type="checkbox">
-            
-            <input checked id="producto<%=element.id_pro %>" type="checkbox">
-           
+            <%if(element.id_esProd == 1){%>
+            <input id="producto" type="checkbox">
+            <%}else{%>
+            <input checked id="producto" type="checkbox">
+           <%}%>
             <label for="producto<%=element.id_pro %>">
                 <p class="caja">&nbsp</p>
             </label>

@@ -94,6 +94,11 @@ module.exports = {
             "select nom_lis from mlista where id_lis = ?",
             [idl]
         );
+        var nomb = [];
+        for (let i = 0; i < name.length; i++) {
+            const miembro = name[i].nom_lis;
+            nomb.push(miembro);
+        }    
         const eli = await pool.query(
             "select * from elista where id_lst = ?",
             [idl]
@@ -117,13 +122,13 @@ module.exports = {
             console.log(JSON.stringify(productos));
             console.log(idl);
             console.log(grupo);
-            console.log(name);
+            console.log(nomb);
 
             res.render("consultarProductosDeLista", {
                 productos: productos,
                 idLista: idl,
                 grupo: grupo,
-                name: name
+                name: nomb
             });
             
         } catch (err) {
