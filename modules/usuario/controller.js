@@ -101,7 +101,7 @@ module.exports = {
                 [req.user.id_alc],
                 async (error, results) => {
                     if (!results) {
-                        res.render("consultarDatosPerfil", { user: req.user });
+                        next();
                     }
 
                     req.user.alc = results[0].nom_alc.trim();
@@ -109,15 +109,40 @@ module.exports = {
                     console.log(
                         `req.user.alc es ${req.user.alc} y ${req.user.sexo}`
                     );
-                    res.render("consultarDatosPerfil", { user: req.user });
+                    next();
                 }
             );
         } catch (error) {
             console.error(error);
-            res.render("consultarDatosPerfil", { user: req.user });
+            next();
         }
+    },
 
-        // console.log(`req.user es ${JSON.stringify(req.user)}`);
-        // res.render("consultarDatosPerfil", { user: req.user });
+    async actualizardatos(req, res) {
+        const { email } = req.body;
+        const { nombre } = req.body;
+        const { Password2 } = req.body;
+        const { fecha } = req.body;
+        const { SelectAlcaldia } = req.body;
+        const { genero } = req.body;
+
+        console.log(Password2);
+
+        //funcion hash para encriptar la contraseña de tal forma que sea seguro y lo podamos recuperar despues
+        let passHash = await bcryptjs.hash(Password2, 8);
+
+        let newUser = [email, nombre, fecha, passHash, SelectAlcaldia, genero];
+        try {
+            await pool.query(
+                `UPDATE musuario 
+                SET cor_usu = ?, nom_usu = ?, fec_nac = ?, con_usu = ?, id_alc =?, id_sex = ? 
+                WHERE id_usu = ${req.user.id_usu}`,
+                newUser
+            );
+            res.redirect("misgrupos");
+        } catch (err) {
+            res.render("error");
+            console.log(err);
+        }
     },
 };

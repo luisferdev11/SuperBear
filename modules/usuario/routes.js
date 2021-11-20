@@ -20,16 +20,36 @@ router.get("/login", (req, res) => {
 
 router.get("/logout", auth.isAuthenticated, controller.logout);
 
-router.get("/datos-perfil", auth.isAuthenticated, controller.datosperfil);
+router.get(
+    "/datos-perfil",
+    auth.isAuthenticated,
+    controller.datosperfil,
+    (req, res) => {
+        res.render("consultarDatosPerfil", { user: req.user });
+    }
+);
 
-router.get("/editarperfil", (req, res) => {
-    res.render("editarDatosPerfil");
-});
+router.get(
+    "/editarperfil",
+    auth.isAuthenticated,
+    controller.datosperfil,
+    (req, res) => {
+        res.render("editarDatosPerfil", { user: req.user });
+    }
+);
 
 // AQUI VAN LOS POST
 
 router.post("/sign-up", controller.signUp);
 
 router.post("/login", controller.login);
+
+router.post(
+    "/actualizardatos",
+    auth.isAuthenticated,
+    controller.actualizardatos
+);
+
+// PATCH
 
 module.exports = router;
