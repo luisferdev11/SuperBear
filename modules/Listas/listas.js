@@ -47,8 +47,7 @@ module.exports = {
         }
     },
     async borrarLista(req, res){
-        const id = req.user.id_usu;
-        const idl = req.params;
+        const idl = req.params.id_lis;
         try {
             await pool.query(
                 "DELETE from MLista where id_lis = ?",
@@ -58,7 +57,7 @@ module.exports = {
                 "DELETE from ELista where id_lis = ?",
                 idl
             );
-            res.render("consultarListaDeGrupo");
+            res.render("consultarListasDeGrupo");
         } catch (err) {
             res.render("error");
             console.log(err);
@@ -77,11 +76,23 @@ module.exports = {
                 "SELECT id_lst FROM ELista WHERE id_grp = ?",
                 [idgrupo]
             );
-            console.log("-------"+ JSON.stringify(id_lista.id_lst));
-            const listas = await pool.query(
+            console.log("-------"+ JSON.stringify(id_lista));
+            var id_e = [];
+            for (let i = 0; i < id_lista.length; i++) {
+                const miembro = id_lista[i].id_lst;
+                id_e.push(miembro);
+            }
+            console.log(id_e);
+            var listas = [];
+            for (let i = 0; i < id_e.length; i++) {
+                const miembro = id_e[i];
+                const list = await pool.query(
                     "SELECT * FROM MLista WHERE id_lis = ?",
-                    [id_lista.id_lst]
-            );
+                    [miembro]
+                    );
+                listas.push(list[0]);
+            }
+
             console.log(JSON.stringify(listas));
             console.log(idgrupo);
 
