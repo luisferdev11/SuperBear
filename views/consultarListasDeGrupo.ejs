@@ -15,11 +15,7 @@
     <!--Cada grupo debe tener su propio menu
     para eso es necesario que cada input tenga un id diferentes
     los for del label deben coincidir con el del input-->
-    <nav>
-        <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
-        <a href="consultarGrupos.html"><b>Grupos</b></a>
-        <a class="icono" href="consultarDatosPerfil.html"><img src="../assets/images/userIcon.jpg"></a>
-    </nav>
+    <%- include('partials/navegacionNormal') %>
     <div class="principal">
         <header>
             <h1>Listas de <%=nombre%></h1>

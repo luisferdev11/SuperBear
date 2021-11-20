@@ -10,11 +10,7 @@
     <title>Despensa | SuperBear</title>
 </head>
 <body>
-    <nav>
-        <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
-        <a href="consultarGrupos.html"><b>Grupos</b></a>
-        <a class="icono" href="consultarDatosPerfil.html"><img src="../assets/images/userIcon.jpg"></a>
-    </nav>
+    <%- include('partials/navegacionNormal') %>
     <div class="principal">
         <header>
             <div>
@@ -37,7 +33,7 @@
             <input id="producto" type="checkbox">
             <%}else{%>
             <input checked id="producto" type="checkbox">
-           <%}%>
+            <%}%>
             <label for="producto<%=element.id_pro %>">
                 <p class="caja">&nbsp</p>
             </label>
