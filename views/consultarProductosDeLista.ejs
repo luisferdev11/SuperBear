@@ -18,19 +18,19 @@
     <div class="principal">
         <header>
             <div>
-                <a href="/consultarlistas/"><img src="assets/svg/flecha.svg"></a>
+                <a href="/consultarlistas/<%grupo%>"><img src="assets/svg/flecha.svg"></a>
             </div>
             <h1>Despensa</h1>
             <div>
-                <a href="/CrearProducto/"><img src="assets/svg/plus.svg"></a>
+                <a href="/CrearProducto/<%id_lista%>"><img src="assets/svg/plus.svg"></a>
             </div>
         </header>
     </div>
     <form class="grid">
-        <% for (let i=0; i < producto.length; i++) {%>
+        <% productos.forEach(element => { %>
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
-            <%if(producto[i].id_tip == 0){%>
+            <% if (element.id_esProd == 1){%>
             <input id="producto<%= (i + 1) %>" type="checkbox">
             <%}else{%>
             <input checked id="producto<%= (i + 1) %>" type="checkbox">
@@ -43,7 +43,7 @@
                     <div class="nombre-producto">
                         <a href="editarProductoDeLista.html">
                             <h2>
-                                <%=producto[i].nom_pro %>
+                                <%=element.nom_pro %>
                             </h2>
                         </a>
                     </div>
@@ -54,28 +54,28 @@
                 <div class="contenido-producto">
                     <div class="texto-producto">
                         <b class="linea">
-                            <%=producto[i].can_pro%> <%=producto[i].id_uni%>
+                            <%=element.can_pro%> <%=element.id_uni%>
                         </b>
                         <b class="linea">
-                            <%=producto[i].precio_pro%>
+                            <%=element.precio_pro%>
                         </b>
                         <b class="linea">
-                            <%=producto[i].id_mar %>
+                            <%=element.id_mar %>
                         </b>
                         <b class="linea">
-                            <%=producto[i].id_sup %>
+                            <%=element.id_sup %>
                         </b>
                         <b class="linea">
-                            <%=producto[i].id_dep %>
+                            <%=element.id_dep %>
                         </b>
                     </div>
                     <div class="notas-producto">
-                        <%=producto[i].notas_pro %>
+                        <%=element.notas_pro %>
                     </div>
                 </div>
             </div>
         </div>
-        <% }%>
+        <% });%>
         
     </form>
     <br>

@@ -82,16 +82,19 @@ module.exports = {
     },
     async borrarLista(req, res){
         const idl = req.params.id_lis;
+        const grp = req.params.id_grp;
+        console.log("Lista " +idl);
         try {
             await pool.query(
-                "DELETE from ELista where id_lis = ?",
+                "DELETE from ELista where id_lst = ?",
                 idl
             );
             await pool.query(
                 "DELETE from MLista where id_lis = ?",
                 idl
             );
-            res.render("consultarListasDeGrupo");
+            
+            res.redirect("/consultarlistas/"+grp);
         } catch (err) {
             res.render("error");
             console.log(err);

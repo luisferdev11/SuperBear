@@ -81,19 +81,38 @@ module.exports = {
     },
     async ConsultarProductos (req, res){
         try {
-        const id = req.user.id_usu;
-        const idl = req.params;
+        const idl = req.params.id_lis;
         const eli = await pool.query(
-            "select id_eli from elista where id_lis = ?",
+            "select id_eli from elista where id_lst = ?",
             [idl]
         );
-        const productos = await pool.query(
-            "select * from dproducto where id_eli = ?",
-            [eli]
+        const grupo = await pool.query(
+            "select id_grp from elista where id_lst = ?",
+            [idl]
         );
-        res.render("consultarProductosDeLista", { 
-            producto: productos
-        });
+        var id_e = [];
+            for (let i = 0; i < eli.length; i++) {
+                const miembro = eli[i].id_lst;
+                id_e.push(miembro);
+            }            
+            var productos = [];
+            for (let i = 0; i < id_e.length; i++) {
+                const miembro = id_e[i];
+                const list = await pool.query(
+                    "select * from dproducto where id_eli = ?",
+                    [miembro]
+                    );
+                productos.push(list[0]);
+            }
+
+            console.log(JSON.stringify(listas));
+
+            res.render("consultarListasDeGrupo", {
+                productos: productos,
+                idlista: idl,
+                grupo: grupo
+            });
+            
         } catch (err) {
             res.render("error");
             console.log(err);
