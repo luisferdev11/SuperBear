@@ -44,4 +44,12 @@ router.post("/sign-up", controller.signUp);
 
 router.post("/login", controller.login);
 
+router.post(
+    "/actualizardatos",
+    auth.isAuthenticated,
+    controller.actualizardatos
+);
+
+// PATCH
+
 module.exports = router;

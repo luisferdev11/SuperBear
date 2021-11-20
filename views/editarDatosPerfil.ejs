@@ -18,17 +18,17 @@
     <div class="principal">
         <h1 class="centro">Editar Datos</h1>
         <div class="contenedor-formulario">
-            <form action="consultarDatosPerfil.html" id="editarForm" name="editarForm">
+            <form method="post" id="editarForm" name="editarForm" action="actualizardatos">
                 <b>Datos Personales</b>
                 <p class="seccion">Correo Electrónico</p>
-                <input placeholder="Correo Electrónico" value=<%= user.cor_usu %> type="email">
+                <input placeholder="Correo Electrónico" value=<%= user.cor_usu %> type="email" name="email">
                 <p class="seccion">Nombre</p>
-                <input placeholder="Nombre" value=<%= user.nom_usu %> type="text" id="inputNombre">
+                <input placeholder="Nombre" value=<%= user.nom_usu %> type="text" id="inputNombre" name="nombre">
                 <p class="rojo" id="msgerror1"></p>
                 <p class="seccion">Nueva contraseña</p>
                 <input placeholder="Nueva contraseña" type="password" id="inputContraseña1">
                 <p class="seccion">Confirmar contraseña</p>
-                <input placeholder="Nueva contraseña" type="password" id="inputContraseña2">
+                <input placeholder="Nueva contraseña" type="password" id="inputContraseña2" name="Password2">
                 <p class="rojo" id="msgerror2"></p>
                 <p class="seccion">Fecha de Nacimiento</p>
                 <input type="date" id="inputdate" name="fecha" value="<%= user.fec_nac %>">
@@ -60,19 +60,19 @@
                 <p>Género</p>
                 <br>
                 <div>
-                    <input type="radio" <%= user.id_sex == '1' ? 'checked' : ''%> id="masculino" name="genero">
+                    <input type="radio" <%= user.id_sex == '1' ? 'checked' : ''%> id="masculino" name="genero" value=1>
                     <label for="masculino">Masculino</label>
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="radio" <%= user.id_sex == '2' ? 'checked' : ''%> id="femenino" name="genero">
+                    <input type="radio" <%= user.id_sex == '2' ? 'checked' : ''%> id="femenino" name="genero" value=2>
                     <label for="femenino">Femenino</label>
                 </div>
                 <br>
                 <br>
                 <div>
-                    <input type="radio" <%= user.id_sex == '3' ? 'checked' : ''%> id="otro" name="genero">
+                    <input type="radio" <%= user.id_sex == '3' ? 'checked' : ''%> id="otro" name="genero" value=3>
                     <label for="otro">Otro</label>
                 </div>
                 <br>
