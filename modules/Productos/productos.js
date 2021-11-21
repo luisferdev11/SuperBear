@@ -138,14 +138,18 @@ module.exports = {
     },
 
     async redirectEditar(req, res){
-        let { id_prod } = req.params;
-        let { id_lis } = req.params;
-        let producto = await pool.query('select * from dproducto where id_eli =' + id_lis + ' and id_pro=' + id_prod + ';');
-        const Marca = await getAllMarca();
-        const Depa = await getAllDepa();
-        const Uni = await getAllUni();
-        const Super = await getAllSuper();    
-        console.log(producto);
-        res.render('editarProductoDeLista', { producto, Marca, Depa, Uni, Super });
+        try{
+            let { id_prod } = req.params;
+            let { id_lis } = req.params;
+            let producto = await pool.query('select * from dproducto where id_eli =' + id_lis + ' and id_pro=' + id_prod + ';');
+            const Marca = await getAllMarca();
+            const Depa = await getAllDepa();
+            const Uni = await getAllUni();
+            const Super = await getAllSuper();
+            res.render('editarProductoDeLista', { producto, Marca, Depa, Uni, Super });
+        }catch{
+            res.redirect('/error');
+        }
     }
+
 };
