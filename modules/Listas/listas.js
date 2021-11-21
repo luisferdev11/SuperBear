@@ -1,37 +1,70 @@
-const jwt = require("jsonwebtoken");
-const bcryptjs = require("bcryptjs");
 const pool = require("../../database");
-const { promisify } = require("util");
 const { env } = require("../../credenciales");
 
 module.exports = {
     async crearLista(req, res) {
-        const id = req.user.id_usu;
-        const { nombre } = req.body;
-        const {idg} = req.body;
-
-        let newList = [nombre];
         try {
+            const {nombre}  = req.body;
+            const {grupo} = req.body;
+            let nom = [nombre];
+            console.log("id "+grupo);
             await pool.query(
-                "INSERT INTO mlista (nom_lis, fec_lis, id_esl, tot_list) VALUES (?,CURDATE(),1,0.0)",
-                newList
+                "INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)",
+                [nom]
             );
-            const {id_lista} = await pool.query(
-                "select id_lis from mlista where id_lis = (select MAX(id) from mlista)"
+            const id_list = await pool.query(
+                "select id_lis from mlista where id_lis = (select MAX(id_lis) from mlista)"
             );
-            let union = [idg, id_lista];
+            let union = [grupo, id_list[0].id_lis];
             await pool.query(
-                "INSERT INTO ELista (id_grp, id_lis) VALUES (?,?)",
-                union
+                "INSERT INTO ELista (id_grp, id_lst) VALUES (?)",
+                [union]
             );
-            res.render("consultarListaDeGrupo");
+            const nomGrp = await pool.query(
+                "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
+                [grupo]
+            );
+            console.log(nomGrp[0].nom_grp);
+            const id_lista = await pool.query(
+                "SELECT id_lst FROM ELista WHERE id_grp = ?",
+                [grupo]
+            );
+            console.log("-------"+ JSON.stringify(id_lista));
+            var id_e = [];
+            for (let i = 0; i < id_lista.length; i++) {
+                const miembro = id_lista[i].id_lst;
+                id_e.push(miembro);
+            }
+            console.log(id_e);
+            var listas = [];
+            for (let i = 0; i < id_e.length; i++) {
+                const miembro = id_e[i];
+                const list = await pool.query(
+                    "SELECT * FROM MLista WHERE id_lis = ?",
+                    [miembro]
+                    );
+                listas.push(list[0]);
+            }
+
+            console.log(JSON.stringify(listas));
+
+            res.render("consultarListasDeGrupo", {
+                listas: listas,
+                idgrupo: grupo,
+                nombre: nomGrp[0].nom_grp
+            });
+            
+            
         } catch (err) {
             res.render("error");
             console.log(err);
         }
-    },
-    async editarLista(req, res){
-        const id = req.user.id_usu;
+    },async grupo(req, res) {
+        const idg = req.params.id_grp;
+        res.render("crearListaDeGrupo",{
+            grupo: idg
+        });
+    }, async editarLista(req, res){
         const {idl} = req.body;
         const { nombre } = req.body;
         
@@ -48,85 +81,104 @@ module.exports = {
         }
     },
     async borrarLista(req, res){
-        const id = req.user.id_usu;
-        const idl = req.params;
+        const idl = req.params.id_lis;
+        const grp = req.params.id_grp;
+        console.log("Lista " +idl);
         try {
+            await pool.query(
+                "DELETE from ELista where id_lst = ?",
+                idl
+            );
             await pool.query(
                 "DELETE from MLista where id_lis = ?",
                 idl
             );
-            await pool.query(
-                "DELETE from ELista where id_lis = ?",
-                idl
-            );
-            res.render("consultarListaDeGrupo");
+            
+            res.redirect("/consultarlistas/"+grp);
         } catch (err) {
             res.render("error");
             console.log(err);
         }
     }, 
     async ConsultarListas(req, res){
-        const id = req.user.id_usu;
-        const idg = req.params;
         try {
+            const idgrupo = req.params.id_grp;
             const nomGrp = await pool.query(
                 "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
-                idg
+                [idgrupo]
             );
+            console.log(nomGrp[0].nom_grp);
+            const grupo = nomGrp[0].nom_grp;
             const id_lista = await pool.query(
-                "SELECT * FROM ELista WHERE id_grp = ?",
-                idg
+                "SELECT id_lst FROM ELista WHERE id_grp = ?",
+                [idgrupo]
             );
-            var arrlistas = [];
+            console.log("-------"+ JSON.stringify(id_lista));
+            var id_e = [];
             for (let i = 0; i < id_lista.length; i++) {
-                const lista = id_lista[i].id_lis;
-                var datoslista = await pool.query(
+                const miembro = id_lista[i].id_lst;
+                id_e.push(miembro);
+            }
+            console.log(id_e);
+            var listas = [];
+            for (let i = 0; i < id_e.length; i++) {
+                const miembro = id_e[i];
+                const list = await pool.query(
                     "SELECT * FROM MLista WHERE id_lis = ?",
-                    [lista]
-                );
-                arrlistas.push(datoslista[i]);
+                    [miembro]
+                    );
+                listas.push(list[0]);
             }
 
-            res.render("consultarListaDeGrupo", {
-                listas: arrlistas,
-                idg: idg,
-                nombre: nomGrp
+            console.log(JSON.stringify(listas));
+            console.log(idgrupo);
+
+            res.render("consultarListasDeGrupo", {
+                listas: listas,
+                idgrupo: idgrupo,
+                nombre: grupo
             });
+            
         } catch (err) {
             res.render("error");
             console.log(err);
         }
     },
     async DuplicarLista(req, res){
-        const id = req.user.id_usu;
-        const idg = req.params;
-        const idl = req.body;
         try {
-            const {Clista} = await pool.query(
+            const id = req.user.id_usu;
+            const idg = req.params.id_grp;
+            const idl = req.params.id_lis;
+        
+            const Clista = await pool.query(
                 "select * from mlista where id_lis = ?",
-                idl
+                [idl]
             );
-            const {Plista} = await pool.query(
-                "select * from DProducto where id_pro = ?",
-                
+            const Edup = await pool.query(
+                "select id_eli from elista where id_lst = ?",
+                [idl]
             );
-            const {Nombre} = Clista.nom_lis;
+            
+            const Nombre = Clista.nom_lis;
             await pool.query(
                 "INSERT INTO mlista (nom_lis, fec_lis, id_esl, tot_list) VALUES (?,CURDATE(),1,0.0)",
-                Nombre
+                [Nombre]
             );
-            const {id_lista} = await pool.query(
-                "select id_lis from mlista where id = (select MAX(id) from mlista)",
+            const id_lista = await pool.query(
+                "select id_lis from mlista where id_lis = (select MAX(id_lis) from mlista)",
                 
             );
-            let union = [idg, id_lista];
             await pool.query(
-                "INSERT INTO ELista (id_grp, id_lis) VALUES (?,?)",
-                union
+                "INSERT INTO ELista (id_grp, id_lst) VALUES (?,?)",
+                [idg, id_lista]
             );
-            const {id_elista} = await pool.query(
-                "select id_eli from ELista where id = (select MAX(id) from mlista)",
+            const id_elista = await pool.query(
+                "select id_eli from ELista where id = (select MAX(id_eli) from mlista)",
                 
+            );
+            const Plista = await pool.query(
+                "select * from DProducto where id_eli = ?",
+                Edup
             );
             for (let i = 0; i < Plista.length; i++) {
                 const nombre = Plista[i].nom_pro;
@@ -140,11 +192,11 @@ module.exports = {
                 const tipo = plista[i].id_tip;
 
                 var datoslista = await pool.query(
-                    "INSERT INTO ELista (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esp) VALUES (?,?,?,?,?,?,?,?,?,?,1)",
+                    "INSERT INTO dproducto (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esp) VALUES (?,?,?,?,?,?,?,?,?,?,1)",
                     [id_elista, nombre, marca, sup, dep, uni, can, precio, notas, tipo]
                 );
             }
-            res.render("consultarListaDeGrupo");
+            res.redirect("/consultarlistas/"+idg);
         } catch (err) {
             res.render("error");
             console.log(err);

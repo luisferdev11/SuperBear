@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/formularios.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <link rel="stylesheet" href="../css/mastersyle.css">
+    <link rel="stylesheet" href="../css/formularios.css">
+    <link rel="shortcut icon" href="../assets/svg/logo.svg">
     <title>Crear Lista | SuperBear</title>
 </head>
 <body>
     <nav class="flecha">
-        <a href="consultarListasDeGrupo.html">
-            <img src="assets/svg/flecha.svg">
+        <a href="/consultarlistas/<%=grupo%>">
+            <img src="../assets/svg/flecha.svg">
         </a>
     </nav>
     <div class="principal">
@@ -22,7 +22,7 @@
                 <p class="centro">Escribe el nombre de la nueva lista</p>
                 <input type="text" placeholder="Nombre" id="inputNombre" name="nombre">
                 <p class="rojo" id="msgerror1"></p>
-                <input type="text" value = "<%= %>" hidden="true" name="grupo">
+                <input type="text" value = "<%=grupo%>" hidden="true" name="grupo">
                 <br>
                 <br>
                 <div class="contenedor-boton">
@@ -32,7 +32,7 @@
         </div>
     </div>
     <br>
-    <script src="js/validaciones.js"></script>
+    <script src="../js/validaciones.js"></script>
 
 </body>
 </html>

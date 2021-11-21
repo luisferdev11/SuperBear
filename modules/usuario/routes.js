@@ -25,10 +25,16 @@ router.get(
     auth.isAuthenticated,
     controller.datosperfil,
     (req, res) => {
-        console.log(
-            `req.user desde el callback es ${JSON.stringify(req.user)}`
-        );
         res.render("consultarDatosPerfil", { user: req.user });
+    }
+);
+
+router.get(
+    "/editarperfil",
+    auth.isAuthenticated,
+    controller.datosperfil,
+    (req, res) => {
+        res.render("editarDatosPerfil", { user: req.user });
     }
 );
 
@@ -37,5 +43,13 @@ router.get(
 router.post("/sign-up", controller.signUp);
 
 router.post("/login", controller.login);
+
+router.post(
+    "/actualizardatos",
+    auth.isAuthenticated,
+    controller.actualizardatos
+);
+
+// PATCH
 
 module.exports = router;

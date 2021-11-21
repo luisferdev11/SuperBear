@@ -4,33 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/productos.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <link rel="stylesheet" href="../css/mastersyle.css">
+    <link rel="stylesheet" href="../css/productos.css">
+    <link rel="shortcut icon" href="../assets/svg/logo.svg">
     <title>Despensa | SuperBear</title>
 </head>
 <body>
-    <nav>
-        <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
-        <a href="consultarGrupos.html"><b>Grupos</b></a>
-        <a class="icono" href="consultarDatosPerfil.html"><img src="assets/images/userIcon.jpg"></a>
-    </nav>
+    <%- include('partials/navegacionNormal') %>
     <div class="principal">
         <header>
             <div>
-                <a href="/consultarlistas/:id"><img src="assets/svg/flecha.svg"></a>
+                <a href="/consultarlistas/<%=grupo%>"><img src="../assets/svg/flecha.svg"></a>
             </div>
-            <h1>Despensa</h1>
+            <h1><%=name%></h1>
             <div>
-                <a href="agregarProductoALista.html"><img src="assets/svg/plus.svg"></a>
+                <a href="/CrearProducto/<%=idLista%>"><img src="../assets/svg/plus.svg"></a>
             </div>
         </header>
     </div>
+    <% if(productos.length == 0){%>
+        <h1>Aun no hay productos en esta lista</h1>
+        <%}else{%>
     <form class="grid">
+        <% productos.forEach(element => { %>
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
-            <input id="producto-1" type="checkbox">
-            <label for="producto-1">
+            <%if(element.id_esProd == 1){%>
+            <input id="producto" type="checkbox">
+            <%}else{%>
+            <input checked id="producto" type="checkbox">
+            <%}%>
+            <label for="producto<%=element.id_pro %>">
                 <p class="caja">&nbsp</p>
             </label>
             <div class="producto">
@@ -38,81 +42,40 @@
                     <div class="nombre-producto">
                         <a href="editarProductoDeLista.html">
                             <h2>
-                                Manzanas
+                                <%=element.nom_pro %>
                             </h2>
                         </a>
                     </div>
                     <a>
-                        <img src="assets/svg/basura.svg">
+                        <img src="../assets/svg/basura.svg">
                     </a>
                 </div>
                 <div class="contenido-producto">
                     <div class="texto-producto">
                         <b class="linea">
-                            1kg
+                            <%=element.can_pro%> <%=element.id_uni%>
                         </b>
                         <b class="linea">
-                            $60
+                            <%=element.precio_pro%>
                         </b>
                         <b class="linea">
-                            Bimbo
+                            <%=element.id_mar %>
                         </b>
                         <b class="linea">
-                            La Adelita
+                            <%=element.id_sup %>
                         </b>
                         <b class="linea">
-                            Frutas y Verduras
+                            <%=element.id_dep %>
                         </b>
                     </div>
                     <div class="notas-producto">
-                        Si no hay manzanas rojas no comprar
+                        <%=element.notas_pro %>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="contenedor-producto">
-            <!-- Cada conjunto de label y checkbox debe tener su propio id -->
-            <input checked id="producto-2" type="checkbox">
-            <label for="producto-2">
-                <p class="caja">&nbsp</p>
-            </label>
-            <div class="producto">
-                <div class="header-producto">
-                    <div class="nombre-producto">
-                        <a href="editarProductoDeLista.html">
-                            <h2>
-                                Manzanas
-                            </h2>
-                        </a>
-                    </div>
-                    <a>
-                        <img src="assets/svg/basura.svg">
-                    </a>
-                </div>
-                <div class="contenido-producto">
-                    <div class="texto-producto">
-                        <b class="linea">
-                            1kg
-                        </b>
-                        <b class="linea">
-                            $60
-                        </b>
-                        <b class="linea">
-                            Bimbo
-                        </b>
-                        <b class="linea">
-                            La Adelita
-                        </b>
-                        <b class="linea">
-                            Frutas y Verduras
-                        </b>
-                    </div>
-                    <div class="notas-producto">
-                        Si no hay manzanas rojas no comprar
-                    </div>
-                </div>
-            </div>
-        </div>
+        <% });%>
+        <%}%>
     </form>
     <br>
     <footer>
