@@ -11,7 +11,7 @@ router.get("/nuevogrupo", auth.isAuthenticated, (req, res) => {
     res.render("ingresar-crearGrupo", { error: "" });
 });
 router.get("/miembrosdegrupo/:grupo",auth.isAuthenticated,controller.miembrosdegrupo);
-router.get("/consultarmiembros/", auth.isAuthenticated,controller.consultarmiembros);
+router.get("/consultarmiembros/:grupo", auth.isAuthenticated,controller.consultarmiembros);
 //POST
 
 router.post("/ingresargrupo", auth.isAuthenticated, controller.ingresargrupo);

@@ -132,7 +132,7 @@ module.exports = {
     },
     async consultarmiembros(req, res) {
         try {
-            const grupo = 3;
+            const {grupo} = req.params;
             const id_miembros = await pool.query(
                 "SELECT * FROM egrupo WHERE id_grp = ?",
                 [grupo]
@@ -172,7 +172,7 @@ module.exports = {
         try {
             console.log(req.user.id_usu);
             pool.query(
-                `SELECT m.id_grp, cod_grp, nom_grp, nom_usu FROM mgrupo m
+                `SELECT m.id_grp, cod_grp, nom_grp, nom_usu,e.id_priv FROM mgrupo m
             INNER JOIN egrupo e
                 ON m.id_grp = e.id_grp
             INNER JOIN musuario mu

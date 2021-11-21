@@ -1,132 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/mastersyle.css" />
-        <link rel="stylesheet" href="css/grupos.css" />
-        <link rel="shortcut icon" href="assets/svg/logo.svg" />
-        <title>Mis Grupos | SuperBear</title>
-        <style>
-            label {
-                height: fit-content;
-            }
-        </style>
-    </head>
-    <body>
-        <%- include('partials/navegacionNormal') %>
-        <div class="principal">
-            <header>
-                <h1>
-                    Mis Grupos <% if (user) { %> <%= user.nom_usu %> <% } %>
-                </h1>
-                <div>
-                    <a href="/nuevogrupo"><img src="assets/svg/plus.svg" /></a>
-                </div>
-            </header>
-        </div>
-        <!--Cada grupo debe tener su propio menu
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/mastersyle.css" />
+    <link rel="stylesheet" href="css/grupos.css" />
+    <link rel="shortcut icon" href="assets/svg/logo.svg" />
+    <title>Mis Grupos | SuperBear</title>
+    <style>
+        label {
+            height: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="consultarNoticias-usuario.html"><b>Noticias</b></a>
+        <a href="consultarGrupos.html"><b>Grupos</b></a>
+        <a class="icono" href="/datos-perfil"><img src="assets/images/userIcon.jpg" /></a>
+    </nav>
+    <div class="principal">
+        <header>
+            <h1>
+                Mis Grupos <% if (user) { %>
+                    <%= user.nom_usu %>
+                        <% } %>
+            </h1>
+            <div>
+                <a href="/nuevogrupo"><img src="assets/svg/plus.svg" /></a>
+            </div>
+        </header>
+    </div>
+    <!--Cada grupo debe tener su propio menu
     para eso es necesario que cada input tenga un id diferentes
     los for del label deben coincidir con el del input-->
-        <div class="grid">
-            <% let i = 0 %> 
-            <% if (user.grps) { %>
-                <% for (i ; i < user.grps.length;  i++ ) { %>
-                    
-                    <div class="grupo">
-                        <div class="nombre-grupo">
-                            <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
-                                <h1><%= user.grps[i].nom_grp %></h1>
-                            </a>
-                            <a href="/miembrosdegrupo/<%=user.grps[i].id_grp %>">
-                                <img src="assets/svg/IconoGruposSuperBear.svg" />
+    <div class="grid">
+        <% if (user.grps) { %>
+            <% for (let i=0; i < user.grps.length; i++ ) { %>
+
+                <div class="grupo">
+                    <div class="nombre-grupo">
+                        <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
+                            <h1>
+                                <%= user.grps[i].nom_grp %>
+                            </h1>
+                        </a>
+                        <% if (user.grps[i].id_priv==1) { %>
+                            <a href="/consultarmiembros/<%=user.grps[i].id_grp %>">
+                                <b>Administrador</b>
+                                <img src="assets/images/userIcon.jpg" />
                                 <b> 10 miembros </b>
                             </a>
-                            <label for="menu-<%= i %>">
-                                <img class="opciones" src="assets/svg/options.svg" />
-                                <input id="menu-<%= i %>" type="checkbox" />
-                                <div class="desplegable">
-                                    <a
-                                        href="editarNombreGrupo-administradorDeGrupo.html"
-                                        class="b"
-                                    >
-                                        Renombrar Grupo
-                                    </a>
-                                    <a href="consultarGrupos.html" class="b">
-                                        Borrar Grupo
-                                    </a>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="contenido-grupo">
-                            <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
-                                <div>
-                                    <b>Jabones</b>
-                                </div>
-                                <div>
-                                    <b>10/15 Completado</b>
-                                </div>
-                            </a>
-                            <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
-                                <div>
-                                    <b>Carnes frías</b>
-                                </div>
-                                <div>
-                                    <b>10/15 Completado</b>
-                                </div>
-                            </a>
-                        </div>
+                            <% }else{ %>
+
+                                <a href="/miembrosdegrupo/<%=user.grps[i].id_grp %>">
+                                    <img src="assets/images/userIcon.jpg" />
+                                    <b> 10 miembros </b>
+                                </a>
+                                <% } %>
+
+                                <label for="menu-1">
+                                    <img class="opciones" src="assets/svg/options.svg" />
+                                    <input id="menu-1" type="checkbox" />
+                                    <div class="desplegable">
+                                        <a href="editarNombreGrupo-administradorDeGrupo.html" class="b">
+                                            Renombrar Grupo
+                                        </a>
+                                        <a href="consultarGrupos.html" class="b">
+                                            Borrar Grupo
+                                        </a>
+                                    </div>
+                                </label>
                     </div>
+                    <div class="contenido-grupo">
+                        <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
+                            <div>
+                                <b>Jabones</b>
+                            </div>
+                            <div>
+                                <b>10/15 Completado</b>
+                            </div>
+                        </a>
+                        <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
+                            <div>
+                                <b>Carnes frías</b>
+                            </div>
+                            <div>
+                                <b>10/15 Completado</b>
+                            </div>
+                        </a>
+                    </div>
+                </div>
                 <% } %>
-            <% } %>
-            <!-- Este grupo es solamente para ver lo que habia hecho el mau, este aún no es dinámico -->
-            <div class="grupo">
-                <div class="nombre-grupo">
-                    <a href="consultarListasDeGrupo.html">
-                        <h1>Prueba pa ver el admin</h1>
-                    </a>
-                    <a href="/consultarmiembros">
-                        <img src="assets/images/userIcon.jpg" />
-                        <b> 10 miembros </b>
-                    </a>
-                    <label for="menu-<%= i+1 %>">
-                        <img class="opciones" src="assets/svg/options.svg" />
-                        <input id="menu-<%= i+1 %>" type="checkbox" />
-                        <div class="desplegable">
-                            <a
-                                href="editarNombreGrupo-administradorDeGrupo.html"
-                                class="b"
-                            >
-                                Renombrar Grupo
-                            </a>
-                            <a href="consultarGrupos.html" class="b">
-                                Borrar Grupo
-                            </a>
+                    <% } %>
+                        <!-- Este grupo es solamente para ver lo que habia hecho el mau, este aún no es dinámico -->
+                        <div class="grupo">
+                            <div class="nombre-grupo">
+                                <a href="consultarListasDeGrupo.html">
+                                    <h1>Prueba pa ver el admin</h1>
+                                </a>
+                                <a href="/consultarmiembros">
+                                    <img src="assets/images/userIcon.jpg" />
+                                    <b> 10 miembros </b>
+                                </a>
+                                <label for="menu-2">
+                                    <img class="opciones" src="assets/svg/options.svg" />
+                                    <input id="menu-2" type="checkbox" />
+                                    <div class="desplegable">
+                                        <a href="editarNombreGrupo-administradorDeGrupo.html" class="b">
+                                            Renombrar Grupo
+                                        </a>
+                                        <a href="consultarGrupos.html" class="b">
+                                            Borrar Grupo
+                                        </a>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="contenido-grupo">
+                                <a href="consultarProductosDeLista.html">
+                                    <div>
+                                        <b>Jabones</b>
+                                    </div>
+                                    <div>
+                                        <b>10/15 Completado</b>
+                                    </div>
+                                </a>
+                                <a href="consultarProductosDeLista.html">
+                                    <div>
+                                        <b>Carnes frías</b>
+                                    </div>
+                                    <div>
+                                        <b>10/15 Completado</b>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </label>
-                </div>
-                <div class="contenido-grupo">
-                    <a href="consultarProductosDeLista.html">
-                        <div>
-                            <b>Jabones</b>
-                        </div>
-                        <div>
-                            <b>10/15 Completado</b>
-                        </div>
-                    </a>
-                    <a href="consultarProductosDeLista.html">
-                        <div>
-                            <b>Carnes frías</b>
-                        </div>
-                        <div>
-                            <b>10/15 Completado</b>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <br />
-        <footer><%- include('partials/footer') %></footer>
-    </body>
+    </div>
+    <br />
+    <footer>
+        <%- include('partials/footer') %>
+    </footer>
+</body>
+
 </html>
