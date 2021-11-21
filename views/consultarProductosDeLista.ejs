@@ -33,11 +33,11 @@
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
             <%if(element.id_esProd == 1){%>
-            <input id="producto" type="checkbox">
+            <input id="producto<%= element.id_pro %>" type="checkbox">
             <%}else{%>
             <input checked id="producto" type="checkbox">
             <%}%>
-            <label for="producto<%=element.id_pro %>">
+            <label for="producto<%= element.id_pro %>">
                 <p class="caja">&nbsp</p>
             </label>
             <div class="producto">
