@@ -16,7 +16,7 @@
 <body>
     <nav class="flecha">
         <a href="consultarProductosDeLista.html">
-            <img src="assets/svg/flecha.svg">
+            <img src="../../assets/svg/flecha.svg">
         </a>
     </nav>
     <div class="principal">
@@ -35,7 +35,7 @@
             </p>
             <select name="Marca">
                 <% Marca.forEach(element => { %>
-                    <option value="<%=element.id_mar %>"><%=element.Marca%></option>
+                    <option <% if(producto[0].id_mar == element.id_mar){%> selected <% } %> value="<%=element.id_mar %>"><%=element.Marca%></option>
                     <%}); %>
             </select>
             <p class="seccion">
@@ -43,7 +43,7 @@
             </p>
             <select name="supermercado">
                 <% Super.forEach(element => { %>
-                <option value="<%=element.id_sup %>"><%=element.nom_sup%></option>
+                <option <% if(producto[0].id_sup == element.id_sup){%> selected <% } %> value="<%=element.id_sup %>"><%=element.nom_sup%></option>
                 <%}); %>
             </select>
             <p class="seccion">
@@ -51,19 +51,19 @@
             </p>
             <select name="Depa">
                 <% Depa.forEach(element => { %>
-                    <option value=" <%=element.id_dep %>"><%=element.nom_dep%></option>
+                    <option <% if(producto[0].id_dep == element.id_dep){%> selected <% } %> value="<%=element.id_dep %>"><%=element.nom_dep%></option>
                     <%}); %>
             </select>
             <p class="seccion">
                 Cantidad
             </p>
-            <input type="number" placeholder="Cantidad" id="inputcantidad">
+            <input value="<%= producto[0].can_pro %>" type="number" placeholder="Cantidad" id="inputcantidad">
             <p class="seccion">
                 Unidad
             </p>
             <select name="Unidad">
                 <% Uni.forEach(element => { %>
-                    <option value=" <%=element.id_uni %>"><%=element.unidad%></option>
+                    <option <% if(producto[0].id_uni == element.id_uni){%> selected <% } %> value="<%=element.id_uni %>"><%=element.unidad%></option>
                     <%}); %>
             </select>
             <p class="seccion">
