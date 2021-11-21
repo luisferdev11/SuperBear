@@ -15,7 +15,7 @@
 </head>
 <body>
     <nav class="flecha">
-        <a href="consultarProductosDeLista.html">
+        <a href="/ConsultarProductos/<%= id_grupo[0].id_lst %>">
             <img src="../../assets/svg/flecha.svg">
         </a>
     </nav>
@@ -25,7 +25,7 @@
         </h1>
     </div>
     <div class="contenedor-formulario">
-        <form>
+        <form method="post" action="/editarProductoDeLista/<%= id_prod %>/<% id_lis %>">
             <p class="seccion">
                 Nombre
             </p> 

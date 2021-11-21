@@ -141,12 +141,14 @@ module.exports = {
         try{
             let { id_prod } = req.params;
             let { id_lis } = req.params;
+            let id_grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+            console.log(id_grupo);
             let producto = await pool.query('select * from dproducto where id_eli =' + id_lis + ' and id_pro=' + id_prod + ';');
             const Marca = await getAllMarca();
             const Depa = await getAllDepa();
             const Uni = await getAllUni();
             const Super = await getAllSuper();
-            res.render('editarProductoDeLista', { producto, Marca, Depa, Uni, Super });
+            res.render('editarProductoDeLista', { id_lis, producto, Marca, Depa, Uni, Super, id_prod, id_grupo });
         }catch{
             res.redirect('/error');
         }
