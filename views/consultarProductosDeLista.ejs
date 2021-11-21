@@ -22,8 +22,11 @@
             </div>
         </header>
     </div>
-    <% if(productos.length == 0){%>
-        <h1>Aun no hay productos en esta lista</h1>
+    <% console.log(productos); %>
+    <% if( productos[0] == undefined ){%>
+        <div class="principal">
+            <h1>Aun no hay productos en esta lista</h1>
+        </div>
         <%}else{%>
     <form class="grid">
         <% productos.forEach(element => { %>
