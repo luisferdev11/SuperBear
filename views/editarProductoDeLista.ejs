@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/formularios.css">
-    <link rel="stylesheet" href="css/datosProducto.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <link rel="stylesheet" href="../../css/mastersyle.css">
+    <link rel="stylesheet" href="../../css/formularios.css">
+    <link rel="stylesheet" href="../../css/datosProducto.css">
+    <link rel="shortcut icon" href="../../assets/svg/logo.svg">
     <style>
         
     </style>
@@ -25,26 +25,34 @@
         </h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="consultarProductosDeLista.html">
+        <form>
             <p class="seccion">
                 Nombre
             </p> 
-            <input type="text" placeholder="Nombre" id="inputnombre">
+            <input type="text" value="<%= producto[0].nom_pro %>" placeholder="Nombre" id="inputnombre">
             <p class="seccion">
                 Marca
             </p>
-            <input type="text" placeholder="Marca" id="inputmarca">
+            <select name="Marca">
+                <% Marca.forEach(element => { %>
+                    <option value="<%=element.id_mar %>"><%=element.Marca%></option>
+                    <%}); %>
+            </select>
             <p class="seccion">
                 Supermercado
             </p>
-            <input type="text" placeholder="Supermercado" id="inputsuper">
+            <select name="supermercado">
+                <% Super.forEach(element => { %>
+                <option value="<%=element.id_sup %>"><%=element.nom_sup%></option>
+                <%}); %>
+            </select>
             <p class="seccion">
                 Departamento
             </p>
-            <select>
-                <option selected class="no">Departamento</option>
-                <option>Frutas y Verduras</option>
-                <option>Videojuegos</option>
+            <select name="Depa">
+                <% Depa.forEach(element => { %>
+                    <option value=" <%=element.id_dep %>"><%=element.nom_dep%></option>
+                    <%}); %>
             </select>
             <p class="seccion">
                 Cantidad
@@ -53,19 +61,19 @@
             <p class="seccion">
                 Unidad
             </p>
-            <select>
-                <option selected>Unidad</option>
-                <option>Kilogramo</option>
-                <option>Litro</option>
+            <select name="Unidad">
+                <% Uni.forEach(element => { %>
+                    <option value=" <%=element.id_uni %>"><%=element.unidad%></option>
+                    <%}); %>
             </select>
             <p class="seccion">
                 Precio
             </p>
-            <input type="number" placeholder="Precio $" id="inputprecio">
+            <input type="number" value="<%= producto[0].precio_pro %>" placeholder="Precio $" id="inputprecio">
             <p class="seccion">
                 Anotaciones
             </p>
-            <input type="text" placeholder="Anotaciones" id="inputanotaciones">
+            <input type="text" value="<%= producto[0].notas_pro %>" placeholder="Anotaciones" id="inputanotaciones">
             <br>
             <br>
             <div class="contenedor-boton">
@@ -74,7 +82,7 @@
         </form>
     </div>
     <br>
-    <script src="js/validaciones.js"></script>
+    <script src="../../js/validaciones.js"></script>
 
 </body>
 </html>
