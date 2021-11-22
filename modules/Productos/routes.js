@@ -11,6 +11,7 @@ router.get("/CrearProducto/:id_lis", auth.isAuthenticated, controller.ConsultarC
 router.get('/ConsultarProductos/:id_lis', auth.isAuthenticated, controller.ConsultarProductos);
 router.get('/editarProductoDeLista/:id_prod/:id_lis', auth.isAuthenticated, controller.redirectEditar);
 router.get('/borrarProductoLista/:id_prod/:id_lis', auth.isAuthenticated, controller.borrarProducto);
+router.get('/estadoProductoLista/:id_prod/:id_lis', auth.isAuthenticated, controller.Estado);
 
 // AQUI VAN LOS POST
 

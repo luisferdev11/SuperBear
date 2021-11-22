@@ -223,6 +223,34 @@ module.exports = {
         }catch{
             res.redirect('/error');
         }
+    },
+    async Estado(req, res){
+        try{
+            let { id_prod } = req.params;
+            let { id_lis } = req.params;
+            console.log(id_prod);
+            console.log(id_lis);
+            const est = await pool.query(
+                "select id_esProd from dproducto where id_pro = ?",
+                [id_prod]
+            );
+            if (est[0].id_esProd == 1){
+                await pool.query(
+                    "update dproducto set id_esProd = 2  where id_pro = ?",
+                    [id_prod]
+                );
+            }else{
+                await pool.query(
+                    "update dproducto set id_esProd = 1  where id_pro = ?",
+                    [id_prod]
+                );
+            }
+            
+            let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+            res.redirect("/ConsultarProductos/"+grupo[0].id_lst);
+        }catch{
+            res.redirect('/error');
+        }
     }
 
 };
