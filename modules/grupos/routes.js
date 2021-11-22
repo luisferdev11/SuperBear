@@ -17,6 +17,6 @@ router.get("/consultarmiembros/:grupo", auth.isAuthenticated,controller.consulta
 router.post("/ingresargrupo", auth.isAuthenticated, controller.ingresargrupo);
 router.post("/nuevogrupo", auth.isAuthenticated, controller.nuevogrupo);
 
-router.get("/delete/:id", auth.isAuthenticated, controller.delete);
-
+router.get("/delete/:grupo/:id", auth.isAuthenticated, controller.delete);
+router.get("/abandonargrupo/:grupo/:id", auth.isAuthenticated, controller.abandonargrupo);
 module.exports = router;

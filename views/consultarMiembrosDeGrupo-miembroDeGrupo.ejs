@@ -17,10 +17,18 @@
         <a href="consultarGrupos.html">
             <img src="../assets/svg/flecha.svg">
         </a>
+
     </nav>
-    <div class="principal">
-        <h1 class="centro">Miembros del Grupo Pantitlan</h1>
-    </div>
+    <br>
+    <header>
+        <div class="principal">
+            <h1 class="centro">Miembros del Grupo Pantitlan</h1>
+        </div>
+        <a href="/abandonargrupo/<%=grupo%>/<%=id_usuario%>">
+            <p style="text-align: middle; "> <img src="../assets/svg/exit.svg" height="40px">
+                Abandonar Grupo</p>
+        </a>
+    </header>
     <div class="grid">
         <% for (let i=0; i < miembros.length; i++) { %>
 
@@ -32,9 +40,9 @@
                 </b>
                 <b class="centro" href="consultarMiembrosyCodigoDeGrupo-administadorDeGrupo.html">
                     <% if(privilegio[i]==1){ %>
-                            <%="Admin"%>
+                        <%="Admin"%>
                             <% }else{ %>
-                            <%="Miembro"%> 
+                                <%="Miembro"%>
                                     <% } %>
                 </b>
             </div>

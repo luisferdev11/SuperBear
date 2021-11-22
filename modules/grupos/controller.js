@@ -32,16 +32,33 @@ module.exports = {
             const id_usuario = req.user.id_usu;
             const { codigo } = req.body;
             const id_grupo = await pool.query(
-                "SELECT id_grp FROM mgrupo WHERE cod_grp = ?",
+                "SELECT * FROM mgrupo WHERE cod_grp = ?",
                 [codigo]
             );
             const grupo = id_grupo[0].id_grp;
-            await pool.query(
-                "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
-                [id_usuario, grupo, 2]
-            );
-            //"INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)"
-            res.redirect("/misgrupos");
+
+
+
+            try {
+                const misgrupos = await pool.query(
+                    "SELECT * FROM egrupo WHERE (id_usu = ?) AND (id_grp=?)",
+                    [id_usuario, grupo]
+                );
+                const validacion = misgrupos[0].id_grp
+                res.render("ingresar-crearGrupo", {
+                    error: "Ya se ingreso a ese grupo",
+                });
+            } catch (error) {
+                await pool.query(
+                    "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
+                    [id_usuario, grupo, 2]
+                );
+                res.redirect("/misgrupos");
+
+            }
+
+
+
         } catch (error) {
             console.log(error);
             res.render("ingresar-crearGrupo", {
@@ -51,9 +68,33 @@ module.exports = {
     },
     async delete(req, res) {
         //falta hacer un for que nos de todos los ids de los que tienen admin y un if(si arridpriv[i]==req.user.id_usu{})
+        const { grupo } = req.params;
         const { id } = req.params;
-        await pool.query("delete from egrupo where id_usu=?", [id]);
-        res.redirect("/consultarmiembros");
+        const idusu = req.user.id_usu;
+        let permisos = [
+            grupo, idusu
+        ]
+        const id_miembros = await pool.query(
+            "SELECT * FROM egrupo WHERE (id_grp = ?) AND (id_usu=?)",
+            permisos
+        );
+        if (id_miembros[0].id_priv == 1 && id != req.user.id_usu) {
+            let Deletegrupo = [id, grupo];
+            let id_egrupo = await pool.query("select id_egp from egrupo where (id_usu=?) AND (id_grp=?)", Deletegrupo);
+            await pool.query("delete from egrupo where id_egp=?", [id_egrupo[0].id_egp]);
+            res.redirect(`/consultarmiembros/${grupo}`);
+        } else { res.redirect("/error") }
+    },
+    async abandonargrupo(req, res) {
+        const { grupo } = req.params;
+        const { id } = req.params;
+
+        if (id == req.user.id_usu) {
+            let Deletegrupo = [id, grupo];
+            let id_egrupo = await pool.query("select id_egp from egrupo where (id_usu=?) AND (id_grp=?)", Deletegrupo);
+            await pool.query("delete from egrupo where id_egp=?", [id_egrupo[0].id_egp]);
+            res.redirect('/misgrupos');
+        } else { res.redirect("/error") }
     },
     async nuevogrupo(req, res) {
         do {
@@ -72,7 +113,7 @@ module.exports = {
                     );
 
                     const id_usuario = req.user.id_usu;
-                    
+
                     const id_grupo = await pool.query(
                         "SELECT id_grp FROM mgrupo WHERE cod_grp = ?",
                         [codigo]
@@ -101,7 +142,7 @@ module.exports = {
     },
     async miembrosdegrupo(req, res) {
         try {
-            const {grupo} = req.params;
+            const { grupo } = req.params;
             const id_miembros = await pool.query(
                 "SELECT * FROM egrupo WHERE id_grp = ?",
                 [grupo]
@@ -121,6 +162,8 @@ module.exports = {
             }
 
             res.render("consultarMiembrosDeGrupo-miembroDeGrupo", {
+                id_usuario: req.user.id_usu,
+                grupo: grupo,
                 miembros: arrmiembros,
                 privilegio: arrprivilegios,
                 id: arrid,
@@ -132,23 +175,25 @@ module.exports = {
     },
     async consultarmiembros(req, res) {
         try {
-            const {grupo} = req.params;
+            const { grupo } = req.params;
             const id_miembros = await pool.query(
                 "SELECT * FROM egrupo WHERE id_grp = ?",
                 [grupo]
             );
-            var arrid = [];
-            var arrmiembros = [];
-            var arrprivilegios = [];
-            for (let i = 0; i < id_miembros.length; i++) {
-                const miembro = id_miembros[i].id_usu;
-                var datosmiembro = await pool.query(
-                    "SELECT nom_usu FROM musuario WHERE id_usu = ?",
-                    [miembro]
-                );
-                arrid.push(miembro);
-                arrmiembros.push(datosmiembro[0].nom_usu);
-                arrprivilegios.push(id_miembros[i].id_priv);
+            if (id_miembros) {
+                var arrid = [];
+                var arrmiembros = [];
+                var arrprivilegios = [];
+                for (let i = 0; i < id_miembros.length; i++) {
+                    const miembro = id_miembros[i].id_usu;
+                    var datosmiembro = await pool.query(
+                        "SELECT nom_usu FROM musuario WHERE id_usu = ?",
+                        [miembro]
+                    );
+                    arrid.push(miembro);
+                    arrmiembros.push(datosmiembro[0].nom_usu);
+                    arrprivilegios.push(id_miembros[i].id_priv);
+                }
             }
             const codigo_grupo = await pool.query(
                 "SELECT cod_grp FROM mgrupo WHERE id_grp = ?",
@@ -157,6 +202,7 @@ module.exports = {
             const code = codigo_grupo[0].cod_grp;
 
             res.render("consultarMiembrosyCodigoDeGrupo-administadorDeGrupo", {
+                grup: grupo,
                 data: code,
                 miembros: arrmiembros,
                 privilegio: arrprivilegios,
