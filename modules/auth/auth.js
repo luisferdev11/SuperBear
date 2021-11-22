@@ -21,28 +21,52 @@ module.exports = {
                     req.cookies.jwt,
                     env.JWT_SECRETO
                 );
-                console.log(decodificada);
-                pool.query(
-                    "SELECT * FROM musuario WHERE id_usu = ?",
-                    [decodificada.id],
-                    (error, results) => {
-                        if (!results) {
-                            res.redirect("/login");
+                console.log("DECODIFICADA ES " + JSON.stringify(decodificada));
+                if (decodificada.permiso == "Usuario") {
+                    pool.query(
+                        "SELECT * FROM musuario WHERE id_usu = ?",
+                        [decodificada.id],
+                        (error, results) => {
+                            if (!results) {
+                                res.redirect("/login");
+                            }
+                            req.user = results[0];
+                            req.user.perm = "Usuario";
+
+                            req.user.fec_nac =
+                                req.user.fec_nac.getFullYear() +
+                                "-" +
+                                validarLongitud(
+                                    req.user.fec_nac.getMonth() + 1
+                                ) +
+                                "-" +
+                                validarLongitud(req.user.fec_nac.getDate());
+
+                            console.log(req.user.fec_nac);
+                            console.log(
+                                `req.user es ${JSON.stringify(req.user)}`
+                            );
+                            return next();
                         }
-                        req.user = results[0];
-
-                        req.user.fec_nac =
-                            req.user.fec_nac.getFullYear() +
-                            "-" +
-                            validarLongitud(req.user.fec_nac.getMonth() + 1) +
-                            "-" +
-                            validarLongitud(req.user.fec_nac.getDate());
-
-                        console.log(req.user.fec_nac);
-                        console.log(`req.user es ${JSON.stringify(req.user)}`);
-                        return next();
-                    }
-                );
+                    );
+                }
+                if (decodificada.permiso == "Admin") {
+                    pool.query(
+                        "SELECT * FROM madministrador WHERE id_Adm = ?",
+                        [decodificada.id],
+                        (error, results) => {
+                            if (!results) {
+                                res.redirect("/login");
+                            }
+                            req.user = results[0];
+                            req.user.perm = "Admin";
+                            console.log(
+                                `req.user es ${JSON.stringify(req.user)}`
+                            );
+                            return next();
+                        }
+                    );
+                }
             } catch (error) {
                 console.log(error);
                 res.redirect("/login");

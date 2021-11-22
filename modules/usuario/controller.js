@@ -10,6 +10,44 @@ async function getSex(id_sex) {
     return sexo[0].sexo.trim();
 }
 
+// async function isAdmin(user, pass) {
+//     try {
+//         pool.query(
+//             "SELECT * FROM madministrador WHERE Cor_Admin = ?",
+//             [user],
+//             async (error, results) => {
+//                 console.log(results);
+//                 if (
+//                     !results ||
+//                     !(await bcryptjs.compare(pass, results[0].Con_Adm))
+//                 ) {
+//                     res.render("iniciarSesion");
+//                 } else {
+//                     //inicio de sesión OK
+//                     const id = results[0].id_Adm;
+//                     const token = jwt.sign({ id: id }, env.JWT_SECRETO, {
+//                         expiresIn: env.JWT_TIEMPO_EXPIRA,
+//                     });
+
+//                     console.log("TOKEN: " + token + " para el ADMIN : " + user);
+
+//                     const cookiesOptions = {
+//                         expires: new Date(
+//                             Date.now() +
+//                                 env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+//                         ),
+//                         httpOnly: true,
+//                     };
+//                     res.cookie("jwt", token, cookiesOptions);
+//                     res.redirect("admin-index");
+//                 }
+//             }
+//         );
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
+
 module.exports = {
     async signUp(req, res) {
         const { email } = req.body;
@@ -30,7 +68,7 @@ module.exports = {
             );
             res.render("iniciarSesion");
         } catch (err) {
-            res.redirect('/error');
+            res.redirect("/error");
             console.log(err);
         }
     },
@@ -51,12 +89,63 @@ module.exports = {
                             results.length == 0 ||
                             !(await bcryptjs.compare(pass, results[0].con_usu))
                         ) {
-                            res.render("iniciarSesion");
+                            pool.query(
+                                "SELECT * FROM madministrador WHERE Cor_Adm = ?",
+                                [user],
+                                async (error, results) => {
+                                    console.log(results);
+                                    if (
+                                        !results ||
+                                        !(await bcryptjs.compare(
+                                            pass,
+                                            results[0].Con_Adm
+                                        ))
+                                    ) {
+                                        res.render("iniciarSesion");
+                                    } else {
+                                        //inicio de sesión OK
+                                        const id = results[0].id_Adm;
+                                        const token = jwt.sign(
+                                            { id: id, permiso: "Admin" },
+                                            env.JWT_SECRETO,
+                                            {
+                                                expiresIn:
+                                                    env.JWT_TIEMPO_EXPIRA,
+                                            }
+                                        );
+
+                                        console.log(
+                                            "TOKEN: " +
+                                                token +
+                                                " para el ADMIN : " +
+                                                user
+                                        );
+
+                                        const cookiesOptions = {
+                                            expires: new Date(
+                                                Date.now() +
+                                                    env.JWT_COOKIE_EXPIRES *
+                                                        24 *
+                                                        60 *
+                                                        60 *
+                                                        1000
+                                            ),
+                                            httpOnly: true,
+                                        };
+                                        res.cookie(
+                                            "jwt",
+                                            token,
+                                            cookiesOptions
+                                        );
+                                        res.redirect("admin-index");
+                                    }
+                                }
+                            );
                         } else {
                             //inicio de sesión OK
                             const id = results[0].id_usu;
                             const token = jwt.sign(
-                                { id: id },
+                                { id: id, permiso: "Usuario" },
                                 env.JWT_SECRETO,
                                 {
                                     expiresIn: env.JWT_TIEMPO_EXPIRA,
@@ -141,7 +230,7 @@ module.exports = {
             );
             res.redirect("misgrupos");
         } catch (err) {
-            res.redirect('/error');
+            res.redirect("/error");
             console.log(err);
         }
     },

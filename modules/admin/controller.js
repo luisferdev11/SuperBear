@@ -3,7 +3,6 @@ const bcryptjs = require("bcryptjs");
 const pool = require("../../database");
 const { env } = require("../../credenciales");
 
-
 //Funcion de Crear Producto Admin
 module.exports = {
     async createDefaultObject(req, res) {
@@ -11,15 +10,14 @@ module.exports = {
         const { departamento } = req.body;
         const { unidad } = req.body;
 
-        let newProduct = [
-            nombrep,
-            departamento,
-            unidad,];
+        let newProduct = [nombrep, departamento, unidad];
         try {
             // await pool.query(" INSERT INTO cdepartamento  (id_dep, nom_dep) VALUES (1,?)", departamento);
             //await pool.query("INSERT INTO cunidad (id_uni, unidad) VALUES (,?)", unidad);
-            await pool.query("INSERT INTO dproducto (nom_pro ,id_dep, id_uni) VALUES (?,?,?)", newProduct);
-
+            await pool.query(
+                "INSERT INTO dproducto (nom_pro ,id_dep, id_uni) VALUES (?,?,?)",
+                newProduct
+            );
 
             res.render("admin-crearProductoPredeterminado");
         } catch (err) {
@@ -31,14 +29,13 @@ module.exports = {
     async checkDefaultProducts(req, res, next) {
         try {
             let producto;
-            producto = await pool.query(`SELECT * FROM dproducto WHERE id_tip = 1 `);
+            producto = await pool.query(
+                `SELECT * FROM dproducto WHERE id_tip = 1 `
+            );
 
-
-            console.log(producto);
-
-            res.render("admin-consultarProductosPredeterminados", { product: producto });
-
-
+            res.render("admin-consultarProductosPredeterminados", {
+                product: producto,
+            });
         } catch (error) {
             console.error(error);
             res.render("error", { user: req.user });
@@ -55,20 +52,15 @@ module.exports = {
         let { nombrep } = req.body;
         let { departamento } = req.body;
         let { unidad } = req.body;
-        let {id}= req.body;
+        let { id } = req.body;
         console.log(nombrep, departamento, unidad);
 
-        let editProducto = [nombrep, departamento,unidad,id];
+        let editProducto = [nombrep, departamento, unidad, id];
 
-        await pool.query("update dproducto set  nom_pro =? , id_dep=? , id_uni =? where id_pro = ?", [nombrep, parseInt(departamento), parseInt(unidad), parseInt(id)]);
-        res.redirect('/check-default-products');
-
-
-
+        await pool.query(
+            "update dproducto set  nom_pro =? , id_dep=? , id_uni =? where id_pro = ?",
+            [nombrep, parseInt(departamento), parseInt(unidad), parseInt(id)]
+        );
+        res.redirect("/check-default-products");
     },
-
-
-
-
-
 };
