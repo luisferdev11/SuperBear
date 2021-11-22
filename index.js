@@ -19,6 +19,9 @@ app.use(cookieParser());
 app.get("/error", function (req, res) {
     res.render("error");
 });
+app.get("/miembros", function (req, res) {
+    res.render("miembros");
+});
 app.set("port", process.env.PORT || 5000);
 app.listen(app.get("port"), function () {
     console.log(
