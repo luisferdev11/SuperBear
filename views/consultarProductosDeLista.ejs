@@ -35,7 +35,7 @@
             <%if(element.id_esProd == 1){%>
             <input id="producto<%= element.id_pro %>" type="checkbox">
             <%}else{%>
-            <input checked id="producto" type="checkbox">
+            <input checked id="producto<%= element.id_pro %>" type="checkbox">
             <%}%>
             <label for="producto<%= element.id_pro %>">
                 <p class="caja">&nbsp</p>
