@@ -5,19 +5,19 @@ const controller = require("./controller");
 const auth = require("../auth/auth");
 
 
-router.get("/", (req, res) => {
-    res.render("index");
+router.get("/admin-index", auth.isAuthenticated, (req, res) => {
+    res.render("admin-index");
 });
 
 
-router.get("/check-default-products", controller.checkDefaultProducts);
+router.get("/check-default-products", auth.isAuthenticated, controller.checkDefaultProducts);
 
-router.get("/create-default-object", (req, res) => {
+router.get("/create-default-object", auth.isAuthenticated, (req, res) => {
     res.render("admin-crearProductoPredeterminado");
     //res.sendFile(path.join(dirname, '/views/iniciarSesion.html'));
 });
-router.get("/delete-default-product/:producto",controller.delete);
-router.get("/edit-default-product/:id",async(req, res) => {
+router.get("/delete-default-product/:producto", auth.isAuthenticated, controller.delete);
+router.get("/edit-default-product/:id", auth.isAuthenticated, async(req, res) => {
     let {id}=req.params;
     let producto = await pool.query("SELECT * FROM dproducto WHERE id_pro = ? ",[id]);
     res.render("admin-editarProductoPredeterminado",{product:producto, id:id});
@@ -29,6 +29,6 @@ router.get("/edit-default-product/:id",async(req, res) => {
 
 module.exports = router;
 
-router.post("/create-default-object", controller.createDefaultObject);
+router.post("/create-default-object", auth.isAuthenticated, controller.createDefaultObject);
 
-router.post("/edit-default-product/:id", controller.editDefaultProduct);
+router.post("/edit-default-product/:id", auth.isAuthenticated, controller.editDefaultProduct);
