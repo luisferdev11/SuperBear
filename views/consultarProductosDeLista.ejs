@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/mastersyle.css">
     <link rel="stylesheet" href="../css/productos.css">
     <link rel="shortcut icon" href="../assets/svg/logo.svg">
-    <title>Despensa | SuperBear</title>
+    <script src="../js/validaciones.js"></script>
+    <title>Lista <%=name%> | SuperBear</title>
 </head>
 <body>
     <%- include('partials/navegacionNormal') %>
@@ -32,12 +33,12 @@
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
             <%console.log(element);%>
-            
             <%if(element.id_esProd == 1){%>
-            <input id="producto<%= element.id_pro %>" type="checkbox" onclick>
+            <input id="producto<%= element.id_pro %>" type="checkbox" onclick="miFunc(<%= element.id_pro%>,<%=element.id_eli %>)">
             <%}else{%>
-            <input checked id="producto<%= element.id_pro %>" type="checkbox">
+            <input checked id="producto<%= element.id_pro %>" type="checkbox" onclick="miFunc()">
             <%}%>
+            
             <label for="producto<%= element.id_pro %>">
                 <p class="caja">&nbsp</p>
             </label>
@@ -85,5 +86,6 @@
     <footer>
         <%- include('partials/footer') %>
     </footer>
+    
 </body>
 </html>

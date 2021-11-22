@@ -4,7 +4,9 @@ let formgrupo1 = document.getElementById("NewGrupoForm");
 let formingresargrupo = document.getElementById("ingresarGrupoForm");
 let editarForm = document.getElementById("editarForm");
 
-
+function miFunc(id_pro, id_eli) {
+    window.location.href = "/estadoProductoLista/"+ id_pro+"/"+ id_eli;
+}  
 
 function validarEmail(email) {
     var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
