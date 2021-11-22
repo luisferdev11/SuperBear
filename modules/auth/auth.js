@@ -13,6 +13,16 @@ function validarLongitud(fecha) {
 }
 
 module.exports = {
+    async isAdmin(req, res, next) {
+        if (req.user.perm == "Admin") next();
+        res.redirect("/misgrupos");
+    },
+
+    async isUsuario(req, res, next) {
+        if (req.user.perm == "Usuario") next();
+        res.redirect("/admin-index");
+    },
+
     async isAuthenticated(req, res, next) {
         if (req.cookies.jwt) {
             console.log(req.cookies.jwt);
