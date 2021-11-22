@@ -39,51 +39,57 @@ module.exports = {
                 "SELECT * FROM egrupo WHERE (id_grp = ?) AND (id_usu=?)",
                 permisos
             );
-            if (id_miembros[0].id_priv == 1 ) {
-    
+            if (id_miembros[0].id_priv == 1) {
+
                 await pool.query("delete from egrupo where id_grp=?", [grupo]);
                 await pool.query("UPDATE `superbear`.`mgrupo` SET `cod_grp` = 'bears' WHERE (`id_grp` = ?)", [grupo]);
                 res.redirect("/misgrupos")
-    
-            } else { res.redirect("/misgrupos") }  
+
+            } else { res.redirect("/misgrupos") }
         } catch (error) {
             res.redirect("/error")
         }
-        
+
     },
     async ingresargrupo(req, res) {
         //en id_usuario se debe de igualar al id que se pasara mediante las sesiones
+        function codigoGrupo(Codigo) {
+            var regex = /^[A-Z0-9-]{5}$/i;
+            return regex.test(Codigo) ? true : false;
+        }
         try {
             const id_usuario = req.user.id_usu;
             const { codigo } = req.body;
-            const id_grupo = await pool.query(
-                "SELECT * FROM mgrupo WHERE cod_grp = ?",
-                [codigo]
-            );
-            const grupo = id_grupo[0].id_grp;
-
-
-
-            try {
-                const misgrupos = await pool.query(
-                    "SELECT * FROM egrupo WHERE (id_usu = ?) AND (id_grp=?)",
-                    [id_usuario, grupo]
+            if (codigoGrupo(codigo)==true) {
+                const id_grupo = await pool.query(
+                    "SELECT * FROM mgrupo WHERE cod_grp = ?",
+                    [codigo]
                 );
-                const validacion = misgrupos[0].id_grp
-                res.render("ingresar-crearGrupo", {
-                    error: "Ya se ingreso a ese grupo",
-                });
-            } catch (error) {
-                await pool.query(
-                    "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
-                    [id_usuario, grupo, 2]
-                );
-                res.redirect("/misgrupos");
+                const grupo = id_grupo[0].id_grp;
 
+                try {
+                    const misgrupos = await pool.query(
+                        "SELECT * FROM egrupo WHERE (id_usu = ?) AND (id_grp=?)",
+                        [id_usuario, grupo]
+                    );
+                    const validacion = misgrupos[0].id_grp
+                    res.render("ingresar-crearGrupo", {
+                        error: "Ya se ingreso a ese grupo",
+                    });
+                } catch (error) {
+                    await pool.query(
+                        "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
+                        [id_usuario, grupo, 2]
+                    );
+                    res.redirect("/misgrupos");
+
+                }
+            } else {
+                res.redirect("/error");
+                console.log(
+                    "Activa el JavaScrit no ingrese caracteres que no sean letras"
+                );
             }
-
-
-
         } catch (error) {
             res.render("ingresar-crearGrupo", {
                 error: "No se encontro el codigo de grupo",
@@ -121,41 +127,51 @@ module.exports = {
         } else { res.redirect("/error") }
     },
     async nuevogrupo(req, res) {
+        function validarNgrupo(Nombre) {
+            var regex = /^[A-Z]{1,20}$/i;
+            return regex.test(Nombre) ? true : false;
+        }
         do {
             const { nombreGrupo } = req.body;
+            if (validarNgrupo(nombreGrupo) == true) {
+                var codigo = generarCodigo();
 
-            var codigo = generarCodigo();
+                if ((await comprobarCodigo(codigo)) == true) {
+                    var confirmacion = true;
+                    let Arraycodigo = [nombreGrupo, codigo];
+                    try {
+                        await pool.query(
+                            "INSERT INTO mgrupo (nom_grp ,cod_grp) VALUES (?,?)",
+                            Arraycodigo
+                        );
 
-            if ((await comprobarCodigo(codigo)) == true) {
-                var confirmacion = true;
-                let Arraycodigo = [nombreGrupo, codigo];
-                try {
-                    await pool.query(
-                        "INSERT INTO mgrupo (nom_grp ,cod_grp) VALUES (?,?)",
-                        Arraycodigo
-                    );
+                        const id_usuario = req.user.id_usu;
 
-                    const id_usuario = req.user.id_usu;
-
-                    const id_grupo = await pool.query(
-                        "SELECT id_grp FROM mgrupo WHERE cod_grp = ?",
-                        [codigo]
-                    );
-                    const grupo = id_grupo[0].id_grp;
-                    await pool.query(
-                        "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
-                        [id_usuario, grupo, 1]
-                    );
-                    res.redirect("/misgrupos");
-                } catch (err) {
-                    console.log(err);
+                        const id_grupo = await pool.query(
+                            "SELECT id_grp FROM mgrupo WHERE cod_grp = ?",
+                            [codigo]
+                        );
+                        const grupo = id_grupo[0].id_grp;
+                        await pool.query(
+                            "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
+                            [id_usuario, grupo, 1]
+                        );
+                        res.redirect("/misgrupos");
+                    } catch (err) {
+                        console.log(err);
+                        res.redirect("/error");
+                    }
+                    confirmacion == true;
+                } else {
                     res.redirect("/error");
+                    console.log(
+                        "ya existe ese codigo o no se genero el codigo de manera correcta"
+                    );
                 }
-                confirmacion == true;
             } else {
                 res.redirect("/error");
                 console.log(
-                    "ya existe ese codigo o no se genero el codigo de manera correcta"
+                    "Activa el JavaScrit no ingrese caracteres que no sean letras"
                 );
             }
         } while (confirmacion == false);
