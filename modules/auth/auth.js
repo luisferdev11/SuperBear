@@ -96,7 +96,6 @@ module.exports = {
                         ) {
                             res.redirect("verificarpswd");
                         } else {
-                            //inicio de sesión OK
                             next();
                         }
                     }
