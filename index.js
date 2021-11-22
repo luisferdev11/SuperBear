@@ -40,5 +40,6 @@ app.use(
     require("./modules/Listas/routes"),
     require("./modules/Productos/routes"),
     require("./modules/noticias/routes"),
-    require("./modules/auth/routes")
+    require("./modules/auth/routes"),
+    require("./modules/invitacion/routes")
 );
