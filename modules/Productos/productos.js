@@ -87,6 +87,50 @@ module.exports = {
             console.log(err);
         }
     },
+    async CrearPredeterminados (req, res){
+        try {
+        const { id_prod } = req.params;
+        const { id_lis } = req.params;
+        console.log(id_prod);
+        console.log(id_lis);
+        const Prod = await pool.query(
+            "select nom_pro, id_mar,  can_pro, id_uni from Dproducto where id_pro = ?",
+            [id_prod]
+        );
+        console.log("pp"+JSON.stringify(Prod));
+        const id_lista = await pool.query(
+            "select id_eli from ELista where id_lst = ?",
+            [id_lis]
+        );
+        await pool.query(
+            "INSERT INTO DProducto (id_eli, nom_pro, id_mar,  can_pro, id_uni, id_tip, id_esProd) VALUES (?,?,?,?,?,2,1)",
+            [id_lista[0].id_eli, Prod[0].nom_pro, Prod[0].id_mar, Prod[0].can_pro, Prod[0].id_uni]
+        );
+        
+        res.redirect('/ConsultarProductos/' + id_lis);
+        } catch (err) {
+            res.redirect('/error');
+            console.log(err);
+        }
+    },
+    async ConsultarPredeterminados (req, res){
+        try {
+        const ideli = req.params;
+        const Prod = await pool.query(
+            "select * from Dproducto where id_tip = 1"
+        );
+        console.log(ideli);
+        console.log("pp"+JSON.stringify(Prod));
+        
+        res.render("agregarProductoPredeterminadoALista", { 
+            id: ideli,
+            Productos: Prod
+        });
+        } catch (err) {
+            res.redirect('/error');
+            console.log(err);
+        }
+    },
     async ConsultarProductos (req, res){
         try {
         const idl = req.params.id_lis;
