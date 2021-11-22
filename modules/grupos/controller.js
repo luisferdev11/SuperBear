@@ -1,3 +1,4 @@
+const { render } = require("ejs");
 const pool = require("../../database");
 
 function generarCodigo() {
@@ -26,6 +27,30 @@ async function comprobarCodigo(codigo) {
 }
 
 module.exports = {
+    async deletegroup(req, res) {
+        //falta hacer un for que nos de todos los ids de los que tienen admin y un if(si arridpriv[i]==req.user.id_usu{})
+        try {
+            const { grupo } = req.params;
+            const idusu = req.user.id_usu;
+            let permisos = [
+                grupo, idusu
+            ]
+            const id_miembros = await pool.query(
+                "SELECT * FROM egrupo WHERE (id_grp = ?) AND (id_usu=?)",
+                permisos
+            );
+            if (id_miembros[0].id_priv == 1 ) {
+    
+                await pool.query("delete from egrupo where id_grp=?", [grupo]);
+                await pool.query("UPDATE `superbear`.`mgrupo` SET `cod_grp` = 'bears' WHERE (`id_grp` = ?)", [grupo]);
+                res.redirect("/misgrupos")
+    
+            } else { res.redirect("/misgrupos") }  
+        } catch (error) {
+            res.redirect("/error")
+        }
+        
+    },
     async ingresargrupo(req, res) {
         //en id_usuario se debe de igualar al id que se pasara mediante las sesiones
         try {
@@ -60,7 +85,6 @@ module.exports = {
 
 
         } catch (error) {
-            console.log(error);
             res.render("ingresar-crearGrupo", {
                 error: "No se encontro el codigo de grupo",
             });
@@ -106,7 +130,6 @@ module.exports = {
                 var confirmacion = true;
                 let Arraycodigo = [nombreGrupo, codigo];
                 try {
-                    console.log(codigo);
                     await pool.query(
                         "INSERT INTO mgrupo (nom_grp ,cod_grp) VALUES (?,?)",
                         Arraycodigo

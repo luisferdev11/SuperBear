@@ -49,14 +49,6 @@
                                 <img src="assets/svg/IconoGruposSuperBear.svg" />
                                 <b> 10 miembros </b>
                             </a>
-                            <% }else{ %>
-
-                                <a href="/miembrosdegrupo/<%=user.grps[i].id_grp %>">
-                                    <img src="assets/svg/IconoGruposSuperBear.svg" />
-                                    <b> 10 miembros </b>
-                                </a>
-                            <% } %>
-
                             <label for="menu-<%= i %> ">
                                 <img class="opciones" src="assets/svg/options.svg" />
                                 <input id="menu-<%= i %> " type="checkbox" />
@@ -64,11 +56,20 @@
                                     <a href="editarNombreGrupo-administradorDeGrupo.html" class="b">
                                         Renombrar Grupo
                                     </a>
-                                    <a href="consultarGrupos.html" class="b">
+                                    <a href="/deletegroup/<%=user.grps[i].id_grp%>" class="b">
                                         Borrar Grupo
                                     </a>
                                 </div>
                             </label>
+                            <% }else{ %>
+
+                                <a href="/miembrosdegrupo/<%=user.grps[i].id_grp%>">
+                                    <img src="assets/svg/IconoGruposSuperBear.svg" />
+                                    <b> 10 miembros </b>
+                                </a>
+                            <% } %>
+
+                            
                     </div>
                     <div class="contenido-grupo">
                         <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
