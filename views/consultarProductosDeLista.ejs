@@ -36,7 +36,7 @@
             <%if(element.id_esProd == 1){%>
             <input id="producto<%= element.id_pro %>" type="checkbox" onclick="miFunc(<%= element.id_pro%>,<%=element.id_eli %>)">
             <%}else{%>
-            <input checked id="producto<%= element.id_pro %>" type="checkbox" onclick="miFunc()">
+            <input checked id="producto<%= element.id_pro %>" type="checkbox" onclick="miFunc(<%= element.id_pro%>,<%=element.id_eli %>)">
             <%}%>
             
             <label for="producto<%= element.id_pro %>">
