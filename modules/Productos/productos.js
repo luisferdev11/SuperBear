@@ -113,15 +113,54 @@ module.exports = {
             const productos = await pool.query(
                 "select * from dproducto where id_eli = ?",
                 [miembro]
-                );        
+                );       
+            console.log("estos son los productos"+JSON.stringify(productos));  
+            console.log("tamaño "+JSON.stringify(productos[0]));  
+            var prod = [];
+            
+            for (let i = 0; i < productos.length; i++) {
+                var mar = await pool.query(
+                    "select Marca from CMarca where id_mar = ?",
+                    [productos[i].id_mar]
+                );
+                var dep = await pool.query(
+                    "select nom_dep from CDepartamento where id_dep = ?",
+                    [productos[i].id_dep]
+                );
+                var uni = await pool.query(
+                    "select unidad from CUnidad where id_uni = ?",
+                    [productos[i].id_uni]
+                );
+                var sup = await pool.query(
+                    "select nom_sup from CSupermercado where id_sup = ?",
+                    [productos[i].id_sup]
+                );
+
+                var pro = {
+                    id_pro: productos[i].id_pro,
+                    nom_pro: productos[i].nom_pro,
+                    can_pro: productos[i].can_pro,
+                    precio_pro: productos[i].precio_pro,
+                    notas_pro: productos[i].notas_pro,
+                    id_tip: productos[i].id_tip,
+                    id_mar: mar[0].Marca,
+                    id_dep: dep[0].nom_dep,
+                    id_uni: uni[0].unidad,
+                    id_sup: sup[0].nom_sup,
+                    id_esProd: productos[i].id_esProd,
+                    id_eli: productos[i].id_eli
+                };
+                prod.push(pro);
+                console.log(pro);
+            }    
 
             console.log(JSON.stringify(productos));
             console.log(idl);
             console.log(grupo);
             console.log(nomb);
-            console.log(productos);
+            
             res.render("consultarProductosDeLista", {
-                productos: productos,
+                productos: prod,
                 idLista: idl,
                 grupo: grupo,
                 name: nomb

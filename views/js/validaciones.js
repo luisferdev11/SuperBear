@@ -3,6 +3,9 @@ let formsignup = document.getElementById("registroForm");
 let formgrupo1 = document.getElementById("NewGrupoForm");
 let formingresargrupo = document.getElementById("ingresarGrupoForm");
 let editarForm = document.getElementById("editarForm");
+
+
+
 function validarEmail(email) {
     var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
     return regex.test(email) ? true : false;

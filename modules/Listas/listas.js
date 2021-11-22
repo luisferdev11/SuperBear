@@ -146,22 +146,23 @@ module.exports = {
     },
     async DuplicarLista(req, res){
         try {
-            const id = req.user.id_usu;
             const idg = req.params.id_grp;
             const idl = req.params.id_lis;
         
             const Clista = await pool.query(
-                "select * from mlista where id_lis = ?",
+                "select nom_lis from mlista where id_lis = ?",
                 [idl]
             );
+            console.log("------------"+idl);
+            console.log("------------"+Clista);
             const Edup = await pool.query(
                 "select id_eli from elista where id_lst = ?",
                 [idl]
             );
             
-            const Nombre = Clista.nom_lis;
+            const Nombre = Clista[0].nom_lis;
             await pool.query(
-                "INSERT INTO mlista (nom_lis, fec_lis, id_esl, tot_list) VALUES (?,CURDATE(),1,0.0)",
+                "INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)",
                 [Nombre]
             );
             const id_lista = await pool.query(
