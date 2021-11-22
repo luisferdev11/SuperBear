@@ -33,7 +33,7 @@
 
             <select name="Marca">
                 <% Marca.forEach(element => { %>
-                    <option value="<%=element.id_mar %>"><%=element.id_mar %> x<%=element.Marca%></option>
+                    <option value="<%=element.id_mar %>"><%=element.Marca%></option>
                     <%}); %>
             </select>
             
@@ -44,7 +44,7 @@
             </p>
             <select name="supermercado">
                 <% Super.forEach(element => { %>
-                <option value="<%=element.id_sup %>"><%=element.id_sup%> x<%=element.nom_sup%></option>
+                <option value="<%=element.id_sup %>"><%=element.nom_sup%></option>
                 <%}); %>
             </select>
                         <p class="rojo" id="msgerror3"></p>
@@ -54,7 +54,7 @@
             </p>
             <select name="Depa">
                 <% Depa.forEach(element => { %>
-                    <option value=" <%=element.id_dep %>"><%=element.id_dep%> x<%=element.nom_dep%></option>
+                    <option value=" <%=element.id_dep %>"><%=element.nom_dep%></option>
                     <%}); %>
             </select>
             <p class="seccion">
@@ -68,7 +68,7 @@
             </p>
             <select name="Unidad">
                 <% Uni.forEach(element => { %>
-                    <option value=" <%=element.id_uni %>"><%=element.id_uni%> x<%=element.unidad%></option>
+                    <option value=" <%=element.id_uni %>"><%=element.unidad%></option>
                     <%}); %>
             </select>
             <p class="seccion">
@@ -82,7 +82,7 @@
             </p>
             <input type="text" placeholder="Anotaciones" id="inputanotaciones" name="Anotaciones">
             <p class="rojo" id="msgerror6"></p>
-            <input type="text" value="<%=id.id_lis%>" readonly name="id_lis" >
+            <input type="text" style="display: none;" value="<%=id.id_lis%>" readonly name="id_lis" >
             <br>
             <br>
             <div class="contenedor-boton">
