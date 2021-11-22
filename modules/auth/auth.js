@@ -4,11 +4,11 @@ const pool = require("../../database");
 const { promisify } = require("util");
 const { env } = require("../../credenciales");
 
-function validarLongitud(mes) {
-    if (mes < 10) {
-        return `0${mes}`;
+function validarLongitud(fecha) {
+    if (fecha < 10) {
+        return `0${fecha}`;
     } else {
-        return mes;
+        return fecha;
     }
 }
 
@@ -27,7 +27,7 @@ module.exports = {
                     [decodificada.id],
                     (error, results) => {
                         if (!results) {
-                            return next();
+                            res.redirect("/login");
                         }
                         req.user = results[0];
 
@@ -45,7 +45,7 @@ module.exports = {
                 );
             } catch (error) {
                 console.log(error);
-                return next();
+                res.redirect("/login");
             }
         } else {
             res.redirect("/login");
