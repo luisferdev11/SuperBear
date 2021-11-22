@@ -27,7 +27,7 @@ module.exports = {
                     [decodificada.id],
                     (error, results) => {
                         if (!results) {
-                            return next();
+                            res.redirect("/login");
                         }
                         req.user = results[0];
 
@@ -45,7 +45,7 @@ module.exports = {
                 );
             } catch (error) {
                 console.log(error);
-                return next();
+                res.redirect("/login");
             }
         } else {
             res.redirect("/login");
