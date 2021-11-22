@@ -48,11 +48,7 @@ module.exports = {
 
             console.log(JSON.stringify(listas));
 
-            res.render("consultarListasDeGrupo", {
-                listas: listas,
-                idgrupo: grupo,
-                nombre: nomGrp[0].nom_grp
-            });
+            res.redirect('/consultarlistas/' + grupo);
             
             
         } catch (err) {
@@ -102,6 +98,7 @@ module.exports = {
     }, 
     async ConsultarListas(req, res){
         try {
+            let preview = new Array();
             const idgrupo = req.params.id_grp;
             const nomGrp = await pool.query(
                 "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
@@ -129,14 +126,24 @@ module.exports = {
                     );
                 listas.push(list[0]);
             }
-
-            console.log(JSON.stringify(listas));
-            console.log(idgrupo);
-
+            for(let a = 0; a < listas.length; a++){
+                let id = await pool.query('select id_eli from elista where id_lst=' + listas[a].id_lis + ';');
+                id = id[0].id_eli;
+                let prodLista = await pool.query('select * from dproducto where id_eli=' + id + ';');
+                for(var i = 0; i < 2; i++){
+                    if(prodLista[i] == undefined){
+                        preview.push('estoesuntextolargocomoplaceholder');
+                    }else{
+                        preview.push(prodLista[i]);
+                    }
+                }
+            };
+            console.log(preview);
             res.render("consultarListasDeGrupo", {
                 listas: listas,
                 idgrupo: idgrupo,
-                nombre: grupo
+                nombre: grupo,
+                preview
             });
             
         } catch (err) {
