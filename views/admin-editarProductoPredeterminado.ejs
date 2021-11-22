@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/formularios.css">
-    <link rel="stylesheet" href="css/datosProducto.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <link rel="stylesheet" href="../css/mastersyle.css">
+    <link rel="stylesheet" href="../css/formularios.css">
+    <link rel="stylesheet" href="../css/datosProducto.css">
+    <link rel="shortcut icon" href="../assets/svg/logo.svg">
     <title>Editar Producto | SuperBear</title>
 </head>
 <body>
     <nav class="flecha">
-        <a href="admin-consultarProductosPredeterminados.html">
-            <img src="assets/svg/flecha.svg">
+        <a href="/check-default-products">
+            <img src="../assets/svg/flecha.svg">
         </a>
     </nav>
     <div class="principal">
@@ -22,31 +22,50 @@
         </h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="admin-consultarProductosPredeterminados.html">
+        <form action="/edit-default-product/:id" method="post" id="FormObjAdmin" value="<%= product[0].id_pro%>">
             <p class="seccion">
                 Nombre:
             </p>
-            <input type="text" placeholder="Nombre">
+            <input type="text" placeholder="Nombre" name="nombrep" value="<%= product[0].nom_pro%>">
             <p class="seccion">
                 Departamento:
             </p>
-            <select>
+            <select name="departamento" value="<%= product[0].id_dep%>">
                 <option selected class="no">Departamento</option>
-                <option>Frutas y Verduras</option>
-                <option>Videojuegos</option>
+                <option value=1>Frutas y Verduras</option>
+                <option value=2>Abarrotes</option>
+                <option value=3>Lacteos</option>
+                <option value=4>Carnes, Pescados y Mariscos</option>
+                <option value=5>Salchichoneria</option>
+                <option value=6>Panaderia y Tortilleria</option>
+                <option value=7>Bebidas y Licores</option>
+                <option value=8>Congelados</option>
+                <option value=9>Limpieza para el Hogar</option>
+                <option value=10>Detergente y Suavizante</option>
+                <option value=11>Mascotas</option>
+                <option value=12>Bebes</option>
+                <option value=13>Farmacia</option>
+                <option value=14>Higenie y Belleza</option>
+                <option value=15>Electronica</option>
+                <option value=16>Articulos para el Hogar y Autos</option>
+                <option value=17>Ropa y Zapateria</option>
+                <option value=18>Jugueteria y Deportes</option>
             </select>
             <p class="seccion">
                 Unidad:
             </p>
-            <select>
-                <option selected>Unidad</option>
-                <option>Kilogramo</option>
-                <option>Litro</option>
+            <select name="unidad" value="<%= product[0].id_uni%>">
+                <option value=1>Litro</option>
+                <option value=2>Mililitro</option>
+                <option value=3>Kilogramo</option>
+                <option value=4>Gramo</option>
+                <option value=5>Unidad</option>
             </select>
             <br>
             <br>
+                <input class="b" type="text" value="<%=id%>" name="id" hidden>
             <div class="contenedor-boton">
-                <input class="b" type="submit" value="Guardar">
+                <input class="b" type="submit" value="Editar">
             </div>
         </form>
     </div>

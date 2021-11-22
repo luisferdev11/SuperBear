@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="shortcut icon" href="assets/svg/logo.svg">
     <title>Productos Predeterminados | SuperBear</title>
 </head>
+
 <body>
     <!--Cada grupo debe tener su propio menu
     para eso es necesario que cada input tenga un id diferentes
@@ -17,63 +19,35 @@
     <div class="principal">
         <header>
             <h1>Productos</h1>
-            <a href="admin-crearProductoPredeterminado.html">
+            <a href="/create-default-object">
                 <img src="assets/svg/plus.svg">
             </a>
         </header>
     </div>
     <div class="grid">
-        <div class="producto-predeterminado">
-            <h3>
-                Manzanas
-            </h3>
-            <label for="menu-1">
-                <img class="opciones" src="assets/svg/options.svg">
-                <input id="menu-1" type="checkbox">
-                <div class="desplegable">
-                    <a href="admin-editarProductoPredeterminado.html" class="b">
-                        Editar Producto
-                    </a>
-                    <a href="" class="b">
-                        Borrar Producto
-                    </a>
-                </div>
-            </label>
-        </div>
-        <div class="producto-predeterminado">
-            <h3>
-                Manzanas
-            </h3>
-            <label for="menu-2">
-                <img class="opciones" src="assets/svg/options.svg">
-                <input id="menu-2" type="checkbox">
-                <div class="desplegable">
-                    <a href="admin-editarProductoPredeterminado.html" class="b">
-                        Editar Producto
-                    </a>
-                    <a href="" class="b">
-                        Borrar Producto
-                    </a>
-                </div>
-            </label>
-        </div>
-        <div class="producto-predeterminado">
-            <h3>
-                Manzanas
-            </h3>
-            <label for="menu-3">
-                <img class="opciones" src="assets/svg/options.svg">
-                <input id="menu-3" type="checkbox">
-                <div class="desplegable">
-                    <a href="admin-editarProductoPredeterminado.html" class="b">
-                        Editar Producto
-                    </a>
-                    <a href="" class="b">
-                        Borrar Producto
-                    </a>
-                </div>
-            </label>
-        </div>
+
+        <% for (let i=0; i < product.length; i++ ) { %>
+            <div class="producto-predeterminado">
+                <h3>
+                    <%= product[i].nom_pro %>
+                </h3>
+                <label for="menu-<%=i%>">
+                    <img class="opciones" src="assets/svg/options.svg">
+                    <input id="menu-<%=i%>" type="checkbox">
+                    <div class="desplegable">
+                        <a href="/edit-default-product/<%=product[0].id_pro%>" class="b">
+                            Editar Producto
+                        </a>
+                        <a href="/delete-default-product/<%=product[0].id_pro%>" class="b">
+                            Borrar Producto
+                        </a>
+                    </div>
+                </label>
+            </div>
+            <% } %>
+
+
     </div>
 </body>
+
 </html>

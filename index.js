@@ -41,5 +41,6 @@ app.use(
     require("./modules/Productos/routes"),
     require("./modules/noticias/routes"),
     require("./modules/auth/routes"),
-    require("./modules/invitacion/routes")
+    require("./modules/invitacion/routes"),
+    require("./modules/admin/routes")
 );

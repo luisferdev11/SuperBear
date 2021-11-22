@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="flecha">
-        <a href="admin-consultarProductosPredeterminados.html">
+        <a href="/check-default-products">
             <img src="assets/svg/flecha.svg">
         </a>
     </nav>
@@ -22,26 +22,45 @@
         </h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="admin-consultarProductosPredeterminados.html">
+        <form action="/create-default-object" method="post" id="FormObjAdmin">
             <p class="seccion">
                 Nombre:
             </p>
-            <input type="text" placeholder="Nombre">
+            <input type="text" placeholder="Nombre" name="nombrep">
             <p class="seccion">
                 Departamento:
             </p>
-            <select>
+            <select name="departamento">
                 <option selected class="no">Departamento</option>
-                <option>Frutas y Verduras</option>
-                <option>Videojuegos</option>
+                <option value=1>Frutas y Verduras</option>
+                <option value=2>Abarrotes</option>
+                <option value=3>Lacteos</option>
+                <option value=4>Carnes, Pescados y Mariscos</option>
+                <option value=5>Salchichoneria</option>
+                <option value=6>Panaderia y Tortilleria</option>
+                <option value=7>Bebidas y Licores</option>
+                <option value=8>Congelados</option>
+                <option value=9>Limpieza para el Hogar</option>
+                <option value=10>Detergente y Suavizante</option>
+                <option value=11>Mascotas</option>
+                <option value=12>Bebes</option>
+                <option value=13>Farmacia</option>
+                <option value=14>Higenie y Belleza</option>
+                <option value=15>Electronica</option>
+                <option value=16>Articulos para el Hogar y Autos</option>
+                <option value=17>Ropa y Zapateria</option>
+                <option value=18>Jugueteria y Deportes</option>
             </select>
             <p class="seccion">
                 Unidad:
             </p>
-            <select>
+            <select name="unidad">
                 <option selected>Unidad</option>
-                <option>Kilogramo</option>
-                <option>Litro</option>
+                <option value=1>Litro</option>
+                <option value=2>Mililitro</option>
+                <option value=3>Kilogramo</option>
+                <option value=4>Gramo</option>
+                <option value=5>Unidad</option>
             </select>
             <br>
             <br>
