@@ -25,15 +25,15 @@
         </h1>
     </div>
     <div class="contenedor-formulario">
-        <form method="post" action="/editarProductoDeLista/<%= id_prod %>/<% id_lis %>">
+        <form method="post" action="/editarProductosDeLista/<%= id_prod %>/<%= id_lis %>">
             <p class="seccion">
                 Nombre
             </p> 
-            <input type="text" value="<%= producto[0].nom_pro %>" placeholder="Nombre" id="inputnombre">
+            <input name="nombre" type="text" value="<%= producto[0].nom_pro %>" placeholder="Nombre" id="inputnombre">
             <p class="seccion">
                 Marca
             </p>
-            <select name="Marca">
+            <select name="marca">
                 <% Marca.forEach(element => { %>
                     <option <% if(producto[0].id_mar == element.id_mar){%> selected <% } %> value="<%=element.id_mar %>"><%=element.Marca%></option>
                     <%}); %>
@@ -49,7 +49,7 @@
             <p class="seccion">
                 Departamento
             </p>
-            <select name="Depa">
+            <select name="depa">
                 <% Depa.forEach(element => { %>
                     <option <% if(producto[0].id_dep == element.id_dep){%> selected <% } %> value="<%=element.id_dep %>"><%=element.nom_dep%></option>
                     <%}); %>
@@ -57,11 +57,11 @@
             <p class="seccion">
                 Cantidad
             </p>
-            <input value="<%= producto[0].can_pro %>" type="number" placeholder="Cantidad" id="inputcantidad">
+            <input name="cantidad" value="<%= producto[0].can_pro %>" type="number" placeholder="Cantidad" id="inputcantidad">
             <p class="seccion">
                 Unidad
             </p>
-            <select name="Unidad">
+            <select name="unidad">
                 <% Uni.forEach(element => { %>
                     <option <% if(producto[0].id_uni == element.id_uni){%> selected <% } %> value="<%=element.id_uni %>"><%=element.unidad%></option>
                     <%}); %>
@@ -69,11 +69,11 @@
             <p class="seccion">
                 Precio
             </p>
-            <input type="number" value="<%= producto[0].precio_pro %>" placeholder="Precio $" id="inputprecio">
+            <input name="precio" type="number" value="<%= producto[0].precio_pro %>" placeholder="Precio $" id="inputprecio">
             <p class="seccion">
                 Anotaciones
             </p>
-            <input type="text" value="<%= producto[0].notas_pro %>" placeholder="Anotaciones" id="inputanotaciones">
+            <input name="anotaciones" type="text" value="<%= producto[0].notas_pro %>" placeholder="Anotaciones" id="inputanotaciones">
             <br>
             <br>
             <div class="contenedor-boton">

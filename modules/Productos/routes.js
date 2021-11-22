@@ -13,5 +13,6 @@ router.get('/editarProductoDeLista/:id_prod/:id_lis', auth.isAuthenticated, cont
 // AQUI VAN LOS POST
 
 router.post("/CrearProducto/:id_lis", auth.isAuthenticated, controller.CrearProducto);
+router.post('/editarProductosDeLista/:id_prod/:id_lis', auth.isAuthenticated, controller.editarProducto);
 
 module.exports = router;
