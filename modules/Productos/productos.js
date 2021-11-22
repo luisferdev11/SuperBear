@@ -108,22 +108,18 @@ module.exports = {
             for (let i = 0; i < eli.length; i++) {
                 const miembro = eli[i].id_eli;
                 id_e.push(miembro);
-            }            
-            var productos = [];
-            for (let i = 0; i < id_e.length; i++) {
-                const miembro = id_e[i];
-                const list = await pool.query(
-                    "select * from dproducto where id_eli = ?",
-                    [miembro]
-                    );
-                productos.push(list[0]);
             }
+            const miembro = id_e[0];
+            const productos = await pool.query(
+                "select * from dproducto where id_eli = ?",
+                [miembro]
+                );        
 
             console.log(JSON.stringify(productos));
             console.log(idl);
             console.log(grupo);
             console.log(nomb);
-
+            console.log(productos);
             res.render("consultarProductosDeLista", {
                 productos: productos,
                 idLista: idl,
