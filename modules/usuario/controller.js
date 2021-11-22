@@ -30,7 +30,7 @@ module.exports = {
             );
             res.render("iniciarSesion");
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },
@@ -141,7 +141,7 @@ module.exports = {
             );
             res.redirect("misgrupos");
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },
