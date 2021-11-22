@@ -56,7 +56,7 @@ module.exports = {
             
             
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },async grupo(req, res) {
@@ -76,7 +76,7 @@ module.exports = {
             );
             res.render("consultarListaDeGrupo");
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },
@@ -96,7 +96,7 @@ module.exports = {
             
             res.redirect("/consultarlistas/"+grp);
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     }, 
@@ -140,7 +140,7 @@ module.exports = {
             });
             
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },
@@ -198,7 +198,7 @@ module.exports = {
             }
             res.redirect("/consultarlistas/"+idg);
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     }
