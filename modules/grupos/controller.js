@@ -32,24 +32,24 @@ module.exports = {
         try {
             const { grupo } = req.params;
             const idusu = req.user.id_usu;
-            let permisos = [
-                grupo, idusu
-            ]
+            let permisos = [grupo, idusu];
             const id_miembros = await pool.query(
                 "SELECT * FROM egrupo WHERE (id_grp = ?) AND (id_usu=?)",
                 permisos
             );
             if (id_miembros[0].id_priv == 1) {
-
                 await pool.query("delete from egrupo where id_grp=?", [grupo]);
-                await pool.query("UPDATE `superbear`.`mgrupo` SET `cod_grp` = 'bears' WHERE (`id_grp` = ?)", [grupo]);
-                res.redirect("/misgrupos")
-
-            } else { res.redirect("/misgrupos") }
+                await pool.query(
+                    "UPDATE `superbear`.`mgrupo` SET `cod_grp` = 'bears' WHERE (`id_grp` = ?)",
+                    [grupo]
+                );
+                res.redirect("/misgrupos");
+            } else {
+                res.redirect("/misgrupos");
+            }
         } catch (error) {
-            res.redirect("/error")
+            res.redirect("/error");
         }
-
     },
     async ingresargrupo(req, res) {
         //en id_usuario se debe de igualar al id que se pasara mediante las sesiones
@@ -60,7 +60,7 @@ module.exports = {
         try {
             const id_usuario = req.user.id_usu;
             const { codigo } = req.body;
-            if (codigoGrupo(codigo)==true) {
+            if (codigoGrupo(codigo) == true) {
                 const id_grupo = await pool.query(
                     "SELECT * FROM mgrupo WHERE cod_grp = ?",
                     [codigo]
@@ -72,7 +72,7 @@ module.exports = {
                         "SELECT * FROM egrupo WHERE (id_usu = ?) AND (id_grp=?)",
                         [id_usuario, grupo]
                     );
-                    const validacion = misgrupos[0].id_grp
+                    const validacion = misgrupos[0].id_grp;
                     res.render("ingresar-crearGrupo", {
                         error: "Ya se ingreso a ese grupo",
                     });
@@ -82,7 +82,6 @@ module.exports = {
                         [id_usuario, grupo, 2]
                     );
                     res.redirect("/misgrupos");
-
                 }
             } else {
                 res.redirect("/error");
@@ -101,19 +100,24 @@ module.exports = {
         const { grupo } = req.params;
         const { id } = req.params;
         const idusu = req.user.id_usu;
-        let permisos = [
-            grupo, idusu
-        ]
+        let permisos = [grupo, idusu];
         const id_miembros = await pool.query(
             "SELECT * FROM egrupo WHERE (id_grp = ?) AND (id_usu=?)",
             permisos
         );
         if (id_miembros[0].id_priv == 1 && id != req.user.id_usu) {
             let Deletegrupo = [id, grupo];
-            let id_egrupo = await pool.query("select id_egp from egrupo where (id_usu=?) AND (id_grp=?)", Deletegrupo);
-            await pool.query("delete from egrupo where id_egp=?", [id_egrupo[0].id_egp]);
+            let id_egrupo = await pool.query(
+                "select id_egp from egrupo where (id_usu=?) AND (id_grp=?)",
+                Deletegrupo
+            );
+            await pool.query("delete from egrupo where id_egp=?", [
+                id_egrupo[0].id_egp,
+            ]);
             res.redirect(`/consultarmiembros/${grupo}`);
-        } else { res.redirect("/error") }
+        } else {
+            res.redirect("/error");
+        }
     },
     async abandonargrupo(req, res) {
         const { grupo } = req.params;
@@ -121,10 +125,17 @@ module.exports = {
 
         if (id == req.user.id_usu) {
             let Deletegrupo = [id, grupo];
-            let id_egrupo = await pool.query("select id_egp from egrupo where (id_usu=?) AND (id_grp=?)", Deletegrupo);
-            await pool.query("delete from egrupo where id_egp=?", [id_egrupo[0].id_egp]);
-            res.redirect('/misgrupos');
-        } else { res.redirect("/error") }
+            let id_egrupo = await pool.query(
+                "select id_egp from egrupo where (id_usu=?) AND (id_grp=?)",
+                Deletegrupo
+            );
+            await pool.query("delete from egrupo where id_egp=?", [
+                id_egrupo[0].id_egp,
+            ]);
+            res.redirect("/misgrupos");
+        } else {
+            res.redirect("/error");
+        }
     },
     async nuevogrupo(req, res) {
         function validarNgrupo(Nombre) {
@@ -239,14 +250,14 @@ module.exports = {
                 [grupo]
             );
             const code = codigo_grupo[0].cod_grp;
-            let host = req.get('host');
+            let host = req.get("host");
             res.render("consultarMiembrosyCodigoDeGrupo-administadorDeGrupo", {
                 grup: grupo,
                 data: code,
                 miembros: arrmiembros,
                 privilegio: arrprivilegios,
                 id: arrid,
-                host
+                host,
             });
         } catch (error) {
             console.log(error);
@@ -269,9 +280,7 @@ module.exports = {
                     if (!results || results.length === 0) {
                         res.render("consultarGrupos", { user: req.user });
                     }
-                    console.log(JSON.stringify(results));
                     req.user.grps = results;
-                    console.log(req.user.grps.length);
                     res.render("consultarGrupos", { user: req.user });
                 }
             );
