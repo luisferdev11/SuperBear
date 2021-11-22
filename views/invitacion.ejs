@@ -15,7 +15,7 @@
 <body>
     <nav>
         <a href="/sign-up"><b>Regístrate</b></a>
-        <a href="iniciarSesion.html"><b>Accede</b></a>
+        <a href="/login"><b>Accede</b></a>
     </nav>
     <div class="principal">
         <h1>Bienvenido a SuperBear</h1>
@@ -38,7 +38,10 @@
         Código copiado al portapapeles
     </b>
     <br>
-    <script src="js/copiarCodigo.js"></script>
-    <script src="js/obtenerCodigo.js"></script>
+    <script src="../js/copiarCodigo.js"></script>
+    <script>const url = window.location.search;
+        const parametros = new URLSearchParams(url);
+        const codigo = parametros.get('codigo');
+        document.getElementById('codigo').value = codigo;</script>
 </body>
 </html>

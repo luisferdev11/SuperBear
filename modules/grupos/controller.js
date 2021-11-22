@@ -223,13 +223,14 @@ module.exports = {
                 [grupo]
             );
             const code = codigo_grupo[0].cod_grp;
-
+            let host = req.get('host');
             res.render("consultarMiembrosyCodigoDeGrupo-administadorDeGrupo", {
                 grup: grupo,
                 data: code,
                 miembros: arrmiembros,
                 privilegio: arrprivilegios,
                 id: arrid,
+                host
             });
         } catch (error) {
             console.log(error);
