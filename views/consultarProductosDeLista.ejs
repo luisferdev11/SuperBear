@@ -32,8 +32,9 @@
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
             <%console.log(element);%>
+            
             <%if(element.id_esProd == 1){%>
-            <input id="producto<%= element.id_pro %>" type="checkbox">
+            <input id="producto<%= element.id_pro %>" type="checkbox" onclick>
             <%}else{%>
             <input checked id="producto<%= element.id_pro %>" type="checkbox">
             <%}%>
@@ -59,7 +60,7 @@
                             <%=element.can_pro%> <%=element.id_uni%>
                         </b>
                         <b class="linea">
-                            <%=element.precio_pro%>
+                            $ <%=element.precio_pro%>
                         </b>
                         <b class="linea">
                             <%=element.id_mar %>

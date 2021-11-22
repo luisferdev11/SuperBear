@@ -9,7 +9,7 @@ const auth = require("../auth/auth");
 router.get("/consultarlistas/:id_grp", controller.ConsultarListas);
 router.get("/crearlista/:id_grp", controller.grupo);
 router.get("/Borrarlista/:id_lis/:id_grp", controller.borrarLista);
-router.get('/DuplicarLista/:id_lis/:id_grp', controller.DuplicarLista);
+router.get('/Duplicarlista/:id_lis/:id_grp', controller.DuplicarLista);
 
 
 // AQUI VAN LOS POST
