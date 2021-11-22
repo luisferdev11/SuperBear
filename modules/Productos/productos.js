@@ -60,7 +60,7 @@ module.exports = {
             );
             res.redirect("/ConsultarProductos/"+id_lis);
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },async ConsultarCatalogo (req, res){
@@ -83,7 +83,7 @@ module.exports = {
             Super: Super
         });
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },
@@ -132,7 +132,7 @@ module.exports = {
             });
             
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },
@@ -176,14 +176,18 @@ module.exports = {
     },
 
     async borrarProducto(req, res){
-        let { id_prod } = req.params;
-        let { id_lis } = req.params;
-        console.log(id_prod);
-        console.log(id_lis);
-        await pool.query('delete from dproducto where id_pro=' +  id_prod + ' and id_eli=' + id_lis + ';');
-        let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
-        let enlace = '/ConsultarProductos/' + grupo[0].id_lst;
-        res.redirect(enlace);
+        try{
+            let { id_prod } = req.params;
+            let { id_lis } = req.params;
+            console.log(id_prod);
+            console.log(id_lis);
+            await pool.query('delete from dproducto where id_pro=' +  id_prod + ' and id_eli=' + id_lis + ';');
+            let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+            let enlace = '/ConsultarProductos/' + grupo[0].id_lst;
+            res.redirect(enlace);
+        }catch{
+            res.redirect('/error');
+        }
     }
 
 };
