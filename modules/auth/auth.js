@@ -19,8 +19,11 @@ module.exports = {
     },
 
     async isUsuario(req, res, next) {
-        if (req.user.perm == "Usuario") next();
-        res.redirect("/admin-index");
+        if (req.user.perm == "Usuario") {
+            next();
+        } else {
+            res.redirect("/admin-index");
+        }
     },
 
     async isAuthenticated(req, res, next) {
