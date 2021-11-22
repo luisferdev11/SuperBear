@@ -32,6 +32,7 @@
         <% productos.forEach(element => { %>
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
+            <%console.log(element);%>
             <%if(element.id_esProd == 1){%>
             <input id="producto<%= element.id_pro %>" type="checkbox">
             <%}else{%>
@@ -49,7 +50,7 @@
                             </h2>
                         </a>
                     </div>
-                    <a>
+                    <a href="/borrarProductoLista/<%= element.id_pro %>/<%= element.id_eli %>">
                         <img src="../assets/svg/basura.svg">
                     </a>
                 </div>

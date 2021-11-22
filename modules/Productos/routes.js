@@ -10,6 +10,8 @@ const auth = require("../auth/auth");
 router.get("/CrearProducto/:id_lis", auth.isAuthenticated, controller.ConsultarCatalogo);
 router.get('/ConsultarProductos/:id_lis', auth.isAuthenticated, controller.ConsultarProductos);
 router.get('/editarProductoDeLista/:id_prod/:id_lis', auth.isAuthenticated, controller.redirectEditar);
+router.get('/borrarProductoLista/:id_prod/:id_lis', auth.isAuthenticated, controller.borrarProducto);
+
 // AQUI VAN LOS POST
 
 router.post("/CrearProducto/:id_lis", auth.isAuthenticated, controller.CrearProducto);

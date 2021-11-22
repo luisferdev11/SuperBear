@@ -166,13 +166,24 @@ module.exports = {
             let { unidad } = req.body;
             let { precio } = req.body;
             let { anotaciones } = req.body;
-            let id_grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
-            let enlace = '/ConsultarProductos/' + id_grupo[0].id_lst;
+            let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+            let enlace = '/ConsultarProductos/' + grupo[0].id_lst;
             await pool.query('update dproducto set can_pro=' + cantidad + ', nom_pro="' + nombre + '", precio_pro=' + precio + ', notas_pro="' + anotaciones + '", id_mar=' + marca + ', id_dep=' + depa + ', id_uni=' + unidad + ', id_sup=' + supermercado + ' where id_pro=' + id_prod + ' and id_eli=' + id_lis + ';');
             res.redirect(enlace);
         }catch{
             res.redirect('/error');
         }
+    },
+
+    async borrarProducto(req, res){
+        let { id_prod } = req.params;
+        let { id_lis } = req.params;
+        console.log(id_prod);
+        console.log(id_lis);
+        await pool.query('delete from dproducto where id_pro=' +  id_prod + ' and id_eli=' + id_lis + ';');
+        let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+        let enlace = '/ConsultarProductos/' + grupo[0].id_lst;
+        res.redirect(enlace);
     }
 
 };
