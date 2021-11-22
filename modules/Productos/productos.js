@@ -60,7 +60,7 @@ module.exports = {
             );
             res.redirect("/ConsultarProductos/"+id_lis);
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },async ConsultarCatalogo (req, res){
@@ -83,7 +83,7 @@ module.exports = {
             Super: Super
         });
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
     },
@@ -108,22 +108,18 @@ module.exports = {
             for (let i = 0; i < eli.length; i++) {
                 const miembro = eli[i].id_eli;
                 id_e.push(miembro);
-            }            
-            var productos = [];
-            for (let i = 0; i < id_e.length; i++) {
-                const miembro = id_e[i];
-                const list = await pool.query(
-                    "select * from dproducto where id_eli = ?",
-                    [miembro]
-                    );
-                productos.push(list[0]);
             }
+            const miembro = id_e[0];
+            const productos = await pool.query(
+                "select * from dproducto where id_eli = ?",
+                [miembro]
+                );        
 
             console.log(JSON.stringify(productos));
             console.log(idl);
             console.log(grupo);
             console.log(nomb);
-
+            console.log(productos);
             res.render("consultarProductosDeLista", {
                 productos: productos,
                 idLista: idl,
@@ -132,8 +128,62 @@ module.exports = {
             });
             
         } catch (err) {
-            res.render("error");
+            res.redirect('/error');
             console.log(err);
         }
+    },
+
+    async redirectEditar(req, res){
+        try{
+            let { id_prod } = req.params;
+            let { id_lis } = req.params;
+            let id_grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+            console.log(id_grupo);
+            let producto = await pool.query('select * from dproducto where id_eli =' + id_lis + ' and id_pro=' + id_prod + ';');
+            const Marca = await getAllMarca();
+            const Depa = await getAllDepa();
+            const Uni = await getAllUni();
+            const Super = await getAllSuper();
+            res.render('editarProductoDeLista', { id_lis, producto, Marca, Depa, Uni, Super, id_prod, id_grupo });
+        }catch{
+            res.redirect('/error');
+        }
+    },
+
+    async editarProducto(req, res){
+        try{
+            let { id_prod } = req.params;
+            let { id_lis } = req.params;
+            let { nombre } = req.body;
+            let { marca } = req.body;
+            let { supermercado } = req.body;
+            let { depa } = req.body;
+            let { cantidad } = req.body;
+            let { unidad } = req.body;
+            let { precio } = req.body;
+            let { anotaciones } = req.body;
+            let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+            let enlace = '/ConsultarProductos/' + grupo[0].id_lst;
+            await pool.query('update dproducto set can_pro=' + cantidad + ', nom_pro="' + nombre + '", precio_pro=' + precio + ', notas_pro="' + anotaciones + '", id_mar=' + marca + ', id_dep=' + depa + ', id_uni=' + unidad + ', id_sup=' + supermercado + ' where id_pro=' + id_prod + ' and id_eli=' + id_lis + ';');
+            res.redirect(enlace);
+        }catch{
+            res.redirect('/error');
+        }
+    },
+
+    async borrarProducto(req, res){
+        try{
+            let { id_prod } = req.params;
+            let { id_lis } = req.params;
+            console.log(id_prod);
+            console.log(id_lis);
+            await pool.query('delete from dproducto where id_pro=' +  id_prod + ' and id_eli=' + id_lis + ';');
+            let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
+            let enlace = '/ConsultarProductos/' + grupo[0].id_lst;
+            res.redirect(enlace);
+        }catch{
+            res.redirect('/error');
+        }
     }
+
 };

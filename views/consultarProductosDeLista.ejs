@@ -22,31 +22,34 @@
             </div>
         </header>
     </div>
-    <% if(productos.length == 0){%>
-        <h1>Aun no hay productos en esta lista</h1>
+    <% if( productos[0] == undefined ){%>
+        <div class="principal">
+            <h1>Aun no hay productos en esta lista</h1>
+        </div>
         <%}else{%>
     <form class="grid">
         <% productos.forEach(element => { %>
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
+            <%console.log(element);%>
             <%if(element.id_esProd == 1){%>
-            <input id="producto" type="checkbox">
+            <input id="producto<%= element.id_pro %>" type="checkbox">
             <%}else{%>
-            <input checked id="producto" type="checkbox">
+            <input checked id="producto<%= element.id_pro %>" type="checkbox">
             <%}%>
-            <label for="producto<%=element.id_pro %>">
+            <label for="producto<%= element.id_pro %>">
                 <p class="caja">&nbsp</p>
             </label>
             <div class="producto">
                 <div class="header-producto">
                     <div class="nombre-producto">
-                        <a href="editarProductoDeLista.html">
+                        <a href="/editarProductoDeLista/<%= element.id_pro %>/<%= element.id_eli %>">
                             <h2>
                                 <%=element.nom_pro %>
                             </h2>
                         </a>
                     </div>
-                    <a>
+                    <a href="/borrarProductoLista/<%= element.id_pro %>/<%= element.id_eli %>">
                         <img src="../assets/svg/basura.svg">
                     </a>
                 </div>
