@@ -23,6 +23,7 @@ router.get("/logout", auth.isAuthenticated, controller.logout);
 router.get(
     "/datos-perfil",
     auth.isAuthenticated,
+    auth.isUsuario,
     controller.datosperfil,
     (req, res) => {
         res.render("consultarDatosPerfil", { user: req.user });
@@ -32,6 +33,7 @@ router.get(
 router.get(
     "/editarperfil",
     auth.isAuthenticated,
+    auth.isUsuario,
     controller.datosperfil,
     (req, res) => {
         res.render("editarDatosPerfil", { user: req.user });
