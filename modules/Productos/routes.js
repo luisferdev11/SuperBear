@@ -8,6 +8,8 @@ const auth = require("../auth/auth");
 
 // Se debe verificar que exista una sesion
 router.get("/CrearProducto/:id_lis", auth.isAuthenticated, controller.ConsultarCatalogo);
+router.get("/CrearProductoPredeterminado/:id_lis", auth.isAuthenticated, controller.ConsultarPredeterminados);
+router.get("/ProductoPredeterminado/:id_prod/:id_lis", auth.isAuthenticated, controller.CrearPredeterminados);
 router.get('/ConsultarProductos/:id_lis', auth.isAuthenticated, controller.ConsultarProductos);
 router.get('/editarProductoDeLista/:id_prod/:id_lis', auth.isAuthenticated, controller.redirectEditar);
 router.get('/borrarProductoLista/:id_prod/:id_lis', auth.isAuthenticated, controller.borrarProducto);
