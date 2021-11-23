@@ -36,6 +36,7 @@
     <div class="grid">
         <% if (user.grps) { %>
             <% for (let i=0; i < user.grps.length; i++ ) { %>
+                
                 <div class="grupo">
                     <div class="nombre-grupo">
                         <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
@@ -47,7 +48,7 @@
                             <a href="/consultarmiembros/<%=user.grps[i].id_grp %>">
                                 <b>Administrador</b>
                                 <img src="assets/svg/IconoGruposSuperBear.svg" />
-                                <b> 10 miembros </b>
+                                <b><%=nmiembros[i]%> miembros </b>
                             </a>
                             <label for="menu-<%= i %> ">
                                 <img class="opciones" src="assets/svg/options.svg" />
@@ -65,7 +66,7 @@
 
                                 <a href="/miembrosdegrupo/<%=user.grps[i].id_grp%>">
                                     <img src="assets/svg/IconoGruposSuperBear.svg" />
-                                    <b> 10 miembros </b>
+                                    <b><%=nmiembros[i]%>  miembros </b>
                                 </a>
                             <% } %>
 

@@ -278,15 +278,25 @@ module.exports = {
                 [req.user.id_usu],
                 async (error, results) => {
                     if (!results || results.length === 0) {
-                        res.render("consultarGrupos", { user: req.user });
+                        res.render("consultarGrupos", { user: req.user ,nmiembros: []});
                     }
+                    var arrnummiembros=[];
                     req.user.grps = results;
-                    res.render("consultarGrupos", { user: req.user });
+                    for (let i = 0; i < req.user.grps.length; i++) {
+                        const id_miembros = await pool.query(
+                            "SELECT * FROM egrupo WHERE id_grp = ?",
+                            [req.user.grps[i].id_grp]
+                        ); 
+                        arrnummiembros.push(id_miembros.length);
+                    }
+                    
+
+                    res.render("consultarGrupos", { user: req.user ,nmiembros: arrnummiembros});
                 }
             );
         } catch (error) {
             console.error(error);
-            res.render("consultarGrupos", { user: req.user });
+            res.render("consultarGrupos", { user: req.user ,nmiembros: []});
         }
     },
 };
