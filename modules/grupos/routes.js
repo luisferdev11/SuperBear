@@ -12,7 +12,7 @@ router.get(
     auth.isUsuario,
     controller.misgrupos
 );
-router.get("/nuevogrupo", auth.isUsuario, auth.isAuthenticated, (req, res) => {
+router.get("/nuevogrupo", auth.isAuthenticated, auth.isUsuario, (req, res) => {
     res.render("ingresar-crearGrupo", { error: "" });
 });
 router.get(
