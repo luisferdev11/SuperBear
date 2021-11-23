@@ -28,6 +28,7 @@
         <h2>Listas Pendientes</h2>
     </div>
     <div class="grid">
+        <% let contador = 0; %>
         <% listas.forEach(element => { %>
             <% if (element.id_esList == 1){%>
         <div class="lista">
@@ -51,21 +52,30 @@
                 </label>
             </div>
             <a class="contenido-lista" href="/ConsultarProductos/<%=element.id_lis %>">
-                <span class="producto">
-                    Manzanas
-                </span>
-                <span class="producto">
-                    1kg
-                </span>
+                <% for(let i = 0; i < 2; i++){ %>
+                    <% console.log(i) %>
+                    <% if(preview[contador + i] != 'estoesuntextolargocomoplaceholder' && preview[contador + i] != undefined){ %>
+                        <span class="producto">
+                            <%= preview[contador + i].nom_pro %>
+                        </span>
+                        <span class="producto">
+                            <% if(preview[contador + i].precio_pro != undefined){ %>
+                                <%= preview[contador + i].precio_pro %>
+                            <% }; %>
+                        </span>
+                    <% } %>
+                <% } %>
             </a>
         </div>
         <% }%>
+        <% contador = contador + 2; %>
         <% }); %>
     </div>
         <div class="principal">
             <h2>Listas Completadas</h2>
         </div>
         <div class="grid">
+            <% contador = 0; %>
             <% listas.forEach(element => { %>
                 <% if (element.id_esList == 2){%>
             <div class="lista">
@@ -89,15 +99,23 @@
                     </label>
                 </div>
                 <a class="contenido-lista" href="/ConsultarProductos/<%=element.id_lis %>">
+                    <% for(let i = 0; i < 2; i++){ %>
+                        <% console.log(i) %>
+                        <% if(preview[contador + i] != 'estoesuntextolargocomoplaceholder' && preview[contador + i] != undefined){ %>
                     <span class="producto">
-                        Manzanas
+                        <%= preview[contador + i].nom_pro %>
                     </span>
                     <span class="producto">
-                        1kg
+                        <% if(preview[contador + i].precio_pro != undefined){ %>
+                            <%= preview[contador + i].precio_pro %>
+                        <% }; %>
                     </span>
+                    <% } %>
+                <% } %>
                 </a>
             </div>
-            <% }%>
+            <% } %>
+            <% contador = contador + 2; %>
             <% }); %>
         </div>
         <br>
