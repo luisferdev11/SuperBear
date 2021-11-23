@@ -54,9 +54,6 @@
                                 <img class="opciones" src="assets/svg/options.svg" />
                                 <input id="menu-<%= i %> " type="checkbox" />
                                 <div class="desplegable">
-                                    <a href="editarNombreGrupo-administradorDeGrupo.html" class="b">
-                                        Renombrar Grupo
-                                    </a>
                                     <a href="/deletegroup/<%=user.grps[i].id_grp%>" class="b">
                                         Borrar Grupo
                                     </a>
@@ -75,18 +72,14 @@
                     <div class="contenido-grupo">
                         <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
                             <div>
-                                <b>Jabones</b>
                             </div>
                             <div>
-                                <b>10/15 Completado</b>
                             </div>
                         </a>
                         <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
                             <div>
-                                <b>Carnes frías</b>
                             </div>
                             <div>
-                                <b>10/15 Completado</b>
                             </div>
                         </a>
                     </div>

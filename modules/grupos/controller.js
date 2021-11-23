@@ -267,7 +267,6 @@ module.exports = {
     },
     async misgrupos(req, res, next) {
         try {
-            console.log(req.user.id_usu);
             pool.query(
                 `SELECT m.id_grp, cod_grp, nom_grp, nom_usu,e.id_priv FROM mgrupo m
             INNER JOIN egrupo e
