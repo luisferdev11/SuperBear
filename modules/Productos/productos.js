@@ -30,30 +30,20 @@ async function getAllSuper() {
 module.exports = {
     async CrearProducto(req, res) {       
         const { nombre } = req.body;
-        console.log(nombre);
         const { Marca } = req.body;
-        console.log(Marca);
         const { supermercado } = req.body;
-        console.log(supermercado);
         const { Depa } = req.body;
-        console.log(Depa);
         const { Cant } = req.body;
-        console.log(Cant);
         const {Unidad} = req.body;
-        console.log(Unidad);
         const {Precio} = req.body;
-        console.log(Precio);
         const {Anotaciones} = req.body;
-        console.log(Anotaciones);
         const {id_lis} = req.body;
-        console.log(id_lis);
         
         try {
             const id_lista = await pool.query(
                 "select id_eli from ELista where id_lst = ?",
                 [id_lis]
             );
-            console.log(id_lista);
             await pool.query(
                 "INSERT INTO DProducto (id_eli, nom_pro, id_mar, id_sup, id_dep, can_pro, id_uni, precio_pro, notas_pro, id_tip, id_esProd) VALUES (?,?,?,?,?,?,?,?,?,2,1)",
                 [id_lista[0].id_eli, nombre,parseInt(Marca), parseInt(supermercado), parseInt(Depa), parseInt(Cant), parseInt(Unidad), parseInt(Precio), Anotaciones]
@@ -70,11 +60,6 @@ module.exports = {
         const Depa = await getAllDepa();
         const Uni = await getAllUni();
         const Super = await getAllSuper();
-        console.log(ideli);
-        console.log(Marca);
-        console.log(Depa);
-        console.log(Uni);
-        console.log(Super);
         res.render("agregarProductoALista", { 
             id: ideli,
             Marca: Marca,
@@ -91,13 +76,10 @@ module.exports = {
         try {
         const { id_prod } = req.params;
         const { id_lis } = req.params;
-        console.log("}}}}}}}}}}}}}}}"+id_prod);
-        console.log(id_lis);
         const Prod = await pool.query(
             "select nom_pro, id_mar,  can_pro, id_uni from Dproducto where id_pro = ?",
             [id_prod]
         );
-        console.log("pp"+JSON.stringify(Prod));
         const id_lista = await pool.query(
             "select id_eli from ELista where id_lst = ?",
             [id_lis]
@@ -119,8 +101,6 @@ module.exports = {
         const Prod = await pool.query(
             "select * from Dproducto where id_tip = 1"
         );
-        console.log(ideli);
-        console.log("pp"+JSON.stringify(Prod));
         
         res.render("agregarProductoPredeterminadoALista", { 
             id: ideli,
@@ -158,8 +138,6 @@ module.exports = {
                 "select * from dproducto where id_eli = ?",
                 [miembro]
                 );       
-            console.log("estos son los productos"+JSON.stringify(productos));  
-            console.log("tamaño "+JSON.stringify(productos[0]));  
             var prod = [];
             
             for (let i = 0; i < productos.length; i++) {
@@ -195,13 +173,8 @@ module.exports = {
                     id_eli: productos[i].id_eli
                 };
                 prod.push(pro);
-                console.log(pro);
             }    
 
-            console.log(JSON.stringify(productos));
-            console.log(idl);
-            console.log(grupo);
-            console.log(nomb);
             
             res.render("consultarProductosDeLista", {
                 productos: prod,
@@ -221,7 +194,6 @@ module.exports = {
             let { id_prod } = req.params;
             let { id_lis } = req.params;
             let id_grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
-            console.log(id_grupo);
             let producto = await pool.query('select * from dproducto where id_eli =' + id_lis + ' and id_pro=' + id_prod + ';');
             const Marca = await getAllMarca();
             const Depa = await getAllDepa();
@@ -258,8 +230,6 @@ module.exports = {
         try{
             let { id_prod } = req.params;
             let { id_lis } = req.params;
-            console.log(id_prod);
-            console.log(id_lis);
             await pool.query('delete from dproducto where id_pro=' +  id_prod + ' and id_eli=' + id_lis + ';');
             let grupo = await pool.query('select id_lst from elista where id_eli =' + id_lis + ';');
             let enlace = '/ConsultarProductos/' + grupo[0].id_lst;
@@ -272,8 +242,6 @@ module.exports = {
         try{
             let { id_prod } = req.params;
             let { id_lis } = req.params;
-            console.log(id_prod);
-            console.log(id_lis);
             const est = await pool.query(
                 "select id_esProd from dproducto where id_pro = ?",
                 [id_prod]

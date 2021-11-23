@@ -7,7 +7,6 @@ module.exports = {
             const {nombre}  = req.body;
             const {grupo} = req.body;
             let nom = [nombre];
-            console.log("id "+grupo);
             await pool.query(
                 "INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)",
                 [nom]
@@ -24,18 +23,15 @@ module.exports = {
                 "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
                 [grupo]
             );
-            console.log(nomGrp[0].nom_grp);
             const id_lista = await pool.query(
                 "SELECT id_lst FROM ELista WHERE id_grp = ?",
                 [grupo]
             );
-            console.log("-------"+ JSON.stringify(id_lista));
             var id_e = [];
             for (let i = 0; i < id_lista.length; i++) {
                 const miembro = id_lista[i].id_lst;
                 id_e.push(miembro);
             }
-            console.log(id_e);
             var listas = [];
             for (let i = 0; i < id_e.length; i++) {
                 const miembro = id_e[i];
@@ -46,7 +42,6 @@ module.exports = {
                 listas.push(list[0]);
             }
 
-            console.log(JSON.stringify(listas));
 
             res.redirect('/consultarlistas/' + grupo);
             
@@ -79,7 +74,6 @@ module.exports = {
     async borrarLista(req, res){
         const idl = req.params.id_lis;
         const grp = req.params.id_grp;
-        console.log("Lista " +idl);
         try {
             await pool.query(
                 "DELETE from ELista where id_lst = ?",
@@ -104,19 +98,16 @@ module.exports = {
                 "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
                 [idgrupo]
             );
-            console.log(nomGrp[0].nom_grp);
             const grupo = nomGrp[0].nom_grp;
             const id_lista = await pool.query(
                 "SELECT id_lst FROM ELista WHERE id_grp = ?",
                 [idgrupo]
             );
-            console.log("-------"+ JSON.stringify(id_lista));
             var id_e = [];
             for (let i = 0; i < id_lista.length; i++) {
                 const miembro = id_lista[i].id_lst;
                 id_e.push(miembro);
             }
-            console.log(id_e);
             var listas = [];
             for (let i = 0; i < id_e.length; i++) {
                 const miembro = id_e[i];
@@ -138,7 +129,6 @@ module.exports = {
                     }
                 }
             };
-            console.log(preview);
             res.render("consultarListasDeGrupo", {
                 listas: listas,
                 idgrupo: idgrupo,
@@ -160,8 +150,6 @@ module.exports = {
                 "select nom_lis from mlista where id_lis = ?",
                 [idl]
             );
-            console.log("------------"+idl);
-            console.log("------------"+Clista);
             const Edup = await pool.query(
                 "select id_eli from elista where id_lst = ?",
                 [idl]

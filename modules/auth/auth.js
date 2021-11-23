@@ -31,13 +31,11 @@ module.exports = {
 
     async isAuthenticated(req, res, next) {
         if (req.cookies.jwt) {
-            console.log(req.cookies.jwt);
             try {
                 const decodificada = await promisify(jwt.verify)(
                     req.cookies.jwt,
                     env.JWT_SECRETO
                 );
-                console.log("DECODIFICADA ES " + JSON.stringify(decodificada));
                 if (decodificada.permiso == "Usuario") {
                     pool.query(
                         "SELECT * FROM musuario WHERE id_usu = ?",
@@ -58,10 +56,6 @@ module.exports = {
                                 "-" +
                                 validarLongitud(req.user.fec_nac.getDate());
 
-                            console.log(req.user.fec_nac);
-                            console.log(
-                                `req.user es ${JSON.stringify(req.user)}`
-                            );
                             return next();
                         }
                     );
@@ -76,9 +70,6 @@ module.exports = {
                             }
                             req.user = results[0];
                             req.user.perm = "Admin";
-                            console.log(
-                                `req.user es ${JSON.stringify(req.user)}`
-                            );
                             return next();
                         }
                     );
@@ -97,7 +88,6 @@ module.exports = {
             const user = req.user.cor_usu;
             const pass = req.body.pswd;
 
-            console.log(user + pass);
 
             if (!user || !pass) {
                 res.redirect("verificarpswd");

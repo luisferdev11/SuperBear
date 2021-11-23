@@ -32,7 +32,6 @@
         <% productos.forEach(element => { %>
         <div class="contenedor-producto">
             <!-- Cada conjunto de label y checkbox debe tener su propio id -->
-            <%console.log(element);%>
             <%if(element.id_esProd == 1){%>
             <input id="producto<%= element.id_pro %>" type="checkbox" onclick="miFunc(<%= element.id_pro%>,<%=element.id_eli %>)">
             <%}else{%>
