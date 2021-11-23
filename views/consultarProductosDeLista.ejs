@@ -60,22 +60,32 @@
                         <b class="linea">
                             <%=element.can_pro%> <%=element.id_uni%>
                         </b>
+                        <%if(element.precio_pro != null){%>
                         <b class="linea">
                             $ <%=element.precio_pro%>
                         </b>
+                        <%}%>
+                        <%if(element.id_mar != null){%>
                         <b class="linea">
                             <%=element.id_mar %>
                         </b>
+                        <%}%>
+                        <%if(element.id_sup != null){%>
                         <b class="linea">
                             <%=element.id_sup %>
                         </b>
+                        <%}%>
+                        <%if(element.id_dep != null){%>
                         <b class="linea">
                             <%=element.id_dep %>
                         </b>
+                        <%}%>
                     </div>
+                    <%if(element.notas_pro != null){%>
                     <div class="notas-producto">
                         <%=element.notas_pro %>
                     </div>
+                    <%}%>
                 </div>
             </div>
         </div>

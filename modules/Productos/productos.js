@@ -91,7 +91,7 @@ module.exports = {
         try {
         const { id_prod } = req.params;
         const { id_lis } = req.params;
-        console.log(id_prod);
+        console.log("}}}}}}}}}}}}}}}"+id_prod);
         console.log(id_lis);
         const Prod = await pool.query(
             "select nom_pro, id_mar,  can_pro, id_uni from Dproducto where id_pro = ?",
