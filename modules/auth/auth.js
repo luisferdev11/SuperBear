@@ -14,8 +14,11 @@ function validarLongitud(fecha) {
 
 module.exports = {
     async isAdmin(req, res, next) {
-        if (req.user.perm == "Admin") next();
-        res.redirect("/misgrupos");
+        if (req.user.perm == "Admin"){
+            next();
+        }else{
+            res.redirect("/misgrupos");
+        };
     },
 
     async isUsuario(req, res, next) {

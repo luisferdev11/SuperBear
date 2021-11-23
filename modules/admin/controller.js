@@ -19,9 +19,9 @@ module.exports = {
                 newProduct
             );
 
-            res.render("admin-crearProductoPredeterminado");
+            res.redirect('/check-default-products');
         } catch (err) {
-            res.render("error");
+            res.redirect("/error");
             console.log(err);
         }
     },
@@ -38,7 +38,7 @@ module.exports = {
             });
         } catch (error) {
             console.error(error);
-            res.render("error", { user: req.user });
+            res.redirect("/error");
         }
     },
     async delete(req, res) {

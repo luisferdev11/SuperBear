@@ -8,24 +8,23 @@ router.get("/admin-index", auth.isAuthenticated, auth.isAdmin, (req, res) => {
     res.render("admin-index");
 });
 
-router.get(
-    "/check-default-products",
-    auth.isAuthenticated,
-    controller.checkDefaultProducts
+router.get("/check-default-products", auth.isAuthenticated, auth.isAdmin, controller.checkDefaultProducts
 );
 
-router.get("/create-default-object", auth.isAuthenticated, (req, res) => {
+router.get("/create-default-object", auth.isAuthenticated, auth.isAdmin,  (req, res) => {
     res.render("admin-crearProductoPredeterminado");
     //res.sendFile(path.join(dirname, '/views/iniciarSesion.html'));
 });
 router.get(
     "/delete-default-product/:producto",
     auth.isAuthenticated,
+    auth.isAdmin, 
     controller.delete
 );
 router.get(
     "/edit-default-product/:id",
     auth.isAuthenticated,
+    auth.isAdmin, 
     async (req, res) => {
         let { id } = req.params;
         let producto = await pool.query(
@@ -47,11 +46,13 @@ module.exports = router;
 router.post(
     "/create-default-object",
     auth.isAuthenticated,
+    auth.isAdmin, 
     controller.createDefaultObject
 );
 
 router.post(
     "/edit-default-product/:id",
     auth.isAuthenticated,
+    auth.isAdmin, 
     controller.editDefaultProduct
 );
