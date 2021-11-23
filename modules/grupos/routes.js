@@ -17,8 +17,8 @@ router.get("/nuevogrupo", auth.isUsuario, auth.isAuthenticated, (req, res) => {
 });
 router.get(
     "/miembrosdegrupo/:grupo",
-    auth.isUsuario,
     auth.isAuthenticated,
+    auth.isUsuario,
     controller.miembrosdegrupo
 );
 router.get(
