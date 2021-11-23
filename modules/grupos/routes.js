@@ -12,28 +12,28 @@ router.get(
     auth.isUsuario,
     controller.misgrupos
 );
-router.get("/nuevogrupo", auth.isAuthenticated, (req, res) => {
+router.get("/nuevogrupo",auth.isUsuario, auth.isAuthenticated, (req, res) => {
     res.render("ingresar-crearGrupo", { error: "" });
 });
 router.get(
     "/miembrosdegrupo/:grupo",
-    auth.isAuthenticated,
+    auth.isUsuario,auth.isAuthenticated,
     controller.miembrosdegrupo
 );
 router.get(
-    "/consultarmiembros/:grupo",
+    "/consultarmiembros/:grupo",auth.isUsuario,
     auth.isAuthenticated,
     controller.consultarmiembros
 );
 //POST
 
-router.post("/ingresargrupo", auth.isAuthenticated, controller.ingresargrupo);
-router.post("/nuevogrupo", auth.isAuthenticated, controller.nuevogrupo);
+router.post("/ingresargrupo", auth.isUsuario,auth.isAuthenticated, controller.ingresargrupo);
+router.post("/nuevogrupo", auth.isUsuario,auth.isAuthenticated, controller.nuevogrupo);
 
-router.get("/delete/:grupo/:id", auth.isAuthenticated, controller.delete);
-router.get("/deletegroup/:grupo", auth.isAuthenticated, controller.deletegroup);
+router.get("/delete/:grupo/:id", auth.isUsuario,auth.isAuthenticated, controller.delete);
+router.get("/deletegroup/:grupo", auth.isUsuario,auth.isAuthenticated, controller.deletegroup);
 router.get(
-    "/abandonargrupo/:grupo/:id",
+    "/abandonargrupo/:grupo/:id",auth.isUsuario,
     auth.isAuthenticated,
     controller.abandonargrupo
 );
