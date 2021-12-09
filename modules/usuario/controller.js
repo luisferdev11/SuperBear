@@ -24,11 +24,22 @@ module.exports = {
 
         let newUser = [email, nombre, fecha, passHash, SelectAlcaldia, genero];
         try {
+            try {
+                const correos_usuarios = await pool.query(
+                    "SELECT * FROM musuario WHERE (cor_usu = ?)",
+                    [email]
+                );
+                                    // la siguiente linea es una mala practica por que estoy causando un error para que pase un error si es nulo 
+                const validacion = correos_usuarios[0].id_usu;
+                res.render("registro",{error:"Ese correo ya esta registrado usa otro diferente"});
+            } catch (error) {
+            
             await pool.query(
                 "INSERT INTO musuario (cor_usu, nom_usu, fec_nac, con_usu, id_alc, id_sex) VALUES (?,?,?,?,?,?)",
                 newUser
             );
             res.render("iniciarSesion");
+        }
         } catch (err) {
             res.redirect("/error");
             console.log(err);
