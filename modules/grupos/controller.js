@@ -72,7 +72,7 @@ module.exports = {
                         "SELECT * FROM egrupo WHERE (id_usu = ?) AND (id_grp=?)",
                         [id_usuario, grupo]
                     );
-                    // la siguiente linea es una mala practica por que estoy causando un error para que pase un error si es nulo 
+                    // la siguiente linea es una mala practica por que estoy causando un error para que
                     const validacion = misgrupos[0].id_grp;
                     res.render("ingresar-crearGrupo", {
                         error: "Ya se ingreso a ese grupo",
