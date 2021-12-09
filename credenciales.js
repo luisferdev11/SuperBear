@@ -4,11 +4,11 @@ module.exports = {
         host: "superbears.mysql.database.azure.com",
         database: "superbear",
         user: "alexisluisedgarmauriciomiguel",
-        password: "Beartual5$",
+        password: "",
     },
     env: {
         //Definimos los datos para JWT
-        JWT_SECRETO: "elMarinnosmato",
+        JWT_SECRETO: "",
 
         //tiempo en el que expira el token
         JWT_TIEMPO_EXPIRA: "7d",
