@@ -22,6 +22,9 @@ app.get("/error", function (req, res) {
 app.get("/miembros", function (req, res) {
     res.render("miembros");
 });
+app.get("/avisodeprivacidad", function (req, res) {
+    res.render("avisoPrivacidad");
+});
 app.set("port", process.env.PORT || 5000);
 app.listen(app.get("port"), function () {
     console.log(
