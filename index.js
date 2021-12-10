@@ -51,3 +51,11 @@ app.use(
     require("./modules/invitacion/routes"),
     require("./modules/admin/routes")
 );
+
+
+
+
+
+app.get("*", (req, res)=> {
+    res.render("Error404");
+});
