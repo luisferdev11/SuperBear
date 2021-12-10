@@ -10,11 +10,11 @@ router.get("/", (req, res) => {
     res.render("index");
 });
 
-router.get("/sign-up", (req, res) => {
+router.get("/sign-up",auth.isAuthenticatedVisitantes, (req, res) => {
     res.render("registro",{error:""});
 });
 
-router.get("/login", (req, res) => {
+router.get("/login",auth.isAuthenticatedVisitantes, (req, res) => {
     res.render("iniciarSesion");
 });
 

@@ -72,11 +72,14 @@ module.exports = {
                         "SELECT * FROM egrupo WHERE (id_usu = ?) AND (id_grp=?)",
                         [id_usuario, grupo]
                     );
-                    // la siguiente linea es una mala practica por que estoy causando un error para que
-                    const validacion = misgrupos[0].id_grp;
-                    res.render("ingresar-crearGrupo", {
-                        error: "Ya se ingreso a ese grupo",
-                    });
+                    if (misgrupos[0].id_grp) {
+                        res.render("ingresar-crearGrupo", {
+                            error: "Ya se ingreso a ese grupo",
+                        });
+                    } else {
+                        res.redirect("/error");
+                    }
+
                 } catch (error) {
                     await pool.query(
                         "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
@@ -278,25 +281,25 @@ module.exports = {
                 [req.user.id_usu],
                 async (error, results) => {
                     if (!results || results.length === 0) {
-                        res.render("consultarGrupos", { user: req.user ,nmiembros: []});
+                        res.render("consultarGrupos", { user: req.user, nmiembros: [] });
                     }
-                    var arrnummiembros=[];
+                    var arrnummiembros = [];
                     req.user.grps = results;
                     for (let i = 0; i < req.user.grps.length; i++) {
                         const id_miembros = await pool.query(
                             "SELECT * FROM egrupo WHERE id_grp = ?",
                             [req.user.grps[i].id_grp]
-                        ); 
+                        );
                         arrnummiembros.push(id_miembros.length);
                     }
-                    
 
-                    res.render("consultarGrupos", { user: req.user ,nmiembros: arrnummiembros});
+
+                    res.render("consultarGrupos", { user: req.user, nmiembros: arrnummiembros });
                 }
             );
         } catch (error) {
             console.error(error);
-            res.render("consultarGrupos", { user: req.user ,nmiembros: []});
+            res.render("consultarGrupos", { user: req.user, nmiembros: [] });
         }
     },
 };

@@ -19,6 +19,7 @@
         <h1 class="centro">Regístrate</h1>
         <div class="contenedor-formulario">
             <form method="POST" id="registroForm" name="registroForm">
+                <p class="rojo"><%=error%></p>
                 <b>Datos Personales</b>
                 <p class="seccion">Correo Electrónico</p>
                 <input placeholder="Correo Electrónico" type="email" id="inputemail" name="email">
@@ -94,7 +95,7 @@
                 <br>
                 <div class="contenedor-boton">
                     <input class="b" type="submit" value='Envíar' onclick="ValidarRegistro(event)">
-                    <p class="rojo"><%=error%></p>
+                    
                 </div>
             </form>
         </div>

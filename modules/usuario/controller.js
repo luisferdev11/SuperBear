@@ -29,17 +29,21 @@ module.exports = {
                     "SELECT * FROM musuario WHERE (cor_usu = ?)",
                     [email]
                 );
-                                    // la siguiente linea es una mala practica por que estoy causando un error para que pase un error si es nulo 
-                const validacion = correos_usuarios[0].id_usu;
-                res.render("registro",{error:"Ese correo ya esta registrado usa otro diferente"});
+                if (correos_usuarios[0].id_usu) {
+                    res.render("registro", { error: "Ese correo ya esta registrado usa otro diferente" });
+
+                } else {
+                    res.redirect("error");
+                }
+
             } catch (error) {
-            
-            await pool.query(
-                "INSERT INTO musuario (cor_usu, nom_usu, fec_nac, con_usu, id_alc, id_sex) VALUES (?,?,?,?,?,?)",
-                newUser
-            );
-            res.render("iniciarSesion");
-        }
+
+                await pool.query(
+                    "INSERT INTO musuario (cor_usu, nom_usu, fec_nac, con_usu, id_alc, id_sex) VALUES (?,?,?,?,?,?)",
+                    newUser
+                );
+                res.render("iniciarSesion");
+            }
         } catch (err) {
             res.redirect("/error");
             console.log(err);
@@ -89,19 +93,19 @@ module.exports = {
 
                                         console.log(
                                             "TOKEN: " +
-                                                token +
-                                                " para el ADMIN : " +
-                                                user
+                                            token +
+                                            " para el ADMIN : " +
+                                            user
                                         );
 
                                         const cookiesOptions = {
                                             expires: new Date(
                                                 Date.now() +
-                                                    env.JWT_COOKIE_EXPIRES *
-                                                        24 *
-                                                        60 *
-                                                        60 *
-                                                        1000
+                                                env.JWT_COOKIE_EXPIRES *
+                                                24 *
+                                                60 *
+                                                60 *
+                                                1000
                                             ),
                                             httpOnly: true,
                                         };
@@ -132,11 +136,11 @@ module.exports = {
                             const cookiesOptions = {
                                 expires: new Date(
                                     Date.now() +
-                                        env.JWT_COOKIE_EXPIRES *
-                                            24 *
-                                            60 *
-                                            60 *
-                                            1000
+                                    env.JWT_COOKIE_EXPIRES *
+                                    24 *
+                                    60 *
+                                    60 *
+                                    1000
                                 ),
                                 httpOnly: true,
                             };
