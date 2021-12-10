@@ -1,24 +1,57 @@
 const express = require("express");
 const router = express.Router();
 
-const auth = require("./auth");
+const controller = require("./controller");
+const auth = require("../auth/auth");
+
+// NO SE COMO QUIERAN PONERLOS, SI POR CASO DE USO, POR METODO O EN ARCHIVOS DISTINTOS
+
+router.get("/", (req, res) => {
+    res.render("index");
+});
+
+router.get("/sign-up",auth.isAuthenticatedVisitantes, (req, res) => {
+    res.render("registro",{error:""});
+});
+
+router.get("/login",auth.isAuthenticatedVisitantes, (req, res) => {
+    res.render("iniciarSesion");
+});
+
+router.get("/logout", auth.isAuthenticated, controller.logout);
 
 router.get(
-    "/verificarpswd",
+    "/datos-perfil",
     auth.isAuthenticated,
     auth.isUsuario,
+    controller.datosperfil,
     (req, res) => {
-        res.render("verificarContraseña");
+        res.render("consultarDatosPerfil", { user: req.user });
     }
 );
 
-router.post(
-    "/verificarpswd",
+router.get(
+    "/editarperfil",
     auth.isAuthenticated,
-    auth.verificarpswd,
+    auth.isUsuario,
+    controller.datosperfil,
     (req, res) => {
-        res.redirect("editarperfil");
+        res.render("editarDatosPerfil", { user: req.user });
     }
 );
+
+// AQUI VAN LOS POST
+
+router.post("/sign-up", controller.signUp);
+
+router.post("/login", controller.login);
+
+router.post(
+    "/actualizardatos",
+    auth.isAuthenticated,
+    controller.actualizardatos
+);
+
+// PATCH
 
 module.exports = router;
