@@ -19,5 +19,10 @@ Escribe apartir de aquí y pon guiones por cada comentario
 3. Quedo pendiente lo de la implementacion de sockets.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Bug visual de nombres de grupo, si es demasiado largo choca con el icono
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Animo equipo BearTual
 ![image](https://user-images.githubusercontent.com/65563395/145501935-848250bb-c7ee-4b15-85e8-81de79a651b4.png)
