@@ -122,7 +122,7 @@ module.exports = {
                         [decodificada.id],
                         (error, results) => {
                             if (results) {
-                                res.redirect("/misgrupos");
+                                res.redirect("/admin-index");
                             }
                             req.user = results[0];
                             req.user.perm = "Admin";
