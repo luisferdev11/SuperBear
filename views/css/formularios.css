@@ -9,10 +9,8 @@ nav a img {
 
 .contenedor-formulario {
     display: grid;
-    grid-template-columns: minmax(0px, 4000px) minmax(200px, 500px) minmax(
-            0px,
-            4000px
-        );
+    grid-template-columns: minmax(0px, 4000px) minmax(200px, 500px) minmax(0px,
+            4000px);
 }
 
 form {
@@ -51,6 +49,7 @@ option:hover {
 input[type="radio"] {
     display: none;
 }
+
 label,
 input[type="submit"],
 .input {
@@ -65,7 +64,7 @@ input[type="submit"]:hover {
     background-color: var(--hover-1);
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked+label {
     background-color: var(--color-1);
     font-weight: bold;
 }
@@ -82,6 +81,82 @@ input[type="submit"] {
 :read-only {
     outline: none;
 }
+
 .rojo {
     color: red;
+}
+
+.checkbox-symbol {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.checkbox-input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.checkbox {
+    user-select: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    background-color: #fff9f1 !important;
+
+}
+
+.checkbox:not(:last-child) {
+    margin-right: 6px;
+}
+
+.checkbox:hover {
+    background: rgba(0, 119, 255, 0.06);
+}
+
+.checkbox span:first-child {
+    position: relative;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    transform: scale(1);
+    border: 1px solid #000000;
+    transition: all 0.3s ease;
+}
+
+.checkbox span:first-child svg {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transform: translate3d(0, 0, 0);
+}
+
+.checkbox span:last-child {
+    padding-left: 8px;
+    line-height: 18px;
+}
+
+.checkbox:hover span:first-child {
+    border-color: #ffc278;
+}
+
+.checkbox-input:checked+.checkbox span:first-child {
+    background: #ffc278;
+    border-color: #ffc278;
+    animation: zoom-in-out 0.3s ease;
+}
+
+.checkbox-input:checked+.checkbox span:first-child svg {
+    stroke-dashoffset: 0;
 }

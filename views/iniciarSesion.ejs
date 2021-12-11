@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="shortcut icon" href="assets/svg/logo.svg">
     <title>Iniciar Sesión | SuperBear</title>
 </head>
+
 <body>
     <nav class="flecha">
         <a href="/">
@@ -24,16 +26,33 @@
                 <p class="rojo" id="msgerror1"></p>
                 <p class="seccion">Contraseña</p>
                 <input placeholder="Contraseña" type="password" id="inputContraseña" name="password">
+                <br><br>
+                <svg class="checkbox-symbol">
+                    <symbol id="check" viewbox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"></polyline>
+                    </symbol>
+                </svg>
+                <input class="checkbox-input" id="showPass" type="checkbox" onclick="showPassword()" />
+                <label class="checkbox" for="showPass">
+                    <span>
+                        <svg width="12px" height="10px">
+                            <use xlink:href="#check"></use>
+                        </svg>
+                    </span>
+                    <span>Mostrar contraseña</span>
+                </label>
                 <p class="rojo" id="msgerror2"></p>
 
                 <br><br>
                 <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Acceder'onclick="ValidarLogin(event)"><!--onclick="ValidarLogin(event)"--> 
+                    <input class="b" type="submit" value='Acceder' onclick="ValidarLogin(event)">
+                    <!--onclick="ValidarLogin(event)"-->
                 </div>
-                <p>¿No tienes una cuenta? 
+                <p>¿No tienes una cuenta?
                     <a href="/sign-up"><b>
-                        Regístrate
-                    </b></a>
+                            Regístrate
+                        </b></a>
                 </p>
             </form>
         </div>
@@ -42,7 +61,16 @@
     <footer>
         <%- include('partials/footer') %>
     </footer>
+    <script>function showPassword() {
+            var x = document.getElementById("inputContraseña");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }</script>
     <script src="js/validaciones.js"></script>
 
 </body>
+
 </html>
