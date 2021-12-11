@@ -3,7 +3,7 @@ Para quien lo lea
 
 En esta sección hay ideas, mejoras pendientes y corrección de errores.
 
-**Escribe apartir de aquí y pon guiones por cada comentario** y para tachar utiliza la ~~esta notacion ~~
+**Escribe apartir de aquí y pon guiones por cada comentario** y para tachar utiliza la ~~esta notacion 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1. Para empezar algo que me molesta un poco al momento de desarrollar es el que te imprima todos los console log y ademas cada vez que inicias sesión te marca un error con los headers creo que el error es en la función auth. Comentario: lo de los console.log se soluciona pero el error no lo se.
