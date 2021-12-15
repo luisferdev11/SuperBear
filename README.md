@@ -41,7 +41,7 @@ Escribe apartir de aquí y pon guiones por cada comentario y para tachar utiliza
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-10.
+10.quiten lo de el paso de variable mediante un input html oculto es una mala practica y ni siquiera esta validado
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Animo equipo BearTual
