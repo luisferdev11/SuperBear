@@ -44,5 +44,10 @@ Escribe apartir de aquí y pon guiones por cada comentario y para tachar utiliza
 10.quiten lo de el paso de variable mediante un input html oculto es una mala practica y ni siquiera esta validado
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+11. Apague la app y la bd por que al momento de que una cookie expira te manda a login pero como tiene cookie intenta iniciar pero no es valida entonces se crea un bucle y no funciona, una solucion es borrar las cookies del dispositivo o validar si expiro entonces borrarla o renderizar login
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Animo equipo BearTual
 ![image](https://user-images.githubusercontent.com/65563395/145501935-848250bb-c7ee-4b15-85e8-81de79a651b4.png)
