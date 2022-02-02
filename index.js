@@ -2,7 +2,6 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const path = require("path");
-const auth = require("./modules/auth/auth");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -16,7 +15,7 @@ app.use(cookieParser());
 // app.get("/", function (req, res) {
 //     res.render("index");
 // });
-app.get("/",auth.isAuthenticatedVisitantes, function (req, res) {
+app.get("/", function (req, res) {
     res.render("index");
 });
 
