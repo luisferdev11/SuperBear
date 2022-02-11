@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/sign-up", (req, res) => {
-    res.render("registro");
+    res.render("registro",{error:""});
 });
 
 router.get("/login", (req, res) => {
