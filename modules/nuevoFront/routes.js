@@ -11,4 +11,8 @@ router.get("/crearRutinas", (req, res) =>{
     res.render("crearRutinas");
 });
 
+router.get("/editarRutinas", (req, res) =>{
+    res.render("editarRutinas");
+});
+
 module.exports = router;
