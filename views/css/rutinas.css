@@ -1,0 +1,40 @@
+.rutina{
+    display: grid;
+    grid-template-columns: calc(100% - 6rem) 3rem;
+    grid-gap: 1rem;
+}
+
+.rutina-contenedor{
+    background-color: var(--color-2);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: calc(100% - 4rem) 3rem;
+    grid-gap: 1rem;
+}
+.rutina-texto{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.rutina-texto div{
+    width: 100%;
+}
+
+.rutina-contenedor label img{
+    width: 100%;
+}
+
+.rutina-contenedor label{
+    height: fit-content;
+}
+
+label input{
+    display: none;
+}
+
+.rutina-borrar img{
+    margin-top: 1rem;
+    width: 100%;
+}

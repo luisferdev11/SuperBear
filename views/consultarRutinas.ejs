@@ -5,9 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/mastersyle.css" />
+    <link rel="stylesheet" href="css/rutinas.css">
+    <link rel="shortcut icon" href="assets/svg/logo.svg" />
     <title>Consultar Rutinas | SuperBear</title>
 </head>
 <body>
-    
+    <%- include('partials/navegacionNormal') %>
+    <div class="principal">
+        <h1>Consultar Rutinas</h1>
+    </div>
+    <div class="grid">
+        <!--Cada rutina debe tener su propio menu
+        para eso es necesario que cada input tenga un id diferentes
+        los for del label deben coincidir con el del input-->
+        <!-- Vease consultarGrupos.ejs para tener un ejemplo-->
+        <div class="rutina">
+            <div class="rutina-contenedor">
+                <div class="rutina-texto">
+                    <div>
+                        <b>Lista 420</b>
+                        <br>
+                        <b>Diariamente</b>
+                    </div>
+                </div>
+                <label for="menu-1">
+                    <img class="opciones" src="assets/svg/options.svg" />
+                    <input id="menu-1" type="checkbox" />
+                    <div class="desplegable">
+                        <a href="" class="b">
+                            Editar Rutina
+                        </a>
+                    </div>
+                </label>
+            </div>
+            <div class="rutina-borrar">
+                <img src="assets/svg/basura.svg">
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
