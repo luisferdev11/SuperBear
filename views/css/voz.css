@@ -1,0 +1,10 @@
+.contenedor-voz{
+    display: grid;
+    grid-template-columns: 3rem calc(100% - 4rem);
+    grid-gap: 1rem;
+    grid-column: 2;
+}
+
+.contenedor-voz img{
+    width: 100%;
+}

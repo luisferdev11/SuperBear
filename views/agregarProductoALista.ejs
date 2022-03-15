@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/mastersyle.css">
     <link rel="stylesheet" href="../css/formularios.css">
     <link rel="stylesheet" href="../css/datosProducto.css">
+    <link rel="stylesheet" href="../css/voz.css">
     <link rel="shortcut icon" href="../assets/svg/logo.svg">
     <title>Agregar Producto | SuperBear</title>
 </head>
@@ -20,6 +21,17 @@
         <h1 class="centro">Agregar Producto</h1>
         <!--<a href="/CrearProductoPredeterminado/<%=id.id_lis%>">Agregar un producto predeterminado</a>-->
     </div>
+    <div class="contenedor-formulario">
+        <label for="enlace-voz" class="contenedor-voz">
+            <img src="../assets/svg/microfono.svg">
+            <a id="enlace-voz" href="/">
+                <p>
+                    <b>Dictar un producto por voz</b>
+                </p>
+            </a>
+        </label>
+    </div>
+    <br>
     <div class="contenedor-formulario">
         <form method="POST" id="CrearProForm" name="CrearProForm">
             <p class="seccion">
