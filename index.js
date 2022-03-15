@@ -48,7 +48,8 @@ app.use(
     require("./modules/noticias/routes"),
     require("./modules/auth/routes"),
     require("./modules/invitacion/routes"),
-    require("./modules/admin/routes")
+    require("./modules/admin/routes"),
+    require("./modules/nuevoFront/routes")
 );
 
 
