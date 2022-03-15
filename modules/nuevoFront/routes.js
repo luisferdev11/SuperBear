@@ -7,4 +7,8 @@ router.get("/consultarRutinas", (req, res) => {
     res.render("consultarRutinas");
 });
 
+router.get("/crearRutinas", (req, res) =>{
+    res.render("crearRutinas");
+});
+
 module.exports = router;
