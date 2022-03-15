@@ -17,7 +17,12 @@
     <%- include('partials/navegacionFlechita') %>
 
     <div class="principal">
-        <h1>Consultar Rutinas</h1>
+        <header>
+            <h1>Consultar Rutinas</h1>
+            <div>
+                <a href="/crearRutinas"><img src="assets/svg/plus.svg" /></a>
+            </div>
+        </header>
     </div>
     <div class="grid">
         <!--Cada rutina debe tener su propio menu
@@ -37,15 +42,15 @@
                     <img class="opciones" src="assets/svg/options.svg" />
                     <input id="menu-1" type="checkbox" />
                     <div class="desplegable">
-                        <a href="" class="b">
+                        <a href="/editarRutinas" class="b">
                             Editar Rutina
                         </a>
                     </div>
                 </label>
             </div>
-            <div class="rutina-borrar">
+            <a href="/consultarRutinas" class="rutina-borrar">
                 <img src="assets/svg/basura.svg">
-            </div>
+            </a>
         </div>
 
     </div>

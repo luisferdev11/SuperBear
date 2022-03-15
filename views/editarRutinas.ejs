@@ -13,7 +13,7 @@
     <!--
         Es necesario definir una variable ruta para que sepa a donde llevar
     -->
-    <% ruta="/" %>
+    <% ruta="/consultarRutinas" %>
     <%- include('partials/navegacionFlechita') %>
 
     <div class="principal">
@@ -23,7 +23,7 @@
     </div>
     
     <div class="contenedor-formulario">
-        <form>
+        <form action="/consultarRutinas">
             <b>
                 Selecciona una lista para la rutina:
             </b>
