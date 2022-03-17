@@ -46,9 +46,13 @@ h1{
 /* Barra de navegacion */
 
 nav{
-    background-color: var(--color-2);
+    background-color: var(--color-1);
     display: grid;
     grid-template-columns: 40% 40% 20%;
+
+    /* Codigo nuevo pa ponerla abajo */
+    width: 100%;
+    transition: bottom 0.3s;
 }
 
 nav a{
@@ -68,7 +72,7 @@ nav a img{
 }
 
 nav a:hover{
-    background-color: var(--hover-1);
+    background-color: var(--hover-2);
 }
 
 /* Alinear y dar caracteristicas */
