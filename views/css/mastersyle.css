@@ -169,7 +169,7 @@ body{
 
 footer{
     margin-top: auto;
-    background-color: var(--color-2);
+    background-color: var(--color-1);
 }
 
 footer a{
@@ -181,7 +181,7 @@ footer a{
 }
 
 footer a:hover{
-    background-color: var(--hover-1);
+    background-color: var(--hover-2);
 }
 
 footer a img{
