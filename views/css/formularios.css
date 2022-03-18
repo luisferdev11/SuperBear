@@ -53,7 +53,7 @@ input[type="radio"] {
 label,
 input[type="submit"],
 .input {
-    background-color: var(--color-2);
+    background-color: var(--color-1);
     padding-inline: 2rem;
     padding-block: 1rem;
     border-radius: 1rem;
@@ -61,7 +61,7 @@ input[type="submit"],
 
 label:hover,
 input[type="submit"]:hover {
-    background-color: var(--hover-1);
+    background-color: var(--hover-2);
 }
 
 input[type="radio"]:checked+label {
