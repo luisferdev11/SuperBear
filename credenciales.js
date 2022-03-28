@@ -16,11 +16,6 @@ module.exports = {
         //tiempo en el que expira la cookie
         JWT_COOKIE_EXPIRES: 90,
     },
-    
-    
-    
-    
-    
     /*
     database: {
         connectionLimit: 25,
