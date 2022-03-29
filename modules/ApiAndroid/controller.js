@@ -6,7 +6,7 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 router.post('/app/grupslist',async (req, res) => {
-    var usuario=2;
+    var usuario=req.body.id;
     console.log(JSON.stringify(req.body.id));
     await pool.query(`SELECT m.id_grp, cod_grp, nom_grp, nom_usu,e.id_priv FROM mgrupo m
     INNER JOIN egrupo e
