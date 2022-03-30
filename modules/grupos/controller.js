@@ -292,29 +292,29 @@ module.exports = {
                     let idGrupos = new Array();
                     let idListas = new Array();
                     let pendientes = false;
-                    console.log(results);
+                    // console.log(results);
                     for(var i = 0; i < results.length; i++){
                         idGrupos.push(results[i].id_grp);
                     }
                     let elistas = await pool.query(
                         'select id_eli from elista where id_grp in (' + idGrupos + ');'
                     );
-                    console.log(elistas);
+                    // console.log(elistas);
                     for(let i = 0; i < elistas.length; i++){
                         idListas.push(elistas[i].id_eli)
                     }
                     let estadosProductos = await pool.query(
                         'select id_esProd from dproducto where id_eli in (' + idListas + ');'
                     );
-                    console.log(estadosProductos);
+                    // console.log(estadosProductos);
                     for(let i = 0; i < estadosProductos.length; i++){
                         if(estadosProductos[i].id_esProd == 1){
                             pendientes = true;
                         }
                     }
+                    // console.log(pendientes);
                     // Final checar si hay pendientes - president
 
-                    console.log(pendientes);
                     for (let i = 0; i < req.user.grps.length; i++) {
                         const id_miembros = await pool.query(
                             "SELECT * FROM egrupo WHERE id_grp = ?",
