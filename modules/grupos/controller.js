@@ -285,6 +285,36 @@ module.exports = {
                     }
                     var arrnummiembros = [];
                     req.user.grps = results;
+
+                    // Checar si hay productos pendientes - president
+                    // UwU
+                    // Pusheo los resultados en otro array para que sea mas facil hacer las consultas
+                    let idGrupos = new Array();
+                    let idListas = new Array();
+                    let pendientes = false;
+                    console.log(results);
+                    for(var i = 0; i < results.length; i++){
+                        idGrupos.push(results[i].id_grp);
+                    }
+                    let elistas = await pool.query(
+                        'select id_eli from elista where id_grp in (' + idGrupos + ');'
+                    );
+                    console.log(elistas);
+                    for(let i = 0; i < elistas.length; i++){
+                        idListas.push(elistas[i].id_eli)
+                    }
+                    let estadosProductos = await pool.query(
+                        'select id_esProd from dproducto where id_eli in (' + idListas + ');'
+                    );
+                    console.log(estadosProductos);
+                    for(let i = 0; i < estadosProductos.length; i++){
+                        if(estadosProductos[i].id_esProd == 1){
+                            pendientes = true;
+                        }
+                    }
+                    // Final checar si hay pendientes - president
+
+                    console.log(pendientes);
                     for (let i = 0; i < req.user.grps.length; i++) {
                         const id_miembros = await pool.query(
                             "SELECT * FROM egrupo WHERE id_grp = ?",
@@ -294,7 +324,7 @@ module.exports = {
                     }
 
 
-                    res.render("consultarGrupos", { user: req.user, nmiembros: arrnummiembros });
+                    res.render("consultarGrupos", { user: req.user, nmiembros: arrnummiembros, pendientes });
                 }
             );
         } catch (error) {

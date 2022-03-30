@@ -43,3 +43,12 @@
     text-align: center;
     padding-inline: .5rem;
 }
+
+.notificacion{
+    width: fit-content;
+    font-weight: bold;
+    background-color: var(--color-2);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
