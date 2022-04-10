@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mastersyle.css" />
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="shortcut icon" href="assets/svg/logo.svg" />
+    <title>Editar Rutina | SuperBear</title>
+</head>
+<body>
+    <!--
+        Es necesario definir una variable ruta para que sepa a donde llevar
+    -->
+    <% ruta="/consultarRutinas" %>
+    <%- include('partials/navegacionFlechita') %>
+
+    <div class="principal">
+        <h1>
+            Editar Rutina
+        </h1>
+    </div>
+    
+    <div class="contenedor-formulario">
+        <form action="/consultarRutinas">
+            <b>
+                Selecciona una lista para la rutina:
+            </b>
+            <br><br>
+            <select>
+                <option>Lista 1</option>
+                <option>Lista 2</option>
+                <option>Lista 3</option>
+            </select>
+            <br><br>
+            <b>
+                Selecciona una frecuencia para la rutina:
+            </b>
+            <br><br>
+            <select>
+                <option>Diariamente</option>
+                <option>Semanalmente</option>
+                <option>Quincenalmente</option>
+                <option>Mensualmente</option>
+            </select>
+            <br>
+            <br>
+            <div class="contenedor-boton">
+                <input class="b" type="submit" value='Editar Rutina'>
+            </div>
+        </form>
+    </div>
+    <script src="../js/detect-browser.js"></script>
+    <script src="../js/barraNavegacion.js"></script>
+</body>
+</html>

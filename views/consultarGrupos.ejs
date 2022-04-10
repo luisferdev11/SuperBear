@@ -29,6 +29,11 @@
                 <a href="/nuevogrupo"><img src="assets/svg/plus.svg" /></a>
             </div>
         </header>
+        <% if(pendientes == true){ %>
+            <div class="notificacion">
+                <b>Tienes listas pendientes </b>
+            </div>
+        <% } %> 
     </div>
     <!--Cada grupo debe tener su propio menu
     para eso es necesario que cada input tenga un id diferentes
@@ -91,6 +96,8 @@
     <footer>
         <%- include('partials/footer') %>
     </footer>
+    <script src="../js/detect-browser.js"></script>
+    <script src="../js/barraNavegacion.js"></script>
 </body>
 
 </html>

@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="../css/mastersyle.css">
     <link rel="stylesheet" href="../css/listas.css">
     <link rel="shortcut icon" href="../assets/svg/logo.svg">
+    <style>
+        .enlace-rutinas{
+            background-color: var(--color-2);
+            padding: 1rem;
+            font-weight: bold;
+            border-radius: 1rem;
+        }
+        .enlace-rutinas:hover{
+            background-color: var(--color-1);
+        }
+    </style>
     <title>Listas del grupo</title>
 </head>
 
@@ -25,7 +36,12 @@
         </header>
     </div>
     <div class="principal">
+        <a href="/consultarRutinas" class="enlace-rutinas">
+            Consultar rutinas de grupo
+        </a>
     </div>
+    <br>
+    <br>
     <div class="grid">
         <% let contador = 0; %>
         <% listas.forEach(element => { %>
@@ -118,6 +134,8 @@
     <footer>
         <%- include('partials/footer') %>
     </footer>
+    <script src="../js/detect-browser.js"></script>
+    <script src="../js/barraNavegacion.js"></script>
 </body>
 
 </html>
