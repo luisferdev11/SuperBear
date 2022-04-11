@@ -5,6 +5,13 @@ module.exports = {
     async getNoticias(req, res){
         try{
             let noticias = await pool.query('SELECT * FROM dnoticias');
+            // Ya que la fecha que se asigna a las noticias es la misma que la fecha de su creacion
+            // y dicha fecha no se puede editar, el orden en que estan en la base de datos es el contrario
+            // al cronologico, la solucion facil para que se muestren cronologicamente es invertir el array con las noticias
+            // Va a funcionar siempre y cuando se respete que la fecha coincida con el orden de creacion
+            // Aplique el cambio en getNoticias normal y admin
+            // - ThePresident - 11/4/22
+            noticias = noticias.reverse();
             res.render('consultarNoticias-usuario', {noticias: noticias});
         }catch{
             res.redirect('/error');
@@ -14,6 +21,7 @@ module.exports = {
     async getNoticiasAdmin(req, res){
         try{
             let noticias = await pool.query('SELECT * FROM dnoticias');
+            noticias = noticias.reverse();
             res.render('admin-consultarNoticias', {noticias: noticias});
         }catch{
             res.redirect('/error');
