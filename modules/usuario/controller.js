@@ -75,13 +75,20 @@ module.exports = {
                                 async (error, results) => {
                                     console.log(results);
                                     if (
-                                        !results ||
+                                        // Parseo los resultados como string y los comparo a un valor nulo
+                                        // Por alguna razon js me dice que el tipo de results es object
+                                        // a pesar de que al imprimirlo lo manda como array
+                                        // comparar con un array vacio o un objeto vacio no funciono UnU
+                                        // No le muevo al or || pq no se que hace y no quiero crear un fallo
+                                        // de seguridad por una babosada
+                                        // - ThePresident 11/4/22
+                                        String(results) == "" ||
                                         !(await bcryptjs.compare(
                                             pass,
                                             results[0].Con_Adm
                                         ))
                                     ) {
-                                        res.render("iniciarSesion");
+                                        res.redirect("/login");
                                     } else {
                                         //inicio de sesión OK
                                         const id = results[0].id_Adm;
