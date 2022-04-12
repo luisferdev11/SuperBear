@@ -13,7 +13,7 @@ aside{
 }
 
 .boton-1, .boton-2{
-    height: 4rem;
+    aspect-ratio: 1/1;
 }
 
 label{
@@ -21,7 +21,6 @@ label{
 }
 
 .etiqueta{
-    display: block;
     width: 100%;
 }
 
@@ -64,4 +63,9 @@ label[for="twitter"]{
 
 aside{
     margin-top: 5rem;
+}
+
+.boton-noticias{
+    height: 100%;
+    aspect-ratio: 1/1;
 }
