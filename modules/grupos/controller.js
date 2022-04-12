@@ -296,21 +296,23 @@ module.exports = {
                         let elistas = await pool.query(
                             'select id_eli from elista where id_grp in (' + idGrupos + ');'
                         );
-                        // console.log(elistas);
-                        for(let i = 0; i < elistas.length; i++){
-                            idListas.push(elistas[i].id_eli)
-                        }
-                        let estadosProductos = await pool.query(
-                            'select id_esProd from dproducto where id_eli in (' + idListas + ');'
-                        );
-                        // console.log(estadosProductos);
-                        for(let i = 0; i < estadosProductos.length; i++){
-                            if(estadosProductos[i].id_esProd == 1){
-                                pendientes = true;
+                        if(String(elistas) != ''){
+                            // console.log(elistas);
+                            for(let i = 0; i < elistas.length; i++){
+                                idListas.push(elistas[i].id_eli)
                             }
+                            let estadosProductos = await pool.query(
+                                'select id_esProd from dproducto where id_eli in (' + idListas + ');'
+                            );
+                            // console.log(estadosProductos);
+                            for(let i = 0; i < estadosProductos.length; i++){
+                                if(estadosProductos[i].id_esProd == 1){
+                                    pendientes = true;
+                                }
+                            }
+                            // console.log(pendientes);
+                            // Final checar si hay pendientes - president
                         }
-                        // console.log(pendientes);
-                        // Final checar si hay pendientes - president
                     }
                     var arrnummiembros = [];
                     req.user.grps = results;
