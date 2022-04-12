@@ -3,7 +3,8 @@ let formsignup = document.getElementById("registroForm");
 let formgrupo1 = document.getElementById("NewGrupoForm");
 let formingresargrupo = document.getElementById("ingresarGrupoForm");
 let editarForm = document.getElementById("editarForm");
-
+let crearNoticia = document.getElementById("CrearNoticia");
+let formObjAdmin = document.getElementById("FormObjAdmin");
 function miFunc(id_pro, id_eli) {
     window.location.href = "/estadoProductoLista/"+ id_pro+"/"+ id_eli;
 }  
@@ -45,7 +46,7 @@ function AnotacionesObjeto(Anotaciones) {
     return regex.test(Anotaciones) ? true : false;
 }
 function nombreGrupo(Nombre) {
-    var regex = /^[A-Z]{1,20}$/i;
+    var regex = /^[A-Z]{1,10}$/i;
     return regex.test(Nombre) ? true : false;
 }
 function codigoGrupo(Codigo) {
@@ -57,7 +58,14 @@ function validarContraseñas(Contraseña) {
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,64}$/;
     return regex.test(Contraseña) ? true : false;
 }
-
+function NombreNoticia(Nombre) {
+    var regex = /^[A-Z0-9-]{1,43}$/i;
+    return regex.test(Nombre) ? true : false;
+}
+function ContenidoNoticia(Nombre) {
+    var regex = /^[A-Z0-9-]{1,129}$/i;
+    return regex.test(Nombre) ? true : false;
+}
 function validarCodigoGrupo(event) {
     var nombre = codigoGrupo(document.getElementById("inputcodigo").value);
     if (nombre == true) {
@@ -322,6 +330,41 @@ function ValidarEditar(event) {
     } else {
         document.getElementById("msgerror1").innerHTML =
             "El nombre solo puede tener letras y un maximo de 32 caracteres";
+        event.preventDefault();
+    }
+}
+function validarNoticia(event){
+    var nombreNoticia = NombreNoticia(document.getElementById('inputTitulo').value);
+    var contenidoNoticia = ContenidoNoticia(document.getElementById('inputContenido').value);
+    if (nombreNoticia == true) {
+      document.getElementById('msgerror1').innerHTML = "";
+  
+      if (contenidoNoticia == true) {
+        document.getElementById('msgerror2').innerHTML = "";    
+        crearNoticia.setAttribute("action", "/crearNoticia");
+
+      } else {
+        document.getElementById('msgerror2').innerHTML ="El nombre de la lista solo puede contener letras con longitud no mayor a 129";
+    
+    
+            event.preventDefault();
+        }
+    } else {
+      document.getElementById('msgerror1').innerHTML =  "El nombre de la noticia solo puede tener longitud no mayor a 43";
+  
+  
+          event.preventDefault();
+      }
+}
+function ValidarObjetoPredeterminado(event) {
+    var nombre = NombreObjeto(document.getElementById("inputProductoPredeterminado").value);
+    
+    if (nombre == true) {
+        document.getElementById("msgerror1").innerHTML = "";
+        formObjAdmin.setAttribute("action", "/create-default-object");
+    } else {
+        document.getElementById("msgerror1").innerHTML =
+            "El nombre puede contener entre 1 y 64 caracteres alfanumericos";
         event.preventDefault();
     }
 }

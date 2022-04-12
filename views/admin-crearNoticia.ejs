@@ -20,21 +20,24 @@
         <h1 class="centro">Crear Noticia</h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="/crearNoticia" method="post">
+        <form method="post" id="CrearNoticia" name="CrearNoticia">
             <p class="seccion">
                 Titulo:
             </p>
-            <input type="text" name="titulo" placeholder="Titulo">
+            <input type="text" name="titulo" id="inputTitulo" placeholder="Titulo">
+            <p class="rojo" id="msgerror1"></p>
             <p class="seccion">
                 Contenido:
             </p>
-            <input type="text" name="contenido" placeholder="Noticia">
+            <input type="text" name="contenido" id="inputContenido" placeholder="Noticia">
+            <p class="rojo" id="msgerror2"></p>
             <br>
             <br>
             <div class="contenedor-boton">
-                <input class="b" type="submit" value="Crear">
+                <input class="b" type="submit" value='Crear' onclick="validarNoticia(event)">
             </div>
         </form>
     </div>
+    <script src="../js/validaciones.js"></script>
 </body>
 </html>
