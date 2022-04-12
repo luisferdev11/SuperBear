@@ -49,7 +49,7 @@ app.use(
     require("./modules/auth/routes"),
     require("./modules/invitacion/routes"),
     require("./modules/admin/routes"),
-    require("./modules/nuevoFront/routes"),
+    // Las rutas placeholder para rutinas require("./modules/nuevoFront/routes"),
     require("./modules/ApiAndroid/controller")
 );
 
