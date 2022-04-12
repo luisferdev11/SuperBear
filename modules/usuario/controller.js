@@ -221,4 +221,14 @@ module.exports = {
             console.log(err);
         }
     },
+
+    async borrarCuenta(req, res){
+        let id_usu = await pool.query('SELECT id_usu FROM musuario where cor_usu="' + req.user.cor_usu + '" AND con_usu="' + req.user.con_usu + '";');
+        if(String(id_usu) !=''){
+            await pool.query('DELETE FROM egrupo WHERE id_usu = ' + id_usu[0].id_usu + ';');
+            await pool.query('DELETE FROM musuario WHERE id_usu = ' + id_usu[0].id_usu + ';');
+        }
+        res.clearCookie("jwt");
+        res.redirect("/login");
+    }
 };
