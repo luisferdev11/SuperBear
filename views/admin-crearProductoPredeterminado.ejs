@@ -22,16 +22,17 @@
         </h1>
     </div>
     <div class="contenedor-formulario">
-        <form action="/create-default-object" method="post" id="FormObjAdmin">
+        <form method="post" id="FormObjAdmin">
             <p class="seccion">
                 Nombre:
             </p>
-            <input type="text" placeholder="Nombre" name="nombrep">
+            <input type="text" placeholder="Nombre" name="nombrep" id="inputProductoPredeterminado">
+            <p class="rojo" id="msgerror1"></p>
             <p class="seccion">
                 Departamento:
             </p>
             <select name="departamento">
-                <option selected class="no">Departamento</option>
+                <option selected class="no">Ninguno</option>
                 <option value=1>Frutas y Verduras</option>
                 <option value=2>Abarrotes</option>
                 <option value=3>Lacteos</option>
@@ -65,9 +66,10 @@
             <br>
             <br>
             <div class="contenedor-boton">
-                <input class="b" type="submit" value="Crear">
+                <input class="b" type="submit" value="Crear" onclick="ValidarObjetoPredeterminado(event)">
             </div>
         </form>
     </div>
+    <script src="../js/validaciones.js"></script>
 </body>
 </html>

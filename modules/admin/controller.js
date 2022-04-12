@@ -41,6 +41,20 @@ module.exports = {
             res.redirect("/error");
         }
     },
+    async stadistics(req, res) {
+        const listas = await pool.query(
+            "SELECT id_lis FROM mlista"
+        );
+        const grupos = await pool.query(
+            "SELECT id_grp FROM mgrupo"
+        );
+        const usuarios = await pool.query(
+            "SELECT id_usu FROM musuario"
+        );
+console.log(listas.length,grupos.length,usuarios.length);
+        res.render("admin-index", { numListas:listas.length, numGrupos:grupos.length, numUsuarios:usuarios.length});
+
+    },
     async delete(req, res) {
         //falta hacer un for que nos de todos los ids de los que tienen admin y un if(si arridpriv[i]==req.user.id_usu{})
         const { producto } = req.params;

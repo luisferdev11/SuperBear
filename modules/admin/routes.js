@@ -4,9 +4,7 @@ const pool = require("../../database");
 const controller = require("./controller");
 const auth = require("../auth/auth");
 
-router.get("/admin-index", auth.isAuthenticated, auth.isAdmin, (req, res) => {
-    res.render("admin-index");
-});
+router.get("/admin-index", auth.isAuthenticated, auth.isAdmin,controller.stadistics );
 
 router.get("/check-default-products", auth.isAuthenticated, auth.isAdmin, controller.checkDefaultProducts
 );
