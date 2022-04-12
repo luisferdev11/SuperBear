@@ -40,6 +40,8 @@ router.get(
     }
 );
 
+router.get("/borrarCuenta", auth.isAuthenticated, controller.datosperfil, controller.borrarCuenta);
+
 // AQUI VAN LOS POST
 
 router.post("/sign-up", controller.signUp);

@@ -75,13 +75,20 @@ module.exports = {
                                 async (error, results) => {
                                     console.log(results);
                                     if (
-                                        !results ||
+                                        // Parseo los resultados como string y los comparo a un valor nulo
+                                        // Por alguna razon js me dice que el tipo de results es object
+                                        // a pesar de que al imprimirlo lo manda como array
+                                        // comparar con un array vacio o un objeto vacio no funciono UnU
+                                        // No le muevo al or || pq no se que hace y no quiero crear un fallo
+                                        // de seguridad por una babosada
+                                        // - ThePresident 11/4/22
+                                        String(results) == "" ||
                                         !(await bcryptjs.compare(
                                             pass,
                                             results[0].Con_Adm
                                         ))
                                     ) {
-                                        res.render("iniciarSesion");
+                                        res.redirect("/login");
                                     } else {
                                         //inicio de sesión OK
                                         const id = results[0].id_Adm;
@@ -214,4 +221,14 @@ module.exports = {
             console.log(err);
         }
     },
+
+    async borrarCuenta(req, res){
+        let id_usu = await pool.query('SELECT id_usu FROM musuario where cor_usu="' + req.user.cor_usu + '" AND con_usu="' + req.user.con_usu + '";');
+        if(String(id_usu) !=''){
+            await pool.query('DELETE FROM egrupo WHERE id_usu = ' + id_usu[0].id_usu + ';');
+            await pool.query('DELETE FROM musuario WHERE id_usu = ' + id_usu[0].id_usu + ';');
+        }
+        res.clearCookie("jwt");
+        res.redirect("/login");
+    }
 };

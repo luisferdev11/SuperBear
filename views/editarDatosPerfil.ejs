@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="css/formularios.css">
     <link rel="shortcut icon" href="assets/svg/logo.svg">
     <title>Editar Mis Datos | SuperBear</title>
+    <style>
+        .boton-borrar-cuenta, .boton-borrar-cuenta:visited{
+            color: red;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <nav class="flecha">
@@ -80,6 +87,7 @@
                 <div class="contenedor-boton">
                     <input class="b" type="submit" value='Guardar' onclick="ValidarEditar(event)">
                 </div>
+                <a class="boton-borrar-cuenta" href="/borrarCuenta">Borrar Cuenta</a>
             </form>
         </div>
     </div>
