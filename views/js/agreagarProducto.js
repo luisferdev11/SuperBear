@@ -1,8 +1,11 @@
 const obtenerPeliculas = async (text_input) => {
     try {
-        const respuesta = await axios.post("http://localhost:4000/product", {
-            voice: text_input,
-        });
+        const respuesta = await axios.post(
+            "https://gepetto-iii.azurewebsites.net/product",
+            {
+                voice: text_input,
+            }
+        );
 
         console.log(respuesta.data);
     } catch (error) {
@@ -10,6 +13,4 @@ const obtenerPeliculas = async (text_input) => {
     }
 };
 
-obtenerPeliculas(
-    "Un suavitel de 5 litros de sams club sino hay comprar otro detergente"
-);
+obtenerPeliculas("3 kilos de arroz Sos de Walmart, si no hay no comprar nada");
