@@ -22,22 +22,25 @@
         <!--<a href="/CrearProductoPredeterminado/<%=id.id_lis%>">Agregar un producto predeterminado</a>-->
     </div>
     <div class="contenedor-formulario">
-        <label for="enlace-voz" class="contenedor-voz">
-            <img src="../assets/svg/microfono.svg">
-            <a id="enlace-voz" href="/">
-                <p>
-                    <b>Dictar un producto por voz</b>
-                </p>
-            </a>
-            <p class="seccion">
-                😎
-            </p>
-            <input type="text" placeholder="Producto" id="inputProducto" name="producto">
-        </label>
     </div>
     <br>
     <div class="contenedor-formulario">
         <form method="POST" id="CrearProForm" name="CrearProForm">
+            <label for="enlace-voz" class="contenedor-voz">
+                <img src="../assets/svg/microfono.svg">
+                <a id="enlace-voz" href="/">
+                    <p>
+                        <b>Dictar un producto por voz</b>
+                    </p>
+                </a>
+                <p class="seccion">
+                    😎
+                </p>
+                <input type="text" placeholder="Producto" id="inputProducto" name="producto" value="CoitoFon">
+                
+            </label>
+
+            
             <p class="seccion">
                 Nombre
             </p>
@@ -109,11 +112,7 @@
     </div>
     <br>
 
-    <!-- libreria para consumir la API -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <!-- cliente api gpt-3 -->
-    <script src="../js/agreagarProducto.js"></script>c
+    
 
     <script src="../js/validaciones.js"></script>
     <script src="../js/detect-browser.js"></script>
