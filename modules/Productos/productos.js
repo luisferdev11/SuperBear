@@ -170,10 +170,9 @@ module.exports = {
 
             const { id_lis } = req.body;
 
-            if (myProd.Nombre == null) {
-                const nombre = "Producto misterioso";
-            } else {
-                const nombre = myProd.Nombre;
+            let nombre = "Producto misterioso";
+            if (myProd.Nombre != null) {
+                nombre = myProd.Nombre;
             }
 
             const Marca = await doesAttributeExist(
