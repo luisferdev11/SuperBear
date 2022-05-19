@@ -6,8 +6,8 @@ let editarForm = document.getElementById("editarForm");
 let crearNoticia = document.getElementById("CrearNoticia");
 let formObjAdmin = document.getElementById("FormObjAdmin");
 function miFunc(id_pro, id_eli) {
-    window.location.href = "/estadoProductoLista/"+ id_pro+"/"+ id_eli;
-}  
+    window.location.href = "/estadoProductoLista/" + id_pro + "/" + id_eli;
+}
 
 function validarEmail(email) {
     var regex = /^[-\w.%+]{1,34}@(?:[A-Z0-9-]{1,10}\.){1,10}[A-Z]{2,10}$/i;
@@ -113,7 +113,10 @@ function ValidarObjetoLista(event) {
                         document.getElementById("msgerror5").innerHTML = "";
                         if (Anotaciones == true) {
                             document.getElementById("msgerror6").innerHTML = "";
-                            CrearProForm.setAttribute("action", "/CrearProducto");
+                            CrearProForm.setAttribute(
+                                "action",
+                                "/CrearProducto"
+                            );
                         } else {
                             document.getElementById("msgerror6").innerHTML =
                                 "Las anotaciones solo pueden contener caracteres alfanumericos y no debe de ser mayor a 32 caracteres";
@@ -258,16 +261,15 @@ function ValidarRegistro(event) {
     }
 }
 function ValidarLista(event) {
-
-  var nombreLista = validarNombreLista(document.getElementById('inputNombre').value);
-  if (nombreLista == true) {
-    document.getElementById('msgerror1').innerHTML = "";
-    formsignup.setAttribute("action", "/crearlista");
-
-
-  } else {
-    document.getElementById('msgerror1').innerHTML = "El nombre de la lista solo puede contener letras con longitud no mayor a 20";
-
+    var nombreLista = validarNombreLista(
+        document.getElementById("inputNombre").value
+    );
+    if (nombreLista == true) {
+        document.getElementById("msgerror1").innerHTML = "";
+        formsignup.setAttribute("action", "/crearlista");
+    } else {
+        document.getElementById("msgerror1").innerHTML =
+            "El nombre de la lista solo puede contener letras con longitud no mayor a 20";
 
         event.preventDefault();
     }
@@ -333,32 +335,37 @@ function ValidarEditar(event) {
         event.preventDefault();
     }
 }
-function validarNoticia(event){
-    var nombreNoticia = NombreNoticia(document.getElementById('inputTitulo').value);
-    var contenidoNoticia = ContenidoNoticia(document.getElementById('inputContenido').value);
+function validarNoticia(event) {
+    var nombreNoticia = NombreNoticia(
+        document.getElementById("inputTitulo").value
+    );
+    var contenidoNoticia = ContenidoNoticia(
+        document.getElementById("inputContenido").value
+    );
     if (nombreNoticia == true) {
-      document.getElementById('msgerror1').innerHTML = "";
-  
-      if (contenidoNoticia == true) {
-        document.getElementById('msgerror2').innerHTML = "";    
-        crearNoticia.setAttribute("action", "/crearNoticia");
+        document.getElementById("msgerror1").innerHTML = "";
 
-      } else {
-        document.getElementById('msgerror2').innerHTML ="El nombre de la lista solo puede contener letras con longitud no mayor a 129";
-    
-    
+        if (contenidoNoticia == true) {
+            document.getElementById("msgerror2").innerHTML = "";
+            crearNoticia.setAttribute("action", "/crearNoticia");
+        } else {
+            document.getElementById("msgerror2").innerHTML =
+                "El nombre de la lista solo puede contener letras con longitud no mayor a 129";
+
             event.preventDefault();
         }
     } else {
-      document.getElementById('msgerror1').innerHTML =  "El nombre de la noticia solo puede tener longitud no mayor a 43";
-  
-  
-          event.preventDefault();
-      }
+        document.getElementById("msgerror1").innerHTML =
+            "El nombre de la noticia solo puede tener longitud no mayor a 43";
+
+        event.preventDefault();
+    }
 }
 function ValidarObjetoPredeterminado(event) {
-    var nombre = NombreObjeto(document.getElementById("inputProductoPredeterminado").value);
-    
+    var nombre = NombreObjeto(
+        document.getElementById("inputProductoPredeterminado").value
+    );
+
     if (nombre == true) {
         document.getElementById("msgerror1").innerHTML = "";
         formObjAdmin.setAttribute("action", "/create-default-object");

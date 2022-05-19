@@ -128,7 +128,7 @@ module.exports = {
     async CrearProducto(req, res) {
         const producto = req.body.producto;
 
-        if (producto == "CoitoFon" || "") {
+        if (producto == "CoitoFon" || producto === "") {
             const { nombre } = req.body;
             const { Marca } = req.body;
             const { supermercado } = req.body;
