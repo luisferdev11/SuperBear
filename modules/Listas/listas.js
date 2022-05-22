@@ -72,6 +72,8 @@ module.exports = {
         }
     },
     async borrarLista(req, res){
+
+
         const idl = req.params.id_lis;
         const grp = req.params.id_grp;
         try {
@@ -79,6 +81,10 @@ module.exports = {
                 "select id_eli from elista where id_lst = ?",
                 idl
             );
+            await pool.query(
+                "delete from drutinas where id_lis = ?",
+                idl
+            )
             await pool.query(
                 "delete from dproducto where id_eli = ?",
                 eli[0].id_eli
