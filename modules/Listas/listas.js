@@ -75,14 +75,23 @@ module.exports = {
         const idl = req.params.id_lis;
         const grp = req.params.id_grp;
         try {
-            await pool.query(
-                "DELETE from ELista where id_lst = ?",
+            let eli = await pool.query(
+                "select id_eli from elista where id_lst = ?",
                 idl
+            );
+            await pool.query(
+                "delete from dproducto where id_eli = ?",
+                eli[0].id_eli
+            );
+            await pool.query(
+                "delete from elista where id_eli = ?",
+                eli[0].id_eli
             );
             await pool.query(
                 "DELETE from MLista where id_lis = ?",
                 idl
             );
+            
             
             res.redirect("/consultarlistas/"+grp);
         } catch (err) {
