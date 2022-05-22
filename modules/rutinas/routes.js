@@ -14,20 +14,27 @@ router.post(
     controller.crearRutina
 )
 
+// Consultar Rutina
 router.get(
     "/consultarRutinas/:grupo",
     controller.consultarRutinas
 );
 
+// Borrar Rutina
 router.get(
     "/borrarRutina/:rutina/:grupo",
     controller.borrarRutina
-    );
+);
 
-// Placeholder
+// Editar Rutina
+router.get(
+    "/editarRutina/:rutina/:grupo",
+    controller.getEditarRutina
+);
 
-router.get("/editarRutinas", (req, res) =>{
-    res.render("editarRutinas");
-});
+router.post(
+    "/editarRutina/:rutina/:grupo",
+    controller.editarRutina
+);
 
 module.exports = router;

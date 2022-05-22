@@ -83,5 +83,45 @@ module.exports = {
             console.log(error);
         }
         
+    },
+
+    async getEditarRutina(req, res){
+        try {
+            let { rutina } = req.params;
+            let { grupo } = req.params;
+            let info = await pool.query(
+                "select * from drutinas where id_rut = ?",
+                rutina
+            );
+            let nombre = await pool.query(
+                "select nom_lis from mlista where id_lis = ?",
+                info[0].id_lis
+            );
+            res.render("editarRutinas",
+            {
+                grupo,
+                info: info[0],
+                nombre: nombre[0].nom_lis
+            });   
+        } catch (error) {
+            res.redirect("/error");
+            console.log(error);
+        }
+    },
+
+    async editarRutina(req, res){
+        try {
+            let { rutina } = req.params;
+            let { grupo } = req.params;
+            let { periodo } = req.body;
+            await pool.query(
+                "update drutinas set prd = ? where id_rut = ?",
+                [periodo, rutina]
+            );
+            res.redirect("/consultarRutinas/" + grupo);   
+        } catch (error) {
+            res.redirect("/error");
+            console.log(error);
+        }
     }
 }
