@@ -156,40 +156,34 @@ module.exports = {
             );
             
             const Nombre = Clista[0].nom_lis;
-            await pool.query(
-                "INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)",
+            let nuevaLista = await pool.query(
+            'INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0);',
                 [Nombre]
             );
-            const id_lista = await pool.query(
-                "select id_lis from mlista where id_lis = (select MAX(id_lis) from mlista)",
-                
-            );
-            await pool.query(
-                "INSERT INTO ELista (id_grp, id_lst) VALUES (?,?)",
-                [idg, id_lista]
-            );
-            const id_elista = await pool.query(
-                "select id_eli from ELista where id = (select MAX(id_eli) from mlista)",
-                
+            let union = [idg, nuevaLista.insertId];
+            let idNuevaLista = await pool.query(
+                "INSERT INTO ELista (id_grp, id_lst) VALUES (?)",
+                [union]
             );
             const Plista = await pool.query(
                 "select * from DProducto where id_eli = ?",
-                Edup
+                Edup[0].id_eli
             );
+            
             for (let i = 0; i < Plista.length; i++) {
-                const nombre = Plista[i].nom_pro;
-                const marca = Plista[i].id_marca;
-                const sup = plista[i].id_sup;
-                const dep = plista[i].id_dep;
-                const uni = plista[i].id_uni;
-                const can = plista[i].can_pro;
-                const precio = plista[i].precio_pro;
-                const notas = plista[i].notas_pro;
-                const tipo = plista[i].id_tip;
+                let nombre = Plista[i].nom_pro;
+                let marca = Plista[i].id_mar;
+                let sup = Plista[i].id_sup;
+                let dep = Plista[i].id_dep;
+                let uni = Plista[i].id_uni;
+                let can = Plista[i].can_pro;
+                let precio = Plista[i].precio_pro;
+                let notas = Plista[i].notas_pro;
+                let tipo = Plista[i].id_tip;
 
-                var datoslista = await pool.query(
-                    "INSERT INTO dproducto (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esp) VALUES (?,?,?,?,?,?,?,?,?,?,1)",
-                    [id_elista, nombre, marca, sup, dep, uni, can, precio, notas, tipo]
+                await pool.query(
+                    "INSERT INTO dproducto (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esProd) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                    [idNuevaLista.insertId, nombre, marca, sup, dep, uni, can, precio, notas, tipo, 1]
                 );
             }
             res.redirect("/consultarlistas/"+idg);
