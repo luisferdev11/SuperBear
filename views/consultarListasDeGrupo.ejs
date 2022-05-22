@@ -58,12 +58,15 @@
                     <img class="opciones" src="../assets/svg/options.svg">
                     <input id="menu-<%=element.id_lis %>" type="checkbox">
                     <div class="desplegable">
+                        <a href="/crearRutina/<%= element.id_lis %>/<%=idgrupo%>" class="b">
+                            Añadir Rutina
+                        </a>
                         <a href="/Duplicarlista/<%=element.id_lis %>/<%=idgrupo%>" class="b">
                             Duplicar Lista
                         </a>
                         <a href="/Borrarlista/<%= element.id_lis %>/<%=idgrupo%>" class="b">
                             Borrar Lista
-                        </a>
+                        </a> 
                     </div>
                 </label>
             </div>
