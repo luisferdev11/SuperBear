@@ -14,9 +14,9 @@ router.post(
     controller.crearRutina
 )
 
-router.get("/consultarRutinas", (req, res) => {
-    res.render("consultarRutinas");
-});
+router.get("/consultarRutinas/:grupo",
+    controller.consultarRutinas
+);
 
 router.get("/editarRutinas", (req, res) =>{
     res.render("editarRutinas");

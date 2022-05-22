@@ -41,5 +41,31 @@ module.exports = {
             console.log(error);
         }
         
+    },
+
+    async consultarRutinas(req, res){
+        try {
+            let { grupo } = req.params;
+            let rutinas = await pool.query(
+                "select * from drutinas where id_grp = ?",
+                grupo
+            );
+            for(var i = 0; i < rutinas.length; i++){
+                let nombre = await pool.query(
+                    "select nom_lis from mlista where id_lis = ?",
+                    rutinas[i].id_lis
+                );
+                rutinas[i].nombre = nombre[0].nom_lis;
+            }
+            res.render("consultarRutinas",
+            {
+                grupo,
+                rutinas
+            });    
+        } catch (error) {
+            res.redirect("/error");
+            console.log(error);
+        }
+        
     }
 }
