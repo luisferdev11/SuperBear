@@ -59,11 +59,11 @@ function validarContraseñas(Contraseña) {
     return regex.test(Contraseña) ? true : false;
 }
 function NombreNoticia(Nombre) {
-    var regex = /^[A-Z0-9-]{1,43}$/i;
+    var regex = /^[A-Z0-9-\s]{1,43}$/i;
     return regex.test(Nombre) ? true : false;
 }
 function ContenidoNoticia(Nombre) {
-    var regex = /^[A-Z0-9-]{1,129}$/i;
+    var regex = /^[A-Z0-9-\s]{1,129}$/i;
     return regex.test(Nombre) ? true : false;
 }
 function validarCodigoGrupo(event) {
@@ -350,14 +350,12 @@ function validarNoticia(event) {
             crearNoticia.setAttribute("action", "/crearNoticia");
         } else {
             document.getElementById("msgerror2").innerHTML =
-                "El nombre de la lista solo puede contener letras con longitud no mayor a 129";
-
+                "El nombre de la lista solo puede contener letras y numeros con longitud no mayor a 129";
             event.preventDefault();
         }
     } else {
         document.getElementById("msgerror1").innerHTML =
-            "El nombre de la noticia solo puede tener longitud no mayor a 43";
-
+            "El nombre de la noticia solo puede tener letras y numeros con longitud no mayor a 43";
         event.preventDefault();
     }
 }
