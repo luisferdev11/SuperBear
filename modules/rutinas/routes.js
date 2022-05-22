@@ -14,9 +14,17 @@ router.post(
     controller.crearRutina
 )
 
-router.get("/consultarRutinas/:grupo",
+router.get(
+    "/consultarRutinas/:grupo",
     controller.consultarRutinas
 );
+
+router.get(
+    "/borrarRutina/:rutina/:grupo",
+    controller.borrarRutina
+    );
+
+// Placeholder
 
 router.get("/editarRutinas", (req, res) =>{
     res.render("editarRutinas");

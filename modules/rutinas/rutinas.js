@@ -67,5 +67,21 @@ module.exports = {
             console.log(error);
         }
         
+    },
+
+    async borrarRutina(req, res){
+        try {
+            let { rutina } = req.params;
+            let { grupo } = req.params;
+            await pool.query(
+                "delete from drutinas where id_rut = ?",
+                rutina
+            );
+            res.redirect("/consultarRutinas/" + grupo);    
+        } catch (error) {
+            res.redirect("/error");
+            console.log(error);
+        }
+        
     }
 }
