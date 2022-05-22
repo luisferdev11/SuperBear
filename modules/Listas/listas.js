@@ -1,6 +1,53 @@
 const pool = require("../../database");
 const { env } = require("../../credenciales");
 
+async function clonarLista(rutina){
+    let nombre = await pool.query(
+        "select nom_lis from mlista where id_lis = ?",
+        rutina.id_lis
+    );
+    nombre = nombre[0].nom_lis;
+
+    let nuevaLista = await pool.query(
+        'INSERT INTO mlista (nom_lis, fec_lis, id_esList, tot_list) VALUES (?,CURDATE(),1,0.0)',
+        nombre
+    );
+    nuevaLista = nuevaLista.insertId;
+    let eliNuevaLista = await pool.query(
+        "INSERT INTO ELista (id_grp, id_lst) VALUES (?, ?)",
+        [rutina.id_grp, nuevaLista]
+    );
+    eliNuevaLista = eliNuevaLista.insertId;
+    const productos = await pool.query(
+        "select * from dproducto where id_eli = ?",
+        rutina.id_eli
+    );
+
+    for (let i = 0; i < productos.length; i++) {
+        let nombre = productos[i].nom_pro;
+        let marca = productos[i].id_mar;
+        let sup = productos[i].id_sup;
+        let dep = productos[i].id_dep;
+        let uni = productos[i].id_uni;
+        let can = productos[i].can_pro;
+        let precio = productos[i].precio_pro;
+        let notas = productos[i].notas_pro;
+        let tipo = productos[i].id_tip;
+
+        await pool.query(
+            "INSERT INTO dproducto (id_eli, nom_pro, id_mar, id_sup, id_dep, id_uni, can_pro, precio_pro, notas_pro, id_tip, id_esProd) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+            [eliNuevaLista, nombre, marca, sup, dep, uni, can, precio, notas, tipo, 1]
+        );
+    }
+}
+
+async function updateRutina(id){
+    await pool.query(
+        "update drutinas set lst_updt = curdate() where id_rut = ?",
+        id
+    );
+}
+
 module.exports = {
     async crearLista(req, res) {
         try {
@@ -109,6 +156,30 @@ module.exports = {
         try {
             let preview = new Array();
             const idgrupo = req.params.id_grp;
+
+            // Rutinas del president
+
+            let rutinas = await pool.query(
+                "select * from drutinas where id_grp = ?",
+                idgrupo
+            );
+
+            if(rutinas.length != 0){
+                let ahora = new Date();
+                // ahora.setHours(0, 0, 0, 0);
+                ahora = ahora.getTime();
+                for(var i = 0; i < rutinas.length; i++){
+                    let lastUpdt = rutinas[i].lst_updt.getTime();
+                    let intervalo = rutinas[i].prd * 24 * 60 * 60 * 1000;
+                    if(ahora - intervalo > lastUpdt){
+                        clonarLista(rutinas[i]);
+                        updateRutina(rutinas[i].id_rut);
+                    }
+                }
+            }
+            
+            // Fin rutinas president
+
             const nomGrp = await pool.query(
                 "SELECT nom_grp FROM MGrupo WHERE id_grp = ?",
                 [idgrupo]
