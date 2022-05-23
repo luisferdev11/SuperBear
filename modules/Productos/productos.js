@@ -175,37 +175,22 @@ module.exports = {
                 nombre = myProd.Nombre;
             }
 
-            const Marca = await doesAttributeExist(
-                "id_mar",
-                "cmarca",
-                "Marca",
-                myProd.Marca
-            );
-            console.log(Marca[0].id_mar);
-
-            const supermercado = await doesAttributeExist(
-                "id_sup",
-                "csupermercado",
-                "nom_sup",
-                myProd.Supermercado
-            );
-            console.log(supermercado[0].id_sup);
-
-            const Depa = await doesAttributeExist(
-                "id_dep",
-                "cdepartamento",
-                "nom_dep",
-                myProd.Departamento
-            );
-            console.log(Depa[0].id_dep);
-
-            const Unidad = await putUnidad(
-                "id_uni",
-                "cunidad",
-                "unidad",
-                myProd.Unidad
-            );
-            console.log(Unidad[0].id_uni);
+            let [Marca, supermercado, Depa, Unidad] = await Promise.all([
+                doesAttributeExist("id_mar", "cmarca", "Marca", myProd.Marca),
+                doesAttributeExist(
+                    "id_sup",
+                    "csupermercado",
+                    "nom_sup",
+                    myProd.Supermercado
+                ),
+                doesAttributeExist(
+                    "id_dep",
+                    "cdepartamento",
+                    "nom_dep",
+                    myProd.Departamento
+                ),
+                putUnidad("id_uni", "cunidad", "unidad", myProd.Unidad),
+            ]);
 
             const Cant = validateTextToNumber(myProd.Cantidad);
             console.log(Cant);
