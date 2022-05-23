@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css" />
-    <link rel="stylesheet" href="css/formularios.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg" />
+    <link rel="stylesheet" href="../../css/mastersyle.css" />
+    <link rel="stylesheet" href="../../css/formularios.css">
+    <link rel="shortcut icon" href="../../assets/svg/logo.svg" />
     <title>Crear Rutina | SuperBear</title>
 </head>
 <body>
     <!--
         Es necesario definir una variable ruta para que sepa a donde llevar
     -->
-    <% ruta="/consultarRutinas" %>
-    <%- include('partials/navegacionFlechita') %>
+    <style>
+        nav {
+            grid-template-columns: 15%;
+        }
+    
+        nav a img {
+            width: 1rem;
+            height: 1rem;
+        }
+    </style>
+    <% ruta="/consultarlistas/" + grupo %>
+    <nav class="flecha">
+        <a href="<%- ruta %>">
+            <img src="../../assets/svg/flecha.svg">
+        </a>
+    </nav>
 
     <div class="principal">
         <h1>
@@ -23,26 +37,21 @@
     </div>
     
     <div class="contenedor-formulario">
-        <form action="/consultarRutinas">
+        <form action="/crearRutina/<%= idLista %>/<%= grupo %>" method="post">
+            <p>
+                Se creará una rutina para la lista:
+            </p>
             <b>
-                Selecciona una lista para la rutina:
+                <%=idLista %> - <%= nombre %>
             </b>
-            <br><br>
-            <select>
-                <option>Lista 1</option>
-                <option>Lista 2</option>
-                <option>Lista 3</option>
-            </select>
-            <br><br>
-            <b>
-                Selecciona una frecuencia para la rutina:
-            </b>
-            <br><br>
-            <select>
-                <option>Diariamente</option>
-                <option>Semanalmente</option>
-                <option>Quincenalmente</option>
-                <option>Mensualmente</option>
+            <p>
+                La lista se repetirá cada:
+            </p>
+            <select name="periodo">
+                <option value="1">1 Día</option>
+                <option value="7">7 Días</option>
+                <option value="15">15  Días</option>
+                <option value="30">30  Días</option>
             </select>
             <br><br>
             <div class="contenedor-boton">
@@ -50,7 +59,7 @@
             </div>
         </form>
     </div>
-    <script src="../js/detect-browser.js"></script>
-    <script src="../js/barraNavegacion.js"></script>
+    <script src="../../js/detect-browser.js"></script>
+    <script src="../../js/barraNavegacion.js"></script>
 </body>
 </html>

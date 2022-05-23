@@ -4,56 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css" />
-    <link rel="stylesheet" href="css/rutinas.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg" />
+    <link rel="stylesheet" href="../css/mastersyle.css" />
+    <link rel="stylesheet" href="../css/rutinas.css">
+    <link rel="shortcut icon" href="../assets/svg/logo.svg" />
     <title>Consultar Rutinas | SuperBear</title>
 </head>
 <body>
     <!--
         Es necesario definir una variable ruta para que sepa a donde llevar
     -->
-    <% ruta="/" %>
-    <%- include('partials/navegacionFlechita') %>
+    <% ruta="/consultarlistas/" + grupo %>
+    <style>
+        nav {
+            grid-template-columns: 15%;
+        }
+    
+        nav a img {
+            width: 1rem;
+            height: 1rem;
+        }
+    </style>
+    <% ruta="/consultarlistas/" + grupo %>
+    <nav class="flecha">
+        <a href="<%- ruta %>">
+            <img src="../../assets/svg/flecha.svg">
+        </a>
+    </nav>
 
     <div class="principal">
         <header>
             <h1>Consultar Rutinas</h1>
-            <div>
-                <a href="/crearRutinas"><img src="assets/svg/plus.svg" /></a>
-            </div>
+            <!--<div>
+                <a href="/crearRutinas"><img src="../../assets/svg/plus.svg" /></a>
+            </div>-->
         </header>
     </div>
+    <% if(rutinas.length == 0){ %>
+        <div class="principal">
+            <h2> No tienes rutinas </h2>
+        </div>
+    <% } %> %>  
     <div class="grid">
         <!--Cada rutina debe tener su propio menu
         para eso es necesario que cada input tenga un id diferentes
         los for del label deben coincidir con el del input-->
         <!-- Vease consultarGrupos.ejs para tener un ejemplo-->
-        <div class="rutina">
-            <div class="rutina-contenedor">
-                <div class="rutina-texto">
-                    <div>
-                        <b>Lista 420</b>
-                        <br>
-                        <b>Diariamente</b>
+        <% rutinas.forEach(element => { %>
+            <div class="rutina"> 
+                <div class="rutina-contenedor">
+                    <div class="rutina-texto">
+                        <div>
+                            <b>
+                                <a href="/ConsultarProductos/<%= element.id_lis %>">Lista <%= element.id_lis %> <%= element.nombre %></a>
+                            </b>
+                            <br>
+                            Cada <%= element.prd %> Días
+                        </div>
                     </div>
+                    <label for="menu-<%= element.id_rut %>">
+                        <img class="opciones" src="../assets/svg/options.svg" />
+                        <input id="menu-<%= element.id_rut %>" type="checkbox" />
+                        <div class="desplegable">
+                            <a href="/editarRutina/<%= element.id_rut %>/<%= element.id_grp %>" class="b">
+                                Editar Rutina
+                            </a>
+                        </div>
+                    </label>
                 </div>
-                <label for="menu-1">
-                    <img class="opciones" src="assets/svg/options.svg" />
-                    <input id="menu-1" type="checkbox" />
-                    <div class="desplegable">
-                        <a href="/editarRutinas" class="b">
-                            Editar Rutina
-                        </a>
-                    </div>
-                </label>
+                
+                <a href="/borrarRutina/<%= element.id_rut %>/<%= element.id_grp %>" class="rutina-borrar">
+                    <img src="../assets/svg/basura.svg">
+                </a>
             </div>
-            <a href="/consultarRutinas" class="rutina-borrar">
-                <img src="assets/svg/basura.svg">
-            </a>
-        </div>
-        <script src="../js/detect-browser.js"></script>
-        <script src="../js/barraNavegacion.js"></script>
+        <% }) %>
+        <script src="../../js/detect-browser.js"></script>
+        <script src="../../js/barraNavegacion.js"></script>
     </div>
 </body>
 </html>
