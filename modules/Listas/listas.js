@@ -39,12 +39,16 @@ async function clonarLista(rutina){
             [eliNuevaLista, nombre, marca, sup, dep, uni, can, precio, notas, tipo, 1]
         );
     }
+    let returnVar = {};
+    returnVar.id = nuevaLista;
+    returnVar.eli = eliNuevaLista;
+    return returnVar;
 }
 
-async function updateRutina(id){
+async function updateRutina(id, json){
     await pool.query(
-        "update drutinas set lst_updt = curdate() where id_rut = ?",
-        id
+        "update drutinas set lst_updt = curdate(), id_eli = ?, id_lis = ? where id_rut = ?",
+        [json.eli, json.id, id]
     );
 }
 
@@ -172,8 +176,8 @@ module.exports = {
                     let lastUpdt = rutinas[i].lst_updt.getTime();
                     let intervalo = rutinas[i].prd * 24 * 60 * 60 * 1000;
                     if(ahora - intervalo > lastUpdt){
-                        clonarLista(rutinas[i]);
-                        updateRutina(rutinas[i].id_rut);
+                        let nuevo = await clonarLista(rutinas[i]);
+                        updateRutina(rutinas[i].id_rut, nuevo);
                     }
                 }
             }
