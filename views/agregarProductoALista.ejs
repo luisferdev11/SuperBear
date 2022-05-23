@@ -24,18 +24,21 @@
     <div class="contenedor-formulario">
     </div>
     <br>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/IDMNYU/p5.js-speech@0.0.3/lib/p5.speech.js"></script>
+
+
     <div class="contenedor-formulario">
         <form method="POST" id="CrearProForm" name="CrearProForm">
             <label for="enlace-voz" class="contenedor-voz">
-                <img src="../assets/svg/microfono.svg">
-                <a id="enlace-voz" href="/">
-                    <p>
-                        <b>Dictar un producto por voz</b>
-                    </p>
-                </a>
-                <p class="seccion">
-                    😎
-                </p>
+                
+                <button type="button" class="cssbuttons-io-button" id="microphone"> Dictar un producto por voz
+                    <div class="icon">
+                        <object data="../assets/svg/microfono.svg" width="24" height="24"> </object>
+                    </div>
+                </button>
+                
                 <input type="text" placeholder="Producto" id="inputProducto" name="producto" value="">
                 
             </label>
@@ -112,8 +115,25 @@
     </div>
     <br>
 
-    
+    <!-- <script>
+        const lang = 'es-MX';
+        let lib = new p5.SpeechRec(lang);
 
+        let output = select('#inputProducto');
+
+        const boton = document.getElementById("microphone");
+        boton.addEventListener("click", function(){
+            lib.onResult = showResult; // bind callback function to trigger when speech is recognized
+            lib.start(); // start listening
+            
+            function showResult()
+            {
+                console.log(lib.resultString); // log the result
+                output.html(lib.resultString);
+            }
+            });
+    </script> -->
+    <script src="../js/speech2txt.js"></script>
     <script src="../js/validaciones.js"></script>
     <script src="../js/detect-browser.js"></script>
     <script src="../js/barraNavegacion.js"></script>
