@@ -1,0 +1,87 @@
+/* ============
+Clear All Screens
+==============*/
+.clear-right {
+  clear: right;
+}
+.clear-left {
+  clear: left;
+}
+.clear-both {
+  clear: both;
+}
+.clear-none {
+  clear: none;
+}
+
+/* ============
+  Clear Small (sm)
+  ==============*/
+.clear-sm-right {
+  @include minSmall {
+    clear: right;
+  }
+}
+.clear-sm-left {
+  @include minSmall {
+    clear: left;
+  }
+}
+.clear-sm-both {
+  @include minSmall {
+    clear: both;
+  }
+}
+.clear-sm-none {
+  @include minSmall {
+    clear: none;
+  }
+}
+
+/* ============
+  Clear Medium (md)
+  ==============*/
+.clear-md-right {
+  @include minMedium {
+    clear: right;
+  }
+}
+.clear-md-left {
+  @include minMedium {
+    clear: left;
+  }
+}
+.clear-md-both {
+  @include minMedium {
+    clear: both;
+  }
+}
+.clear-md-none {
+  @include minMedium {
+    clear: none;
+  }
+}
+
+/* ============
+  Clear Large (lg)
+  ==============*/
+.clear-lg-right {
+  @include minLarge {
+    clear: right;
+  }
+}
+.clear-lg-left {
+  @include minLarge {
+    clear: left;
+  }
+}
+.clear-lg-both {
+  @include minLarge {
+    clear: both;
+  }
+}
+.clear-lg-none {
+  @include minLarge {
+    clear: none;
+  }
+}

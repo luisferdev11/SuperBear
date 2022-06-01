@@ -1,0 +1,66 @@
+/*----------------------------------------------------
+@File: Default Styles
+@Author: Hasan Sibakhi
+@URL: https://themeforest.net/user/orinostu
+
+This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+---------------------------------------------------- */
+/*=====================================================================
+@Template Name: Olivera – The Multipurpose Mobile HTML5 Template
+@Author: Hasan Sibakhi
+@Developed By: Hasan Sibakhi
+@Developer URL: https://dribbble.com/HasanSib
+/*===================================================================== */
+
+/*   =======
+    helpers
+    ========== */
+@import "sass/helpers/variables";
+@import "sass/helpers/mixins";
+
+/* ============
+components
+============== */
+@import "sass/components/display";
+@import "sass/components/float";
+@import "sass/components/clear";
+@import "sass/components/object";
+@import "sass/components/overflow";
+@import "sass/components/overscroll";
+@import "sass/components/position";
+@import "sass/components/alignment";
+@import "sass/components/visibility";
+@import "sass/components/z-index";
+@import "sass/components/spacing";
+@import "sass/components/sizing";
+@import "sass/components/typography";
+@import "sass/components/borders";
+@import "sass/components/transition-animation";
+@import "sass/components/interactivity";
+@import "sass/components/svg";
+
+/* ============
+layout
+============== */
+@import "sass/layout/header";
+@import "sass/layout/banner";
+@import "sass/layout/products";
+@import "sass/layout/popup";
+@import "sass/layout/others";
+@import "sass/layout/authentication";
+@import "sass/layout/checkout";
+@import "sass/layout/profile";
+@import "sass/layout/errors";
+@import "sass/layout/chat";
+@import "sass/layout/wallet";
+@import "sass/layout/learning";
+@import "sass/layout/jobs";
+@import "sass/layout/provider";
+@import "sass/layout/footer";
+/* ============
+pages
+============== */
+@import "sass/pages/globalpage";
+@import "sass/pages/darkMode";

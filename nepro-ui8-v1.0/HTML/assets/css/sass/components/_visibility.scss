@@ -1,0 +1,48 @@
+/* ============
+Visibility All Screens
+==============*/
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+/* ============
+Visibility Small (sm)
+==============*/
+.visible-sm {
+  @include minSmall {
+    visibility: visible;
+  }
+}
+.invisible-sm {
+  @include minSmall {
+    visibility: hidden;
+  }
+}
+/* ============
+Visibility Medium (md)
+==============*/
+.visible-md {
+  @include minMedium {
+    visibility: visible;
+  }
+}
+.invisible-md {
+  @include minMedium {
+    visibility: hidden;
+  }
+}
+/* ============
+Visibility Large (lg)
+==============*/
+.visible-lg {
+  @include minLarge {
+    visibility: visible;
+  }
+}
+.invisible-lg {
+  @include minLarge {
+    visibility: hidden;
+  }
+}
