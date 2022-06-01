@@ -1,0 +1,307 @@
+/* ============
+Top / Right / Bottom / Left All Screens
+==============*/
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.inset-auto {
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+}
+.inset-y-0 {
+  top: 0;
+  bottom: 0;
+}
+.inset-x-0 {
+  right: 0;
+  left: 0;
+}
+.inset-y-auto {
+  top: auto;
+  bottom: auto;
+}
+.inset-x-auto {
+  right: auto;
+  left: auto;
+}
+.top-0 {
+  top: 0;
+}
+.right-0 {
+  right: 0;
+}
+.bottom-0 {
+  bottom: 0;
+}
+.left-0 {
+  left: 0;
+}
+.top-auto {
+  top: auto;
+}
+.right-auto {
+  right: auto;
+}
+.bottom-auto {
+  bottom: auto;
+}
+.left-auto {
+  left: auto;
+}
+
+/* ============
+Top / Right / Bottom / Left Small (sm)
+==============*/
+.inset-sm-0 {
+  @include minSmall {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+.inset-sm-auto {
+  @include minSmall {
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+}
+.inset-y-sm-0 {
+  @include minSmall {
+    top: 0;
+    bottom: 0;
+  }
+}
+.inset-x-sm-0 {
+  @include minSmall {
+    right: 0;
+    left: 0;
+  }
+}
+.inset-y-sm-auto {
+  @include minSmall {
+    top: auto;
+    bottom: auto;
+  }
+}
+.inset-x-sm-auto {
+  @include minSmall {
+    right: auto;
+    left: auto;
+  }
+}
+.top-sm-0 {
+  @include minSmall {
+    top: 0;
+  }
+}
+.right-sm-0 {
+  @include minSmall {
+    right: 0;
+  }
+}
+.bottom-sm-0 {
+  @include minSmall {
+    bottom: 0;
+  }
+}
+.left-sm-0 {
+  @include minSmall {
+    left: 0;
+  }
+}
+.top-sm-auto {
+  @include minSmall {
+    top: auto;
+  }
+}
+.right-sm-auto {
+  @include minSmall {
+    right: auto;
+  }
+}
+.bottom-sm-auto {
+  @include minSmall {
+    bottom: auto;
+  }
+}
+.left-sm-auto {
+  @include minSmall {
+    left: auto;
+  }
+}
+
+/* ============
+Top / Right / Bottom / Left Medium (md)
+==============*/
+.inset-md-0 {
+  @include minMedium {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+.inset-md-auto {
+  @include minMedium {
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+}
+.inset-y-md-0 {
+  @include minMedium {
+    top: 0;
+    bottom: 0;
+  }
+}
+.inset-x-md-0 {
+  @include minMedium {
+    right: 0;
+    left: 0;
+  }
+}
+.inset-y-md-auto {
+  @include minMedium {
+    top: auto;
+    bottom: auto;
+  }
+}
+.inset-x-md-auto {
+  @include minMedium {
+    right: auto;
+    left: auto;
+  }
+}
+.top-md-0 {
+  @include minMedium {
+    top: 0;
+  }
+}
+.right-md-0 {
+  @include minMedium {
+    right: 0;
+  }
+}
+.bottom-md-0 {
+  @include minMedium {
+    bottom: 0;
+  }
+}
+.left-md-0 {
+  @include minMedium {
+    left: 0;
+  }
+}
+.top-md-auto {
+  @include minMedium {
+    top: auto;
+  }
+}
+.right-md-auto {
+  @include minMedium {
+    right: auto;
+  }
+}
+.bottom-md-auto {
+  @include minMedium {
+    bottom: auto;
+  }
+}
+.left-md-auto {
+  @include minMedium {
+    left: auto;
+  }
+}
+
+/* ============
+Top / Right / Bottom / Left Large (lg)
+==============*/
+.inset-lg-0 {
+  @include minLarge {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+.inset-lg-auto {
+  @include minLarge {
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+}
+.inset-y-lg-0 {
+  @include minLarge {
+    top: 0;
+    bottom: 0;
+  }
+}
+.inset-x-lg-0 {
+  @include minLarge {
+    right: 0;
+    left: 0;
+  }
+}
+.inset-y-lg-auto {
+  @include minLarge {
+    top: auto;
+    bottom: auto;
+  }
+}
+.inset-x-lg-auto {
+  @include minLarge {
+    right: auto;
+    left: auto;
+  }
+}
+.top-lg-0 {
+  @include minLarge {
+    top: 0;
+  }
+}
+.right-lg-0 {
+  @include minLarge {
+    right: 0;
+  }
+}
+.bottom-lg-0 {
+  @include minLarge {
+    bottom: 0;
+  }
+}
+.left-lg-0 {
+  @include minLarge {
+    left: 0;
+  }
+}
+.top-lg-auto {
+  @include minLarge {
+    top: auto;
+  }
+}
+.right-lg-auto {
+  @include minLarge {
+    right: auto;
+  }
+}
+.bottom-lg-auto {
+  @include minLarge {
+    bottom: auto;
+  }
+}
+.left-lg-auto {
+  @include minLarge {
+    left: auto;
+  }
+}

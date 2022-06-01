@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="289.182" height="252.36" viewBox="0 0 289.182 252.36">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.253" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#aaabc9" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0e154b" stop-opacity="0.302"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1.234" y1="0.335" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff8260"/>
+      <stop offset="1" stop-color="#ff2e63"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <path id="Union_2" data-name="Union 2" d="M12,98A12,12,0,0,1,0,86V12A12,12,0,0,1,12,0H76V10.161l5.412,10.821L76,33.223l1,12.584-5,12.42,9.411,17.627L76,89.357V98Z" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Union_3" data-name="Union 3" d="M5,98V88.676l5.557-12.6L5,66.173l-4.5-9.7L5,45.754V31.542l5.557-9.636L5,9.905V0H65A12,12,0,0,1,77,12V86A12,12,0,0,1,65,98Z" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-4" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8fa1b0"/>
+      <stop offset="1" stop-color="#5f7083"/>
+    </linearGradient>
+  </defs>
+  <g id="Artwork" transform="translate(-0.818 1)">
+    <g id="circles" transform="translate(48)">
+      <circle id="circle" cx="57" cy="57" r="57" transform="translate(42 42)" fill="#f9f9f9"/>
+      <circle id="circle-2" data-name="circle" cx="99" cy="99" r="99" fill="none" stroke="#292e34" stroke-miterlimit="10" stroke-width="2" stroke-dasharray="2 9" opacity="0.3"/>
+      <text id="_" data-name="!" transform="translate(101.5 123)" fill="#7e848e" font-size="67" font-family="ConcertOne-Regular, Concert One" opacity="0.5"><tspan x="-13.217" y="0">!</tspan></text>
+    </g>
+    <g id="shadow" opacity="0.809">
+      <ellipse id="shadow-2" data-name="shadow" cx="92.416" cy="5" rx="92.416" ry="5" transform="translate(32.259 241)" fill="url(#linear-gradient)" style="mix-blend-mode: multiply;isolation: isolate"/>
+      <ellipse id="shadow-3" data-name="shadow" cx="92.416" cy="5" rx="92.416" ry="5" transform="translate(32.259 241)" fill="rgba(216,216,216,0.08)" style="mix-blend-mode: overlay;isolation: isolate"/>
+    </g>
+    <g id="card" transform="translate(33.016 123.655) rotate(-25)">
+      <g id="Mask">
+        <path id="Mask-2" data-name="Mask" d="M0,12A12,12,0,0,1,12,0H76V10.161l5.411,10.82L76,33.223l1,12.583-5,12.42,9.411,17.626L76,89.357V98H12A12,12,0,0,1,0,86Z" fill="url(#linear-gradient-2)"/>
+        <path id="Mask-3" data-name="Mask" d="M0,12A12,12,0,0,1,12,0H76V10.161l5.411,10.82L76,33.223l1,12.583-5,12.42,9.411,17.626L76,89.357V98H12A12,12,0,0,1,0,86Z" fill="rgba(216,216,216,0.05)" style="mix-blend-mode: overlay;isolation: isolate"/>
+      </g>
+      <g id="card-2" data-name="card" clip-path="url(#clip-path)">
+        <g id="Group" transform="translate(13 69)">
+          <circle id="Oval" cx="8" cy="8" r="8" fill="#fff" opacity="0.649"/>
+          <circle id="Oval_Copy" data-name="Oval Copy" cx="8" cy="8" r="8" transform="translate(9)" fill="#fff" opacity="0.649"/>
+        </g>
+        <rect id="Rectangle_28" data-name="Rectangle 28" width="86" height="16" transform="translate(0 22)" fill="#f9295e"/>
+      </g>
+    </g>
+    <g id="card-3" data-name="card" transform="translate(189.433 130) rotate(25)">
+      <g id="Mask-4" data-name="Mask">
+        <path id="Mask-5" data-name="Mask" d="M4.5,0h60a12,12,0,0,1,12,12V86a12,12,0,0,1-12,12H4.5V88.677l5.557-12.6L4.5,66.173,0,56.472,4.5,45.755V31.543l5.557-9.637L4.5,9.906Z" transform="translate(0.5 -0.001)" fill="url(#linear-gradient-2)"/>
+        <path id="Mask-6" data-name="Mask" d="M4.5,0h60a12,12,0,0,1,12,12V86a12,12,0,0,1-12,12H4.5V88.677l5.557-12.6L4.5,66.173,0,56.472,4.5,45.755V31.543l5.557-9.637L4.5,9.906Z" transform="translate(0.5 -0.001)" fill="rgba(216,216,216,0.05)" style="mix-blend-mode: overlay;isolation: isolate"/>
+      </g>
+      <g id="card-4" data-name="card" clip-path="url(#clip-path-2)">
+        <rect id="Rectangle_28_Copy" data-name="Rectangle 28 Copy" width="72" height="16" transform="translate(5 22)" fill="#f9295e"/>
+        <rect id="Rectangle_29" data-name="Rectangle 29" width="40" height="5" transform="translate(24 70)" fill="#ffaec2"/>
+        <rect id="Rectangle_29_Copy" data-name="Rectangle 29 Copy" width="22" height="5" transform="translate(42 79)" fill="#ffaec2"/>
+      </g>
+    </g>
+    <g id="line" transform="matrix(0.017, 1, -1, 0.017, 289.743, 130.531)" opacity="0.5">
+      <path id="Line-2" data-name="Line" d="M8.938,10.874,3.893,1.121A2.051,2.051,0,0,0,1.107.239,2.1,2.1,0,0,0,.236,3.06l5.045,9.753a2.051,2.051,0,0,0,2.786.882A2.1,2.1,0,0,0,8.938,10.874Z" transform="translate(15.676 5.312)" fill="url(#linear-gradient-4)"/>
+      <path id="Line_Copy" data-name="Line Copy" d="M8.938,10.874,3.893,1.121A2.051,2.051,0,0,0,1.107.239,2.1,2.1,0,0,0,.236,3.06l5.045,9.753a2.051,2.051,0,0,0,2.786.882A2.1,2.1,0,0,0,8.938,10.874Z" transform="matrix(0.914, -0.407, 0.407, 0.914, 0.547, 18.971)" fill="url(#linear-gradient-4)"/>
+      <path id="Line_Copy_2" data-name="Line Copy 2" d="M8.938,10.874,3.893,1.121A2.051,2.051,0,0,0,1.107.239,2.1,2.1,0,0,0,.236,3.06l5.045,9.753a2.051,2.051,0,0,0,2.786.882A2.1,2.1,0,0,0,8.938,10.874Z" transform="translate(35.188 0.357) rotate(30)" fill="url(#linear-gradient-4)"/>
+    </g>
+    <g id="line-3" data-name="line" transform="translate(2.303 90) rotate(93)" opacity="0.5">
+      <path id="Line-4" data-name="Line" d="M-8.938,10.874l5.045-9.753A2.051,2.051,0,0,1-1.107.239,2.1,2.1,0,0,1-.236,3.06l-5.045,9.753a2.051,2.051,0,0,1-2.786.882A2.1,2.1,0,0,1-8.938,10.874Z" transform="translate(15.676 -5.312) rotate(180)" fill="url(#linear-gradient-4)"/>
+      <path id="Line_Copy-2" data-name="Line Copy" d="M-8.938,10.874l5.045-9.753A2.051,2.051,0,0,1-1.107.239,2.1,2.1,0,0,1-.236,3.06l-5.045,9.753a2.051,2.051,0,0,1-2.786.882A2.1,2.1,0,0,1-8.938,10.874Z" transform="matrix(-0.914, -0.407, 0.407, -0.914, 0.547, -18.971)" fill="url(#linear-gradient-4)"/>
+      <path id="Line_Copy_2-2" data-name="Line Copy 2" d="M-8.938,10.874l5.045-9.753A2.051,2.051,0,0,1-1.107.239,2.1,2.1,0,0,1-.236,3.06l-5.045,9.753a2.051,2.051,0,0,1-2.786.882A2.1,2.1,0,0,1-8.938,10.874Z" transform="translate(35.188 -0.357) rotate(150)" fill="url(#linear-gradient-4)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+/* ============
+Fill
+==============*/
+.fill-black {
+  path,
+  rect {
+    fill: var(--color-black);
+  }
+}
+.fill-white {
+  path,
+  rect {
+    fill: var(--color-white);
+  }
+}
+.fill-primary {
+  path,
+  rect {
+    fill: var(--color-primary);
+  }
+}
+.fill-secondary {
+  path,
+  rect {
+    fill: var(--color-secondary);
+  }
+}
+.fill-snow {
+  path,
+  rect {
+    fill: var(--color-snow);
+  }
+}
+.fill-red {
+  path,
+  rect {
+    fill: var(--color-red);
+  }
+}
+.fill-orange {
+  path,
+  rect {
+    fill: var(--color-orange);
+  }
+}
+.fill-blue {
+  path,
+  rect {
+    fill: var(--color-blue);
+  }
+}
+.fill-yellow {
+  path,
+  rect {
+    fill: var(--color-yellow);
+  }
+}
+.fill-green {
+  path,
+  rect {
+    fill: var(--color-green);
+  }
+}
+/* ============
+Stroke Width
+==============*/
+.stroke-0 {
+  stroke-width: 0;
+}
+.stroke-1 {
+  stroke-width: 1;
+}
+.stroke-2 {
+  stroke-width: 2;
+}
