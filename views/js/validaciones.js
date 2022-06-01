@@ -91,6 +91,7 @@ function validarNombreGrupo(event) {
     }
 }
 function ValidarObjetoLista(event) {
+    let validacionOk = true;
     var nombre = NombreObjeto(document.getElementById("inputNombre").value);
     var marca = MarcaObjeto(document.getElementById("inputmarca").value);
     var Super = SuperObjeto(document.getElementById("inputsuper").value);
@@ -101,6 +102,53 @@ function ValidarObjetoLista(event) {
     var Anotaciones = AnotacionesObjeto(
         document.getElementById("inputanotaciones").value
     );
+    if(!nombre){
+        document.getElementById("msgerror1").innerHTML =
+        "El nombre debe contener entre 1 y 45 caracteres alfanumericos";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror1").innerHTML = "";
+    }
+    if(!marca){
+        document.getElementById("msgerror2").innerHTML =
+        "La marca solo pueden contener caracteres alfanumericos y no debe de ser mayor a 10 caracteres";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror2").innerHTML = "";
+    }
+    if(!Super){
+        document.getElementById("msgerror3").innerHTML =
+        "El supermercado solo pueden contener caracteres alfanumericos y no debe de ser mayor a 15 caracteres";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror3").innerHTML = "";
+    }
+    if(!Cantidad){
+        document.getElementById("msgerror4").innerHTML =
+        "La cantidad solo puede contener numeros y no puede ser mayor de 5 cifras";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror4").innerHTML = "";
+    }
+    if(!Precio){
+        document.getElementById("msgerror5").innerHTML =
+        "El precio solo puede contener numeros y no puede ser mayor de 6 cifras";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror5").innerHTML = "";
+    }
+    if(!Anotaciones){
+        document.getElementById("msgerror6").innerHTML =
+        "Las anotaciones solo pueden contener caracteres alfanumericos y no debe de ser mayor a 32 caracteres";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror6").innerHTML = "";
+    }
+    if(!validacionOk){
+        event.preventDefault();
+    }
+    return validacionOk;
+    /* Codigo antiguo mauzzzzzz
     if (nombre == true) {
         document.getElementById("msgerror1").innerHTML = "";
         if (marca == true) {
@@ -147,6 +195,7 @@ function ValidarObjetoLista(event) {
             "El nombre puede contener entre 1 y 45 caracteres alfanumericos";
         event.preventDefault();
     }
+    */
 }
 
 function CalcularEdad(fecha_nacimiento) {

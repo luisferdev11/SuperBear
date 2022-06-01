@@ -92,26 +92,29 @@
                             </div>
                             <label for="inputNombre">Nombre</label>
                         </div>
+                        <p class="text-danger" id="msgerror1"></p>
                     </div>
                     <div class="margin-b-30">
                         <div class="form-group input-lined lined__iconed">
-                            <select name="Marca" class="form-control custom-select">
+                            <select id="inputmarca" name="Marca" class="form-control custom-select">
                                 <% Marca.forEach(element => { %>
                                     <option value="<%=element.id_mar %>"><%=element.Marca%></option>
                                     <%}); %>
                             </select>
                             <label>Marca</label>
                         </div>
+                        <p class="text-danger" id="msgerror2"></p>
                     </div>
                     <div class="margin-b-30">
                         <div class="form-group input-lined lined__iconed">
-                            <select name="supermercado" class="form-control custom-select">
+                            <select id="inputsuper" name="supermercado" class="form-control custom-select">
                                 <% Super.forEach(element => { %>
                                     <option value="<%=element.id_sup %>"><%=element.nom_sup%></option>
                                     <%}); %>
                             </select>
                             <label>Supermercado</label>
                         </div>
+                        <p class="text-danger" id="msgerror3"></p>
                     </div>
                     <div class="margin-b-30">
                         <div class="form-group input-lined lined__iconed">
@@ -130,7 +133,7 @@
                                     <a href="#" data-dir="down" class="btn btn_counter rounded-10 co_down border">
                                         <i class="tio-remove"></i>
                                     </a>
-                                    <input type="text" class="form-control input_no color-secondary" value="0" d="inputcantidad" name="Cant">
+                                    <input type="text" class="form-control input_no color-secondary" value="0" id="inputcantidad" name="Cant">
                                     <a href="#" data-dir="up" class="btn btn_counter rounded-10 co_up bg-secondary">
                                         <i class="tio-add color-white"></i>
                                     </a>
@@ -138,6 +141,7 @@
                             </div>
                             <label>Cantidad</label>
                         </div>
+                        <p class="text-danger" id="msgerror4"></p>
                     </div>
                     <div class="margin-b-30">
                         <div class="form-group input-lined lined__iconed">
@@ -174,6 +178,7 @@
                             </div>
                             <label for="inputprecio">Precio</label>
                         </div>
+                        <p class="text-danger" id="msgerror5"></p>
                     </div>
                     <div class="margin-b-30">
                         <div class="form-group input-lined lined__iconed">
@@ -200,6 +205,7 @@
                             </div>
                             <label for="inputanotaciones">Anotaciones</label>
                         </div>
+                        <p class="text-danger" id="msgerror6"></p>
                     </div>
                     <input type="text" style="display: none;" value="<%=id.id_lis%>" readonly name="id_lis" >
                     <input type="text" style="display: none;" readonly name="producto" >
@@ -208,7 +214,7 @@
             <!-- buttons__footer -->
             <div class="buttons__footer text-center">
                 <div class="env-pb">
-                    <a href="javascript:{}" onclick="document.getElementById('CrearProForm').submit();" class="btn bg-primary rounded-pill btn__default">
+                    <a href="javascript:{}" onclick="if(ValidarObjetoLista(event)){document.getElementById('CrearProForm').submit()}" class="btn bg-primary rounded-pill btn__default">
                         <span class="color-white">Agregar Producto</span>
                         <div class="icon rounded-circle">
                             <i class="tio-chevron_right"></i>
@@ -242,6 +248,9 @@
     <script src="/assets/js/main.js" defer></script>
     <!-- PWA app service registration and works js -->
     <script src="/assets/js/pwa-services.js"></script>
+    
+    <!--validaciones mau-->
+    <script src="/js/validaciones.js"></script>
 </body>
 
 </html>
