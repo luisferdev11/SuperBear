@@ -6,12 +6,12 @@ const auth = require("../auth/auth");
 
 // NO SE COMO QUIERAN PONERLOS, SI POR CASO DE USO, POR METODO O EN ARCHIVOS DISTINTOS
 
-router.get("/", (req, res) => {
+router.get("/", auth.isAuthenticatedIndex, (req, res) => {
     res.render("index");
 });
 
 router.get("/sign-up", (req, res) => {
-    res.render("registro",{error:""});
+    res.render("registro", { error: "" });
 });
 
 router.get("/login", (req, res) => {
@@ -40,7 +40,12 @@ router.get(
     }
 );
 
-router.get("/borrarCuenta", auth.isAuthenticated, controller.datosperfil, controller.borrarCuenta);
+router.get(
+    "/borrarCuenta",
+    auth.isAuthenticated,
+    controller.datosperfil,
+    controller.borrarCuenta
+);
 
 // AQUI VAN LOS POST
 

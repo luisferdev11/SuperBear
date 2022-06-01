@@ -14,11 +14,11 @@ function validarLongitud(fecha) {
 
 module.exports = {
     async isAdmin(req, res, next) {
-        if (req.user.perm == "Admin"){
+        if (req.user.perm == "Admin") {
             next();
-        }else{
+        } else {
             res.redirect("/misgrupos");
-        };
+        }
     },
 
     async isUsuario(req, res, next) {
@@ -26,6 +26,16 @@ module.exports = {
             next();
         } else {
             res.redirect("/admin-index");
+        }
+    },
+
+    async isAuthenticatedIndex(req, res, next) {
+        if (req.cookies.jwt) {
+            console.log("obitene cooklie");
+            res.redirect("/misgrupos");
+        } else {
+            console.log("no obitene cooklie");
+            return next();
         }
     },
 
@@ -87,7 +97,6 @@ module.exports = {
         try {
             const user = req.user.cor_usu;
             const pass = req.body.pswd;
-
 
             if (!user || !pass) {
                 res.redirect("verificarpswd");

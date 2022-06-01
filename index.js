@@ -15,9 +15,6 @@ app.use(cookieParser());
 // app.get("/", function (req, res) {
 //     res.render("index");
 // });
-app.get("/", function (req, res) {
-    res.render("index");
-});
 
 app.get("/error", function (req, res) {
     res.render("error");
@@ -53,11 +50,6 @@ app.use(
     require("./modules/ApiAndroid/controller")
 );
 
-
-
-
-
-
-app.get("*", (req, res)=> {
+app.get("*", (req, res) => {
     res.render("Error404");
 });
