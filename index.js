@@ -47,7 +47,9 @@ app.use(
     require("./modules/invitacion/routes"),
     require("./modules/admin/routes"),
     require("./modules/rutinas/routes"),
-    require("./modules/ApiAndroid/controller")
+    require("./modules/ApiAndroid/controller"),
+    // ruta placeholder pa enviar html y asi
+    require("./modules/placeholder/routes")
 );
 
 app.get("*", (req, res) => {
