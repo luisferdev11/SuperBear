@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nepro - Documentation</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="content">
+
+      <header class="main_head">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="67.1"
+              height="19.778" viewBox="0 0 67.1 19.778">
+              <defs>
+                <linearGradient id="linear-gradient" x1="0.967" y1="0.5" x2="0.015" y2="0.5"
+                  gradientUnits="objectBoundingBox">
+                  <stop offset="0" stop-color="#5065da" />
+                  <stop offset="0.194" stop-color="#556fff" />
+                  <stop offset="0.398" stop-color="#c557ad" />
+                  <stop offset="0.693" stop-color="#e65f9a" />
+                  <stop offset="1" stop-color="#e66176" />
+                </linearGradient>
+              </defs>
+              <path id="_12" data-name="12"
+                d="M-20.053,0V-15.6h-3.036V-5.28L-29.579-15.6h-3.784V0h3.036V-11.066L-23.243,0Zm5.412-6.644a2.342,2.342,0,0,1,2.42-2.134A2.177,2.177,0,0,1-9.8-6.644Zm5.126,2.816a2.39,2.39,0,0,1-2.464,1.65,2.636,2.636,0,0,1-2.728-2.464h7.744c0-.044.044-.484.044-.9,0-3.476-2-5.61-5.346-5.61a5.434,5.434,0,0,0-5.324,5.7A5.483,5.483,0,0,0-12,.33,4.875,4.875,0,0,0-7.073-3.1ZM-1.683,4.18V-1.056A3.8,3.8,0,0,0,1.441.264c3.058,0,5.1-2.42,5.1-5.7,0-3.212-1.826-5.632-4.994-5.632A3.785,3.785,0,0,0-1.771-9.5v-1.32H-4.609v15ZM3.663-5.412c0,1.936-1.188,3.058-2.684,3.058A2.764,2.764,0,0,1-1.727-5.412,2.745,2.745,0,0,1,.979-8.448,2.729,2.729,0,0,1,3.663-5.412Zm11.792-5.456a6.663,6.663,0,0,0-.682-.044,3.219,3.219,0,0,0-3.08,1.694v-1.606H8.855V0h2.926V-4.95c0-2.332,1.3-3.058,2.794-3.058a4.406,4.406,0,0,1,.88.088Zm6.82,8.536a2.79,2.79,0,0,1-2.75-3.08,2.778,2.778,0,0,1,2.75-3.08,2.778,2.778,0,0,1,2.75,3.08A2.778,2.778,0,0,1,22.275-2.332Zm0-8.822A5.544,5.544,0,0,0,16.6-5.412,5.557,5.557,0,0,0,22.275.33a5.557,5.557,0,0,0,5.676-5.742A5.544,5.544,0,0,0,22.275-11.154Zm7.436,9.306a2.009,2.009,0,0,0,2,2,2.014,2.014,0,0,0,2.024-2,2.014,2.014,0,0,0-2.024-2A2.009,2.009,0,0,0,29.711-1.848Z"
+                transform="translate(33.363 15.598)" fill="url(#linear-gradient)" />
+            </svg>
+            <div class="ver_item">1.0</div>
+          </a>
+        </nav>
+      </header>
+
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3">
+              <nav id="navbar-example3" class="navbar navbar-light bk_sidebar d-none d-md-block">
+                <nav class="nav nav-pills flex-column">
+                  <div class="group">
+                    <div class="title_sm">WELCOME</div>
+                    <a class="nav-link" href="#Introduction">Introduction</a>
+                  </div>
+                  <div class="group">
+                    <div class="title_sm">GETTING STARTED</div>
+                    <a class="nav-link" href="#ThemeFiles">Theme Files</a>
+                    <a class="nav-link" href="#Includes">Includes</a>
+                    <a class="nav-link" href="#CompilingSassFile">Compiling Sass File</a>
+                  </div>
+                  <div class="group">
+                    <div class="title_sm">EDITING</div>
+                    <a class="nav-link" href="#Colors">Colors</a>
+                    <a class="nav-link" href="#Font">Font</a>
+                  </div>
+                  <div class="group">
+                    <div class="title_sm">PWA SETTINGS</div>
+                    <a class="nav-link" href="#GettingStarted">Getting Started</a>
+                    <a class="nav-link" href="#Manifest">Manifest.json</a>
+                    <a class="nav-link" href="#ServiceWorker">Service Worker</a>
+                    <!-- <a class="nav-link" href="#AddtoHome">Add to Home Screen</a> -->
+                  </div>
+                  <div class="group">
+                    <div class="title_sm">CREDITS</div>
+                    <a class="nav-link" href="#Images">Images</a>
+                    <a class="nav-link" href="#Icons">Icons</a>
+                    <a class="nav-link" href="#Fonts">Fonts</a>
+                    <a class="nav-link" href="#Plugins">Plugins</a>
+                  </div>
+                  <div class="group">
+                    <div class="title_sm">NEED HELP? </div>
+                    <a class="nav-link" href="#Support">Support</a>
+                  </div>
+                </nav>
+              </nav>
+            </div>
+
+            <div class="col-lg-9">
+              <div class="content_body">
+                <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                  <div class="item_bk get_started" id="Introduction">
+                    <h1>Introduction</h1>
+                    <p class="sub_title">Thanks for your purchase.😊</p>
+
+                    <p>
+                      You don't need any introduction to use this theme. This is Multipurpose HTML5, CSS,
+                      Javascript UI Kit template
+                      designed for mobile devices. Feel free to convert it for WordPress or backend project.
+                    </p>
+
+                    <p class="mb-4">
+                      We recommend to you edit this template on a local server. If you don't, please remove service
+                      worker "if block" on <code>assets/js/pwa-services.js</code> while editing out of local server. You
+                      can add it
+                      later.
+                    </p>
+
+                    <p class="mb-1">
+                      If you are using Visual Studio Code, this plugin will solve your local server needs.
+                    </p>
+                    <a class="mb-5 d-block"
+                      href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"
+                      target="_blank">Live Server for Visual Studio Code</a>
+
+                    <h5 class="mb-3">What can i do with this template?</h5>
+                    <ul>
+                      <li>Create a mobile version of your website</li>
+                      <li>This template designed for shopping, e-commerce, delivery, store, marketplace, Wallet/Banking,
+                        Jobs/Careers
+                        and Courses</li>
+                      <li>The unique thing is there are various components and pages</li>
+                      <li>Use with Cordova / Phonegap to create mobile apps for iOS & Androids</li>
+                      <li>Make mobile apps with Webview</li>
+                      <li>Use in your PWA projects</li>
+                      <li>Do whatever you like.</li>
+                    </ul>
+                  </div>
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="ThemeFiles">
+                    <div class="mb-4">
+                      <span class="before_title">GETTING STARTED</span>
+                      <h2>Theme Files</h2>
+                    </div>
+
+                    <h3 class="title_sub">HTML Files</h3>
+                    <p>All html pages are categorized by type.</p>
+
+                    <ul class="mt-3">
+                      <li><b>app-.....html</b> : application page</li>
+                      <li><b>page-.....html</b> : basic pages</li>
+                      <li><b>component-.....html</b> : component</li>
+                    </ul>
+
+                    <h3 class="title_sub mt-5">CSS File</h3>
+                    <p>We are using Sass to be more organised on CSS. You can edit Nepro with sass files in
+                      <code>assets/css/sass</code>. You can find the main css file in <code>assets/css/main.scss</code>.
+                    </p>
+                    <p>
+                      Also bootstrap main css file and plugin css files moved to <code>assets/css</code>
+                    </p>
+
+                    <ul class="mt-3">
+                      <li><b>main.scss</b> : Main sass file.</li>
+                    </ul>
+
+                    <h3 class="title_sub mt-5">Sass Files</h3>
+                    <p>With power of sass this template is really organised. sass path : <code>assets/css/sass</code>
+                    </p>
+
+                    <ul class="mt-3">
+                      <li>
+                        <p class="mb-3">
+                          <b>Components</b> : This folder is <b class="color-primary">important</b>, you can
+                          rapidly build modern websites.
+                        </p>
+
+                        <p>
+                          <span class="color-primary"> CSS Components</span> packed with classes like <b>flex</b>,
+                          <b>padding-20</b>, <b>text-center</b>, and
+                          <b>position</b> that
+                          can
+                          be
+                          composed to build any design, directly in your markup.
+                        </p>
+
+                      </li>
+                      <li><b>layout/</b></li>
+                      <ul>
+                        <li><b>_authentication.scss</b> : authentication Items</li>
+                        <li><b>_banner.scss</b> : Banners Items</li>
+                        <li><b>_checkout.scss</b> : checkout Items</li>
+                        <li><b>_errors.scss</b> : Errors Pages</li>
+                        <li><b>_footer.scss</b> : App Bottom Menu</li>
+                        <li><b>_header.scss</b> : App Headers</li>
+                        <li><b>_popup.scss</b> : Modal Items</li>
+                        <li><b>_products.scss</b> : Products Items</li>
+                        <li><b>_profile.scss</b> : Profile Items</li>
+                        <li><b>_wallet.scss</b> : Wallet Items</li>
+                        <li><b>_chat.scss</b> : Chat Items</li>
+                        <li><b>_jobs.scss</b> : Jobs Items</li>
+                        <li><b>_learning.scss</b> : Courses Items</li>
+                        <li><b>_provider.scss</b> : Service Provider Items</li>
+                        <li><b>_others.scss</b> : Other Items</li>
+                      </ul>
+                      <li><b>helpers/</b></li>
+                      <ul>
+                        <li><b>_mixins.scss</b> : includes media query, animation, and so others</li>
+                        <li><b>_variables.scss</b> : Theme settings. Change colors and other variables.</li>
+                      </ul>
+                      <li><b>pages/</b> </li>
+                      <ul>
+                        <li><b>_globalpage.scss</b> : Global body settings</li>
+                        <li><b>_darkMode.scss</b> : Dark mode edits.</li>
+                      </ul>
+                    </ul>
+
+                    <h3 class="title_sub mt-5">Javascript Files</h3>
+                    <p>Path <code>assets/js</code></p>
+                    <ul>
+                      <li><b>main.js</b> : base javascript file for all features.</li>
+                      <li><b>checkCredit.js</b> : this file is for the payment page</li>
+                      <li><b>indicator-tab.js</b> : this file is for the tab item (Pilled)</li>
+                      <li><b>range-slider.js</b> : this file is for the ion.rangeSlider.min.js</li>
+
+                      <li><b>vendor/</b> : Other Plugins</li>
+
+                    </ul>
+                  </div>
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Includes">
+                    <div class="mb-4">
+                      <span class="before_title">GETTING STARTED</span>
+                      <h2>Includes</h2>
+                    </div>
+
+                    <h3 class="title_sub">CSS Files</h3>
+                    <p><code>assets/css/main.css</code> - All sass files compiled to this. This is the only css file
+                      theme using.
+                    </p>
+
+                    <h3 class="title_sub">Javascript Files</h3>
+                    <p>You can take a look at javascript files bottom of the HTML page.</p>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="CompilingSassFile">
+                    <div class="mb-4">
+                      <span class="before_title">GETTING STARTED</span>
+                      <h2>Compiling Sass File</h2>
+                      <p>
+                        After you edit sass files, just compile <code>assets\css</code> to <code>assets\css</code>.
+                      </p>
+                    </div>
+
+                    <h3 class="title_sub mt-5">First time on Sass?</h3>
+                    <p>Learn more about sass : <a href="https://sass-lang.com/" target="_blank">Sass official
+                        website.</a>
+                    </p>
+                    <h3 class="title_sub mt-5">How to compile sass files for beginners?</h3>
+                    <p>You can use apps to compile sass files to css files.</p>
+                    <p>One of the best of them is Koala. It is free and open-source. <a href="http://koala-app.com/"
+                        target="_blank">Koala App</a>
+                    </p>
+                    <p>
+                      Download the app and compile<code>assets\css</code> to <code>assets\css</code>. (You can edit the
+                      source map after compile)
+                    </p>
+                    <p>You can check the other apps for compile in the applications section. <a
+                        href="https://sass-lang.com/install" target="_blank">https://sass-lang.com/install</a>
+                    </p>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Colors">
+                    <div class="mb-4">
+                      <span class="before_title">EDITING</span>
+                      <h2>Colors</h2>
+                      <p>
+                        You can easily edit the colors with sass.
+                      </p>
+                    </div>
+
+                    <ul>
+                      <li>Open <code>assets/css/sass/helpers/_variables.scss</code></li>
+                      <li>Edit color variables.</li>
+                      <li>Compile main.scss to the same path (<code>assets/css</code>)</li>
+                    </ul>
+                    <p>variables are clear</p>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Font">
+                    <div class="mb-4">
+                      <span class="before_title">EDITING</span>
+                      <h2>Font</h2>
+                      <p>The used font is customized <code>"fonts/text-font/CircularStd"</code></p>
+                      The path of license file <code>Source files / circular-std-master.zip</code>
+                    </div>
+
+                    <ol>
+                      <li>Find a font in Google Fonts and copy the import url</li>
+                      <li>Open the <code>assets/css/sass/pages/_globalpage.scss</code></li>
+                      <li>Change the <code>
+                        body {
+                          font: {
+                            family: "CircularStd", sans-serif;
+                          }
+                        }
+                      </code></li>
+                      <li>Compile the sass files.</li>
+                    </ol>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="GettingStarted">
+                    <div class="mb-4">
+                      <span class="before_title">PWA SETTINGS</span>
+                      <h2>Getting Started</h2>
+                    </div>
+
+                    <h3 class="title_sub mt-5">PWA Ready</h3>
+                    <p>This template is PWA Ready. This means users can add to the home screen and use it as an app.
+                    </p>
+                    <h3 class="title_sub mt-5">Edit First</h3>
+                    <p>First of all, edit your theme colors and app icons.</p>
+                    <p>You can find all the app icons in <code>assets/img/favicon</code> path.</p>
+
+                    <h3 class="title_sub mt-5">Theme Color</h3>
+                    <p>In <b>manifest.json</b> file, you will see theme_color and background_color. Edit these hex color
+                      codes
+                      what you like.
+                    </p>
+                    <p>
+                      After that, edit the metatag color code. You can find it in head tag of html pages.
+                      <br>
+                      <code>meta name="theme-color" content="#ff3f3f"</code>
+                    </p>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Manifest">
+                    <div class="mb-4">
+                      <span class="before_title">PWA SETTINGS</span>
+                      <h2>Manifest.json</h2>
+                      <p>Open <code>/manifest.json</code> and edit the infos and names..</p>
+                    </div>
+
+                    <table class="table table-bordered mt-5">
+                      <tbody>
+                        <tr>
+                          <td><code>"name"</code></td>
+                          <td><span>Your app name</span></td>
+                        </tr>
+                        <tr>
+                          <td><code>"short_name"</code></td>
+                          <td><span>Your app short name</span></td>
+                        </tr>
+                        <tr>
+                          <td><code>"start_url"</code></td>
+                          <td><span><b>Tells the browser where your application should start when it is
+                                launched</b></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><code>"scope"</code></td>
+                          <td><span>Defines the set of URLs that the browser considers to be within your app</span></td>
+                        </tr>
+                        <tr>
+                          <td><code>"background_color"</code></td>
+                          <td><span>Splash screen background color</span></td>
+                        </tr>
+                        <tr>
+                          <td><code>"theme_color"</code></td>
+                          <td><span>Sets the color of the tool bar</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="ServiceWorker">
+                    <div class="mb-4">
+                      <span class="before_title">PWA SETTINGS</span>
+                      <h2>Service Worker</h2>
+                      <p>You can find service worker as <code>/service-worker.js</code>.</p>
+                    </div>
+                    <p>
+                      Do not forget to update cache name (CACHE_NAME) after updating the REQUIRED_FILES.
+                      Example: <code>cache-version-1.1</code> to <code>cache-version-1.2</code>
+                    </p>
+
+                    <h3 class="title_sub mt-5">Usage examples</h3>
+                    <p class="mb-1">You can find dozens of practical, detailed, and working examples of service worker
+                      usage on</p>
+                    <a href="https://github.com/mozilla/serviceworker-cookbook" target="_blank">ServiceWorker
+                      Cookbook</a>
+                  </div>
+
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Images">
+                    <div class="mb-4">
+                      <span class="before_title">CREDITS</span>
+                      <h2>Images</h2>
+                    </div>
+                    <h3 class="title_sub mt-5">Images</h3>
+                    <p class="mb-1">Some images are from <a href="https://unsplash.com/"
+                        target="_blank">unsplash.com</a> and
+                      used for demo purpose and not include in the
+                      purchase packages.
+                    </p>
+
+                    <h3 class="title_sub mt-5">Illustration</h3>
+                    <p class="mb-1">All illustrations are paid from <a href="https://storytale.io/"
+                        target="_blank">storytale.io</a> and include
+                      in
+                      the purchase packages.
+                    </p>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Icons">
+                    <div class="mb-4">
+                      <span class="before_title">CREDITS</span>
+                      <h2>Icons</h2>
+                    </div>
+
+                    <p class="mb-1 mt-4">
+                      This template uses <b><a href="https://www.theiconof.com/search" target="_blank">"the icon of
+                          v3"</a></b> and <b><a href="https://remixicon.com/" target="_blank">"remix icon"</a></b> You
+                      can check all the
+                      icons.
+                    </p>
+                    <p>
+                      Also, there are iconly-2-library with formula SVG, Adobe XD, Figma
+                      <br>
+                      path <code>Source files / iconly-2-library.zip</code>
+                    </p>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Fonts">
+                    <div class="mb-4">
+                      <span class="before_title">CREDITS</span>
+                      <h2>Fonts</h2>
+                    </div>
+                    <p>
+                      <a href="https://fonts.google.com/specimen/Inter?preview.text_type=custom" target="_blank">Inter
+                        on Google
+                        Fonts</a>
+                    </p>
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Plugins">
+                    <div class="mb-4">
+                      <span class="before_title">CREDITS</span>
+                      <h2>Plugins</h2>
+                    </div>
+
+                    <table class="table mt-5">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Plugin</th>
+                          <th scope="col">Website</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Bootstrap 4 </td>
+                          <td><a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a></td>
+                        </tr>
+                        <tr>
+                          <td>jQuery</td>
+                          <td><a href="https://jquery.com/" target="_blank">https://jquery.com/</a></td>
+                        </tr>
+                        <tr>
+                          <td>Popper JS </td>
+                          <td><a href="https://popper.js.org/" target="_blank">https://popper.js.org/</a></td>
+                        </tr>
+                        <tr>
+                          <td>Owl Carousel 2 </td>
+                          <td><a href="https://owlcarousel2.github.io/OwlCarousel2/"
+                              target="_blank">https://owlcarousel2.github.io/OwlCarousel2/</a></td>
+                        </tr>
+                        <tr>
+                          <td>the icon of v3</td>
+                          <td><a href="https://www.theiconof.com/search"
+                              target="_blank">https://www.theiconof.com/search</a></td>
+                        </tr>
+                        <tr>
+                          <td>ServiceWorker Cookbook</td>
+                          <td><a href="https://github.com/mozilla/serviceworker-cookbook"
+                              target="_blank">https://github.com/mozilla/serviceworker-cookbook</a></td>
+                        </tr>
+                        <tr>
+                          <td>sharer</td>
+                          <td><a href="https://ellisonleao.github.io/sharer.js/"
+                              target="_blank">https://ellisonleao.github.io/sharer.js/</a></td>
+                        </tr>
+                        <tr>
+                          <td>short-and-sweet</td>
+                          <td><a href="https://github.com/rikschennink/short-and-sweet"
+                              target="_blank">https://github.com/rikschennink/short-and-sweet</a></td>
+                        </tr>
+                        <tr>
+                          <td>rangeSlider</td>
+                          <td><a href="http://ionden.com/a/plugins/ion.rangeSlider/"
+                              target="_blank">http://ionden.com/a/plugins/ion.rangeSlider/</a></td>
+                        </tr>
+                        <tr>
+                          <td>knob</td>
+                          <td><a href="http://anthonyterrien.com/demo/knob/"
+                              target="_blank">http://anthonyterrien.com/demo/knob/</a></td>
+                        </tr>
+                        <tr>
+                          <td>imask</td>
+                          <td><a href="https://imask.js.org/" target="_blank">https://imask.js.org/</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+
+                  <div class="dividar"></div>
+
+                  <div class="item_bk" id="Support">
+                    <div class="mb-4">
+                      <span class="before_title">NEED HELP?</span>
+                      <h2>Support</h2>
+                      <p>Contact with us for your feedbacks or questions.</p>
+                    </div>
+
+                    <h3 class="title_sub mt-5 mb-3">How can you contact to us?</h3>
+                    <ul>
+                      <li>You can contact us from the support tab of the template.</li>
+                      <li>Feel free to ask anything about our template.</li>
+                    </ul>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+  </div>
+
+  <script src="assets/js/jquery-3.3.1.js" type="text/javascript"></script>
+  <script src="assets/js/popper.min.js" type="text/javascript"></script>
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <script>
+    $('body').scrollspy({ target: '#navbar-example3' })
+  </script>
+</body>
+
+</html>

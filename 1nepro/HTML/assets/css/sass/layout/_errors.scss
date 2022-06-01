@@ -1,0 +1,109 @@
+/**
+ * ----------------------------------------
+ * basicErrors
+ * ----------------------------------------
+ */
+.basicErrors {
+  padding-bottom: env(safe-area-inset-bottom);
+  .illustration__img {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .detaile__error {
+    padding-left: 20px;
+    padding-right: 20px;
+    &.text-center {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .btn__gohome {
+      border-radius: 10px;
+      min-width: 120px;
+      height: 45px;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+/**
+ * ----------------------------------------
+ * page__404
+ * ----------------------------------------
+ */
+
+.page__404 {
+  background-color: $bg-snow;
+  overflow-x: hidden;
+  .emPage__404 {
+    .illustration__img {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+/**
+ * ----------------------------------------
+ * page__NoConnection
+ * ----------------------------------------
+ */
+.page__NoConnection {
+  background-color: #eff1f3;
+  .emPage__noconnection {
+    .illustration__img {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .detaile__error {
+      padding-left: 20px;
+    }
+  }
+}
+
+/**
+ * ----------------------------------------
+ * page__ProkenLink
+ * ----------------------------------------
+ */
+
+.page__ProkenLink {
+  background-color: #aabbc9;
+}
+/**
+ * ----------------------------------------
+ * page__NoSpace
+ * ----------------------------------------
+ */
+.page__NoSpace {
+  background-color: #eff1f3;
+}
+/**
+ * ----------------------------------------
+ * page__NoRsultSearch
+ * ----------------------------------------
+ */
+.page__NoRsultSearch {
+  background-color: #686b89;
+  .detaile__error {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
