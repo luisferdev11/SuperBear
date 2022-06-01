@@ -31,8 +31,23 @@ module.exports = {
 
     async isAuthenticatedIndex(req, res, next) {
         if (req.cookies.jwt) {
-            console.log("obitene cooklie");
-            res.redirect("/misgrupos");
+            try {
+                const decodificada = await promisify(jwt.verify)(
+                    req.cookies.jwt,
+                    env.JWT_SECRETO
+                );
+                if (
+                    decodificada.permiso == "Usuario" ||
+                    decodificada.permiso == "Admin"
+                ) {
+                    console.log(decodificada);
+                    console.log("obitene cooklie");
+                    res.redirect("/misgrupos");
+                }
+            } catch (error) {
+                console.log(error);
+                return next();
+            }
         } else {
             console.log("no obitene cooklie");
             return next();
