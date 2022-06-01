@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="375" height="338" viewBox="0 0 375 338">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.684" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffe3f2"/>
+      <stop offset="1" stop-color="#ffc2e1"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="375" height="338" transform="translate(0.5 21.5)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-2" x1="0.24" y1="1" x2="0.187" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#aabbc9" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0e284b" stop-opacity="0.502"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="0.413" y1="0.609" x2="0.946" y2="0.609" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f8f9fa"/>
+      <stop offset="1" stop-color="#c3ced7"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.5" x2="0.318" y2="2.675" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cad7e1"/>
+      <stop offset="1" stop-color="#8c9eae"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="0.5" y1="1.739" x2="0.038" y2="-0.34" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#536db5" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0e284b" stop-opacity="0.502"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="1.146" y1="1" x2="0.038" y2="-0.34" xlink:href="#linear-gradient-5"/>
+    <linearGradient id="linear-gradient-7" y1="1.066" x2="0.662" y2="0.204" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#a5a0c1"/>
+      <stop offset="1" stop-color="#302c48"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-8" x1="0.185" y1="0.787" x2="0.661" y2="0.787" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff6ec"/>
+      <stop offset="1" stop-color="#e5cfba"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-9" x1="-0.129" y1="-0.08" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffc1d2"/>
+      <stop offset="1" stop-color="#f88"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-10" x1="-1.33" y1="0.602" x2="2.067" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff3cc"/>
+      <stop offset="1" stop-color="#ffe39c"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path id="Mask" d="M20,0H35.7a20,20,0,0,1,20,20v7.447a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V20A20,20,0,0,1,20,0Z" fill="url(#linear-gradient)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-13" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8fa1b0"/>
+      <stop offset="1" stop-color="#5f7083"/>
+    </linearGradient>
+  </defs>
+  <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(-0.5 -21.5)" clip-path="url(#clip-path)">
+    <rect id="wall" width="375" height="237.25" transform="translate(0 -26)" fill="#9fb1c0"/>
+    <g id="Artwork" transform="translate(-99 61)">
+      <g id="paper" transform="translate(127 159)">
+        <g id="Rectangle">
+          <path id="Rectangle-2" data-name="Rectangle" d="M0,25.073,84.711,0l91.521,33.627L9.864,67.254Z" transform="translate(143.333 71.939)" fill="rgba(134,146,172,0.2)" style="mix-blend-mode: multiply;isolation: isolate"/>
+          <path id="Rectangle-3" data-name="Rectangle" d="M0,25.073,84.711,0l91.521,33.627L9.864,67.254Z" transform="translate(143.333 71.939)" fill="rgba(216,216,216,0.15)" style="mix-blend-mode: overlay;isolation: isolate"/>
+        </g>
+        <g id="Rectangle_Copy" data-name="Rectangle Copy">
+          <path id="Rectangle_Copy-2" data-name="Rectangle Copy" d="M0,6.48,97.239,0l88.333,1.6L46.378,31.17Z" transform="translate(0 69.061)" fill="rgba(134,146,172,0.2)" style="mix-blend-mode: multiply;isolation: isolate"/>
+          <path id="Rectangle_Copy-3" data-name="Rectangle Copy" d="M0,6.48,97.239,0l88.333,1.6L46.378,31.17Z" transform="translate(0 69.061)" fill="rgba(216,216,216,0.15)" style="mix-blend-mode: overlay;isolation: isolate"/>
+        </g>
+        <path id="Path_24" data-name="Path 24" d="M0,51.379s12.228,33.75,26.677,41.807q50.228,28.008,83.464,41.551c47.576,19.387,78.908-29.044,78.908-29.044s81.146,13.135,122.53,0c12.651-4.015,52.958-22.988,52.958-22.988L175.377,0s-23.593,35.655-49.988,44.623c-11.188,3.8-46.138,15.694-87.85,15.694C18.571,60.317,0,51.379,0,51.379Z" transform="translate(5)" fill="#fff"/>
+      </g>
+      <path id="line" d="M0,25.7c0-2.174,33.311-5.929,11.968-12.849S23.936,0,23.936,0" transform="matrix(0.995, 0.105, -0.105, 0.995, 253.009, 239.516)" fill="none" stroke="#8d92a5" stroke-miterlimit="10" stroke-width="7"/>
+      <g id="container">
+        <g id="Rectangle_8_Copy_2" data-name="Rectangle 8 Copy 2">
+          <path id="Rectangle_8_Copy_2-2" data-name="Rectangle 8 Copy 2" d="M0,2.283a2,2,0,0,1,1.994-2L91.517,0V99.761a2,2,0,0,0,2,2H378.465S287.51,140.862,159,146.817s-128.353-9.363-128.353-9.363L.839,116.2A2,2,0,0,1,0,114.573Z" transform="translate(59 47.121)" fill="url(#linear-gradient-2)" style="mix-blend-mode: multiply;isolation: isolate"/>
+          <path id="Rectangle_8_Copy_2-3" data-name="Rectangle 8 Copy 2" d="M0,2.283a2,2,0,0,1,1.994-2L91.517,0V99.761a2,2,0,0,0,2,2H378.465S287.51,140.862,159,146.817s-128.353-9.363-128.353-9.363L.839,116.2A2,2,0,0,1,0,114.573Z" transform="translate(59 47.121)" fill="rgba(216,216,216,0.08)" style="mix-blend-mode: overlay;isolation: isolate"/>
+        </g>
+        <g id="Group_2" data-name="Group 2">
+          <path id="Rectangle_2" data-name="Rectangle 2" d="M0,0S32.271,3.448,65.57,3.448,132.168,0,132.168,0L118.779,136.243s-18.5,16.09-52.447,16.09-52.943-16.09-52.943-16.09Z" transform="translate(32.18 13.791)" fill="url(#linear-gradient-3)"/>
+          <ellipse id="Oval" cx="82.174" cy="16.09" rx="82.174" ry="16.09" transform="translate(0 0)" fill="url(#linear-gradient-4)"/>
+        </g>
+      </g>
+      <g id="shadow">
+        <path id="shadow-2" data-name="shadow" d="M-229.762,19.108H0L-76.017,0l-144,10.4Z" transform="translate(505.302 226.661)" fill="url(#linear-gradient-5)" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <path id="shadow-3" data-name="shadow" d="M-229.762,19.108H0L-76.017,0l-144,10.4Z" transform="translate(505.302 226.661)" fill="rgba(216,216,216,0.08)" style="mix-blend-mode: darken;isolation: isolate"/>
+      </g>
+      <g id="shadow-4" data-name="shadow">
+        <ellipse id="shadow-5" data-name="shadow" cx="11" cy="3" rx="11" ry="3" transform="translate(243 241)" fill="url(#linear-gradient-6)" style="mix-blend-mode: multiply;isolation: isolate"/>
+        <ellipse id="shadow-6" data-name="shadow" cx="11" cy="3" rx="11" ry="3" transform="translate(243 241)" fill="rgba(216,216,216,0.08)" style="mix-blend-mode: darken;isolation: isolate"/>
+      </g>
+      <path id="tip" d="M6.389,20.525a2,2,0,0,0,3.621.17L18.2,5.086,18,2.375,15.38.808,10.867,1.931,7.783.637l-2.817.927L2.587,0,.51,1.286,0,4.973Z" transform="translate(258.69 233.281) rotate(133)" fill="url(#linear-gradient-7)"/>
+      <g id="pencil" transform="translate(373.274 84.214) rotate(42)">
+        <path id="Triangle_3" data-name="Triangle 3" d="M35.172,48.011,55.7,11.712V0H0V11.712L20.478,47.919,19.666,43.4l2.626,4.1,1.547-6.035,2.644,6.1,2.4-3.5,3.424,3.8,2.465-4.3Z" transform="translate(0 137.631)" fill="url(#linear-gradient-8)"/>
+        <path id="Rectangle_5" data-name="Rectangle 5" d="M0,0H55.7V123.511s-5.22-6.359-10.055-6.25-9.454,6.25-9.454,6.25-4.343-3.127-8.537-3.229-8.392,3.229-8.392,3.229-5.674-7.265-10.224-7.265S0,123.511,0,123.511Z" transform="translate(0 25.832)" fill="url(#linear-gradient-9)"/>
+        <path id="Rectangle_5_Copy" data-name="Rectangle 5 Copy" d="M0,0H19.374V123.511s-5.357-3.229-10.03-3.229S0,123.511,0,123.511Z" transform="translate(0 25.832)" fill="url(#linear-gradient-10)"/>
+        <g id="Rectangle_6" data-name="Rectangle 6">
+          <path id="Mask-2" data-name="Mask" d="M20,0H35.7a20,20,0,0,1,20,20v7.447a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V20A20,20,0,0,1,20,0Z" fill="url(#linear-gradient)"/>
+          <g id="Rectangle_6-2" data-name="Rectangle 6" clip-path="url(#clip-path-2)">
+            <rect id="Rectangle_6-3" data-name="Rectangle 6" width="19.374" height="37.941" transform="translate(36 -5)" fill="rgba(255,194,225,0.26)" style="mix-blend-mode: multiply;isolation: isolate"/>
+          </g>
+        </g>
+        <path id="Rectangle_5_Copy_2" data-name="Rectangle 5 Copy 2" d="M0,0H19.374V123.511s-4.663-3.229-9.567-3.229S0,123.511,0,123.511Z" transform="translate(36.327 25.832)" fill="url(#linear-gradient-10)"/>
+      </g>
+      <g id="lines" transform="matrix(0.883, 0.469, -0.469, 0.883, 363.321, 50.603)" opacity="0.5">
+        <path id="Line-2" data-name="Line" d="M8.938,10.874,3.893,1.121A2.051,2.051,0,0,0,1.107.239,2.1,2.1,0,0,0,.236,3.06l5.045,9.753a2.051,2.051,0,0,0,2.786.882A2.1,2.1,0,0,0,8.938,10.874Z" transform="translate(15.676 5.312)" fill="url(#linear-gradient-13)"/>
+        <path id="Line_Copy" data-name="Line Copy" d="M8.938,10.874,3.893,1.121A2.051,2.051,0,0,0,1.107.239,2.1,2.1,0,0,0,.236,3.06l5.045,9.753a2.051,2.051,0,0,0,2.786.882A2.1,2.1,0,0,0,8.938,10.874Z" transform="matrix(0.914, -0.407, 0.407, 0.914, 0.547, 18.971)" fill="url(#linear-gradient-13)"/>
+        <path id="Line_Copy_2" data-name="Line Copy 2" d="M8.938,10.874,3.893,1.121A2.051,2.051,0,0,0,1.107.239,2.1,2.1,0,0,0,.236,3.06l5.045,9.753a2.051,2.051,0,0,0,2.786.882A2.1,2.1,0,0,0,8.938,10.874Z" transform="translate(35.188 0.357) rotate(30)" fill="url(#linear-gradient-13)"/>
+      </g>
+    </g>
+  </g>
+</svg>
