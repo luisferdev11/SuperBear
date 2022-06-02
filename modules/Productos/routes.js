@@ -57,6 +57,12 @@ router.post(
     auth.isAuthenticated,
     controller.CrearProducto
 );
+
+router.post(
+    "/voiceProduct/",
+    auth.isAuthenticated,
+    controller.CrearProductoVoice
+);
 router.post(
     "/editarProductosDeLista/:id_prod/:id_lis",
     auth.isAuthenticated,
