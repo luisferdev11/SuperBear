@@ -222,14 +222,6 @@
                         <% let contador = 0; %>
                         <% listas.forEach(element => { %>
                             <% if (element.id_esList == 1){%>
-                                <script>
-                                    function <%= element.nom_lis %>(){
-                                       document.getElementById("rut").setAttribute("href" ,"/crearRutina/<%= element.id_lis %>/<%=idgrupo%>");
-                                       document.getElementById("dup").setAttribute("href" ,"/Duplicarlista/<%=element.id_lis %>/<%=idgrupo%>");
-                                       document.getElementById("eli").setAttribute("href" ,"/Borrarlista/<%= element.id_lis %>/<%=idgrupo%>");
-                                    }
-                                    
-                                </script>
                         <li class="item">
                             <div id="heading<%= element.id_lis %>">
                                 <div class="nav-link main_item" data-toggle="collapse" data-target="#collapse<%= element.id_lis %>"
@@ -365,7 +357,7 @@
                                                 
                                                     <div class="group">
                                                         <button type="button" class="btn btn_smView" data-toggle="modal"
-                                                        data-target="#mdllList_subTitle" onclick="<%= element.nom_lis %>()"
+                                                        data-target="#mdllList_subTitle" onclick="botones(<%=element.id_lis %>,<%=idgrupo%>)"
                             
                                                         >Opciones</button>
                                                     </div>
@@ -390,6 +382,16 @@
 
 
     </div>
+
+    <!-- Botones menus-->
+    <script>
+        function botones(lista, grupo){
+           document.getElementById("rut").setAttribute("href" ,`/crearRutina/${lista}/${grupo}`);
+           document.getElementById("dup").setAttribute("href" ,`/Duplicarlista/${lista}/${grupo}`);
+           document.getElementById("eli").setAttribute("href" ,`/Borrarlista/${lista}/${grupo}`);
+        }
+        
+    </script>
 
     <!-- jquery -->
     <script src="../assets/js/jquery-3.6.0.js"></script>
