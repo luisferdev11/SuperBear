@@ -1,38 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/mastersyle.css">
-    <link rel="stylesheet" href="../css/formularios.css">
-    <link rel="shortcut icon" href="../assets/svg/logo.svg">
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="theme-color" content="#ffffff">
     <title>Crear Lista | SuperBear</title>
+    <meta name="description" content="Nepro – The Multipurpose Mobile HTML5 Template">
+    <meta name="keywords"
+        content="bootstrap 4, mobile template, 404, chat, about, cordova, phonegap, mobile, html, ecommerce, shopping, store, delivery, wallet, banking, education, jobs, careers, distance learning" />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="../assets/svg/logo.svg" sizes="32x32">
+    <link rel="apple-touch-icon" href="../assets/../assets/svg/logo.svg">
+
+    <!-- CSS Libraries-->
+    <!-- bootstrap v4.6.0 -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!--
+        theiconof v3.0
+        https://www.theiconof.com/search
+     -->
+    <link rel="stylesheet" href="../assets/css/icons.css">
+    <!-- Remix Icon -->
+    <link rel="stylesheet" href="../assets/css/remixicon.css">
+    <!-- Swiper 6.4.11 -->
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <!-- Owl Carousel v2.3.4 -->
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!-- normalize.css v8.0.1 -->
+    <link rel="stylesheet" href="../assets/css/normalize.css">
+
+    <!-- manifest meta -->
+    <link rel="manifest" href="_manifest.json" />
 </head>
-<body>
-    <nav class="flecha">
-        <a href="/consultarlistas/<%=grupo%>">
-            <img src="../assets/svg/flecha.svg">
-        </a>
-    </nav>
-    <div class="principal">
-        <h1 class="centro">Crear una Lista</h1>
-        <div class="contenedor-formulario">
-            <form method="POST"  id="CrearLisForm" name="CrearLisForm">
-                <p class="centro">Escribe el nombre de la nueva lista</p>
-                <input type="text" placeholder="Nombre" id="inputNombre" name="nombre">
-                <p class="rojo" id="msgerror1"></p>
-                <input type="text" value = "<%=grupo%>" hidden="true" name="grupo">
-                <br>
-                <br>
-                <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Crear' onclick="ValidarLista(event)">
-                </div>
-            </form>
-        </div>
+<body class="bg-snow">
+    
+
+
+<div id="wrapper">
+    <div id="content">
+        <!-- Start main_haeder -->
+        <header class="main_haeder header-sticky multi_item">
+            <div class="em_side_right">
+                <a class="rounded-circle d-flex align-items-center text-decoration-none" href="/consultarlistas/<%=grupo%>">
+                    <i class="tio-chevron_left size-24 color-text"></i>
+                    <span class="color-text size-14">Regresar</span>
+                </a>
+            </div>
+            <div class="title_page">
+                <span class="page_name">
+                    Crear lista de grupo
+                </span>
+            </div>
+            <div class="em_side_right">
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=2fRL-ZeAlEet9qVGbKKFY_XRgAwHQ15Kgs8R0CvQ-EtUNUs2Sk9GNFVETDVGMVNKQ1BUWEQwS0RDSS4u" class="rounded-circle d-flex align-items-center text-decoration-none">
+                    
+                    <span class="color-text size-14">Mesa de ayuda</span>
+                </a>
+            </div>
+            
+        </header>
+        <!-- End.main_haeder -->
+
+        <!-- Start em__signTypeOne -->
+        <section class="em__signTypeOne typeTwo np__account padding-t-70">
+            <div class="em_titleSign">
+                <h1>¡Comencemos a crear listas compartidas!</h1>
+                <p>Necesitamos un nombre para tu nueva lista</p>
+            </div>
+            <div class="em__body">
+                <form method="post" action=""  class="padding-t-40" id="crearLista">
+                    <div class="margin-b-30">
+                        <div class="form-group input-lined lined__iconed">
+                            <div class="input_group">
+                                <input type="text" class="form-control" id="inputNombre" name="nombre" placeholder="Nombre de la lista"
+                                    required="">
+                                <input type="text" value = "<%=grupo%>" hidden="true" name="grupo">
+                                <p class="rojo" id="msgerror1"></p>
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ol" viewBox="0 0 16 16">  <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>  <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z"/></svg>
+                                        <g id="Profile" transform="translate(5 2.4)">
+                                            <path id="Stroke_1" data-name="Stroke 1"
+                                                d="M6.845,7.3C3.153,7.3,0,6.726,0,4.425S3.133,0,6.845,0c3.692,0,6.845,2.1,6.845,4.4S10.556,7.3,6.845,7.3Z"
+                                                transform="translate(0 11.962)" fill="none" stroke="#000"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-miterlimit="10" stroke-width="1.5" />
+                                            <path id="Stroke_3" data-name="Stroke 3"
+                                                d="M4.387,8.774a4.372,4.372,0,1,0-.031,0Z"
+                                                transform="translate(2.45 0)" fill="none" stroke="#000"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-miterlimit="10" stroke-width="1.5" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <label for="username">Nombre de la lista</label>
+                        </div>
+                    </div>
+                    
+
+                </form>
+            </div>
+            <div class="buttons__footer text-center">
+                <a href="javascript:{}" onclick="if(validarNombreLista(event)){document.getElementById('crearLista').submit()}"
+                class="btn bg-primary rounded-pill btn__default">
+                    <span class="color-white">Crear lista</span>
+                    <div class="icon rounded-circle">
+                        <i class="tio-chevron_right"></i>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+        <!-- End. em__signTypeOne -->
+
     </div>
-    <br>
-    <script src="../js/validaciones.js"></script>
+
+    
+
+</div>
+
+<!-- jquery -->
+<script src="../assets/js/jquery-3.6.0.js"></script>
+<!-- popper.min.js 1.16.1 -->
+<script src="../assets/js/popper.min.js"></script>
+<!-- bootstrap.js v4.6.0 -->
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<!-- Owl Carousel v2.3.4 -->
+<script src="../assets/js/vendor/owl.carousel.min.js"></script>
+<!-- Swiper 6.4.11 -->
+<script src="../assets/js/vendor/swiper-bundle.min.js"></script>
+<!-- sharer 0.4.0 -->
+<script src="../assets/js/vendor/sharer.js"></script>
+<!-- short-and-sweet v1.0.2 - Accessible character counter for input elements -->
+<script src="../assets/js/vendor/short-and-sweet.min.js"></script>
+<!-- jquery knob -->
+<script src="../assets/js/vendor/jquery.knob.min.js"></script>
+<!-- main.js -->
+<script src="../assets/js/main.js" defer></script>
+<!-- PWA app service registration and works js -->
+<script src="../assets/js/pwa-services.js"></script>    
+
+<script src="../js/validaciones.js"></script>
     <script src="../js/detect-browser.js"></script>
     <script src="../js/barraNavegacion.js"></script>
 </body>
