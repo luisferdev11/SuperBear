@@ -10,6 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="format-detection" content="telephone=no">
 
+    <link rel="stylesheet" href="../css/voz.css">
+
     <meta name="theme-color" content="#ffffff">
     <title>Agregar Producto | SuperBear</title>
 
@@ -112,34 +114,42 @@
                 <div class="tab-content padding-20" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-Waiting" role="tabpanel"
                         aria-labelledby="pills-Waiting-tab">
-                        <div>
-                            <button type="button" class="cssbuttons-io-button" id="microphone"> Dictar un producto por voz
-                                <div class="icon">
-                                    <object data="../assets/svg/microfono.svg" width="24" height="24"> </object>
-                                </div>
-                            </button>
-                            
-                            <input type="text" placeholder="Producto" id="inputProducto" name="producto" value="">
-
-                            <h2>Ingresar a un Grupo</h2>
+                        <section class="padding-20">
                             <div class="item__card layer-lg">
-                                <h3>Código del grupo</h3>
-                                <p>
-                                    Pidele el código de grupo a un administrador
-                                </p>
-                                <form method="POST" id="ingresarGrupoForm" name="ingresarGrupoForm">
-                                    <input type="text" placeholder="Código" id="inputcodigo" name="codigo" class="form-control">
-                                    <p class="rojo" id="msgerror1"></p>
+                                <h3>Presiona el microfono y dinos qué producto quieres agregar</h3>
+                                <form method="POST" id="ingresarGrupoForm" name="ingresarGrupoForm" class="padding-t-40">
+                                    <button type="button" class="cssbuttons-io-button" id="microphone"> Dictar un producto por voz
+                                        <div class="icon">
+                                            <object data="../assets/svg/microfono.svg" width="24" height="24"> </object>
+                                        </div>
+                                    </button>
+
+                                    <br>
                                     <br>
                                     
-                                    <div class="contenedor-boton">
+                                    <input type="text" placeholder="Producto" id="inputProducto" name="producto" value="" class="form-control">
+
+                                    <label for="inputProducto">Frase detectada</label>
+                                    
+                                    <!-- <div class="contenedor-boton">
                                         <input class="btn justify-content-center bg-yellow rounded-10 btn__default ml-3" type="submit" value='Unirte' onclick="validarCodigoGrupo(event)">
-                                    </div>
+                                    </div> -->
                                 </form>
                                 <br>
                                 <p class="pequeño">
-                                    El código debe tener 5 letras o números y no puede contener símbolos.
+                                    Si ocurre algún error al capturar lo que dijiste, puedes editar el campo de texto
                                 </p>
+                            </div>
+                        </section>
+
+                        <div class="buttons__footer text-center">
+                            <div class="env-pb">
+                                <a href="javascript:{}" onclick="if(ValidarObjetoLista(event)){document.getElementById('CrearProForm').submit()}" class="btn bg-primary rounded-pill btn__default">
+                                    <span class="color-white">Agregar Producto por voz</span>
+                                    <div class="icon rounded-circle">
+                                        <i class="tio-chevron_right"></i>
+                                    </div>
+                                </a>
                             </div>
                         </div>
 
