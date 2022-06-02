@@ -1,156 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./assets/css/main.css">
-        <link rel="shortcut icon" href="assets/svg/logo.svg">
-        <link rel="icon" type="image/png" href="assets/img/favicon/32.png" sizes="32x32">
-        <link rel="apple-touch-icon" href="assets/img/favicon/favicon192.png">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/normalize.css">
-    
-        <title>Mi Perfil | SuperBear</title>
-    </head>
-    <style>
-        nav{
-            display: grid;
-            grid-template-columns: 40% 40% 20%;
-        }
-        nav a img{
-            width: 2.8rem;
-            height: 2.8rem;
-        }
-    </style>
-    <body>
-        <section class="em_loading" id="loaderPage">
-            <div class="spinner_flash"></div>
-        </section>
-    
-        <div class="principal">
-            
-            <h1 class="centro">Mi Perfil</h1>
-            <div class="contenedor-formulario">
-                <form >
-                    <b>Datos Personales</b>
-                    <div class="form-group with_icon">
-                        <label>Correo Electrónico</label>
-                        <div class="input_group">
-                            <input type="email" class="form-control" placeholder="<%= user.cor_usu %>" required=""  readonly>
-                            <div class="icon">
-                                <svg id="Iconly_Two-tone_Message" data-name="Iconly/Two-tone/Message"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <g id="Message" transform="translate(2 3)">
-                                        <path id="Path_445" d="M11.314,0,7.048,3.434a2.223,2.223,0,0,1-2.746,0L0,0"
-                                            transform="translate(3.954 5.561)" fill="none" stroke="#200e32"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                            stroke-width="1.5" opacity="0.4"></path>
-                                        <path id="Rectangle_511"
-                                            d="M4.888,0h9.428A4.957,4.957,0,0,1,17.9,1.59a5.017,5.017,0,0,1,1.326,3.7v6.528a5.017,5.017,0,0,1-1.326,3.7,4.957,4.957,0,0,1-3.58,1.59H4.888C1.968,17.116,0,14.741,0,11.822V5.294C0,2.375,1.968,0,4.888,0Z"
-                                            transform="translate(0 0)" fill="none" stroke="#200e32"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                            stroke-width="1.5"></path>
-                                    </g>
-                                </svg>
-    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group with_icon">
-                        <label>Nombre</label>
-                        <div class="input_group">
-                            <input type="text" class="form-control" placeholder="<%= user.nom_usu %>" required="" readonly>
-                            <div class="icon">
-                                <svg id="Iconly_Two-tone_Profile" data-name="Iconly/Two-tone/Profile"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <g id="Profile" transform="translate(4 2)">
-                                        <circle id="Ellipse_736" cx="4.778" cy="4.778" r="4.778"
-                                            transform="translate(2.801 0)" fill="none" stroke="#200e32"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                            stroke-width="1.5" opacity="0.4"></circle>
-                                        <path id="Path_33945"
-                                            d="M0,3.016a2.215,2.215,0,0,1,.22-.97A4.042,4.042,0,0,1,3.039.426,16.787,16.787,0,0,1,5.382.1,25.053,25.053,0,0,1,9.767.1a16.979,16.979,0,0,1,2.343.33c1.071.22,2.362.659,2.819,1.62a2.27,2.27,0,0,1,0,1.95c-.458.961-1.748,1.4-2.819,1.611a15.716,15.716,0,0,1-2.343.339A25.822,25.822,0,0,1,6.2,6a4.066,4.066,0,0,1-.815-.055,15.423,15.423,0,0,1-2.334-.339C1.968,5.4.687,4.957.22,4A2.279,2.279,0,0,1,0,3.016Z"
-                                            transform="translate(0 13.185)" fill="none" stroke="#200e32"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                            stroke-width="1.5"></path>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group with_icon">
-                        <label>Alcaldía</label>
-                        <div class="input_group">
-                            <input type="text" class="form-control" placeholder="<%= user.alc %>" required="" readonly>
-                            <div class="icon">
-                                <svg id="Iconly_Two-tone_Location" data-name="Iconly/Two-tone/Location"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <g id="Location" transform="translate(3.5 2)">
-                                        <path id="Path_33958"
-                                            d="M0,7.652A7.678,7.678,0,1,1,15.357,7.7v.087a11.338,11.338,0,0,1-3.478,7.3,20.183,20.183,0,0,1-3.591,2.957.93.93,0,0,1-1.217,0,19.817,19.817,0,0,1-5.052-4.73A9.826,9.826,0,0,1,0,7.678Z"
-                                            transform="translate(0.739 0.739)" fill="none" stroke="#200e32"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                            stroke-width="1.5"></path>
-                                        <circle id="Ellipse_740" cx="2.461" cy="2.461" r="2.461"
-                                            transform="translate(5.957 6.078)" fill="none" stroke="#200e32"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                            stroke-width="1.5" opacity="0.4"></circle>
-                                    </g>
-                                </svg>
-    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group with_icon">
-                        <label>Género</label>
-                        <div class="input_group">
-                            <input type="text" class="form-control" placeholder="<%= user.sexo %>" required="" readonly>
-                        </div>
-                    </div>
-                    
-                    <br>
-                    <br>
-                    <div class="bg-white padding-20 d-flex emBlock__border">
-                        <a href="verificarpswd" class="btn justify-content-center bg-yellow rounded-10 btn__default ml-3">
-                            <span class="color-white">Editar datos</span>
-                        </a>
-                        <a href="logout" class="btn bg-yellow rounded-10 btn__default ml-3">
-                            <span class="color-white">Cerrar Sesión</span>
-                            <div class="icon rounded-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="92" height="92" viewBox="0 0 92 92"><path d="M60 60.7V79c0 2.2-1.6 4-3.8 4H4c-2.2 0-4-1.8-4-4V13c0-2.2 1.8-4 4-4h52.2c2.2 0 3.8 1.8 3.8 4v18.3c0 2.2-1.8 4-4 4s-4-1.8-4-4V17H8v58h44V60.7c0-2.2 1.8-4 4-4s4 1.8 4 4zM90.8 43L75.2 27.2c-1.6-1.6-4.1-1.6-5.7 0-1.6 1.6-1.6 4.1 0 5.7l8.9 9-48.5.1c-2.2 0-4 1.8-4 4s1.8 4 4 4l48.5-.1-8.9 9c-1.6 1.6-1.5 4.1 0 5.7.8.8 1.8 1.2 2.8 1.2 1 0 2.1-.4 2.8-1.2l15.7-15.8c1.6-1.7 1.6-4.2 0-5.8z"/></svg>                        </div>
-                        </a>
-                        
-                        
-                    </div>
-                    
-            </div>
-        </div>
-        <br>
-       
-            <script src="assets/js/jquery-3.6.0.js"></script>
-            <script src="assets/js/popper.min.js"></script>
-            <script src="assets/js/bootstrap.min.js"></script>
-            <script src="assets/js/vendor/owl.carousel.min.js"></script>
-            <script src="assets/js/vendor/swiper-bundle.min.js"></script>
-            <script src="assets/js/vendor/sharer.js"></script>
-            <script src="assets/js/vendor/short-and-sweet.min.js"></script>
-            <script src="assets/js/vendor/jquery.knob.min.js"></script>
-            <script src="assets/js/main.js" defer></script>
-            <script src="assets/js/pwa-services.js"></script>
-        <script src="../js/detect-browser.js"></script>
-        <script src="../js/barraNavegacion.js"></script>
-    </body>
-    </html>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <link rel="icon" type="image/png" href="assets/img/favicon/32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/img/favicon/favicon192.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+
     <title>Mi Perfil | SuperBear</title>
 </head>
 <style>
@@ -164,41 +25,120 @@
     }
 </style>
 <body>
-    <%- include('partials/navegacionNormal') %>
+    <section class="em_loading" id="loaderPage">
+        <div class="spinner_flash"></div>
+    </section>
+
     <div class="principal">
+        
         <h1 class="centro">Mi Perfil</h1>
         <div class="contenedor-formulario">
             <form >
                 <b>Datos Personales</b>
-                <p class="seccion">Correo Electrónico</p>
-                <input type="email" value=<%= user.cor_usu %> readonly>
-                <p class="seccion">Nombre</p>
-                <input type="text" value=<%= user.nom_usu %> readonly>
-                <p class="seccion">Alcaldía</p>
-                <input type="text" value="<%= user.alc %>" readonly>
-                <p class="seccion">Fecha de Nacimiento</p>
-                <input type="date" id="inputdate" name="fecha" value="<%= user.fec_nac %>" readonly>
-                
-                <p class="seccion">Género</p>
-                <input type="text" value="<%= user.sexo %>" readonly>
-                <br>
-                <br>
-                <div class="contenedor-boton">
-                    <br>
-                    <a class="b input" href="verificarpswd">Editar datos</a>
-                    <br>
-                    
-                    <br>
-                    <br>
-                    <br><a class="b input" href="logout">Cerrar Sesión</a>
+                <div class="form-group with_icon">
+                    <label>Correo Electrónico</label>
+                    <div class="input_group">
+                        <input type="email" class="form-control" placeholder="<%= user.cor_usu %>" required=""  readonly>
+                        <div class="icon">
+                            <svg id="Iconly_Two-tone_Message" data-name="Iconly/Two-tone/Message"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g id="Message" transform="translate(2 3)">
+                                    <path id="Path_445" d="M11.314,0,7.048,3.434a2.223,2.223,0,0,1-2.746,0L0,0"
+                                        transform="translate(3.954 5.561)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5" opacity="0.4"></path>
+                                    <path id="Rectangle_511"
+                                        d="M4.888,0h9.428A4.957,4.957,0,0,1,17.9,1.59a5.017,5.017,0,0,1,1.326,3.7v6.528a5.017,5.017,0,0,1-1.326,3.7,4.957,4.957,0,0,1-3.58,1.59H4.888C1.968,17.116,0,14.741,0,11.822V5.294C0,2.375,1.968,0,4.888,0Z"
+                                        transform="translate(0 0)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5"></path>
+                                </g>
+                            </svg>
+
+                        </div>
+                    </div>
                 </div>
-            </form>
+                <div class="form-group with_icon">
+                    <label>Nombre</label>
+                    <div class="input_group">
+                        <input type="text" class="form-control" placeholder="<%= user.nom_usu %>" required="" readonly>
+                        <div class="icon">
+                            <svg id="Iconly_Two-tone_Profile" data-name="Iconly/Two-tone/Profile"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g id="Profile" transform="translate(4 2)">
+                                    <circle id="Ellipse_736" cx="4.778" cy="4.778" r="4.778"
+                                        transform="translate(2.801 0)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5" opacity="0.4"></circle>
+                                    <path id="Path_33945"
+                                        d="M0,3.016a2.215,2.215,0,0,1,.22-.97A4.042,4.042,0,0,1,3.039.426,16.787,16.787,0,0,1,5.382.1,25.053,25.053,0,0,1,9.767.1a16.979,16.979,0,0,1,2.343.33c1.071.22,2.362.659,2.819,1.62a2.27,2.27,0,0,1,0,1.95c-.458.961-1.748,1.4-2.819,1.611a15.716,15.716,0,0,1-2.343.339A25.822,25.822,0,0,1,6.2,6a4.066,4.066,0,0,1-.815-.055,15.423,15.423,0,0,1-2.334-.339C1.968,5.4.687,4.957.22,4A2.279,2.279,0,0,1,0,3.016Z"
+                                        transform="translate(0 13.185)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5"></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group with_icon">
+                    <label>Alcaldía</label>
+                    <div class="input_group">
+                        <input type="text" class="form-control" placeholder="<%= user.alc %>" required="" readonly>
+                        <div class="icon">
+                            <svg id="Iconly_Two-tone_Location" data-name="Iconly/Two-tone/Location"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g id="Location" transform="translate(3.5 2)">
+                                    <path id="Path_33958"
+                                        d="M0,7.652A7.678,7.678,0,1,1,15.357,7.7v.087a11.338,11.338,0,0,1-3.478,7.3,20.183,20.183,0,0,1-3.591,2.957.93.93,0,0,1-1.217,0,19.817,19.817,0,0,1-5.052-4.73A9.826,9.826,0,0,1,0,7.678Z"
+                                        transform="translate(0.739 0.739)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5"></path>
+                                    <circle id="Ellipse_740" cx="2.461" cy="2.461" r="2.461"
+                                        transform="translate(5.957 6.078)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5" opacity="0.4"></circle>
+                                </g>
+                            </svg>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group with_icon">
+                    <label>Género</label>
+                    <div class="input_group">
+                        <input type="text" class="form-control" placeholder="<%= user.sexo %>" required="" readonly>
+                    </div>
+                </div>
+                
+                <br>
+                <br>
+                <div class="bg-white padding-20 d-flex emBlock__border">
+                    <a href="verificarpswd" class="btn justify-content-center bg-yellow rounded-10 btn__default ml-3">
+                        <span class="color-white">Editar datos</span>
+                    </a>
+                    <a href="logout" class="btn bg-yellow rounded-10 btn__default ml-3">
+                        <span class="color-white">Cerrar Sesión</span>
+                        <div class="icon rounded-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="92" height="92" viewBox="0 0 92 92"><path d="M60 60.7V79c0 2.2-1.6 4-3.8 4H4c-2.2 0-4-1.8-4-4V13c0-2.2 1.8-4 4-4h52.2c2.2 0 3.8 1.8 3.8 4v18.3c0 2.2-1.8 4-4 4s-4-1.8-4-4V17H8v58h44V60.7c0-2.2 1.8-4 4-4s4 1.8 4 4zM90.8 43L75.2 27.2c-1.6-1.6-4.1-1.6-5.7 0-1.6 1.6-1.6 4.1 0 5.7l8.9 9-48.5.1c-2.2 0-4 1.8-4 4s1.8 4 4 4l48.5-.1-8.9 9c-1.6 1.6-1.5 4.1 0 5.7.8.8 1.8 1.2 2.8 1.2 1 0 2.1-.4 2.8-1.2l15.7-15.8c1.6-1.7 1.6-4.2 0-5.8z"/></svg>                        </div>
+                    </a>
+                    
+                    
+                </div>
+                
         </div>
     </div>
     <br>
-    <footer>
-        <%- include('partials/footer') %>
-    </footer>
+   
+        <script src="assets/js/jquery-3.6.0.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/vendor/owl.carousel.min.js"></script>
+        <script src="assets/js/vendor/swiper-bundle.min.js"></script>
+        <script src="assets/js/vendor/sharer.js"></script>
+        <script src="assets/js/vendor/short-and-sweet.min.js"></script>
+        <script src="assets/js/vendor/jquery.knob.min.js"></script>
+        <script src="assets/js/main.js" defer></script>
+        <script src="assets/js/pwa-services.js"></script>
     <script src="../js/detect-browser.js"></script>
     <script src="../js/barraNavegacion.js"></script>
 </body>
