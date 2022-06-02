@@ -1,100 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="shortcut icon" href="assets/svg/logo.svg">
-    <title>Editar Mis Datos | SuperBear</title>
-    <style>
-        .boton-borrar-cuenta, .boton-borrar-cuenta:visited{
-            color: red;
-            text-decoration: underline;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="icon" type="image/png" href="assets/img/favicon/32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/img/favicon/favicon192.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+
+    <title>Mi Perfil | SuperBear</title>
 </head>
+<style>
+    nav {
+        display: grid;
+        grid-template-columns: 40% 40% 20%;
+    }
+
+    nav a img {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+</style>
+
 <body>
-    <nav class="flecha">
-        <a href="/datos-perfil">
-            <img src="assets/svg/flecha.svg">
-        </a>
-    </nav>
+    <section class="em_loading" id="loaderPage">
+        <div class="spinner_flash"></div>
+    </section>
+
     <div class="principal">
-        <h1 class="centro">Editar Datos</h1>
+
+        <h1 class="centro">Mi Perfil</h1>
         <div class="contenedor-formulario">
             <form method="post" id="editarForm" name="editarForm" action="actualizardatos">
-                <p class="seccion">Para editar tus datos deberás reingresar tu contraseña o poner una nueva</p>
                 <b>Datos Personales</b>
-                <p class="seccion">Correo Electrónico</p>
-                <input placeholder="Correo Electrónico" value=<%= user.cor_usu %> type="email" name="email">
-                <p class="seccion">Nombre</p>
-                <input placeholder="Nombre" value=<%= user.nom_usu %> type="text" id="inputNombre" name="nombre">
-                <p class="rojo" id="msgerror1"></p>
-                <p class="seccion">Nueva contraseña</p>
-                <input placeholder="Nueva contraseña" type="password" id="inputContraseña1">
-                <p class="seccion">Confirmar contraseña</p>
-                <input placeholder="Nueva contraseña" type="password" id="inputContraseña2" name="Password2">
+                <div class="form-group with_icon">
+                    <label>Correo Electrónico</label>
+                    <div class="input_group">
+                        <input type="email" class="form-control" placeholder="<%= user.cor_usu %>" required=""
+                            value="<%= user.cor_usu%>" name="email" id="inputemail">
+                        <div class="icon">
+                            <svg id="Iconly_Two-tone_Message" data-name="Iconly/Two-tone/Message"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g id="Message" transform="translate(2 3)">
+                                    <path id="Path_445" d="M11.314,0,7.048,3.434a2.223,2.223,0,0,1-2.746,0L0,0"
+                                        transform="translate(3.954 5.561)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5" opacity="0.4"></path>
+                                    <path id="Rectangle_511"
+                                        d="M4.888,0h9.428A4.957,4.957,0,0,1,17.9,1.59a5.017,5.017,0,0,1,1.326,3.7v6.528a5.017,5.017,0,0,1-1.326,3.7,4.957,4.957,0,0,1-3.58,1.59H4.888C1.968,17.116,0,14.741,0,11.822V5.294C0,2.375,1.968,0,4.888,0Z"
+                                        transform="translate(0 0)" fill="none" stroke="#200e32" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"></path>
+                                </g>
+                            </svg>
+
+                        </div>
+                        
+
+                    </div>
+                    <p class="rojo" id="msgerror4"></p>
+                </div>
+                <div class="form-group with_icon">
+                    <label>Nombre</label>
+                    <div class="input_group">
+                        <input type="text" class="form-control" placeholder="<%= user.nom_usu %>" required=""
+                            value="<%= user.nom_usu%>" id="inputNombre" name="nombre" >
+                        <div class="icon">
+                            <svg id="Iconly_Two-tone_Profile" data-name="Iconly/Two-tone/Profile"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g id="Profile" transform="translate(4 2)">
+                                    <circle id="Ellipse_736" cx="4.778" cy="4.778" r="4.778"
+                                        transform="translate(2.801 0)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5" opacity="0.4"></circle>
+                                    <path id="Path_33945"
+                                        d="M0,3.016a2.215,2.215,0,0,1,.22-.97A4.042,4.042,0,0,1,3.039.426,16.787,16.787,0,0,1,5.382.1,25.053,25.053,0,0,1,9.767.1a16.979,16.979,0,0,1,2.343.33c1.071.22,2.362.659,2.819,1.62a2.27,2.27,0,0,1,0,1.95c-.458.961-1.748,1.4-2.819,1.611a15.716,15.716,0,0,1-2.343.339A25.822,25.822,0,0,1,6.2,6a4.066,4.066,0,0,1-.815-.055,15.423,15.423,0,0,1-2.334-.339C1.968,5.4.687,4.957.22,4A2.279,2.279,0,0,1,0,3.016Z"
+                                        transform="translate(0 13.185)" fill="none" stroke="#200e32"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                        stroke-width="1.5"></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="rojo" id="msgerror1"></p>
+
+                </div>
+                <p class="form-group">Fecha de Nacimiento</p>
+                <input class="form-control" type="date" id="inputdate" name="fecha" value="<%= user.fec_nac %>">
                 <p class="rojo" id="msgerror2"></p>
-                <p class="seccion">Fecha de Nacimiento</p>
-                <input type="date" id="inputdate" name="fecha" value="<%= user.fec_nac %>">
-                <p class="rojo" id="msgerror3"></p>
+                <div class="form-group">
+                    <label>Country</label>
+                    <select class="form-control custom-select" name="SelectAlcaldia">
+                        <option class="no" disabled>Alcaldía</option>
+                        <option value=1 <%=user.id_alc=='1' ? 'selected' : '' %>>Álvaro Obregón</option>
+                        <option value=2 <%=user.id_alc=='2' ? 'selected' : '' %>>Azcapotzalco</option>
+                        <option value=3 <%=user.id_alc=='3' ? 'selected' : '' %>>Benito Juárez</option>
+                        <option value=4 <%=user.id_alc=='4' ? 'selected' : '' %>>Coyoacán</option>
+                        <option value=5 <%=user.id_alc=='5' ? 'selected' : '' %>>Cuajimalpa de Morelos</option>
+                        <option value=6 <%=user.id_alc=='6' ? 'selected' : '' %>>Cuauhtémoc</option>
+                        <option value=7 <%=user.id_alc=='7' ? 'selected' : '' %>>Gustavo A. Madero</option>
+                        <option value=8 <%=user.id_alc=='8' ? 'selected' : '' %>>Iztacalco</option>
+                        <option value=9 <%=user.id_alc=='9' ? 'selected' : '' %>>Iztapalapa</option>
+                        <option value=10 <%=user.id_alc=='10' ? 'selected' : '' %>>Magdalena Contreras</option>
+                        <option value=11 <%=user.id_alc=='11' ? 'selected' : '' %>>Miguel Hidalgo</option>
+                        <option value=12 <%=user.id_alc=='12' ? 'selected' : '' %>>Milpa Alta</option>
+                        <option value=13 <%=user.id_alc=='13' ? 'selected' : '' %>>Tláhuac</option>
+                        <option value=14 <%=user.id_alc=='14' ? 'selected' : '' %>>Tlalpan</option>
+                        <option value=15 <%=user.id_alc=='15' ? 'selected' : '' %>>Venustiano Carranza</option>
+                        <option value=16 <%=user.id_alc=='16' ? 'selected' : '' %>>Xochimilco</option>
+                    </select>
+                    <p class="rojo" id="msgerror3"></p>
 
-                <p class="seccion">Alcaldía</p>
-                <select name="SelectAlcaldia">
-                    <option class="no" disabled >Alcaldía</option>
-                    <option value=1 <%= user.id_alc == '1' ? 'selected' : ''%>>Álvaro Obregón</option>
-                    <option value=2 <%= user.id_alc == '2' ? 'selected' : ''%>>Azcapotzalco</option>
-                    <option value=3 <%= user.id_alc == '3' ? 'selected' : ''%>>Benito Juárez</option>
-                    <option value=4 <%= user.id_alc == '4' ? 'selected' : ''%>>Coyoacán</option>
-                    <option value=5 <%= user.id_alc == '5' ? 'selected' : ''%>>Cuajimalpa de Morelos</option>
-                    <option value=6 <%= user.id_alc == '6' ? 'selected' : ''%>>Cuauhtémoc</option>
-                    <option value=7 <%= user.id_alc == '7' ? 'selected' : ''%>>Gustavo A. Madero</option>
-                    <option value=8 <%= user.id_alc == '8' ? 'selected' : ''%>>Iztacalco</option>
-                    <option value=9 <%= user.id_alc == '9' ? 'selected' : ''%>>Iztapalapa</option>
-                    <option value=10 <%= user.id_alc == '10' ? 'selected' : ''%>>Magdalena Contreras</option>
-                    <option value=11 <%= user.id_alc == '11' ? 'selected' : ''%>>Miguel Hidalgo</option>
-                    <option value=12 <%= user.id_alc == '12' ? 'selected' : ''%>>Milpa Alta</option>
-                    <option value=13 <%= user.id_alc == '13' ? 'selected' : ''%>>Tláhuac</option>
-                    <option value=14 <%= user.id_alc == '14' ? 'selected' : ''%>>Tlalpan</option>
-                    <option value=15 <%= user.id_alc == '15' ? 'selected' : ''%>>Venustiano Carranza</option>
-                    <option value=16 <%= user.id_alc == '16' ? 'selected' : ''%>>Xochimilco</option>
-                </select>
-                <p class="rojo" id="msgerror4"></p>
+                </div>
 
-                
-                <p>Género</p>
-                <br>
-                <div>
-                    <input type="radio" <%= user.id_sex == '1' ? 'checked' : ''%> id="masculino" name="genero" value=1>
-                    <label for="masculino">Masculino</label>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="form-group">
+                    <label>Género</label>
+                    
+                    <select class="form-control custom-select" name="genero">
+                        <option class="no" disabled>Género</option>
+                        <option value=1 <%=user.id_sex=='1' ? 'selected' : '' %>  >Masculino</option>
+                        <option value=2 <%=user.id_sex=='2' ? 'selected' : '' %>  >Femenino</option>
+                        <option value=3 <%=user.id_sex=='3' ? 'selected' : '' %>  >Otro
+                        </option>
+                    </select>
                 </div>
-                <br>
-                <br>
-                <div>
-                    <input type="radio" <%= user.id_sex == '2' ? 'checked' : ''%> id="femenino" name="genero" value=2>
-                    <label for="femenino">Femenino</label>
-                </div>
-                <br>
-                <br>
-                <div>
-                    <input type="radio" <%= user.id_sex == '3' ? 'checked' : ''%> id="otro" name="genero" value=3>
-                    <label for="otro">Otro</label>
-                </div>
-                <br>
-                <br>
-                <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Guardar' onclick="ValidarEditar(event)">
-                </div>
-                <a class="boton-borrar-cuenta" href="/borrarCuenta">Borrar Cuenta</a>
+
+
+
+
+
+
+
+
+
+
+
+                <button class="btn bg-yellow rounded-10 btn__default ml-3" type="submit" value='Guardar'
+                    onclick="ValidarEditar(event)">
+                    <span class="color-white">Guardar</span>
+                    <div class="icon rounded-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                            <path fill="none" d="M0 0h48v48h-48z" />
+                            <path
+                                d="M34 6h-24c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-24l-8-8zm-10 32c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm6-20h-20v-8h20v8z" />
+                        </svg>
+                    </div>
+                </button>
             </form>
+
+
+
+
+
         </div>
-    </div>
-    <br>
-    <script src="js/validaciones.js"></script>
-    <script src="../js/detect-browser.js"></script>
-    <script src="../js/barraNavegacion.js"></script>
+        <br>
+
+        <script src="assets/js/jquery-3.6.0.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/vendor/owl.carousel.min.js"></script>
+        <script src="assets/js/vendor/swiper-bundle.min.js"></script>
+        <script src="assets/js/vendor/sharer.js"></script>
+        <script src="assets/js/vendor/short-and-sweet.min.js"></script>
+        <script src="assets/js/vendor/jquery.knob.min.js"></script>
+        <script src="assets/js/main.js" defer></script>
+        <script src="assets/js/pwa-services.js"></script>
+        <script src="../js/detect-browser.js"></script>
+        <script src="../js/barraNavegacion.js"></script>
+        <script src="../js/validaciones.js"></script>
 </body>
+
 </html>
