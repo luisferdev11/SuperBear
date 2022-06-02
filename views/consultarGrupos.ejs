@@ -133,8 +133,8 @@
     <!--Cada grupo debe tener su propio menu
     para eso es necesario que cada input tenga un id diferentes
     los for del label deben coincidir con el del input-->
-    <div class="grid">
-        <% if (user.grps) { %>
+        <% if (user.grps.length > 0) { %>
+            <div class="grid">
             <% for (let i=0; i < user.grps.length; i++ ) { %>
                 <div class="emPage__blog">
                     <div class="item__card layer-lg">
@@ -169,11 +169,14 @@
                         
                     </div>
                 </div>
-                
+            </div>   
             <% } %>
-        <% } %>               
-    </div>
-    <br />
+        <% } else{ %>
+            <h3>
+                Parece que aún no estás en ningún grupo. ¡Crea un grupo o ingresa a alguno ya existente y comienza a gestionar tus compras con SuperBear!
+            </h3>
+        <% } %>              
+    <br>
     <!-- <footer>
         <%- include('partials/footer') %>
     </footer> -->
