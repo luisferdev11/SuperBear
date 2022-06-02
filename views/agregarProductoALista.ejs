@@ -48,7 +48,46 @@
     <div id="wrapper">
         <div id="content">
             <!-- Start main_haeder -->
-            <header class="main_haeder header-sticky multi_item">
+            <div class="header_tab">
+                <header class="main_haeder multi_item">
+                    <div class="em_side_right">
+                        <a
+                            class="rounded-circle d-flex align-items-center text-decoration-none"
+                            href="/ConsultarProductos/<%=id.id_lis%>"
+                        >
+                            <i class="tio-chevron_left size-24 color-text"></i>
+                            <span class="color-text size-14">Regresar</span>
+                        </a>
+                    </div>
+                    <div class="title_page">
+                        <span class="page_name"> Agregar Producto </span>
+                    </div>
+                    <!-- <div class="em_side_right">
+                        <button
+                            class="btn rounded-circle share-button bg-transparent"
+                            data-toggle="modal"
+                            data-target="#mdllButtons_share"
+                        >
+                            <i class="ri-share-forward-box-line"></i>
+                        </button>
+                    </div> -->
+                </header>
+        
+                <div class="tab__line two_item">
+                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="pills-Waiting-tab" data-toggle="pill" href="#pills-Waiting"
+                                role="tab" aria-controls="pills-Waiting" aria-selected="true">Agregar producto por voz</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-Paid-tab" data-toggle="pill" href="#pills-Paid" role="tab"
+                                aria-controls="pills-Paid" aria-selected="false">Agregar producto vía formulario</a>
+                        </li>
+        
+                    </ul>
+                </div>
+            </div>
+            <!-- <header class="main_haeder header-sticky multi_item">
                 <div class="em_side_right">
                     <a class="rounded-circle d-flex align-items-center text-decoration-none" href="/ConsultarProductos/<%=id.id_lis%>">
                         <i class="tio-chevron_left size-24 color-text"></i>
@@ -61,171 +100,230 @@
                     </span>
                 </div>
 
-            </header>
+                
+            </header> -->
             <!-- End.main_haeder -->
 
+
             <!-- form -->
-            <section class="padding-20">
-                <form method="POST" id="CrearProForm" name="CrearProForm" class="padding-t-70">
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined lined__iconed">
-                            <div class="input_group">
-                                <input type="text" class="form-control" id="inputNombre" name="nombre"
-                                    placeholder="Nombre del producto" required="">
+
+            <section class="components_page paddingTab_header emPage__billsWallet">
+
+                <div class="tab-content padding-20" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-Waiting" role="tabpanel"
+                        aria-labelledby="pills-Waiting-tab">
+                        <div>
+                            <button type="button" class="cssbuttons-io-button" id="microphone"> Dictar un producto por voz
                                 <div class="icon">
-                                    <svg id="Iconly_Curved_Message" data-name="Iconly/Curved/Message"
-                                        xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-                                        <g id="Message" transform="translate(2.248 2.614)">
-                                            <path id="Stroke_1" data-name="Stroke 1"
-                                                d="M10.222,0S7.279,3.532,5.127,3.532,0,0,0,0"
-                                                transform="translate(3.613 5.653)" fill="none" stroke="#9498ac"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                stroke-width="1.5" />
-                                            <path id="Stroke_3" data-name="Stroke 3"
-                                                d="M0,8.357C0,2.089,2.183,0,8.73,0s8.73,2.089,8.73,8.357-2.183,8.357-8.73,8.357S0,14.624,0,8.357Z"
-                                                transform="translate(0 0)" fill="none" stroke="#9498ac"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                stroke-width="1.5" />
-                                        </g>
-                                    </svg>
+                                    <object data="../assets/svg/microfono.svg" width="24" height="24"> </object>
                                 </div>
+                            </button>
+                            
+                            <input type="text" placeholder="Producto" id="inputProducto" name="producto" value="">
+
+                            <h2>Ingresar a un Grupo</h2>
+                            <div class="item__card layer-lg">
+                                <h3>Código del grupo</h3>
+                                <p>
+                                    Pidele el código de grupo a un administrador
+                                </p>
+                                <form method="POST" id="ingresarGrupoForm" name="ingresarGrupoForm">
+                                    <input type="text" placeholder="Código" id="inputcodigo" name="codigo" class="form-control">
+                                    <p class="rojo" id="msgerror1"></p>
+                                    <br>
+                                    
+                                    <div class="contenedor-boton">
+                                        <input class="btn justify-content-center bg-yellow rounded-10 btn__default ml-3" type="submit" value='Unirte' onclick="validarCodigoGrupo(event)">
+                                    </div>
+                                </form>
+                                <br>
+                                <p class="pequeño">
+                                    El código debe tener 5 letras o números y no puede contener símbolos.
+                                </p>
                             </div>
-                            <label for="inputNombre">Nombre</label>
                         </div>
-                        <p class="text-danger" id="msgerror1"></p>
+
                     </div>
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined lined__iconed">
-                            <select id="inputmarca" name="Marca" class="form-control custom-select">
-                                <% Marca.forEach(element => { %>
-                                    <option value="<%=element.id_mar %>"><%=element.Marca%></option>
-                                    <%}); %>
-                            </select>
-                            <label>Marca</label>
-                        </div>
-                        <p class="text-danger" id="msgerror2"></p>
-                    </div>
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined lined__iconed">
-                            <select id="inputsuper" name="supermercado" class="form-control custom-select">
-                                <% Super.forEach(element => { %>
-                                    <option value="<%=element.id_sup %>"><%=element.nom_sup%></option>
-                                    <%}); %>
-                            </select>
-                            <label>Supermercado</label>
-                        </div>
-                        <p class="text-danger" id="msgerror3"></p>
-                    </div>
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined lined__iconed">
-                            <select name="Depa" class="form-control custom-select">
-                                <% Depa.forEach(element => { %>
-                                    <option value=" <%=element.id_dep %>"><%=element.nom_dep%></option>
-                                    <%}); %>
-                            </select>
-                            <label>Departamento</label>
-                        </div>
-                    </div>
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined">
-                            <div class="group">
-                                <div class="itemCountr_manual horizontal itemButtons border-0 min-w-125">
-                                    <a href="#" data-dir="down" class="btn btn_counter rounded-10 co_down border">
-                                        <i class="tio-remove"></i>
-                                    </a>
-                                    <input type="text" class="form-control input_no color-secondary" value="0" id="inputcantidad" name="Cant">
-                                    <a href="#" data-dir="up" class="btn btn_counter rounded-10 co_up bg-secondary">
-                                        <i class="tio-add color-white"></i>
-                                    </a>
+                    <div class="tab-pane fade" id="pills-Paid" role="tabpanel" aria-labelledby="pills-Paid-tab">
+                        
+                        <section class="padding-20">
+                            <h3>Ingresa los datos del producto que deseas agregar</h3>
+                            <form method="POST" id="CrearProForm" name="CrearProForm" class="padding-t-40">
+                                
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined lined__iconed">
+                                        <div class="input_group">
+                                            <input type="text" class="form-control" id="inputNombre" name="nombre"
+                                                placeholder="Nombre del producto" required="">
+                                            <div class="icon">
+                                                <svg id="Iconly_Curved_Message" data-name="Iconly/Curved/Message"
+                                                    xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                                                    <g id="Message" transform="translate(2.248 2.614)">
+                                                        <path id="Stroke_1" data-name="Stroke 1"
+                                                            d="M10.222,0S7.279,3.532,5.127,3.532,0,0,0,0"
+                                                            transform="translate(3.613 5.653)" fill="none" stroke="#9498ac"
+                                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                            stroke-width="1.5" />
+                                                        <path id="Stroke_3" data-name="Stroke 3"
+                                                            d="M0,8.357C0,2.089,2.183,0,8.73,0s8.73,2.089,8.73,8.357-2.183,8.357-8.73,8.357S0,14.624,0,8.357Z"
+                                                            transform="translate(0 0)" fill="none" stroke="#9498ac"
+                                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                            stroke-width="1.5" />
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <label for="inputNombre">Nombre</label>
+                                    </div>
+                                    <p class="text-danger" id="msgerror1"></p>
                                 </div>
-                            </div>
-                            <label>Cantidad</label>
-                        </div>
-                        <p class="text-danger" id="msgerror4"></p>
-                    </div>
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined lined__iconed">
-                            <select name="Unidad" class="form-control custom-select">
-                                <% Uni.forEach(element => { %>
-                                    <option value=" <%=element.id_uni %>"><%=element.unidad%></option>
-                                    <%}); %>
-                            </select>
-                            <label>Unidad</label>
-                        </div>
-                    </div>
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined lined__iconed">
-                            <div class="input_group">
-                                <input value="0" type="number" class="form-control" id="inputprecio" name="Precio"
-                                    placeholder="Precio del producto" required="">
-                                <div class="icon">
-                                    <svg id="Iconly_Curved_Message" data-name="Iconly/Curved/Message"
-                                        xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-                                        <g id="Message" transform="translate(2.248 2.614)">
-                                            <path id="Stroke_1" data-name="Stroke 1"
-                                                d="M10.222,0S7.279,3.532,5.127,3.532,0,0,0,0"
-                                                transform="translate(3.613 5.653)" fill="none" stroke="#9498ac"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                stroke-width="1.5" />
-                                            <path id="Stroke_3" data-name="Stroke 3"
-                                                d="M0,8.357C0,2.089,2.183,0,8.73,0s8.73,2.089,8.73,8.357-2.183,8.357-8.73,8.357S0,14.624,0,8.357Z"
-                                                transform="translate(0 0)" fill="none" stroke="#9498ac"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                stroke-width="1.5" />
-                                        </g>
-                                    </svg>
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined lined__iconed">
+                                        <select id="inputmarca" name="Marca" class="form-control custom-select">
+                                            <% Marca.forEach(element => { %>
+                                                <option value="<%=element.id_mar %>"><%=element.Marca%></option>
+                                                <%}); %>
+                                        </select>
+                                        <label>Marca</label>
+                                    </div>
+                                    <p class="text-danger" id="msgerror2"></p>
                                 </div>
-                            </div>
-                            <label for="inputprecio">Precio</label>
-                        </div>
-                        <p class="text-danger" id="msgerror5"></p>
-                    </div>
-                    <div class="margin-b-30">
-                        <div class="form-group input-lined lined__iconed">
-                            <div class="input_group">
-                                <input type="text" class="form-control" id="inputanotaciones" name="Anotaciones"
-                                    placeholder="Anotaciones del producto" required="">
-                                <div class="icon">
-                                    <svg id="Iconly_Curved_Message" data-name="Iconly/Curved/Message"
-                                        xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-                                        <g id="Message" transform="translate(2.248 2.614)">
-                                            <path id="Stroke_1" data-name="Stroke 1"
-                                                d="M10.222,0S7.279,3.532,5.127,3.532,0,0,0,0"
-                                                transform="translate(3.613 5.653)" fill="none" stroke="#9498ac"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                stroke-width="1.5" />
-                                            <path id="Stroke_3" data-name="Stroke 3"
-                                                d="M0,8.357C0,2.089,2.183,0,8.73,0s8.73,2.089,8.73,8.357-2.183,8.357-8.73,8.357S0,14.624,0,8.357Z"
-                                                transform="translate(0 0)" fill="none" stroke="#9498ac"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                stroke-width="1.5" />
-                                        </g>
-                                    </svg>
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined lined__iconed">
+                                        <select id="inputsuper" name="supermercado" class="form-control custom-select">
+                                            <% Super.forEach(element => { %>
+                                                <option value="<%=element.id_sup %>"><%=element.nom_sup%></option>
+                                                <%}); %>
+                                        </select>
+                                        <label>Supermercado</label>
+                                    </div>
+                                    <p class="text-danger" id="msgerror3"></p>
                                 </div>
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined lined__iconed">
+                                        <select name="Depa" class="form-control custom-select">
+                                            <% Depa.forEach(element => { %>
+                                                <option value=" <%=element.id_dep %>"><%=element.nom_dep%></option>
+                                                <%}); %>
+                                        </select>
+                                        <label>Departamento</label>
+                                    </div>
+                                </div>
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined">
+                                        <div class="group">
+                                            <div class="itemCountr_manual horizontal itemButtons border-0 min-w-125">
+                                                <a href="#" data-dir="down" class="btn btn_counter rounded-10 co_down border">
+                                                    <i class="tio-remove"></i>
+                                                </a>
+                                                <input type="text" class="form-control input_no color-secondary" value="0" id="inputcantidad" name="Cant">
+                                                <a href="#" data-dir="up" class="btn btn_counter rounded-10 co_up bg-secondary">
+                                                    <i class="tio-add color-white"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <label>Cantidad</label>
+                                    </div>
+                                    <p class="text-danger" id="msgerror4"></p>
+                                </div>
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined lined__iconed">
+                                        <select name="Unidad" class="form-control custom-select">
+                                            <% Uni.forEach(element => { %>
+                                                <option value=" <%=element.id_uni %>"><%=element.unidad%></option>
+                                                <%}); %>
+                                        </select>
+                                        <label>Unidad</label>
+                                    </div>
+                                </div>
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined lined__iconed">
+                                        <div class="input_group">
+                                            <input value="0" type="number" class="form-control" id="inputprecio" name="Precio"
+                                                placeholder="Precio del producto" required="">
+                                            <div class="icon">
+                                                <svg id="Iconly_Curved_Message" data-name="Iconly/Curved/Message"
+                                                    xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                                                    <g id="Message" transform="translate(2.248 2.614)">
+                                                        <path id="Stroke_1" data-name="Stroke 1"
+                                                            d="M10.222,0S7.279,3.532,5.127,3.532,0,0,0,0"
+                                                            transform="translate(3.613 5.653)" fill="none" stroke="#9498ac"
+                                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                            stroke-width="1.5" />
+                                                        <path id="Stroke_3" data-name="Stroke 3"
+                                                            d="M0,8.357C0,2.089,2.183,0,8.73,0s8.73,2.089,8.73,8.357-2.183,8.357-8.73,8.357S0,14.624,0,8.357Z"
+                                                            transform="translate(0 0)" fill="none" stroke="#9498ac"
+                                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                            stroke-width="1.5" />
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <label for="inputprecio">Precio</label>
+                                    </div>
+                                    <p class="text-danger" id="msgerror5"></p>
+                                </div>
+                                <div class="margin-b-30">
+                                    <div class="form-group input-lined lined__iconed">
+                                        <div class="input_group">
+                                            <input type="text" class="form-control" id="inputanotaciones" name="Anotaciones"
+                                                placeholder="Anotaciones del producto" required="">
+                                            <div class="icon">
+                                                <svg id="Iconly_Curved_Message" data-name="Iconly/Curved/Message"
+                                                    xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                                                    <g id="Message" transform="translate(2.248 2.614)">
+                                                        <path id="Stroke_1" data-name="Stroke 1"
+                                                            d="M10.222,0S7.279,3.532,5.127,3.532,0,0,0,0"
+                                                            transform="translate(3.613 5.653)" fill="none" stroke="#9498ac"
+                                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                            stroke-width="1.5" />
+                                                        <path id="Stroke_3" data-name="Stroke 3"
+                                                            d="M0,8.357C0,2.089,2.183,0,8.73,0s8.73,2.089,8.73,8.357-2.183,8.357-8.73,8.357S0,14.624,0,8.357Z"
+                                                            transform="translate(0 0)" fill="none" stroke="#9498ac"
+                                                            stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                            stroke-width="1.5" />
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <label for="inputanotaciones">Anotaciones</label>
+                                    </div>
+                                    <p class="text-danger" id="msgerror6"></p>
+                                </div>
+                                <input type="text" style="display: none;" value="<%=id.id_lis%>" readonly name="id_lis" >
+                                <input type="text" style="display: none;" readonly name="producto" >
+                            </form>
+                        </section>
+
+                        <!-- buttons__footer -->
+                        <div class="buttons__footer text-center">
+                            <div class="env-pb">
+                                <a href="javascript:{}" onclick="if(ValidarObjetoLista(event)){document.getElementById('CrearProForm').submit()}" class="btn bg-primary rounded-pill btn__default">
+                                    <span class="color-white">Agregar Producto</span>
+                                    <div class="icon rounded-circle">
+                                        <i class="tio-chevron_right"></i>
+                                    </div>
+                                </a>
                             </div>
-                            <label for="inputanotaciones">Anotaciones</label>
                         </div>
-                        <p class="text-danger" id="msgerror6"></p>
+
                     </div>
-                    <input type="text" style="display: none;" value="<%=id.id_lis%>" readonly name="id_lis" >
-                    <input type="text" style="display: none;" readonly name="producto" >
-                </form>
-            </section>
-            <!-- buttons__footer -->
-            <div class="buttons__footer text-center">
-                <div class="env-pb">
-                    <a href="javascript:{}" onclick="if(ValidarObjetoLista(event)){document.getElementById('CrearProForm').submit()}" class="btn bg-primary rounded-pill btn__default">
-                        <span class="color-white">Agregar Producto</span>
-                        <div class="icon rounded-circle">
-                            <i class="tio-chevron_right"></i>
-                        </div>
-                    </a>
+
                 </div>
-            </div>
+
+            </section>
+
+            
+            
 
         </div>
 
     </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/IDMNYU/p5.js-speech@0.0.3/lib/p5.speech.js"></script>
+
+    <script src="../js/speech2txt.js"></script>
 
     <!-- jquery -->
     <script src="/assets/js/jquery-3.6.0.js"></script>
