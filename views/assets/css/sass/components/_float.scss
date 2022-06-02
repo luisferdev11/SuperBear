@@ -1,0 +1,103 @@
+/* ============
+Float All Screens
+==============*/
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.float-none {
+  float: none;
+}
+.clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* ============
+Float Small (sm)
+==============*/
+.float-sm-right {
+  @include minSmall {
+    float: right;
+  }
+}
+.float-sm-left {
+  @include minSmall {
+    float: left;
+  }
+}
+.float-sm-none {
+  @include minSmall {
+    float: none;
+  }
+}
+.clearfix-sm {
+  @include minSmall {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+/* ============
+Float Medium (md)
+==============*/
+.float-md-right {
+  @include minMedium {
+    float: right;
+  }
+}
+.float-md-left {
+  @include minMedium {
+    float: left;
+  }
+}
+.float-md-none {
+  @include minMedium {
+    float: none;
+  }
+}
+.clearfix-md {
+  @include minMedium {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+/* ============
+Float Large (lg)
+==============*/
+.float-lg-right {
+  @include minLarge {
+    float: right;
+  }
+}
+.float-lg-left {
+  @include minLarge {
+    float: left;
+  }
+}
+.float-lg-none {
+  @include minLarge {
+    float: none;
+  }
+}
+.clearfix-lg {
+  @include minLarge {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+}

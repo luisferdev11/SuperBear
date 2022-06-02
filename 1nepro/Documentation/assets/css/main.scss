@@ -1,0 +1,308 @@
+/*
+CircularStd @font-face kit
+*/
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-Black.eot");
+  src: url("../fonts/text-font/CircularStd-Black.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-Black.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-Black.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-Black.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-BlackItalic.eot");
+  src: url("../fonts/text-font/CircularStd-BlackItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-BlackItalic.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-BlackItalic.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-BlackItalic.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-Bold.eot");
+  src: url("../fonts/text-font/CircularStd-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-Bold.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-Bold.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-Bold.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-BoldItalic.eot");
+  src: url("../fonts/text-font/CircularStd-BoldItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-BoldItalic.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-BoldItalic.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-BoldItalic.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-Medium.eot");
+  src: url("../fonts/text-font/CircularStd-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-Medium.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-Medium.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-Medium.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-MediumItalic.eot");
+  src: url("../fonts/text-font/CircularStd-MediumItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-MediumItalic.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-MediumItalic.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-MediumItalic.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-Book.eot");
+  src: url("../fonts/text-font/CircularStd-Book.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-Book.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-Book.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-Book.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd";
+  src: url("../fonts/text-font/CircularStd-BookItalic.eot");
+  src: url("../fonts/text-font/CircularStd-BookItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/text-font/CircularStd-BookItalic.woff") format("woff"),
+    url("../fonts/text-font/CircularStd-BookItalic.ttf") format("truetype"),
+    url("../fonts/text-font/CircularStd-BookItalic.svg#bcc26993292869431e54c666aafa8fcd")
+      format("svg");
+  font-weight: 400;
+  font-style: italic;
+}
+// End @font-face kit
+
+/*-----------------------------
+  media query
+-----------------------------*/
+$maxMobile: "(max-width:767px)";
+$maxSmall: "(max-width:991px)";
+$minSmall: "(min-width:768px)";
+$minMedium: "(min-width:992px)";
+$minLarge: "(min-width:1200px)";
+
+/*-----------------------------
+  Colors
+-----------------------------*/
+$color-black: #000;
+$color-white: #fff;
+$color-primary: #556fff;
+$color-secondary: #0e132d;
+$color-snow: #cbcdd8;
+$color-red: #ff4040;
+$color-orange: #ff702c;
+$color-blue: #4a8cfd;
+$color-yellow: #fa9905;
+$color-green: #41bd83;
+$color-text: #9498ac;
+$color-comment: #5d6072;
+
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // @media #{$maxMobile} {
+  //    padding-top: 1.5rem;
+  //  }
+  @extend %transition;
+  font: {
+    family: "CircularStd", sans-serif;
+    size: 16px;
+  }
+  color: $color-secondary;
+  @extend %transition;
+}
+
+a,
+p,
+.btn {
+  @extend %transition;
+}
+
+.main_head {
+  position: fixed;
+  width: 100%;
+  background-color: $color-white;
+  z-index: 99;
+  .navbar {
+    background-color: $color-white;
+    border-bottom: 1px solid rgba($color-text, 0.18);
+    padding: 2px 30px;
+    .navbar-brand {
+      font-size: 30px;
+      font-weight: 700;
+      color: $color-secondary;
+      display: flex;
+      align-items: center;
+      svg {
+        width: 105px;
+        height: 45px;
+      }
+      .ver_item {
+        border-radius: 6px;
+        border: 1px solid rgba($color-text, 0.2);
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 33px;
+        height: 23px;
+        font-weight: 500;
+        color: $color-text;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.bk_sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px;
+  overflow: auto;
+  padding: 24px 0;
+  bottom: 0;
+  width: 300px;
+  background-color: rgba($color-snow, 0.08);
+  .nav {
+    width: 100%;
+    .group {
+      margin-bottom: 30px;
+    }
+    .title_sm {
+      font-size: 12px;
+      color: $color-text;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0 30px;
+      padding-bottom: 10px;
+    }
+    .nav-link {
+      padding: 11px 30px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      color: $color-secondary;
+      font-weight: 400;
+      font-size: 16px;
+      border-radius: 0;
+      &.active {
+        background-color: rgba($color-primary, 0.1);
+        color: $color-primary;
+      }
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.content_body {
+  min-height: 100vh;
+  padding: 70px 30px;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $color-secondary;
+  }
+  .item_bk {
+    padding-top: 60px;
+    h1 {
+      font-size: 55px;
+      font-weight: 700;
+      color: $color-secondary;
+    }
+    .sub_title {
+      font-size: 20px;
+      color: $color-secondary;
+    }
+    p {
+      font-size: 16px;
+      color: $color-comment;
+    }
+    .before_title {
+      font-size: 13px;
+      color: $color-text;
+      text-transform: uppercase;
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 35px;
+      font-weight: 600;
+    }
+    .title_sub {
+      font-size: 22px;
+      font-weight: 500;
+    }
+  }
+  b {
+    font-weight: 600;
+    color: $color-secondary;
+  }
+  ul {
+    li {
+      font-size: 16px;
+      color: $color-comment;
+      padding-bottom: 10px;
+      b {
+        font-weight: 600;
+        color: $color-secondary;
+      }
+    }
+  }
+  .dividar {
+    border-bottom: 1px solid rgba($color-text, 0.2);
+    margin-top: 60px;
+  }
+}
+
+%transition {
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+}
+
+a {
+  color: $color-blue;
+  text-decoration: none !important;
+}
+
+.color-primary {
+  color: $color-primary !important;
+}

@@ -1,0 +1,156 @@
+/* ============
+Transition Property
+==============*/
+.transition-none {
+  @include prefixer(transition-property, none, webkit moz o ms);
+}
+.transition-all {
+  @include prefixer(transition, all 0.3s, webkit moz o ms);
+}
+/* ============
+Transition Duration
+==============*/
+.duration-75 {
+  @include prefixer(transition-duration, 75ms, webkit moz o ms);
+}
+.duration-100 {
+  @include prefixer(transition-duration, 100ms, webkit moz o ms);
+}
+.duration-150 {
+  @include prefixer(transition-duration, 150ms, webkit moz o ms);
+}
+.duration-200 {
+  @include prefixer(transition-duration, 200ms, webkit moz o ms);
+}
+.duration-300 {
+  @include prefixer(transition-duration, 300ms, webkit moz o ms);
+}
+.duration-500 {
+  @include prefixer(transition-duration, 500ms, webkit moz o ms);
+}
+.duration-700 {
+  @include prefixer(transition-duration, 700ms, webkit moz o ms);
+}
+.duration-1000 {
+  @include prefixer(transition-duration, 1000ms, webkit moz o ms);
+}
+/* ============
+Transition Timing Function
+==============*/
+.ease-linear {
+  @include prefixer(transition-timing-function, linear, webkit moz o ms);
+}
+.ease-in {
+  @include prefixer(
+    transition-timing-function,
+    cubic-bezier(0.4, 0, 1, 1),
+    webkit moz o ms
+  );
+}
+.ease-out {
+  @include prefixer(
+    transition-timing-function,
+    cubic-bezier(0, 0, 0.2, 1),
+    webkit moz o ms
+  );
+}
+.ease-in-out {
+  @include prefixer(
+    transition-timing-function,
+    cubic-bezier(0.4, 0, 0.2, 1),
+    webkit moz o ms
+  );
+}
+/* ============
+Transition Delay
+==============*/
+.delay-75 {
+  @include prefixer(transition-delay, 75ms, webkit moz o ms);
+}
+.delay-100 {
+  @include prefixer(transition-delay, 100ms, webkit moz o ms);
+}
+.delay-150 {
+  @include prefixer(transition-delay, 150ms, webkit moz o ms);
+}
+.delay-200 {
+  @include prefixer(transition-delay, 200ms, webkit moz o ms);
+}
+.delay-300 {
+  @include prefixer(transition-delay, 300ms, webkit moz o ms);
+}
+.delay-500 {
+  @include prefixer(transition-delay, 500ms, webkit moz o ms);
+}
+.delay-700 {
+  @include prefixer(transition-delay, 700ms, webkit moz o ms);
+}
+.delay-1000 {
+  @include prefixer(transition-delay, 1000ms, webkit moz o ms);
+}
+
+/* ============
+Transition Delay
+==============*/
+.animate-none {
+  @include prefixer(animation, none, webkit moz o ms);
+}
+.animate-spin {
+  @include prefixer(animation, spin 1s linear infinite, webkit moz o ms);
+}
+@include keyFrame(spin) {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-ping {
+  @include prefixer(
+    animation,
+    ping 1s cubic-bezier(0, 0, 0.2, 1) infinite,
+    webkit moz o ms
+  );
+}
+@include keyFrame(ping) {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.animate-pulse {
+  @include prefixer(
+    animation,
+    pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+    webkit moz o ms
+  );
+}
+@include keyFrame(pulse) {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.animate-bounce {
+  @include prefixer(animation, bounce 1s infinite, webkit moz o ms);
+}
+@include keyFrame(bounce) {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animationtimingfunction: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animationtimingfunction: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

@@ -1,0 +1,290 @@
+/* ============
+object Fit All Screens
+==============*/
+.object-contain {
+  object-fit: contain !important;
+}
+.object-cover {
+  object-fit: cover !important;
+}
+.object-fill {
+  object-fit: fill !important;
+}
+.object-none {
+  object-fit: none !important;
+}
+.object-scale-down {
+  object-fit: scale-down !important;
+}
+
+/* ============
+object Fit Small (sm)
+==============*/
+.object-sm-contain {
+  @include minSmall {
+    object-fit: contain !important;
+  }
+}
+.object-sm-cover {
+  @include minSmall {
+    object-fit: cover !important;
+  }
+}
+.object-sm-fill {
+  @include minSmall {
+    object-fit: fill !important;
+  }
+}
+.object-sm-none {
+  @include minSmall {
+    object-fit: none !important;
+  }
+}
+.object-sm-scale-down {
+  @include minSmall {
+    object-fit: scale-down !important;
+  }
+}
+
+/* ============
+object Fit Medium (md)
+==============*/
+.object-md-contain {
+  @include minMedium {
+    object-fit: contain !important;
+  }
+}
+.object-md-cover {
+  @include minMedium {
+    object-fit: cover !important;
+  }
+}
+.object-md-fill {
+  @include minMedium {
+    object-fit: fill !important;
+  }
+}
+.object-md-none {
+  @include minMedium {
+    object-fit: none !important;
+  }
+}
+.object-md-scale-down {
+  @include minMedium {
+    object-fit: scale-down !important;
+  }
+}
+
+/* ============
+object Fit Large (lg)
+==============*/
+.object-lg-contain {
+  @include minLarge {
+    object-fit: contain !important;
+  }
+}
+.object-lg-cover {
+  @include minLarge {
+    object-fit: cover !important;
+  }
+}
+.object-lg-fill {
+  @include minLarge {
+    object-fit: fill !important;
+  }
+}
+.object-lg-none {
+  @include minLarge {
+    object-fit: none !important;
+  }
+}
+.object-lg-scale-down {
+  @include minLarge {
+    object-fit: scale-down !important;
+  }
+}
+
+// ==========================
+// ==========================
+// ==========================
+// ==========================
+
+/* ============
+object Position All Screens
+==============*/
+.object-bottom {
+  object-position: bottom !important;
+}
+.object-center {
+  object-position: center !important;
+}
+.object-left {
+  object-position: left !important;
+}
+.object-left-bottom {
+  object-position: left bottom !important;
+}
+.object-left-top {
+  object-position: left top !important;
+}
+.object-right {
+  object-position: right !important;
+}
+.object-right-bottom {
+  object-position: right bottom !important;
+}
+.object-right-top {
+  object-position: right top !important;
+}
+.object-top {
+  object-position: top !important;
+}
+/* ============
+  object Position Small (sm)
+  ==============*/
+
+.object-sm-bottom {
+  @include minSmall {
+    object-position: bottom !important;
+  }
+}
+.object-sm-center {
+  @include minSmall {
+    object-position: center !important;
+  }
+}
+.object-sm-left {
+  @include minSmall {
+    object-position: left !important;
+  }
+}
+.object-sm-left-bottom {
+  @include minSmall {
+    object-position: left bottom !important;
+  }
+}
+.object-sm-left-top {
+  @include minSmall {
+    object-position: left top !important;
+  }
+}
+.object-sm-right {
+  @include minSmall {
+    object-position: right !important;
+  }
+}
+.object-sm-right-bottom {
+  @include minSmall {
+    object-position: right bottom !important;
+  }
+}
+.object-sm-right-top {
+  @include minSmall {
+    object-position: right top !important;
+  }
+}
+.object-sm-top {
+  @include minSmall {
+    object-position: top !important;
+  }
+}
+
+/* ============
+  object Position Medium (md)
+  ==============*/
+
+.object-md-bottom {
+  @include minMedium {
+    object-position: bottom !important;
+  }
+}
+.object-md-center {
+  @include minMedium {
+    object-position: center !important;
+  }
+}
+.object-md-left {
+  @include minMedium {
+    object-position: left !important;
+  }
+}
+.object-md-left-bottom {
+  @include minMedium {
+    object-position: left bottom !important;
+  }
+}
+.object-md-left-top {
+  @include minMedium {
+    object-position: left top !important;
+  }
+}
+.object-md-right {
+  @include minMedium {
+    object-position: right !important;
+  }
+}
+.object-md-right-bottom {
+  @include minMedium {
+    object-position: right bottom !important;
+  }
+}
+.object-md-right-top {
+  @include minMedium {
+    object-position: right top !important;
+  }
+}
+.object-md-top {
+  @include minMedium {
+    object-position: top !important;
+  }
+}
+
+/* ============
+  object Position Large (lg)
+  ==============*/
+
+.object-lg-bottom {
+  @include minLarge {
+    object-position: bottom !important;
+  }
+}
+.object-lg-center {
+  @include minLarge {
+    object-position: center !important;
+  }
+}
+.object-lg-left {
+  @include minLarge {
+    object-position: left !important;
+  }
+}
+.object-lg-left-bottom {
+  @include minLarge {
+    object-position: left bottom !important;
+  }
+}
+.object-lg-left-top {
+  @include minLarge {
+    object-position: left top !important;
+  }
+}
+.object-lg-right {
+  @include minLarge {
+    object-position: right !important;
+  }
+}
+.object-lg-right-bottom {
+  @include minLarge {
+    object-position: right bottom !important;
+  }
+}
+.object-lg-right-top {
+  @include minLarge {
+    object-position: right top !important;
+  }
+}
+.object-lg-top {
+  @include minLarge {
+    object-position: top !important;
+  }
+}

@@ -1,0 +1,188 @@
+/*-----------------------------
+  media query
+-----------------------------*/
+$maxMobile: "(max-width:767px)";
+$maxSmall: "(max-width:991px)";
+$minSmall: "(min-width:768px)";
+$minMedium: "(min-width:992px)";
+$minLarge: "(min-width:1200px)";
+
+/*-----------------------------
+  Colors
+-----------------------------*/
+$color-black: #000;
+$color-white: #fff;
+$color-primary: #556fff;
+$color-secondary: #0e132d;
+$color-snow: #cbcdd8;
+$color-red: #ff4040;
+$color-orange: #ff702c;
+$color-blue: #4a8cfd;
+$color-yellow: #fa9905;
+$color-green: #41bd83;
+$color-text: #9498ac;
+$color-comment: #5d6072;
+
+$color-purple: #a659ff;
+$color-pink: #ff59a2;
+$color-turquoise: #20bbd3;
+
+/*-----------------------------
+  Background Colors
+-----------------------------*/
+$bg-black: #000;
+$bg-white: #fff;
+$bg-primary: #556fff;
+$bg-secondary: #0e132d;
+$bg-snow: #f7f7f8;
+$bg-red: #ff4040;
+$bg-orange: #ff702c;
+$bg-blue: #53a7f9;
+$bg-yellow: #fa9905;
+$bg-green: #41bd83;
+
+$bg-purple: #a659ff;
+$bg-pink: #ff59a2;
+$bg-turquoise: #20bbd3;
+/*-----------------------------
+  Border Colors
+-----------------------------*/
+$border-black: #000;
+$border-white: #fff;
+$border-primary: #556fff;
+$border-secondary: #0e132d;
+$border-snow: #efeff6;
+$border-red: #ff4040;
+$border-orange: #ff702c;
+$border-blue: #4a8cfd;
+$border-yellow: #fa9905;
+$border-green: #41bd83;
+$border-input: #efeff6;
+
+/*-----------------------------
+  Color Social Network
+-----------------------------*/
+$color-android: #a4c639;
+$color-clarity: #61bed9;
+$color-dribbble: #ea4c89;
+$color-foursquare: #f94877;
+$color-google-plus: #db4437;
+$color-instagram: #c32aa3;
+$color-mastodon: #2b90d9;
+$color-periscope: #40a4c4;
+$color-quora: #aa2200;
+$color-slack: #4a154b;
+$color-soundcloud: #ff5500;
+$color-stumbleupon: #e94826;
+$color-tiktok: #010101;
+$color-twitter: #1da1f2;
+$color-vk: #4a76a8;
+$color-yelp: #d32323;
+$color-alexa: #00a7ce;
+$color-deviantArt: #05cc47;
+$color-facebook: #1877f2;
+$color-linkedin: #007bb5;
+$color-medium: #02b875;
+$color-pinterest: #bd081c;
+$color-reddit: #ff4500;
+$color-slideshare: #e68523;
+$color-spotify: #1ed760;
+$color-tumblr: #35465d;
+$color-vimeo: #1ab7ea;
+$color-whatsapp: #25d366;
+$color-youtube: #ff0000;
+$color-amazon: #ff9900;
+$color-apple: #000000;
+$color-flickr: #f40083;
+$color-google: #4285f4;
+$color-houzz: #4dbc15;
+$color-microsoft: #f35022;
+$color-skype: #0078d7;
+$color-snapchat: #fffc00;
+$color-telegram: #0088cc;
+$color-behance: #0056ff;
+
+:root {
+  --color-black: #{$color-black};
+  --color-white: #{$color-white};
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-snow: #{$color-snow};
+  --color-red: #{$color-red};
+  --color-orange: #{$color-orange};
+  --color-blue: #{$color-blue};
+  --color-yellow: #{$color-yellow};
+  --color-green: #{$color-green};
+  --color-text: #{$color-text};
+  --color-comment: #{$color-comment};
+
+  --color-pink: #{$color-pink};
+  --color-turquoise: #{$color-turquoise};
+  --color-purple: #{$color-purple};
+  // Background Colors
+  --bg-black: #{$bg-black};
+  --bg-white: #{$bg-white};
+  --bg-primary: #{$bg-primary};
+  --bg-secondary: #{$bg-secondary};
+  --bg-snow: #{$bg-snow};
+  --bg-red: #{$bg-red};
+  --bg-orange: #{$bg-orange};
+  --bg-blue: #{$bg-blue};
+  --bg-yellow: #{$bg-yellow};
+  --bg-green: #{$bg-green};
+  --bg-purple: #{$bg-purple};
+  --bg-pink: #{$bg-pink};
+  --bg-turquoise: #{$bg-turquoise};
+  // border Colors
+  --border-black: #{$border-black};
+  --border-white: #{$border-white};
+  --border-primary: #{$border-primary};
+  --border-secondary: #{$border-secondary};
+  --border-snow: #{$border-snow};
+  --border-red: #{$border-red};
+  --border-orange: #{$border-orange};
+  --border-blue: #{$border-blue};
+  --border-yellow: #{$border-yellow};
+  --border-green: #{$border-green};
+  --border-input: #{$border-input};
+  // Socile Networks
+  --color-android: #{$color-android};
+  --color-clarity: #{$color-clarity};
+  --color-dribbble: #{$color-dribbble};
+  --color-foursquare: #{$color-foursquare};
+  --color-google-plus: #{$color-google-plus};
+  --color-instagram: #{$color-instagram};
+  --color-mastodon: #{$color-mastodon};
+  --color-periscope: #{$color-periscope};
+  --color-quora: #{$color-quora};
+  --color-slack: #{$color-slack};
+  --color-soundcloud: #{$color-soundcloud};
+  --color-stumbleupon: #{$color-stumbleupon};
+  --color-tiktok: #{$color-tiktok};
+  --color-twitter: #{$color-twitter};
+  --color-vk: #{$color-vk};
+  --color-yelp: #{$color-yelp};
+  --color-alexa: #{$color-alexa};
+  --color-deviantArt: #{$color-deviantArt};
+  --color-facebook: #{$color-facebook};
+  --color-linkedin: #{$color-linkedin};
+  --color-medium: #{$color-medium};
+  --color-pinterest: #{$color-pinterest};
+  --color-reddit: #{$color-reddit};
+  --color-slideshare: #{$color-slideshare};
+  --color-spotify: #{$color-spotify};
+  --color-tumblr: #{$color-tumblr};
+  --color-vimeo: #{$color-vimeo};
+  --color-whatsapp: #{$color-whatsapp};
+  --color-youtube: #{$color-youtube};
+  --color-amazon: #{$color-amazon};
+  --color-apple: #{$color-apple};
+  --color-flickr: #{$color-flickr};
+  --color-google: #{$color-google};
+  --color-houzz: #{$color-houzz};
+  --color-microsoft: #{$color-microsoft};
+  --color-skype: #{$color-skype};
+  --color-snapchat: #{$color-snapchat};
+  --color-telegram: #{$color-telegram};
+  --color-behance: #{$color-behance};
+}

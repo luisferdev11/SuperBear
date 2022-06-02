@@ -1,0 +1,105 @@
+/* ============
+Position All Screens
+==============*/
+.static {
+  position: static;
+}
+.fixed {
+  position: fixed;
+}
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.sticky {
+  position: sticky;
+}
+
+/* ============
+Position Small (sm)
+==============*/
+.static-sm {
+  @include minSmall {
+    position: static;
+  }
+}
+.fixed-sm {
+  @include minSmall {
+    position: fixed;
+  }
+}
+.absolute-sm {
+  @include minSmall {
+    position: absolute;
+  }
+}
+.relative-sm {
+  @include minSmall {
+    position: relative;
+  }
+}
+.sticky-sm {
+  @include minSmall {
+    position: sticky;
+  }
+}
+
+/* ============
+Position Medium (md)
+==============*/
+.static-md {
+  @include minMedium {
+    position: static;
+  }
+}
+.fixed-md {
+  @include minMedium {
+    position: fixed;
+  }
+}
+.absolute-md {
+  @include minMedium {
+    position: absolute;
+  }
+}
+.relative-md {
+  @include minMedium {
+    position: relative;
+  }
+}
+.sticky-md {
+  @include minMedium {
+    position: sticky;
+  }
+}
+
+/* ============
+Position Large (lg)
+==============*/
+.static-lg {
+  @include minLarge {
+    position: static;
+  }
+}
+.fixed-lg {
+  @include minLarge {
+    position: fixed;
+  }
+}
+.absolute-lg {
+  @include minLarge {
+    position: absolute;
+  }
+}
+.relative-lg {
+  @include minLarge {
+    position: relative;
+  }
+}
+.sticky-lg {
+  @include minLarge {
+    position: sticky;
+  }
+}

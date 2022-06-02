@@ -394,8 +394,9 @@ module.exports = {
                 id_prod,
                 id_grupo,
             });
-        } catch {
+        } catch (e) {
             res.redirect("/error");
+            console.log(e);
         }
     },
 
@@ -439,8 +440,9 @@ module.exports = {
                     ";"
             );
             res.redirect(enlace);
-        } catch {
+        } catch (e) {
             res.redirect("/error");
+            console.log(e);
         }
     },
 
@@ -460,8 +462,9 @@ module.exports = {
             );
             let enlace = "/ConsultarProductos/" + grupo[0].id_lst;
             res.redirect(enlace);
-        } catch {
+        } catch (e) {
             res.redirect("/error");
+            console.log(e);
         }
     },
     async Estado(req, res) {
@@ -488,8 +491,9 @@ module.exports = {
                 "select id_lst from elista where id_eli =" + id_lis + ";"
             );
             res.redirect("/ConsultarProductos/" + grupo[0].id_lst);
-        } catch {
+        } catch (e) {
             res.redirect("/error");
+            console.log(e);
         }
     },
 };
