@@ -74,104 +74,6 @@
                 </header> -->
                 <!-- End.main_haeder -->
 
-                <section class="padding-t-70 components_page padding-b-30 grid">
-                    <!-- Start title -->
-                    <!-- <div class="emTitle_co padding-20">
-                        <h2 class="size-16 weight-500 color-secondary mb-1">
-                            Full Card
-                        </h2>
-                        <p class="size-12 color-text m-0">
-                            Display a full screen card
-                        </p>
-                    </div> -->
-                    <!-- End. title -->
-
-                    <!-- Start emPage__blog -->
-                    <div class="emPage__blog">
-                        <a href="#" class="item__card layer-lg">
-                            <div class="cover_img">
-                                <img src="assets/img/0654dsf.jpg" alt="" />
-                            </div>
-                            <div class="card__body">
-                                <span>24, Oct 2021</span>
-                                <h2 class="card_title">Card Title</h2>
-                                <p>
-                                    Arcu non odio euismod lacinia at quis risus
-                                    sed. Vulputate odio ut enim blandit.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- End. emPage__blog -->
-                    <!-- Start emPage__blog -->
-                    <div class="emPage__blog">
-                        <a href="#" class="item__card layer-lg">
-                            <div class="cover_img">
-                                <img src="assets/img/0654dsf.jpg" alt="" />
-                            </div>
-                            <div class="card__body">
-                                <span>24, Oct 2021</span>
-                                <h2 class="card_title">Card Title</h2>
-                                <p>
-                                    Arcu non odio euismod lacinia at quis risus
-                                    sed. Vulputate odio ut enim blandit.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- End. emPage__blog -->
-                    <!-- Start emPage__blog -->
-                    <div class="emPage__blog">
-                        <a href="#" class="item__card layer-lg">
-                            <div class="cover_img">
-                                <img src="assets/img/0654dsf.jpg" alt="" />
-                            </div>
-                            <div class="card__body">
-                                <span>24, Oct 2021</span>
-                                <h2 class="card_title">Card Title</h2>
-                                <p>
-                                    Arcu non odio euismod lacinia at quis risus
-                                    sed. Vulputate odio ut enim blandit.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- End. emPage__blog -->
-                    <!-- Start emPage__blog -->
-                    <div class="emPage__blog">
-                        <a href="#" class="item__card layer-lg">
-                            <div class="cover_img">
-                                <img src="assets/img/0654dsf.jpg" alt="" />
-                            </div>
-                            <div class="card__body">
-                                <span>24, Oct 2021</span>
-                                <h2 class="card_title">Card Title</h2>
-                                <p>
-                                    Arcu non odio euismod lacinia at quis risus
-                                    sed. Vulputate odio ut enim blandit.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- End. emPage__blog -->
-                    <!-- Start emPage__blog -->
-                    <div class="emPage__blog">
-                        <a href="#" class="item__card layer-lg">
-                            <div class="cover_img">
-                                <img src="assets/img/0654dsf.jpg" alt="" />
-                            </div>
-                            <div class="card__body">
-                                <span>24, Oct 2021</span>
-                                <h2 class="card_title">Card Title</h2>
-                                <p>
-                                    Arcu non odio euismod lacinia at quis risus
-                                    sed. Vulputate odio ut enim blandit.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- End. emPage__blog -->
-                </section>
             </div>
 
             <!-- End. em_main_footer -->
@@ -202,18 +104,24 @@
         <script src="assets/js/pwa-services.js"></script>
     
 
-    <%- include('partials/navegacionNormal') %>
+    <!-- <%- include('partials/navegacionNormal') %> -->
     <div class="principal">
         <header>
             <h1>
-                Mis Grupos <% if (user) { %>
+                Grupos de<% if (user) { %>
                     <%= user.nom_usu %>
                         <% } %>
             </h1>
             <div>
-                <a href="/nuevogrupo"><img src="assets/svg/plus.svg" /></a>
+                <a href="/nuevogrupo" class="btn bg-yellow rounded-pill btn__default">
+                    <span class="color-white">Nuevo grupo</span>
+                    <div class="icon rounded-circle">
+                        <i class="tio-chevron_right"></i>
+                    </div>
+                </a>
             </div>
         </header>
+        <br>
         <% if(pendientes == true){ %>
             <div class="notificacion">
                 <b>Tienes listas pendientes </b>
@@ -227,74 +135,46 @@
         <% if (user.grps) { %>
             <% for (let i=0; i < user.grps.length; i++ ) { %>
                 <div class="emPage__blog">
-                    <a href="/consultarlistas/<%=user.grps[i].id_grp %>" class="item__card layer-lg">
-                        <div class="cover_img">
-                            <img src="assets/img/0654dsf.jpg" alt="" />
-                        </div>
-                        <div class="card__body">
-                            <span>24, Oct 2021</span>
-                            <h2 class="card_title"><%= user.grps[i].nom_grp %></h2>
-                            <p>
-                                Arcu non odio euismod lacinia at quis risus
-                                sed. Vulputate odio ut enim blandit.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="grupo">
-                    <div class="nombre-grupo">
-                        <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
-                            <h1>
-                                <%= user.grps[i].nom_grp %>
-                            </h1>
+                    <div class="item__card layer-lg">
+                        <a href="/consultarlistas/<%=user.grps[i].id_grp %>" class="">
+                            <div class="cover_img">
+                                <img src="https://random.imagecdn.app/500/<%=100+i%>">
+                            </div>
                         </a>
-                        <% if (user.grps[i].id_priv==1) { %>
-                            <a href="/consultarmiembros/<%=user.grps[i].id_grp %>">
-                                <b>Administrador</b>
-                                <img src="assets/svg/IconoGruposSuperBear.svg" />
-                                <b><%=nmiembros[i]%> miembros </b>
-                            </a>
-                            <label for="menu-<%= i %> ">
-                                <img class="opciones" src="assets/svg/options.svg" />
-                                <input id="menu-<%= i %> " type="checkbox" />
-                                <div class="desplegable">
-                                    <a href="/deletegroup/<%=user.grps[i].id_grp%>" class="b">
-                                        Borrar Grupo
-                                    </a>
-                                </div>
-                            </label>
-                            <% }else{ %>
-
-                                <a href="/miembrosdegrupo/<%=user.grps[i].id_grp%>">
-                                    <img src="assets/svg/IconoGruposSuperBear.svg" />
-                                    <b><%=nmiembros[i]%>  miembros </b>
+                            <div class="card__body">
+                                <% if (user.grps[i].id_priv==1) { %>
+                                    <span>Eres admin de este grupo</span>
+                                <% }else{ %>
+                                    <span>Eres parte de este grupo</span>
+                                <% } %>
+                                <a href="/consultarlistas/<%=user.grps[i].id_grp %>" class="">
+                                    <h2 class="card_title"><%= user.grps[i].nom_grp %></h2>
                                 </a>
-                            <% } %>
-
-                            
-                    </div>
-                    <div class="contenido-grupo">
-                        <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
-                            <div>
+                                <% if (user.grps[i].id_priv==1) { %>
+                                    <a href="/consultarmiembros/<%=user.grps[i].id_grp %>">
+                                        <p>
+                                            Consulta, comparte y agrega miembros aquí!
+                                        </p>
+                                    </a>
+                                <% }else{ %>
+                                    <a href="/miembrosdegrupo/<%=user.grps[i].id_grp%>">
+                                        <p>
+                                            Consulta con quénes estás realizando tus compras aquí!
+                                        </p>
+                                    </a>
+                                <% } %>
                             </div>
-                            <div>
-                            </div>
-                        </a>
-                        <a href="/consultarlistas/<%=user.grps[i].id_grp %>">
-                            <div>
-                            </div>
-                            <div>
-                            </div>
-                        </a>
+                        
                     </div>
                 </div>
+                
             <% } %>
         <% } %>               
     </div>
     <br />
-    <footer>
+    <!-- <footer>
         <%- include('partials/footer') %>
-    </footer>
+    </footer> -->
     <script src="../js/detect-browser.js"></script>
     <script src="../js/barraNavegacion.js"></script>
 </body>
