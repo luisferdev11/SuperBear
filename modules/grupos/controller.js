@@ -79,7 +79,6 @@ module.exports = {
                     } else {
                         res.redirect("/error");
                     }
-
                 } catch (error) {
                     await pool.query(
                         "INSERT INTO egrupo (id_usu, id_grp, id_priv) VALUES (?,?,?)",
@@ -281,7 +280,11 @@ module.exports = {
                 WHERE mu.id_usu = ?`,
                 [req.user.id_usu],
                 async (error, results) => {
-                    if (!results || results.length === 0 || String(results) == '') {
+                    if (
+                        !results ||
+                        results.length === 0 ||
+                        String(results) == ""
+                    ) {
                         // res.render("consultarGrupos", { user: req.user, nmiembros: [], pendientes });
                     } else {
                         // Checar si hay productos pendientes - president
@@ -294,15 +297,19 @@ module.exports = {
                             idGrupos.push(results[i].id_grp);
                         }
                         let elistas = await pool.query(
-                            'select id_eli from elista where id_grp in (' + idGrupos + ');'
+                            "select id_eli from elista where id_grp in (" +
+                                idGrupos +
+                                ");"
                         );
-                        if (String(elistas) != '') {
+                        if (String(elistas) != "") {
                             // console.log(elistas);
                             for (let i = 0; i < elistas.length; i++) {
-                                idListas.push(elistas[i].id_eli)
+                                idListas.push(elistas[i].id_eli);
                             }
                             let estadosProductos = await pool.query(
-                                'select id_esProd from dproducto where id_eli in (' + idListas + ');'
+                                "select id_esProd from dproducto where id_eli in (" +
+                                    idListas +
+                                    ");"
                             );
                             // console.log(estadosProductos);
                             for (let i = 0; i < estadosProductos.length; i++) {
@@ -324,13 +331,20 @@ module.exports = {
                         arrnummiembros.push(id_miembros.length);
                     }
 
-
-                    res.render("consultarGrupos", { user: req.user, nmiembros: arrnummiembros, pendientes });
+                    res.render("consultarGrupos", {
+                        user: req.user,
+                        nmiembros: arrnummiembros,
+                        pendientes,
+                    });
                 }
             );
         } catch (error) {
             console.error(error);
-            res.render("consultarGrupos", { user: req.user, nmiembros: [], pendientes });
+            res.render("consultarGrupos", {
+                user: req.user,
+                nmiembros: [],
+                pendientes,
+            });
         }
     },
 };

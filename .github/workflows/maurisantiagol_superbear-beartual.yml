@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'superbear-beartual'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EDE3C3ABB26E47E38DC51F841F2607C8 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_78670E45640E4955AEFB9ACA2C5F86F7 }}
           package: .
