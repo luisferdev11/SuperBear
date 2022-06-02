@@ -11,11 +11,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <meta name="theme-color" content="#ffffff">
-    <title>Listas de grupo</title>
-    <meta name="description" content="Nepro – The Multipurpose Mobile HTML5 Template">
-    <meta name="keywords"
-        content="bootstrap 4, mobile template, 404, chat, about, cordova, phonegap, mobile, html, ecommerce, shopping, store, delivery, wallet, banking, education, jobs, careers, distance learning" />
-
+    <title>Listas de Grupo | SuperBear</title>
     <!-- favicon -->
     <link rel="icon" type="image/png" href="../assets/svg/logo.svg" sizes="32x32">
     <link rel="apple-touch-icon" href="../assets/svg/logo.svg">
@@ -235,9 +231,9 @@
                                     
                                 </script>
                         <li class="item">
-                            <div id="headingFour">
-                                <div class="nav-link main_item" data-toggle="collapse" data-target="#collapseFour"
-                                    aria-expanded="false" aria-controls="collapseFour">
+                            <div id="heading<%= element.id_lis %>">
+                                <div class="nav-link main_item" data-toggle="collapse" data-target="#collapse<%= element.id_lis %>"
+                                    aria-expanded="false" aria-controls="collapse<%= element.id_lis %>">
                                     <div class="media align-items-center">
                                         <div class="ico">
                                             <svg id="Iconly_Two-tone_Document" data-name="Iconly/Two-tone/Document"
@@ -287,7 +283,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                            <div id="collapse<%= element.id_lis %>" class="collapse" aria-labelledby="heading<%= element.id_lis %>"
                                 data-parent="#accordionExample">
                                 <div class="em__pkLink">
                                     <ul class="nav__list with_border fullBorder mb-0">
