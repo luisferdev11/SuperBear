@@ -6,30 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="shortcut icon" href="assets/svg/logo.svg">
-    <link rel="icon" type="image/png" href="assets/img/favicon/32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="assets/img/favicon/favicon192.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/normalize.css">
 
     <title>Mi Perfil | SuperBear</title>
 </head>
-<style>
-    nav{
-        display: grid;
-        grid-template-columns: 40% 40% 20%;
-    }
-    nav a img{
-        width: 2.8rem;
-        height: 2.8rem;
-    }
-</style>
 <body>
     <section class="em_loading" id="loaderPage">
         <div class="spinner_flash"></div>
     </section>
 
-    <div class="principal">
+    <div class="padding-20">
         
         <h1 class="centro">Mi Perfil</h1>
         <div class="contenedor-formulario">
@@ -38,7 +26,7 @@
                 <div class="form-group with_icon">
                     <label>Correo Electrónico</label>
                     <div class="input_group">
-                        <input type="email" class="form-control" placeholder="<%= user.cor_usu %>" required=""  readonly>
+                        <input type="email" class="form-control" value="<%= user.cor_usu %>" required=""  readonly>
                         <div class="icon">
                             <svg id="Iconly_Two-tone_Message" data-name="Iconly/Two-tone/Message"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -61,7 +49,7 @@
                 <div class="form-group with_icon">
                     <label>Nombre</label>
                     <div class="input_group">
-                        <input type="text" class="form-control" placeholder="<%= user.nom_usu %>" required="" readonly>
+                        <input type="text" class="form-control" value="<%= user.nom_usu %>" required="" readonly>
                         <div class="icon">
                             <svg id="Iconly_Two-tone_Profile" data-name="Iconly/Two-tone/Profile"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -83,7 +71,7 @@
                 <div class="form-group with_icon">
                     <label>Alcaldía</label>
                     <div class="input_group">
-                        <input type="text" class="form-control" placeholder="<%= user.alc %>" required="" readonly>
+                        <input type="text" class="form-control" value="<%= user.alc %>" required="" readonly>
                         <div class="icon">
                             <svg id="Iconly_Two-tone_Location" data-name="Iconly/Two-tone/Location"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -106,7 +94,7 @@
                 <div class="form-group with_icon">
                     <label>Género</label>
                     <div class="input_group">
-                        <input type="text" class="form-control" placeholder="<%= user.sexo %>" required="" readonly>
+                        <input type="text" class="form-control" value="<%= user.sexo %>" required="" readonly>
                     </div>
                 </div>
                 
@@ -128,6 +116,45 @@
         </div>
     </div>
     <br>
+    <footer class="em_main_footer with__text p-0">
+        <div id="footerNuevo" class="em_body_navigation -active-links">
+            <div class="col-4 item_link">
+                <a href="/datos-perfil" class="btn btn_navLink active">
+                    <div class="icon_current">
+                        <img src="/assets/svg/user.svg" id="Iconly_Two-tone_Discovery" data-name="Iconly/Two-tone/Discovery" width="24" height="24" viewBox="0 0 24 24">
+                    </div>
+                    <div class="icon_active">
+                        <img src="/assets/svg/user-active.svg" id="Iconly_Bulk_Discovery" data-name="Iconly/Bulk/Discovery" width="24" height="24" viewBox="0 0 24 24">
+
+                    </div>
+                    <div class="txt__tile">Perfil</div>
+                </a>
+            </div>
+            <div class="col-4 item_link">
+                <a href="/Misgrupos" class="btn btn_navLink">
+                    <div class="icon_current">
+                        <img src="/assets/svg/grupos.svg" id="Iconly_Two-tone_Folder" data-name="Iconly/Two-tone/Folder" width="24" height="24" viewBox="0 0 24 24">
+                    </div>
+                    <div class="icon_active">
+                        <img src="/assets/svg/grupos-active.svg" id="Iconly_Bulk_Folder" data-name="Iconly/Bulk/Folder" width="24" height="24" viewBox="0 0 24 24">
+                    </div>
+                    <div class="txt__tile">Grupos</div>
+                </a>
+            </div>
+            <div class="col-4 item_link">
+                <a href="/consultarNoticias-usuario" class="btn btn_navLink">
+                    <div class="icon_current">
+                        <img src="/assets/svg/news.svg" id="Iconly_Two-tone_Location" data-name="Iconly/Two-tone/Location" width="24" height="24" viewBox="0 0 24 24">
+                    </div>
+                    <div class="icon_active">
+                        <img src="/assets/svg/news-active.svg" id="Iconly_Bulk_Location" data-name="Iconly/Bulk/Location" width="24" height="24" viewBox="0 0 24 24">
+
+                    </div>
+                    <div class="txt__tile">Noticias</div>
+                </a>
+            </div>
+        </div>
+    </footer>
    
         <script src="assets/js/jquery-3.6.0.js"></script>
         <script src="assets/js/popper.min.js"></script>
