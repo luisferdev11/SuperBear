@@ -62,16 +62,59 @@
     <script src="assets/js/pwa-services.js"></script>
 
 
-    <nav class="flecha">
-        <a href="/misgrupos">
-            <img src="../assets/svg/flecha.svg">
-        </a>
-    </nav>
+    <header class="main_haeder header-sticky multi_item">
+        <div class="em_side_right">
+            <a class="rounded-circle d-flex align-items-center text-decoration-none" href="/misgrupos">
+                <i class="tio-chevron_left size-24 color-text"></i>
+                <span class="color-text size-14">Regresar</span>
+            </a>
+        </div>
+        <div class="title_page">
+            <span class="page_name">
+                Miembros</span>
+        </div>
+        <div class="em_side_left">
+            <a class="rounded-circle d-flex align-items-center text-decoration-none" href="/deletegroup/<%=grup%>">
+                    Borrar Grupo
+            </a>
+        </div>
+    </header>
     <div class="principal">
         <h1 class="centro">Miembros del Grupo</h1>
     </div>
+    <% for (let i=0; i < miembros.length; i++) { %>
+        <section class="em__pkLink">
     
-    <div class="grid" style="place-content: center; grid-gap: 0;">
+        <ul class="nav__list mb-0 emBlock__border bg-white py-4">
+            <div class="group_collection">
+        <li>
+            <div  class="item-link ">
+                <div class="group">
+                    <div class="icon bg-yellow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><path d="M50.4 54.5c10.1 0 18.2-8.2 18.2-18.2S60.5 18 50.4 18s-18.2 8.2-18.2 18.2 8.1 18.3 18.2 18.3zm0-31.7c7.4 0 13.4 6 13.4 13.4s-6 13.4-13.4 13.4S37 43.7 37 36.3s6-13.5 13.4-13.5zM18.8 83h63.4c1.3 0 2.4-1.1 2.4-2.4 0-12.6-10.3-22.9-22.9-22.9H39.3c-12.6 0-22.9 10.3-22.9 22.9 0 1.3 1.1 2.4 2.4 2.4zm20.5-20.5h22.4c9.2 0 16.7 6.8 17.9 15.7H21.4c1.2-8.9 8.7-15.7 17.9-15.7z"/></svg>
+                    </div>
+                    <span class="path__name"><%=miembros[i]%></span>
+                </div>
+                <div class="group_collection text-center">
+                    <span class="path__name "><% if(privilegio[i]==1){ %>
+                        <%="Rol: Admin"%>
+                    </b></span>
+                </div>
+                    <div class="icon bg-yellow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M45.12859,196.01674a8.01266,8.01266,0,0,0,9.97356,5.86223,273.90053,273.90053,0,0,1,145.746-.0138,8.01268,8.01268,0,0,0,9.97132-5.85941l25.48872-108.3169a8,8,0,0,0-11.03641-9.143L174.688,101.02754a8,8,0,0,1-10.24237-3.42535l-29.4524-53.01433a8,8,0,0,0-13.98652,0L91.55434,97.60219A8,8,0,0,1,81.312,101.02754L30.72054,78.54246a8,8,0,0,0-11.03717,9.13973Z"/></svg>         
+                    </div>
+                    
+                        <% }else{ %>
+                    <%="Rol: Miembro"%>
+                </b></span>
+            </div>
+                    <a href="/delete/<%=grup%>/<%=id[i] %>" ><p class="rojo">Eliminar</p></a>
+                    <% }    %>    
+                
+                        </div>
+        </li></div></ul></section>
+        <%}%>
+   <!-- <div class="grid" style="place-content: center; grid-gap: 0;">
 
         <% for (let i=0; i < miembros.length; i++) { %>
 
@@ -92,7 +135,7 @@
             </div>
 
             <%}%>
-        </div>
+        </div> -->
         <div class="contenedor-formulario">
             <form>
                 <h2 class="centro">Código de Grupo</h2>
