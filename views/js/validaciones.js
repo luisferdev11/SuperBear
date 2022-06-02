@@ -310,18 +310,20 @@ function ValidarRegistro(event) {
     }
 }
 function ValidarLista(event) {
+    let validacionOk = true;
     var nombreLista = validarNombreLista(
-        document.getElementById("inputNombre").value
-    );
-    if (nombreLista == true) {
-        document.getElementById("msgerror1").innerHTML = "";
-        formsignup.setAttribute("action", "/crearlista");
-    } else {
+    document.getElementById("inputNombre").value);
+    if(!nombreLista){
         document.getElementById("msgerror1").innerHTML =
-            "El nombre de la lista solo puede contener letras con longitud no mayor a 20";
-
+        "El nombre de la lista solo puede contener letras con longitud no mayor a 20";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror1").innerHTML = "";
+    }
+    if(!validacionOk){
         event.preventDefault();
     }
+    return validacionOk;
 }
 function ValidarEditar(event) {
     var nombre = validarNombres(document.getElementById("inputNombre").value);

@@ -48,17 +48,36 @@
 
     <div id="wrapper">
         <div id="content">
-            <!--Cada grupo debe tener su propio menu
-    para eso es necesario que cada input tenga un id diferentes
-    los for del label deben coincidir con el del input-->
-    <%- include('partials/navegacionNormal') %>
+           <!-- Start main_haeder -->
+        <header class="main_haeder header-sticky multi_item">
+            <div class="em_side_right">
+                <a class="rounded-circle d-flex align-items-center text-decoration-none" href="/Misgrupos">
+                    <i class="tio-chevron_left size-24 color-text"></i>
+                    <span class="color-text size-14">Regresar</span>
+                </a>
+            </div>
+            <div class="title_page">
+                <span class="page_name">
+                    Listas de <%=nombre%>
+                </span>
+            </div>
+            <div class="em_side_right">
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=2fRL-ZeAlEet9qVGbKKFY_XRgAwHQ15Kgs8R0CvQ-EtUNUs2Sk9GNFVETDVGMVNKQ1BUWEQwS0RDSS4u" class="rounded-circle d-flex align-items-center text-decoration-none">
+                    
+                    <span class="color-text size-14">Mesa de ayuda</span>
+                </a>
+            </div>
+            
+        </header>
+        <!-- End.main_haeder -->
 
-    <div class="emTitle_co padding-20 pb-0">
-        <h2 class="size-16 weight-500 color-secondary mb-1">Listas de <%=nombre%></h2>
-        <p class="size-12 color-text m-0">Da click en opciones para más opciones, para acceder click haz sobre la lista</p>
+        <section class="padding-t-70 components_page padding-b-30">
+        <div class="emTitle_co padding-20">
         
-    </div>
-        <div class="emTitle_co padding-20 pb-0">
+        <h2 class="size-16 weight-500 color-secondary mb-1">Estás son tus listas del grupo <%=nombre%></h2>
+        <p class="size-12 color-text m-0">Da click en la lista para ver las opciones disponibles</p>
+        <br>
+        
         <a href="/consultarRutinas/<%=idgrupo%>" class="btn bg-primary rounded-10 btn__default ml-3">
             <span class="color-white">Consultar rutinas</span>
             <div class="icon rounded-circle">
@@ -72,102 +91,6 @@
             </div>
         </a>
     </div>
-   <!-- Start emCategories__jobs -->
-   <div class="em_swiper_products emCategories__jobs padding-b-10">
-    <div class="em_bodyCarousel padding-t-20">
-        <div class="owl-carousel owl-theme owlCategories">
-        
-        <% listas.forEach(element => { %>
-            <% if (element.id_esList == 1){%>
-             <!-- item -->
-             <div class="item">
-                <a href="/ConsultarProductos/<%=element.id_lis %>" class="emCategorie_itemJobs bg-red">
-                    <div class="icon">
-                        <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-close-thick" width="24" height="24" viewBox="0 0 24 24"><path d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" /></svg>
-                            <g id="Add_User" data-name="Add User" transform="translate(1.667 2.083)">
-                                <path id="Fill_1" data-name="Fill 1"
-                                    d="M4.251,1.74h-1V.76a.749.749,0,1,0-1.5,0v.98h-1a.76.76,0,0,0,0,1.519h1V4.24a.749.749,0,1,0,1.5,0V3.259h1a.76.76,0,0,0,0-1.519"
-                                    transform="translate(11.667 4.167)" fill="#fff" />
-                                <path id="Fill_4" data-name="Fill 4"
-                                    d="M6.25,0C2.879,0,0,.539,0,2.693S2.861,5.4,6.25,5.4c3.371,0,6.25-.539,6.25-2.693S9.639,0,6.25,0"
-                                    transform="translate(0 10.43)" fill="#fff" />
-                                <path id="Fill_7" data-name="Fill 7"
-                                    d="M4.136,8.379A4.148,4.148,0,0,0,8.271,4.19,4.136,4.136,0,1,0,0,4.19,4.148,4.148,0,0,0,4.136,8.379"
-                                    transform="translate(2.114)" fill="#fff" opacity="0.4" />
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="txt">
-                        <h2><%= element.nom_lis %></h2>
-                        <p>Pendiente</p>
-                    </div>
-                </a>
-                <script>
-                    function <%= element.nom_lis %>(){
-                       document.getElementById("rut").setAttribute("href" ,"/crearRutina/<%= element.id_lis %>/<%=idgrupo%>");
-                       document.getElementById("dup").setAttribute("href" ,"/Duplicarlista/<%=element.id_lis %>/<%=idgrupo%>");
-                       document.getElementById("eli").setAttribute("href" ,"/Borrarlista/<%= element.id_lis %>/<%=idgrupo%>");
-                    }
-                    
-                </script>
-                <div class="item-link hoverNone">
-                    <div class="group">
-                        <button type="button" class="btn btn_smView" data-toggle="modal"
-                            data-target="#mdllList_subTitle" onclick="<%= element.nom_lis %>()"
-                            
-                            >Opciones</button>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <% }%>
-        <% }); %>
-        <% listas.forEach(element => { %>
-            <% if (element.id_esList == 2){%>   
-        <!-- item -->
-        <div class="item">
-            <a href="/ConsultarProductos/<%=element.id_lis %>" class="emCategorie_itemJobs bg-green">
-                <div class="icon">
-                    <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-check" width="24" height="24" viewBox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" /></svg>
-                        <g id="Camera" transform="translate(1.667 2.5)">
-                            <path id="Combined_Shape" data-name="Combined Shape"
-                                d="M.959,5.785A3.276,3.276,0,0,1,0,3.471,3.226,3.226,0,0,1,.95,1.165a3.272,3.272,0,1,1,.008,4.62Zm.875-3.737A1.945,1.945,0,0,0,1.25,3.463v.008A2.019,2.019,0,0,0,3.275,5.494,2.036,2.036,0,0,0,5.3,3.471,2.027,2.027,0,0,0,1.834,2.047ZM7.2.757a.754.754,0,1,1,.75.749A.754.754,0,0,1,7.2.757Z"
-                                transform="translate(5.058 5.136)" fill="#fff" />
-                            <path id="Path"
-                                d="M12.867,2.7l-.083-.183c-.225-.474-.483-1.024-.642-1.34A2.035,2.035,0,0,0,10.292,0H6.367A2.023,2.023,0,0,0,4.525,1.174c-.167.333-.45.932-.683,1.423l-.05.1a.163.163,0,0,1-.158.1A3.634,3.634,0,0,0,0,6.426v4.945A3.634,3.634,0,0,0,3.633,15h9.4a3.64,3.64,0,0,0,3.633-3.629V6.426A3.64,3.64,0,0,0,13.033,2.8.19.19,0,0,1,12.867,2.7Z"
-                                fill="#fff" opacity="0.4" />
-                        </g>
-                    </svg>
-
-                </div>
-                <div class="txt">
-                    <h2><%= element.nom_lis %></h2>
-                    <p>Completadas</p>
-                </div>
-            </a>
-            <div class="item-link hoverNone">
-                <div class="group">
-                    <button type="button" class="btn btn_smView" data-toggle="modal"
-                        data-target="#mdllList_subTitle">Opciones</button>
-                </div>
-            </div>
-          </div>
-
-
-          <% }%>
-          <% }); %>
-            
-           
-
-            </div>
-        </div>
-        </div>
-        <!-- End. emCategories__jobs -->
-
-
-        
-
 
        
             <!-- Modal Content -->
@@ -285,10 +208,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="side_right">
-                                                <span class="number_item">23</span>
-                                                <i class="tio-chevron_right"></i>
-                                            </div>
+                                            
                                         </a>
                                     </li>
                                 </ul>
@@ -299,7 +219,177 @@
                 </div>
             </div>
             </div>
-       
+
+            <div class="emPage___profile accordion bg-white" id="accordionExample">
+                <div class="emBody__navLink with__border">
+                    <ul>
+                        <% let contador = 0; %>
+                        <% listas.forEach(element => { %>
+                            <% if (element.id_esList == 1){%>
+                                <script>
+                                    function <%= element.nom_lis %>(){
+                                       document.getElementById("rut").setAttribute("href" ,"/crearRutina/<%= element.id_lis %>/<%=idgrupo%>");
+                                       document.getElementById("dup").setAttribute("href" ,"/Duplicarlista/<%=element.id_lis %>/<%=idgrupo%>");
+                                       document.getElementById("eli").setAttribute("href" ,"/Borrarlista/<%= element.id_lis %>/<%=idgrupo%>");
+                                    }
+                                    
+                                </script>
+                        <li class="item">
+                            <div id="headingFour">
+                                <div class="nav-link main_item" data-toggle="collapse" data-target="#collapseFour"
+                                    aria-expanded="false" aria-controls="collapseFour">
+                                    <div class="media align-items-center">
+                                        <div class="ico">
+                                            <svg id="Iconly_Two-tone_Document" data-name="Iconly/Two-tone/Document"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <g id="Document" transform="translate(3 2)">
+                                                    <path id="Stroke_1" data-name="Stroke 1" d="M7.22.5H0"
+                                                        transform="translate(5.496 13.723)" fill="none"
+                                                        stroke="#292e34" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-miterlimit="10"
+                                                        stroke-width="1.5" opacity="0.4" />
+                                                    <path id="Stroke_2" data-name="Stroke 2" d="M7.22.5H0"
+                                                        transform="translate(5.496 9.537)" fill="none"
+                                                        stroke="#292e34" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-miterlimit="10"
+                                                        stroke-width="1.5" opacity="0.4" />
+                                                    <path id="Stroke_3" data-name="Stroke 3" d="M2.755.5H0"
+                                                        transform="translate(5.496 5.36)" fill="none"
+                                                        stroke="#292e34" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-miterlimit="10"
+                                                        stroke-width="1.5" opacity="0.4" />
+                                                    <path id="Stroke_4" data-name="Stroke 4"
+                                                        d="M12.158,0,4.469,0A4.251,4.251,0,0,0,0,4.607v9.2A4.254,4.254,0,0,0,4.506,18.41l7.689,0a4.252,4.252,0,0,0,4.47-4.6v-9.2A4.255,4.255,0,0,0,12.158,0Z"
+                                                        transform="translate(0.751 0.75)" fill="none"
+                                                        stroke="#292e34" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-miterlimit="10"
+                                                        stroke-width="1.5" />
+                                                </g>
+                                            </svg>
+
+                                        </div>
+                                        
+                                        <div class="media-body">
+                                            <div class="txt">
+                                                <h3><%= element.nom_lis %></h3>
+                                                <% for(let i = 0; i < 3; i++){ %>
+                                                    <% if(preview[contador + i] != 'estoesuntextolargocomoplaceholder' && preview[contador + i] != undefined){ %>
+                                                        <p><%= preview[contador + i].nom_pro %></p>
+                                                        
+                                                    <% } %>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="side_right">
+                                        <i class="tio-chevron_right icon__arrow"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                data-parent="#accordionExample">
+                                <div class="em__pkLink">
+                                    <ul class="nav__list with_border fullBorder mb-0">
+                                        <li class="border-0">
+                                            <a href="/ConsultarProductos/<%=element.id_lis %>" class="item-link d-block">
+                                                <div
+                                                    class="padding-l-40 d-flex align-items-center justify-content-between">
+                                                    <div class="group">
+                                                        <div class="icon bg-yellow">
+                                                            <svg id="Iconly_Two-tone_Activity"
+                                                                data-name="Iconly/Two-tone/Activity"
+                                                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24">
+                                                                <g id="Activity" transform="translate(2 1.5)">
+                                                                    <path id="Path_33966"
+                                                                        d="M0,4.989,2.993,1.1,6.407,3.78,9.336,0"
+                                                                        transform="translate(5.245 8.293)"
+                                                                        fill="none" stroke="#200e32"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        stroke-miterlimit="10" stroke-width="1.5"
+                                                                        opacity="0.4" />
+                                                                    <circle id="Ellipse_741" cx="1.922" cy="1.922"
+                                                                        r="1.922"
+                                                                        transform="translate(16.073 0.778)"
+                                                                        fill="none" stroke="#200e32"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        stroke-miterlimit="10" stroke-width="1.5" />
+                                                                    <path id="Path"
+                                                                        d="M12.146,0H4.879C1.867,0,0,2.133,0,5.144v8.082c0,3.011,1.831,5.135,4.879,5.135h8.6c3.011,0,4.879-2.124,4.879-5.135V6.188"
+                                                                        transform="translate(0.778 1.62)"
+                                                                        fill="none" stroke="#200e32"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        stroke-miterlimit="10" stroke-width="1.5" />
+                                                                </g>
+                                                            </svg>
+
+                                                        </div>
+                                                        <span class="path__name">Consultar lista</span>
+                                                    </div>
+                                                    <div class="group">
+                                                        
+                                                        <i class="tio-chevron_right -arrwo"></i>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="border-0">
+                                            <a class="item-link d-block">
+                                                <div
+                                                    class="padding-l-40 d-flex align-items-center justify-content-between">
+                                                    <div class="group">
+                                                        <div class="icon bg-blue">
+                                                            <svg id="Iconly_Two-tone_Discovery"
+                                                                data-name="Iconly/Two-tone/Discovery"
+                                                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24">
+                                                                <g id="Discovery" transform="translate(2 2)">
+                                                                    <path id="Path_33947"
+                                                                        d="M0,6.682,1.593,1.593,6.682,0,5.089,5.089Z"
+                                                                        transform="translate(6.27 6.27)" fill="none"
+                                                                        stroke="#200e32" stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        stroke-miterlimit="10" stroke-width="1.5"
+                                                                        opacity="0.4" />
+                                                                    <circle id="Ellipse_738" cx="9.611" cy="9.611"
+                                                                        r="9.611" transform="translate(0 0)"
+                                                                        fill="none" stroke="#200e32"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        stroke-miterlimit="10" stroke-width="1.5" />
+                                                                </g>
+                                                            </svg>
+                                                        </div>
+                                                        <span class="path__name">Descubre más opciones</span>
+                                                    </div>
+                                                
+                                                    <div class="group">
+                                                        <button type="button" class="btn btn_smView" data-toggle="modal"
+                                                        data-target="#mdllList_subTitle" onclick="<%= element.nom_lis %>()"
+                            
+                                                        >Opciones</button>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </li>
+                            <% }%>
+                            <% contador = contador + 2; %>
+                            <% }); %>
+                        
+                    </ul>
+                </div>
+            </div>
+            <!-- End. emPage___profile  -->
+        </section>
     
 
 
