@@ -1,6 +1,8 @@
 const pool = require("../../database");
 const axios = require("axios");
 
+const { performance } = require("perf_hooks");
+
 const obtenerPeliculas = async (text_input) => {
     try {
         const respuesta = await axios.post(
@@ -296,15 +298,17 @@ module.exports = {
                 "select nom_lis from mlista where id_lis = ?",
                 [idl]
             );
+            const eli = await pool.query(
+                "select * from elista where id_lst = ?",
+                [idl]
+            );
+
             var nomb = [];
             for (let i = 0; i < name.length; i++) {
                 const miembro = name[i].nom_lis;
                 nomb.push(miembro);
             }
-            const eli = await pool.query(
-                "select * from elista where id_lst = ?",
-                [idl]
-            );
+
             const grupo = eli[0].id_grp;
             var id_e = [];
             for (let i = 0; i < eli.length; i++) {
@@ -318,23 +322,41 @@ module.exports = {
             );
             var prod = [];
 
+            var startTime = performance.now();
+
             for (let i = 0; i < productos.length; i++) {
-                var mar = await pool.query(
-                    "select Marca from CMarca where id_mar = ?",
-                    [productos[i].id_mar]
-                );
-                var dep = await pool.query(
-                    "select nom_dep from CDepartamento where id_dep = ?",
-                    [productos[i].id_dep]
-                );
-                var uni = await pool.query(
-                    "select unidad from CUnidad where id_uni = ?",
-                    [productos[i].id_uni]
-                );
-                var sup = await pool.query(
-                    "select nom_sup from CSupermercado where id_sup = ?",
-                    [productos[i].id_sup]
-                );
+                let [mar, dep, uni, sup] = await Promise.all([
+                    pool.query("select Marca from CMarca where id_mar = ?", [
+                        productos[i].id_mar,
+                    ]),
+                    pool.query(
+                        "select nom_dep from CDepartamento where id_dep = ?",
+                        [productos[i].id_dep]
+                    ),
+                    pool.query("select unidad from CUnidad where id_uni = ?", [
+                        productos[i].id_uni,
+                    ]),
+                    pool.query(
+                        "select nom_sup from CSupermercado where id_sup = ?",
+                        [productos[i].id_sup]
+                    ),
+                ]);
+                // var mar = await pool.query(
+                //     "select Marca from CMarca where id_mar = ?",
+                //     [productos[i].id_mar]
+                // );
+                // var dep = await pool.query(
+                //     "select nom_dep from CDepartamento where id_dep = ?",
+                //     [productos[i].id_dep]
+                // );
+                // var uni = await pool.query(
+                //     "select unidad from CUnidad where id_uni = ?",
+                //     [productos[i].id_uni]
+                // );
+                // var sup = await pool.query(
+                //     "select nom_sup from CSupermercado where id_sup = ?",
+                //     [productos[i].id_sup]
+                // );
 
                 var pro = {
                     id_pro: productos[i].id_pro,
@@ -352,6 +374,12 @@ module.exports = {
                 };
                 prod.push(pro);
             }
+
+            var endTime = performance.now();
+
+            console.log(
+                `Call to doSomething took ${endTime - startTime} milliseconds`
+            );
 
             res.render("consultarProductosDeLista", {
                 productos: prod,
