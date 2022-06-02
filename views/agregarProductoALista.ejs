@@ -117,7 +117,7 @@
                         <section class="padding-20">
                             <div class="item__card layer-lg">
                                 <h3>Presiona el microfono y dinos qué producto quieres agregar</h3>
-                                <form method="POST" id="ingresarGrupoForm" name="ingresarGrupoForm" class="padding-t-40">
+                                <form method="POST" id="formVoz" name="formVoz" class="padding-t-40">
                                     <button type="button" class="cssbuttons-io-button" id="microphone"> Dictar un producto por voz
                                         <div class="icon">
                                             <object data="../assets/svg/microfono.svg" width="24" height="24"> </object>
@@ -130,10 +130,9 @@
                                     <input type="text" placeholder="Producto" id="inputProducto" name="producto" value="" class="form-control">
 
                                     <label for="inputProducto">Frase detectada</label>
-                                    
-                                    <!-- <div class="contenedor-boton">
-                                        <input class="btn justify-content-center bg-yellow rounded-10 btn__default ml-3" type="submit" value='Unirte' onclick="validarCodigoGrupo(event)">
-                                    </div> -->
+                                    <p class="text-danger" id="msgerror69"></p>
+
+                                    <input type="text" style="display: none;" value="<%=id.id_lis%>" readonly name="id_lis" >
                                 </form>
                                 <br>
                                 <p class="pequeño">
@@ -144,8 +143,8 @@
 
                         <div class="buttons__footer text-center">
                             <div class="env-pb">
-                                <a href="javascript:{}" onclick="if(ValidarObjetoLista(event)){document.getElementById('CrearProForm').submit()}" class="btn bg-primary rounded-pill btn__default">
-                                    <span class="color-white">Agregar Producto por voz</span>
+                                <a href="javascript:{}" onclick="if(validarInputVoz(event)){document.getElementById('formVoz').submit()}" class="btn bg-primary rounded-pill btn__default">
+                                    <span class="color-white">Agregar Producto</span>
                                     <div class="icon rounded-circle">
                                         <i class="tio-chevron_right"></i>
                                     </div>
