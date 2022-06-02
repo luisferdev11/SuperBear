@@ -90,55 +90,57 @@
                         aria-labelledby="pills-Waiting-tab">
                         <% let productosActivos = 0; %>
                         <div class="emBk__bills">
-                            <% productos.forEach(element => { %>
-                                <%if(element.id_esProd == 1){%>
-                                    <% productosActivos++; %> 
-                                    <div class="item">
-                                        <div class="emhead_w">
-                                            <h3><%=element.nom_pro %></h3>
-                                            <a href="/estadoProductoLista/<%= element.id_pro%>/<%=element.id_eli %>" class="btn btn_default bg-primary">Completado!</a>
-                                        </div>
-                                        <div class="embody_product">
-                                            <% if(element.notas_pro != "" && element.notas_pro != "null") {%>     
-                                                <div class="details_w">
-                                                    <span><%= element.notas_pro %></span>
+                            <% if(productos[0] != undefined){ %>
+                                <% productos.forEach(element => { %>
+                                    <%if(element.id_esProd == 1){%>
+                                        <% productosActivos++; %> 
+                                        <div class="item">
+                                            <div class="emhead_w">
+                                                <h3><%=element.nom_pro %></h3>
+                                                <a href="/estadoProductoLista/<%= element.id_pro%>/<%=element.id_eli %>" class="btn btn_default bg-primary">Completado!</a>
+                                            </div>
+                                            <div class="embody_product">
+                                                <% if(element.notas_pro != "" && element.notas_pro != "null") {%>     
+                                                    <div class="details_w">
+                                                        <span><%= element.notas_pro %></span>
+                                                    </div>
+                                                <% } %> 
+                                                <div class="pk_start">
+                                                    <% if(element.can_pro != 0){ %>
+                                                        <span><%= element.can_pro %> <%=element.id_uni%> </span>
+                                                    <%} %>
+                                                    <% if(element.precio_pro != 0){ %>
+                                                        <span>$<%= element.precio_pro %></span>
+                                                    <%} %>
                                                 </div>
-                                            <% } %> 
-                                            <div class="pk_start">
-                                                <% if(element.can_pro != 0){ %>
-                                                    <span><%= element.can_pro %> <%=element.id_uni%> </span>
-                                                <%} %>
-                                                <% if(element.precio_pro != 0){ %>
-                                                    <span>$<%= element.precio_pro %></span>
-                                                <%} %>
-                                            </div>
-                                             
-                                            <div>
-                                                <%if(element.id_sup != "Ninguno"){%>
-                                                    <span><%= element.id_sup %></span>
-                                                <% } %> 
-                                            </div>
-                                            <div>
-                                                <%if(element.id_dep != "Ninguno"){%>
-                                                    <span><%= element.id_dep %></span>
-                                                <% } %> 
-                                            </div>
-                                            <div>
-                                                <%if(element.id_mar != "Ninguna"){%>
-                                                    <span><%= element.id_mar %></span>
-                                                <% } %> 
-                                            </div>
-                                            <div class="pk_end">
-                                                <span>
-                                                    <a href="/editarProductoDeLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Editar</a>
-                                                    |
-                                                    <a href="/borrarProductoLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Borrar</a>
-                                                </span>
+                                                
+                                                <div>
+                                                    <%if(element.id_sup != "Ninguno"){%>
+                                                        <span><%= element.id_sup %></span>
+                                                    <% } %> 
+                                                </div>
+                                                <div>
+                                                    <%if(element.id_dep != "Ninguno"){%>
+                                                        <span><%= element.id_dep %></span>
+                                                    <% } %> 
+                                                </div>
+                                                <div>
+                                                    <%if(element.id_mar != "Ninguna"){%>
+                                                        <span><%= element.id_mar %></span>
+                                                    <% } %> 
+                                                </div>
+                                                <div class="pk_end">
+                                                    <span>
+                                                        <a href="/editarProductoDeLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Editar</a>
+                                                        |
+                                                        <a href="/borrarProductoLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Borrar</a>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                <%}%>
-                            <%})%>
+                                    <%}%>
+                                <%})%>
+                            <% } %> 
                         </div>
                         <% if(productosActivos == 0){ %>
                             <div class="bg-white border-all padding-20 rounded-8">
@@ -149,57 +151,61 @@
                         <% } %> 
                     </div>
                     <div class="tab-pane fade" id="pills-Paid" role="tabpanel" aria-labelledby="pills-Paid-tab">
+                        <% let productosInactivos = 0; %>
                         <div class="emBk__bills">
-                            <% let productosInactivos = 0; %>
-                            <% productos.forEach(element => { %>
-                                <%if(element.id_esProd == 2){%>
-                                    <% productosInactivos++; %> 
-                                    <div class="item">
-                                        <div class="emhead_w">
-                                            <h3><%=element.nom_pro %></h3>
-                                            <a href="/estadoProductoLista/<%= element.id_pro%>/<%=element.id_eli %>" class="btn btn_default bg-primary">Aún falta!</a>
-                                        </div>
-                                        <div class="embody_product">
-                                            <% if(element.notas_pro != "" && element.notas_pro != "null") {%>     
-                                                <div class="details_w">
-                                                    <span><%= element.notas_pro %></span>
+                            <% if(productos[0] != undefined){ %>
+                                <% productos.forEach(element => { %>
+                                    <%if(element.id_esProd == 2){%>
+                                        <% productosInactivos++; %> 
+                                        <div class="item">
+                                            <div class="emhead_w">
+                                                <h3><%=element.nom_pro %></h3>
+                                                <a href="/estadoProductoLista/<%= element.id_pro%>/<%=element.id_eli %>" class="btn btn_default bg-primary">
+                                                    Aún falta!
+                                                </a>
+                                            </div>
+                                            <div class="embody_product">
+                                                <% if(element.notas_pro != "" && element.notas_pro != "null") {%>     
+                                                    <div class="details_w">
+                                                        <span><%= element.notas_pro %></span>
+                                                    </div>
+                                                <% } %> 
+                                                <div class="pk_start">
+                                                    <% if(element.can_pro != 0){ %>
+                                                        <span><%= element.can_pro %> <%=element.id_uni%> </span>
+                                                    <%} %>
+                                                    <% if(element.precio_pro != 0){ %>
+                                                        <span>$<%= element.precio_pro %></span>
+                                                    <%} %>
                                                 </div>
-                                            <% } %> 
-                                            <div class="pk_start">
-                                                <% if(element.can_pro != 0){ %>
-                                                    <span><%= element.can_pro %> <%=element.id_uni%> </span>
-                                                <%} %>
-                                                <% if(element.precio_pro != 0){ %>
-                                                    <span>$<%= element.precio_pro %></span>
-                                                <%} %>
-                                            </div>
-                                             
-                                            <div>
-                                                <%if(element.id_sup != "Ninguno"){%>
-                                                    <span><%= element.id_sup %></span>
-                                                <% } %> 
-                                            </div>
-                                            <div>
-                                                <%if(element.id_dep != "Ninguno"){%>
-                                                    <span><%= element.id_dep %></span>
-                                                <% } %> 
-                                            </div>
-                                            <div>
-                                                <%if(element.id_mar != "Ninguna"){%>
-                                                    <span><%= element.id_mar %></span>
-                                                <% } %> 
-                                            </div>
-                                            <div class="pk_end">
-                                                <span>
-                                                    <a href="/editarProductoDeLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Editar</a>
-                                                    |
-                                                    <a href="/borrarProductoLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Borrar</a>
-                                                </span>
+                                                
+                                                <div>
+                                                    <%if(element.id_sup != "Ninguno"){%>
+                                                        <span><%= element.id_sup %></span>
+                                                    <% } %> 
+                                                </div>
+                                                <div>
+                                                    <%if(element.id_dep != "Ninguno"){%>
+                                                        <span><%= element.id_dep %></span>
+                                                    <% } %> 
+                                                </div>
+                                                <div>
+                                                    <%if(element.id_mar != "Ninguna"){%>
+                                                        <span><%= element.id_mar %></span>
+                                                    <% } %> 
+                                                </div>
+                                                <div class="pk_end">
+                                                    <span>
+                                                        <a href="/editarProductoDeLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Editar</a>
+                                                        |
+                                                        <a href="/borrarProductoLista/<%= element.id_pro %>/<%= element.id_eli %>" class="color-primary hover:color-blue">Borrar</a>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                <%}%>
-                            <%})%>
+                                    <%}%>
+                                <%})%>
+                            <% } %>
                         </div>
                         <% if(productosInactivos == 0){ %>
                             <div class="bg-white border-all padding-20 rounded-8">
@@ -207,7 +213,7 @@
                                     Aún no has completado ningun producto ( U n U )
                                 </p>
                             </div>
-                        <% } %> 
+                        <% } %>
                     </div>
                 </div>
             </section>
