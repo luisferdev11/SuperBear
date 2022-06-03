@@ -171,54 +171,7 @@ function ValidarObjetoLista(event) {
         event.preventDefault();
     }
     return validacionOk;
-    /* Codigo antiguo mauzzzzzz
-    if (nombre == true) {
-        document.getElementById("msgerror1").innerHTML = "";
-        if (marca == true) {
-            document.getElementById("msgerror2").innerHTML = "";
-            if (Super == true) {
-                document.getElementById("msgerror3").innerHTML = "";
-                if (Cantidad == true) {
-                    document.getElementById("msgerror4").innerHTML = "";
-                    if (Precio == true) {
-                        document.getElementById("msgerror5").innerHTML = "";
-                        if (Anotaciones == true) {
-                            document.getElementById("msgerror6").innerHTML = "";
-                            CrearProForm.setAttribute(
-                                "action",
-                                "/CrearProducto"
-                            );
-                        } else {
-                            document.getElementById("msgerror6").innerHTML =
-                                "Las anotaciones solo pueden contener caracteres alfanumericos y no debe de ser mayor a 32 caracteres";
-                            event.preventDefault();
-                        }
-                    } else {
-                        document.getElementById("msgerror5").innerHTML =
-                            "El precio solo puede contener numeros y no puede ser mayor de 6 cifras";
-                        event.preventDefault();
-                    }
-                } else {
-                    document.getElementById("msgerror4").innerHTML =
-                        "La cantidad solo puede contener numeros y no puede ser mayor de 5 cifras";
-                    event.preventDefault();
-                }
-            } else {
-                document.getElementById("msgerror3").innerHTML =
-                    "El supermercado solo pueden contener caracteres alfanumericos y no debe de ser mayor a 15 caracteres";
-                event.preventDefault();
-            }
-        } else {
-            document.getElementById("msgerror2").innerHTML =
-                "La marca solo pueden contener caracteres alfanumericos y no debe de ser mayor a 10 caracteres";
-            event.preventDefault();
-        }
-    } else {
-        document.getElementById("msgerror1").innerHTML =
-            "El nombre puede contener entre 1 y 45 caracteres alfanumericos";
-        event.preventDefault();
-    }
-    */
+    
 }
 
 function CalcularEdad(fecha_nacimiento) {
@@ -302,7 +255,7 @@ function ValidarRegistro(event) {
                 contraseña == true &&
                 confirmacion == true &&
                 document.getElementById("inputContraseña1").value ==
-                    document.getElementById("inputContraseña2").value
+                document.getElementById("inputContraseña2").value
             ) {
                 document.getElementById("msgerror3").innerHTML = "";
 
@@ -371,6 +324,53 @@ function ValidarLista(event) {
 }
 function ValidarEditar(event) {
     var nombre = validarNombres(document.getElementById("inputNombre").value);
+    var edad = CalcularEdad(document.getElementById("inputdate").value);
+    var email = validarEmail(document.getElementById("inputemail").value);
+
+    //colocar lo que va a hacer en caso de que las validaciones sean correctas o incorrectas
+    if (email == true) {
+        document.getElementById("msgerror4").innerHTML = "";
+    } else {
+        document.getElementById("msgerror4").innerHTML =
+            "El correo debe de tener el siguiente formato correo@correo.correo";
+        // document.getElementById('msgerror1').innerHTML='El correo debe de tener el siguiente formato correo@correo.correo');
+        event.preventDefault();
+    }
+    if (nombre == true) {
+        document.getElementById("msgerror1").innerHTML = "";
+    } else {
+        document.getElementById("msgerror1").innerHTML =
+            "El nombre solo puede tener letras y un maximo de 32 caracteres";
+        event.preventDefault();
+    }
+    if (edad >= 18 && edad <= 100) {
+        document.getElementById("msgerror2").innerHTML = "";
+    } else {
+        document.getElementById("msgerror2").innerHTML =
+            "Debes de ser mayor de edad para continuar";
+        event.preventDefault();
+    }
+    if (
+        document.editarForm.SelectAlcaldia.value == 0 ||
+        document.editarForm.SelectAlcaldia.value == "Alcaldía"
+    ) {
+
+        document.getElementById("msgerror3").innerHTML =
+            "Elige una alcaldia para continuar";
+        event.preventDefault();
+
+    } else {
+        document.getElementById("msgerror3").innerHTML = "";
+    }
+
+
+
+}
+function ValidarEditarContra(event){
+
+}
+/* function ValidarEditar(event) {
+    var nombre = validarNombres(document.getElementById("inputNombre").value);
     var contraseña = validarContraseñas(
         document.getElementById("inputContraseña1").value
     );
@@ -429,7 +429,7 @@ function ValidarEditar(event) {
             "El nombre solo puede tener letras y un maximo de 32 caracteres";
         event.preventDefault();
     }
-}
+}*/
 function validarNoticia(event) {
     var nombreNoticia = NombreNoticia(
         document.getElementById("inputTitulo").value

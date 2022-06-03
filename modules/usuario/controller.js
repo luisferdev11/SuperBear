@@ -193,25 +193,48 @@ module.exports = {
             next();
         }
     },
+    async actualizarContra(req, res) {
+        
+        const { Password2 } = req.body;
+        
 
+       // console.log(Password2);
+
+        //funcion hash para encriptar la contraseña de tal forma que sea seguro y lo podamos recuperar despues
+        //let passHash = await bcryptjs.hash(Password2, 8);
+
+        let hash = [ passHash];
+        try {
+            await pool.query(
+                `UPDATE musuario 
+                SET con_usu = ? 
+                WHERE id_usu = ${req.user.id_usu}`,
+                hash
+            );
+            res.redirect("misgrupos");
+        } catch (err) {
+            res.redirect("/error");
+            console.log(err);
+        }
+    },
     async actualizardatos(req, res) {
         const { email } = req.body;
         const { nombre } = req.body;
-        const { Password2 } = req.body;
+        //const { Password2 } = req.body;
         const { fecha } = req.body;
         const { SelectAlcaldia } = req.body;
         const { genero } = req.body;
 
-        console.log(Password2);
+       // console.log(Password2);
 
         //funcion hash para encriptar la contraseña de tal forma que sea seguro y lo podamos recuperar despues
-        let passHash = await bcryptjs.hash(Password2, 8);
+        //let passHash = await bcryptjs.hash(Password2, 8);
 
-        let newUser = [email, nombre, fecha, passHash, SelectAlcaldia, genero];
+        let newUser = [email, nombre, fecha/*, passHash*/, SelectAlcaldia, genero];
         try {
             await pool.query(
                 `UPDATE musuario 
-                SET cor_usu = ?, nom_usu = ?, fec_nac = ?, con_usu = ?, id_alc =?, id_sex = ? 
+                SET cor_usu = ?, nom_usu = ?, fec_nac = ?, id_alc =?, id_sex = ? 
                 WHERE id_usu = ${req.user.id_usu}`,
                 newUser
             );

@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="shortcut icon" href="assets/svg/logo.svg">
+    <link rel="icon" type="image/png" href="assets/img/favicon/32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/img/favicon/favicon192.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
     <title>Verificar Contraseña | SuperBear</title>
 </head>
 <body>
-    <nav class="flecha">
-        <a href="/datos-perfil">
-            <img src="assets/svg/flecha.svg">
-        </a>
-    </nav>
-    <div class="principal">
-        <h1 class="centro">Verfícate</h1>
-        <div class="contenedor-formulario">
+    <header class="main_haeder header-sticky multi_item">
+        <div class="em_side_right">
+            <a class="rounded-circle d-flex align-items-center text-decoration-none" href="/datos-perfil">
+                <i class="tio-chevron_left size-24 color-text"></i>
+                <span class="color-text size-14">Regresar</span>
+            </a>
+        </div>
+        <div class="title_page">
+            <span class="page_name">
+                Verfícate</span>
+        </div>
+        
+    </header>
+    <section class="em_loading" id="loaderPage">
+        <div class="spinner_flash"></div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <div class="form-group padding-20">
             <form action="verificarpswd" method="post">
                 <p class="centro">Para continuar verifica que eres tú</p>
                 <p class="seccion">Contraseña</p>
-                <input type="password" placeholder="Contraseña" name="pswd">
+                <input class="form-control" type="password" placeholder="Contraseña" name="pswd">
                 <br>
                 <br>
-                <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Continuar'>
-                </div>
+                
+                    <button class="btn bg-yellow rounded-10 btn__default ml-3" type="submit">Continuar</button>
             </form>
         </div>
-    </div>
-    <script src="../js/detect-browser.js"></script>
-    <script src="../js/barraNavegacion.js"></script>
+    <script src="assets/js/jquery-3.6.0.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/vendor/owl.carousel.min.js"></script>
+        <script src="assets/js/vendor/swiper-bundle.min.js"></script>
+        <script src="assets/js/vendor/sharer.js"></script>
+        <script src="assets/js/vendor/short-and-sweet.min.js"></script>
+        <script src="assets/js/vendor/jquery.knob.min.js"></script>
+        <script src="assets/js/main.js" defer></script>
+        <script src="assets/js/pwa-services.js"></script>
+        <script src="../js/detect-browser.js"></script>
+        <script src="../js/barraNavegacion.js"></script>
+        <script src="../js/validaciones.js"></script>
 </body>
 </html>
