@@ -1,111 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/mastersyle.css">
-    <link rel="stylesheet" href="css/formularios.css">
-    <link rel="shortcut icon" href="assets/svg/logo.svg">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="theme-color" content="#ffffff">
     <title>Crea una cuenta | SuperBear</title>
+    <meta name="description" content="Nepro – The Multipurpose Mobile HTML5 Template">
+    <meta name="keywords"
+        content="bootstrap 4, mobile template, 404, chat, about, cordova, phonegap, mobile, html, ecommerce, shopping, store, delivery, wallet, banking, education, jobs, careers, distance learning" />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="../assets/svg/logo.svg" sizes="32x32">
+    <link rel="apple-touch-icon" href="../assets/img/favicon/favicon192.png">
+
+    <!-- CSS Libraries-->
+    <!-- bootstrap v4.6.0 -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!--
+        theiconof v3.0
+        https://www.theiconof.com/search
+     -->
+    <link rel="stylesheet" href="../assets/css/icons.css">
+    <!-- Remix Icon -->
+    <link rel="stylesheet" href="../assets/css/remixicon.css">
+    <!-- Swiper 6.4.11 -->
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <!-- Owl Carousel v2.3.4 -->
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!-- normalize.css v8.0.1 -->
+    <link rel="stylesheet" href="../assets/css/normalize.css">
+
+    <!-- manifest meta -->
+    <link rel="manifest" href="_manifest.json" />
 </head>
+
+
 <body>
-    <nav class="flecha">
-        <a href="/">
-            <img src="assets/svg/flecha.svg">
-        </a>
-    </nav>
-    <div class="principal">
-        <h1 class="centro">Regístrate</h1>
-        <div class="contenedor-formulario">
-            <form method="POST" id="registroForm" name="registroForm">
-                <p class="rojo"><%=error%></p>
-                <b>Datos Personales</b>
-                <p class="seccion">Correo Electrónico</p>
-                <input placeholder="Correo Electrónico" type="email" id="inputemail" name="email">
-                <p class="rojo" id="msgerror1"></p>
 
-                <p class="seccion">Nombre</p>
-                <input placeholder="Nombre" type="text" id="inputNombre" name="nombre">
-                <p class="rojo" id="msgerror2"></p>
+    <!-- Start em_loading -->
+    <section class="em_loading" id="loaderPage">
+        <div class="spinner_flash"></div>
+    </section>
+    <!-- End. em_loading -->
 
-                <p class="seccion">Contraseña</p>
-                <input placeholder="Contraseña" type="password" id="inputContraseña1" name="Password1">
-
-                <p class="seccion">Confirmar Contraseña</p>
-                <input placeholder="Contraseña" type="password" id="inputContraseña2" name="Password2">
-                <p class="rojo" id="msgerror3"></p>
-
-                <p class="seccion">Fecha de Nacimiento</p>
-                <input type="date" id="inputdate" name="fecha">
-                <p class="rojo" id="msgerror4"></p>
-
-                <p class="seccion">Alcaldía</p>
-                <select name="SelectAlcaldia">
-                    <option class="no" disabled selected>Alcaldía</option>
-                    <option value=1>Álvaro Obregón</option>
-                    <option value=2>Azcapotzalco</option>
-                    <option value=3>Benito Juárez</option>
-                    <option value=4>Coyoacán</option>
-                    <option value=5>Cuajimalpa de Morelos</option>
-                    <option value=6>Cuauhtémoc</option>
-                    <option value=7>Gustavo A. Madero</option>
-                    <option value=8>Iztacalco</option>
-                    <option value=9>Iztapalapa</option>
-                    <option value=10>Magdalena Contreras</option>
-                    <option value=11>Miguel Hidalgo</option>
-                    <option value=12>Milpa Alta</option>
-                    <option value=13>Tláhuac</option>
-                    <option value=14>Tlalpan</option>
-                    <option value=15>Venustiano Carranza</option>
-                    <option value=16>Xochimilco</option>
-                </select>
-                <p class="rojo" id="msgerror5"></p>
-
-                <p>Género</p>
-                <br>
-                <div>
-                    <input type="radio" id="masculino" name="genero" value=1>
-                    <label for="masculino">Masculino</label>
+    <div id="wrapper">
+        <div id="content">
+            <!-- Start main_haeder -->
+            <header class="main_haeder header-sticky multi_item">
+                <div class="em_side_right">
+                    <a class="rounded-circle d-flex align-items-center text-decoration-none" href="page-intro-email.html">
+                        <i class="tio-chevron_left size-24 color-text"></i>
+                        <span class="color-text size-14">Regresar</span>
+                    </a>
                 </div>
-                <br>
-                <br>
-                <div>
-                    <input type="radio" id="femenino" name="genero" value=2>
-                    <label for="femenino">Femenino</label>
+                <div class="title_page">
+                    <span class="page_name">
+                        Regístrate
+                    </span>
                 </div>
-                <br>
-                <br>
-                <div>
-                    <input checked type="radio" id="otro" name="genero" value=3>
-                    <label for="otro">Otro</label>
+                <div class="em_side_right">
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=2fRL-ZeAlEet9qVGbKKFY_XRgAwHQ15Kgs8R0CvQ-EtUNUs2Sk9GNFVETDVGMVNKQ1BUWEQwS0RDSS4u" class="rounded-circle d-flex align-items-center text-decoration-none">
+                        
+                        <span class="color-text size-14">Mesa de ayuda</span>
+                    </a>
                 </div>
-                <br>
-                <br>
-                <input type="checkbox" id="aviso">
-                He leído y acepto el 
-                <a href="/avisodeprivacidad">
-                    <b>
-                        Aviso de Privacidad
-                    </b>
-                </a>
-                <p class="rojo" id="msgerror6"></p>
+                
+            </header>
+            <!-- End.main_haeder -->
 
-                <br>
-                <br>
-                <div class="contenedor-boton">
-                    <input class="b" type="submit" value='Envíar' onclick="ValidarRegistro(event)">
+            <!-- Start em__signTypeOne -->
+            <section class="em__signTypeOne typeTwo np__account padding-t-70">
+                <div class="em_titleSign">
+                    <h1>¡Comencemos!</h1>
+                    <p>Necesitamos unos datos para continuar</p>
+                    <p class="rojo"><%=error%></p>
+                </div>
+                <div class="em__body">
+                    <form method="POST" id="registroForm" name="registroForm" class="padding-t-40">                      
+                        <div class="margin-b-30">
+                            <div class="form-group input-lined lined__iconed">
+                                <div class="input_group">
+                                    <input type="email" class="form-control" id="inputemail" name="email" placeholder="ejemplo@gmail.com"
+                                        required="">
+                                        
+                                    <div class="icon">
+                                        <svg id="Iconly_Curved_Message" data-name="Iconly/Curved/Message"
+                                            xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                            viewBox="0 0 22 22">
+                                            <g id="Message" transform="translate(2.248 2.614)">
+                                                <path id="Stroke_1" data-name="Stroke 1"
+                                                    d="M10.222,0S7.279,3.532,5.127,3.532,0,0,0,0"
+                                                    transform="translate(3.613 5.653)" fill="none" stroke="#9498ac"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-miterlimit="10" stroke-width="1.5" />
+                                                <path id="Stroke_3" data-name="Stroke 3"
+                                                    d="M0,8.357C0,2.089,2.183,0,8.73,0s8.73,2.089,8.73,8.357-2.183,8.357-8.73,8.357S0,14.624,0,8.357Z"
+                                                    transform="translate(0 0)" fill="none" stroke="#9498ac"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-miterlimit="10" stroke-width="1.5" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <label for="email">Correo electrónico</label>
+                            </div>
+                            <p class="rojo" id="msgerror1"></p>
+                        </div>
+                        <div class="margin-b-30">
+                            <div class="form-group input-lined lined__iconed">
+                                <div class="input_group">
+                                    <input type="text" class="form-control" id="inputNombre" name="nombre" placeholder="ingresa tu nombre"
+                                        required="">
+                                        
+                                    <div class="icon">
+                                        <svg id="Iconly_Curved_Profile" data-name="Iconly/Curved/Profile"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <g id="Profile" transform="translate(5 2.4)">
+                                                <path id="Stroke_1" data-name="Stroke 1"
+                                                    d="M6.845,7.3C3.153,7.3,0,6.726,0,4.425S3.133,0,6.845,0c3.692,0,6.845,2.1,6.845,4.4S10.556,7.3,6.845,7.3Z"
+                                                    transform="translate(0 11.962)" fill="none" stroke="#000"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-miterlimit="10" stroke-width="1.5" />
+                                                <path id="Stroke_3" data-name="Stroke 3"
+                                                    d="M4.387,8.774a4.372,4.372,0,1,0-.031,0Z"
+                                                    transform="translate(2.45 0)" fill="none" stroke="#000"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-miterlimit="10" stroke-width="1.5" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <label for="username">Nombre</label>
+                            </div>
+                            <p class="rojo" id="msgerror2"></p>
+                        </div>
+
+                        <div class="form-group input-lined lined__iconed" id="show_hide_password">
+                            <div class="input_group">
+                                <input type="password" id="inputContraseña1" name="Password1" class="form-control" placeholder="ingresa tu contraseña"
+                                    required="">
+                                <div class="icon">
+                                    <svg id="Iconly_Curved_Password" data-name="Iconly/Curved/Password"
+                                        xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                                        <g id="Password" transform="translate(2.521 2.521)">
+                                            <path id="Stroke_1" data-name="Stroke 1"
+                                                d="M3.4,1.7A1.7,1.7,0,1,1,1.7,0h0A1.7,1.7,0,0,1,3.4,1.7Z"
+                                                transform="translate(3.882 6.781)" fill="none" stroke="#9498ac"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5" />
+                                            <path id="Stroke_3" data-name="Stroke 3" d="M0,0H5.792V1.7"
+                                                transform="translate(7.28 8.479)" fill="none" stroke="#9498ac"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5" />
+                                            <path id="Stroke_5" data-name="Stroke 5" d="M.5,1.7V0"
+                                                transform="translate(9.979 8.479)" fill="none" stroke="#9498ac"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5" />
+                                            <path id="Stroke_7" data-name="Stroke 7"
+                                                d="M0,8.479C0,2.12,2.12,0,8.479,0s8.479,2.12,8.479,8.479-2.12,8.479-8.479,8.479S0,14.838,0,8.479Z"
+                                                fill="none" stroke="#9498ac" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <button type="button" class="btn hide_show icon_password">
+                                    <i class="tio-hidden_outlined"></i>
+                                </button>
+                            </div>
+
+                            <label for="pass">Contraseña</label>
+                        </div>
+
+                        <div class="form-group input-lined lined__iconed" id="show_hide_password">
+                            <div class="input_group">
+                                <input type="password" id="inputContraseña2" name="Password2" class="form-control" placeholder="confirma tu contraseña"
+                                    required="">
+                                    
+
+                                <div class="icon">
+                                    <svg id="Iconly_Curved_Password" data-name="Iconly/Curved/Password"
+                                        xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                                        <g id="Password" transform="translate(2.521 2.521)">
+                                            <path id="Stroke_1" data-name="Stroke 1"
+                                                d="M3.4,1.7A1.7,1.7,0,1,1,1.7,0h0A1.7,1.7,0,0,1,3.4,1.7Z"
+                                                transform="translate(3.882 6.781)" fill="none" stroke="#9498ac"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5" />
+                                            <path id="Stroke_3" data-name="Stroke 3" d="M0,0H5.792V1.7"
+                                                transform="translate(7.28 8.479)" fill="none" stroke="#9498ac"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5" />
+                                            <path id="Stroke_5" data-name="Stroke 5" d="M.5,1.7V0"
+                                                transform="translate(9.979 8.479)" fill="none" stroke="#9498ac"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5" />
+                                            <path id="Stroke_7" data-name="Stroke 7"
+                                                d="M0,8.479C0,2.12,2.12,0,8.479,0s8.479,2.12,8.479,8.479-2.12,8.479-8.479,8.479S0,14.838,0,8.479Z"
+                                                fill="none" stroke="#9498ac" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <button type="button" class="btn hide_show icon_password">
+                                    <i class="tio-hidden_outlined"></i>
+                                </button>
+                            </div>
+
+                            <label for="pass">Confirmar contraseña</label>
+                        </div>
+                        <p class="rojo" id="msgerror3"></p>
+
+                        <div class="margin-b-30">
+                            <div class="form-group input-lined lined__iconed">
+                                <div class="input_group">
+                                        <input class="form-control" type="date" id="inputdate" name="fecha" >
+                                        
+                                    <div class="icon">
+                                        <svg id="Iconly_Curved_Profile" data-name="Iconly/Curved/Profile"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <g id="Profile" transform="translate(5 2.4)">
+                                                <path id="Stroke_1" data-name="Stroke 1"
+                                                    d="M6.845,7.3C3.153,7.3,0,6.726,0,4.425S3.133,0,6.845,0c3.692,0,6.845,2.1,6.845,4.4S10.556,7.3,6.845,7.3Z"
+                                                    transform="translate(0 11.962)" fill="none" stroke="#000"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-miterlimit="10" stroke-width="1.5" />
+                                                <path id="Stroke_3" data-name="Stroke 3"
+                                                    d="M4.387,8.774a4.372,4.372,0,1,0-.031,0Z"
+                                                    transform="translate(2.45 0)" fill="none" stroke="#000"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-miterlimit="10" stroke-width="1.5" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <label for="username">Fecha de Nacimiento</label>
+                            </div>
+                            <p class="rojo" id="msgerror4"></p>
+                        </div>
+
+                        <div class="margin-b-30">
+                            <div class="form-group input-lined lined__iconed">
+                                <div class="input_group">
+                                    <select class="form-control custom-select" name="SelectAlcaldia">
+                                        <option class="no" disabled>Alcaldía</option>
+                                        <option value=1>Álvaro Obregón</option>
+                                        <option value=2 >Azcapotzalco</option>
+                                        <option value=3 >Benito Juárez</option>
+                                        <option value=4 >Coyoacán</option>
+                                        <option value=5 >Cuajimalpa de Morelos</option>
+                                        <option value=6 >Cuauhtémoc</option>
+                                        <option value=7 >Gustavo A. Madero</option>
+                                        <option value=8 >Iztacalco</option>
+                                        <option value=9 >Iztapalapa</option>
+                                        <option value=10 >Magdalena Contreras</option>
+                                        <option value=11 >Miguel Hidalgo</option>
+                                        <option value=12 >Milpa Alta</option>
+                                        <option value=13 >Tláhuac</option>
+                                        <option value=14 >Tlalpan</option>
+                                        <option value=15 >Venustiano Carranza</option>
+                                        <option value=16 >Xochimilco</option>
+                                    </select>
+                                    
+                                    <div class="icon">
+                                        <svg id="Iconly_Two-tone_Location" data-name="Iconly/Two-tone/Location"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <g id="Location" transform="translate(3.5 2)">
+                                            <path id="Path_33958"
+                                                d="M0,7.652A7.678,7.678,0,1,1,15.357,7.7v.087a11.338,11.338,0,0,1-3.478,7.3,20.183,20.183,0,0,1-3.591,2.957.93.93,0,0,1-1.217,0,19.817,19.817,0,0,1-5.052-4.73A9.826,9.826,0,0,1,0,7.678Z"
+                                                transform="translate(0.739 0.739)" fill="none" stroke="#200e32"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5"></path>
+                                            <circle id="Ellipse_740" cx="2.461" cy="2.461" r="2.461"
+                                                transform="translate(5.957 6.078)" fill="none" stroke="#200e32"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                                stroke-width="1.5" opacity="0.4"></circle>
+                                        </g>
+                                    </svg>
+                                    </div>
+                                </div>
+                                <label for="username">Alcaldía de la Ciudad de México</label>
+                            </div>
+                            <p class="rojo" id="msgerror5"></p>
+                        </div>
+
+                        <div class="margin-b-30">
+                            <div class="form-group input-lined lined__iconed">
+                                    
+                                    <div class="bg-white padding-20">
+                                        
+                            
+                                            <div class="custom-control custom-radio margin-b-10">
+                                                <input  checked type="radio" id="masculino" name="genero"  value=1 class="custom-control-input">
+                                                <label class="custom-control-label padding-l-10" for="masculino">
+                                                    Masculino</label>
+                                            </div>
+                                            <div class="custom-control custom-radio margin-b-10">
+                                                <input type="radio" id="femenino" name="genero"  value="2" class="custom-control-input">
+                                                <label class="custom-control-label padding-l-10" for="femenino">
+                                                    Femenino
+                                                </label>
+                                            </div>
+                                            <div class="custom-control custom-radio margin-b-10">
+                                                <input type="radio" id="otro" name="genero"  value=3 class="custom-control-input">
+                                                <label class="custom-control-label padding-l-10" for="otro">
+                                                    Otro</label>
+                                            </div>
+                                            
                     
+                                        
+                                        
+                                    </div>
+                                    
+                                 <label for="username"></label>
+                                 <br>
+                                 <label for="username">Género</label>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        
+                       
+
+                        <div class="size-15 color-text">
+                            He leído y acepto el 
+                            <a href="/avisodeprivacidad">Aviso de Privacidad</a>
+                            <div class="custom-control custom-checkbox d-inline">
+                                <input type="checkbox" class="custom-control-input" id="customCheck_inline1">
+                                <label class="custom-control-label" for="customCheck_inline1"></label>
+                            </div>
+                            <p class="rojo" id="msgerror6"></p>
+                            
+                        </div>
+
+                    </form>
                 </div>
-            </form>
+                <div class="buttons__footer text-center">
+                    <a href="javascript:{}" onclick="if(ValidarRegistro(event)){document.getElementById('registroForm').submit()}"
+                    class="btn bg-primary rounded-pill btn__default">
+                        <span class="color-white">Registrarse</span>
+                        <div class="icon rounded-circle">
+                            <i class="tio-chevron_right"></i>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+            <!-- End. em__signTypeOne -->
+
         </div>
+
+
     </div>
-    <br>
-    <footer>
-        <%- include('partials/footer') %>
-    </footer>
-    <script src="js/validaciones.js"></script>
+
+    <!-- jquery -->
+    <script src="../assets/js/jquery-3.6.0.js"></script>
+    <!-- popper.min.js 1.16.1 -->
+    <script src="../assets/js/popper.min.js"></script>
+    <!-- bootstrap.js v4.6.0 -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- Owl Carousel v2.3.4 -->
+    <script src="../assets/js/vendor/owl.carousel.min.js"></script>
+    <!-- Swiper 6.4.11 -->
+    <script src="../assets/js/vendor/swiper-bundle.min.js"></script>
+    <!-- sharer 0.4.0 -->
+    <script src="../assets/js/vendor/sharer.js"></script>
+    <!-- short-and-sweet v1.0.2 - Accessible character counter for input elements -->
+    <script src="../assets/js/vendor/short-and-sweet.min.js"></script>
+    <!-- jquery knob -->
+    <script src="../assets/js/vendor/jquery.knob.min.js"></script>
+    <!-- main.js -->
+    <script src="../assets/js/main.js" defer></script>
+    <!-- PWA app service registration and works js -->
+    <script src="../assets/js/pwa-services.js"></script>
+
+    <script src="../js/validaciones.js"></script>
     <script src="../js/detect-browser.js"></script>
     <script src="../js/barraNavegacion.js"></script>
 </body>
+
 </html>

@@ -232,6 +232,7 @@ function ValidarLogin(event) {
 }
 
 function ValidarRegistro(event) {
+    let validacionOk = true;
     var email = validarEmail(document.getElementById("inputemail").value);
     var nombre = validarNombres(document.getElementById("inputNombre").value);
     var contraseña = validarContraseñas(
@@ -241,70 +242,73 @@ function ValidarRegistro(event) {
         document.getElementById("inputContraseña2").value
     );
     var edad = CalcularEdad(document.getElementById("inputdate").value);
-    var isChecked = document.getElementById("aviso").checked;
+    var isChecked = document.getElementById("customCheck_inline1").checked;
 
     //colocar lo que va a hacer en caso de que las validaciones sean correctas o incorrectas
-
-    if (email == true) {
-        document.getElementById("msgerror1").innerHTML = "";
-
-        if (nombre == true) {
-            document.getElementById("msgerror2").innerHTML = "";
-
-            if (
-                contraseña == true &&
-                confirmacion == true &&
-                document.getElementById("inputContraseña1").value ==
-                document.getElementById("inputContraseña2").value
-            ) {
-                document.getElementById("msgerror3").innerHTML = "";
-
-                if (edad >= 18) {
-                    document.getElementById("msgerror4").innerHTML = "";
-
-                    if (
-                        document.registroForm.SelectAlcaldia.value != 0 &&
-                        document.registroForm.SelectAlcaldia.value != "Alcaldía"
-                    ) {
-                        document.getElementById("msgerror5").innerHTML = "";
-
-                        if (isChecked) {
-                            document.getElementById("msgerror6").innerHTML = "";
-                            formsignup.setAttribute("action", "/sign-up");
-
-                            // Todo ha sido validado
-                        } else {
-                            document.getElementById("msgerror6").innerHTML =
-                                "Para continuar debes leer y aceptar el aviso de privacidad";
-                            event.preventDefault();
-                        }
-                    } else {
-                        document.getElementById("msgerror5").innerHTML =
-                            "Elige una alcaldia para continuar";
-                        event.preventDefault();
-                    }
-                } else {
-                    document.getElementById("msgerror4").innerHTML =
-                        "Debes de ser mayor de edad para poder crear tu cuenta";
-
-                    event.preventDefault();
-                }
-            } else {
-                document.getElementById("msgerror3").innerHTML =
-                    "Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$";
-                event.preventDefault();
-            }
-        } else {
-            document.getElementById("msgerror2").innerHTML =
-                "El nombre solo puede tener letras y un maximo de 32 caracteres";
-            event.preventDefault();
-        }
-    } else {
+    if (!email) {
         document.getElementById("msgerror1").innerHTML =
             "El correo debe de tener el siguiente formato correo@correo.correo";
-        // document.getElementById('msgerror1').innerHTML='El correo debe de tener el siguiente formato correo@correo.correo');
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror1").innerHTML = "";
+    }
+    if (!nombre) {
+        document.getElementById("msgerror2").innerHTML =
+                "El nombre solo puede tener letras y un maximo de 32 carácteres";
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror2").innerHTML = "";
+    }
+    if (!contraseña) {
+        document.getElementById("msgerror3").innerHTML =
+          "Las contraseñas deben coincidir y deben contener al menos una MAYÚSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$";
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror3").innerHTML = "";
+    }
+    if (!confirmacion) {
+        document.getElementById("msgerror3").innerHTML =
+          "Las contraseñas deben coincidir y deben contener al menos una MAYÚSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$";
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror3").innerHTML = "";
+    }
+    if (confirmacion =! contraseña) {
+        document.getElementById("msgerror3").innerHTML =
+          "Las contraseñas deben coincidir y deben contener al menos una MAYÚSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$";
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror3").innerHTML = "";
+    }
+    if (edad < 18) {
+        document.getElementById("msgerror4").innerHTML =
+                "Debes de ser mayor de edad para poder crear tu cuenta";
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror4").innerHTML = "";
+    }
+    if (
+        document.registroForm.SelectAlcaldia.value == 0 &&
+        document.registroForm.SelectAlcaldia.value == "Alcaldía"
+    ) {
+        document.getElementById("msgerror5").innerHTML =
+                            "Elige una alcaldía para continuar";
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror5").innerHTML = "";
+    }
+    if (!isChecked) {
+        document.getElementById("msgerror6").innerHTML =
+                            "Para continuar debes leer y aceptar el aviso de privacidad";
+        validacionOk = false;
+    } else {
+        document.getElementById("msgerror6").innerHTML = "";
+    }
+    if (!validacionOk) {
         event.preventDefault();
     }
+    return validacionOk;
+
 }
 function ValidarLista(event) {
     let validacionOk = true;
