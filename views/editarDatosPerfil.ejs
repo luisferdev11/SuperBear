@@ -15,17 +15,6 @@
 
     <title>Mi Perfil | SuperBear</title>
 </head>
-<style>
-    nav {
-        display: grid;
-        grid-template-columns: 40% 40% 20%;
-    }
-
-    nav a img {
-        width: 2.8rem;
-        height: 2.8rem;
-    }
-</style>
 
 <body>
     <header class="main_haeder header-sticky multi_item">
@@ -37,7 +26,8 @@
         </div>
         <div class="title_page">
             <span class="page_name">
-                Mi Perfil</span>
+                Editar Datos
+            </span>
         </div>
         
     </header>
@@ -49,7 +39,7 @@
     <div class="principal">
 
         <div class="contenedor-formulario">
-            <form method="post" id="editarForm" name="editarForm" action="actualizardatos">
+            <form class="padding-20 padding-t-70" method="post" id="editarForm" name="editarForm" action="actualizardatos">
                 <b>Datos Personales</b>
                 <div class="form-group with_icon">
                     <label>Correo Electrónico</label>
@@ -168,7 +158,6 @@
                     <span class="color-white">Guardar</span>
                     <div class="icon rounded-10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                            <path fill="none" d="M0 0h48v48h-48z" />
                             <path
                                 d="M34 6h-24c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-24l-8-8zm-10 32c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm6-20h-20v-8h20v8z" />
                         </svg>
