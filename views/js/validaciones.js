@@ -5,6 +5,8 @@ let formingresargrupo = document.getElementById("ingresarGrupoForm");
 let editarForm = document.getElementById("editarForm");
 let crearNoticia = document.getElementById("CrearNoticia");
 let formObjAdmin = document.getElementById("FormObjAdmin");
+
+let formVoz = document.getElementById("formVoz");
 function miFunc(id_pro, id_eli) {
     window.location.href = "/estadoProductoLista/" + id_pro + "/" + id_eli;
 }
@@ -90,6 +92,27 @@ function validarNombreGrupo(event) {
         event.preventDefault();
     }
 }
+
+function validarInputVoz(event) {
+    let validacionOk = true;
+    let producto = document.getElementById("inputProducto").value;
+    console.log(producto);
+    if (producto != "") {
+        document.getElementById("msgerror69").innerHTML = "";
+        formVoz.setAttribute("action", "/voiceProduct");
+    } else {
+        document.getElementById("msgerror69").innerHTML =
+            "Tienes que llenar este campo";
+
+        validacionOk = false;
+    }
+    if (!validacionOk) {
+        event.preventDefault();
+    }
+
+    return validacionOk;
+}
+
 function ValidarObjetoLista(event) {
     let validacionOk = true;
     var nombre = NombreObjeto(document.getElementById("inputNombre").value);
@@ -102,49 +125,49 @@ function ValidarObjetoLista(event) {
     var Anotaciones = AnotacionesObjeto(
         document.getElementById("inputanotaciones").value
     );
-    if(!nombre){
+    if (!nombre) {
         document.getElementById("msgerror1").innerHTML =
-        "El nombre debe contener entre 1 y 45 caracteres alfanumericos";
+            "El nombre debe contener entre 1 y 45 caracteres alfanumericos";
         validacionOk = false;
-    }else{
+    } else {
         document.getElementById("msgerror1").innerHTML = "";
     }
-    if(!marca){
+    if (!marca) {
         document.getElementById("msgerror2").innerHTML =
-        "La marca solo pueden contener caracteres alfanumericos y no debe de ser mayor a 10 caracteres";
+            "La marca solo pueden contener caracteres alfanumericos y no debe de ser mayor a 10 caracteres";
         validacionOk = false;
-    }else{
+    } else {
         document.getElementById("msgerror2").innerHTML = "";
     }
-    if(!Super){
+    if (!Super) {
         document.getElementById("msgerror3").innerHTML =
-        "El supermercado solo pueden contener caracteres alfanumericos y no debe de ser mayor a 15 caracteres";
+            "El supermercado solo pueden contener caracteres alfanumericos y no debe de ser mayor a 15 caracteres";
         validacionOk = false;
-    }else{
+    } else {
         document.getElementById("msgerror3").innerHTML = "";
     }
-    if(!Cantidad){
+    if (!Cantidad) {
         document.getElementById("msgerror4").innerHTML =
-        "La cantidad solo puede contener numeros y no puede ser mayor de 5 cifras";
+            "La cantidad solo puede contener numeros y no puede ser mayor de 5 cifras";
         validacionOk = false;
-    }else{
+    } else {
         document.getElementById("msgerror4").innerHTML = "";
     }
-    if(!Precio){
+    if (!Precio) {
         document.getElementById("msgerror5").innerHTML =
-        "El precio solo puede contener numeros y no puede ser mayor de 6 cifras";
+            "El precio solo puede contener numeros y no puede ser mayor de 6 cifras";
         validacionOk = false;
-    }else{
+    } else {
         document.getElementById("msgerror5").innerHTML = "";
     }
-    if(!Anotaciones){
+    if (!Anotaciones) {
         document.getElementById("msgerror6").innerHTML =
-        "Las anotaciones solo pueden contener caracteres alfanumericos y no debe de ser mayor a 32 caracteres";
+            "Las anotaciones solo pueden contener caracteres alfanumericos y no debe de ser mayor a 32 caracteres";
         validacionOk = false;
-    }else{
+    } else {
         document.getElementById("msgerror6").innerHTML = "";
     }
-    if(!validacionOk){
+    if (!validacionOk) {
         event.preventDefault();
     }
     return validacionOk;

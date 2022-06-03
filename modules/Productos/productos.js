@@ -1,6 +1,8 @@
 const pool = require("../../database");
 const axios = require("axios");
 
+const { performance } = require("perf_hooks");
+
 const obtenerPeliculas = async (text_input) => {
     try {
         const respuesta = await axios.post(
@@ -125,105 +127,104 @@ async function getAllSuper() {
 }
 
 module.exports = {
-    async CrearProducto(req, res) {
+    async CrearProductoVoice(req, res) {
         const producto = req.body.producto;
 
-        if (producto == "CoitoFon" || producto === "") {
-            const { nombre } = req.body;
-            const { Marca } = req.body;
-            const { supermercado } = req.body;
-            const { Depa } = req.body;
-            const { Cant } = req.body;
-            const { Unidad } = req.body;
-            const { Precio } = req.body;
-            const { Anotaciones } = req.body;
-            const { id_lis } = req.body;
+        //validar que la api funcione, pq sino se va todo a la cola
+        const myProd = await obtenerPeliculas(producto);
+        console.log(myProd);
 
-            try {
-                const id_lista = await pool.query(
-                    "select id_eli from ELista where id_lst = ?",
-                    [id_lis]
-                );
-                await pool.query(
-                    "INSERT INTO DProducto (id_eli, nom_pro, id_mar, id_sup, id_dep, can_pro, id_uni, precio_pro, notas_pro, id_tip, id_esProd) VALUES (?,?,?,?,?,?,?,?,?,2,1)",
-                    [
-                        id_lista[0].id_eli,
-                        nombre,
-                        parseInt(Marca),
-                        parseInt(supermercado),
-                        parseInt(Depa),
-                        parseInt(Cant),
-                        parseInt(Unidad),
-                        parseInt(Precio),
-                        Anotaciones,
-                    ]
-                );
-                res.redirect("/ConsultarProductos/" + id_lis);
-            } catch (err) {
-                res.redirect("/error");
-                console.log(err);
-            }
-        } else {
-            //validar que la api funcione, pq sino se va todo a la cola
-            const myProd = await obtenerPeliculas(producto);
-            console.log(myProd);
+        const { id_lis } = req.body;
 
-            const { id_lis } = req.body;
+        let nombre = "Producto misterioso";
+        if (myProd.Nombre != null) {
+            nombre = myProd.Nombre;
+        }
 
-            let nombre = "Producto misterioso";
-            if (myProd.Nombre != null) {
-                nombre = myProd.Nombre;
-            }
+        let [Marca, supermercado, Depa, Unidad] = await Promise.all([
+            doesAttributeExist("id_mar", "cmarca", "Marca", myProd.Marca),
+            doesAttributeExist(
+                "id_sup",
+                "csupermercado",
+                "nom_sup",
+                myProd.Supermercado
+            ),
+            doesAttributeExist(
+                "id_dep",
+                "cdepartamento",
+                "nom_dep",
+                myProd.Departamento
+            ),
+            putUnidad("id_uni", "cunidad", "unidad", myProd.Unidad),
+        ]);
 
-            let [Marca, supermercado, Depa, Unidad] = await Promise.all([
-                doesAttributeExist("id_mar", "cmarca", "Marca", myProd.Marca),
-                doesAttributeExist(
-                    "id_sup",
-                    "csupermercado",
-                    "nom_sup",
-                    myProd.Supermercado
-                ),
-                doesAttributeExist(
-                    "id_dep",
-                    "cdepartamento",
-                    "nom_dep",
-                    myProd.Departamento
-                ),
-                putUnidad("id_uni", "cunidad", "unidad", myProd.Unidad),
-            ]);
+        const Cant = validateTextToNumber(myProd.Cantidad);
+        console.log(Cant);
+        const Precio = validateTextToNumber(myProd.Precio);
+        console.log(Precio);
+        const Anotaciones = myProd.Anotaciones;
 
-            const Cant = validateTextToNumber(myProd.Cantidad);
-            console.log(Cant);
-            const Precio = validateTextToNumber(myProd.Precio);
-            console.log(Precio);
-            const Anotaciones = myProd.Anotaciones;
+        // ola
 
-            // ola
+        try {
+            const id_lista = await pool.query(
+                "select id_eli from ELista where id_lst = ?",
+                [id_lis]
+            );
+            await pool.query(
+                "INSERT INTO DProducto (id_eli, nom_pro, id_mar, id_sup, id_dep, can_pro, id_uni, precio_pro, notas_pro, id_tip, id_esProd) VALUES (?,?,?,?,?,?,?,?,?,2,1)",
+                [
+                    id_lista[0].id_eli,
+                    nombre,
+                    parseInt(Marca[0].id_mar),
+                    parseInt(supermercado[0].id_sup),
+                    parseInt(Depa[0].id_dep),
+                    parseInt(Cant),
+                    parseInt(Unidad[0].id_uni),
+                    parseInt(Precio),
+                    Anotaciones,
+                ]
+            );
+            res.redirect("/ConsultarProductos/" + id_lis);
+        } catch (err) {
+            res.redirect("/error");
+            console.log(err);
+        }
+    },
+    async CrearProducto(req, res) {
+        const { nombre } = req.body;
+        const { Marca } = req.body;
+        const { supermercado } = req.body;
+        const { Depa } = req.body;
+        const { Cant } = req.body;
+        const { Unidad } = req.body;
+        const { Precio } = req.body;
+        const { Anotaciones } = req.body;
+        const { id_lis } = req.body;
 
-            try {
-                const id_lista = await pool.query(
-                    "select id_eli from ELista where id_lst = ?",
-                    [id_lis]
-                );
-                await pool.query(
-                    "INSERT INTO DProducto (id_eli, nom_pro, id_mar, id_sup, id_dep, can_pro, id_uni, precio_pro, notas_pro, id_tip, id_esProd) VALUES (?,?,?,?,?,?,?,?,?,2,1)",
-                    [
-                        id_lista[0].id_eli,
-                        nombre,
-                        parseInt(Marca[0].id_mar),
-                        parseInt(supermercado[0].id_sup),
-                        parseInt(Depa[0].id_dep),
-                        parseInt(Cant),
-                        parseInt(Unidad[0].id_uni),
-                        parseInt(Precio),
-                        Anotaciones,
-                    ]
-                );
-                res.redirect("/ConsultarProductos/" + id_lis);
-            } catch (err) {
-                res.redirect("/error");
-                console.log(err);
-            }
+        try {
+            const id_lista = await pool.query(
+                "select id_eli from ELista where id_lst = ?",
+                [id_lis]
+            );
+            await pool.query(
+                "INSERT INTO DProducto (id_eli, nom_pro, id_mar, id_sup, id_dep, can_pro, id_uni, precio_pro, notas_pro, id_tip, id_esProd) VALUES (?,?,?,?,?,?,?,?,?,2,1)",
+                [
+                    id_lista[0].id_eli,
+                    nombre,
+                    parseInt(Marca),
+                    parseInt(supermercado),
+                    parseInt(Depa),
+                    parseInt(Cant),
+                    parseInt(Unidad),
+                    parseInt(Precio),
+                    Anotaciones,
+                ]
+            );
+            res.redirect("/ConsultarProductos/" + id_lis);
+        } catch (err) {
+            res.redirect("/error");
+            console.log(err);
         }
     },
     async ConsultarCatalogo(req, res) {
@@ -297,15 +298,17 @@ module.exports = {
                 "select nom_lis from mlista where id_lis = ?",
                 [idl]
             );
+            const eli = await pool.query(
+                "select * from elista where id_lst = ?",
+                [idl]
+            );
+
             var nomb = [];
             for (let i = 0; i < name.length; i++) {
                 const miembro = name[i].nom_lis;
                 nomb.push(miembro);
             }
-            const eli = await pool.query(
-                "select * from elista where id_lst = ?",
-                [idl]
-            );
+
             const grupo = eli[0].id_grp;
             var id_e = [];
             for (let i = 0; i < eli.length; i++) {
@@ -319,23 +322,41 @@ module.exports = {
             );
             var prod = [];
 
+            var startTime = performance.now();
+
             for (let i = 0; i < productos.length; i++) {
-                var mar = await pool.query(
-                    "select Marca from CMarca where id_mar = ?",
-                    [productos[i].id_mar]
-                );
-                var dep = await pool.query(
-                    "select nom_dep from CDepartamento where id_dep = ?",
-                    [productos[i].id_dep]
-                );
-                var uni = await pool.query(
-                    "select unidad from CUnidad where id_uni = ?",
-                    [productos[i].id_uni]
-                );
-                var sup = await pool.query(
-                    "select nom_sup from CSupermercado where id_sup = ?",
-                    [productos[i].id_sup]
-                );
+                let [mar, dep, uni, sup] = await Promise.all([
+                    pool.query("select Marca from CMarca where id_mar = ?", [
+                        productos[i].id_mar,
+                    ]),
+                    pool.query(
+                        "select nom_dep from CDepartamento where id_dep = ?",
+                        [productos[i].id_dep]
+                    ),
+                    pool.query("select unidad from CUnidad where id_uni = ?", [
+                        productos[i].id_uni,
+                    ]),
+                    pool.query(
+                        "select nom_sup from CSupermercado where id_sup = ?",
+                        [productos[i].id_sup]
+                    ),
+                ]);
+                // var mar = await pool.query(
+                //     "select Marca from CMarca where id_mar = ?",
+                //     [productos[i].id_mar]
+                // );
+                // var dep = await pool.query(
+                //     "select nom_dep from CDepartamento where id_dep = ?",
+                //     [productos[i].id_dep]
+                // );
+                // var uni = await pool.query(
+                //     "select unidad from CUnidad where id_uni = ?",
+                //     [productos[i].id_uni]
+                // );
+                // var sup = await pool.query(
+                //     "select nom_sup from CSupermercado where id_sup = ?",
+                //     [productos[i].id_sup]
+                // );
 
                 var pro = {
                     id_pro: productos[i].id_pro,
@@ -353,6 +374,12 @@ module.exports = {
                 };
                 prod.push(pro);
             }
+
+            var endTime = performance.now();
+
+            console.log(
+                `Call to doSomething took ${endTime - startTime} milliseconds`
+            );
 
             res.render("consultarProductosDeLista", {
                 productos: prod,
