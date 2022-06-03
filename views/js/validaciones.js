@@ -234,27 +234,48 @@ function CalcularEdad(fecha_nacimiento) {
 
 //Falta añadir una funcion de parte del backend para que valide que el correo no halla sido utilizado
 function ValidarLogin(event) {
+    let validacionOk = true;
     var email = validarEmail(document.getElementById("inputemail").value);
     var contraseña = validarContraseñas(
         document.getElementById("inputContraseña").value
     );
 
-    if (email == true) {
-        document.getElementById("msgerror1").innerHTML = "";
-        if (contraseña == true) {
-            document.getElementById("msgerror2").innerHTML = "";
-            formulario.setAttribute("action", "/login");
-        } else {
-            document.getElementById("msgerror2").innerHTML =
-                "Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$";
-            event.preventDefault();
-        }
-    } else {
+    if(!email){
         document.getElementById("msgerror1").innerHTML =
-            "El correo debe de tener el siguiente formato correo@correo.correo";
-
+             "El correo debe de tener el siguiente formato: correo@correo.correo";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror1").innerHTML = "";
+    }
+    if(!contraseña){
+        document.getElementById("msgerror2").innerHTML =
+                "Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$";
+        validacionOk = false;
+    }else{
+        document.getElementById("msgerror2").innerHTML = "";
+    }
+    if(!validacionOk){
         event.preventDefault();
     }
+
+    return validacionOk;
+    // Mauzzzzz
+    // if (email == true) {
+    //     document.getElementById("msgerror1").innerHTML = "";
+    //     if (contraseña == true) {
+    //         document.getElementById("msgerror2").innerHTML = "";
+    //         formulario.setAttribute("action", "/login");
+    //     } else {
+    //         document.getElementById("msgerror2").innerHTML =
+    //             "Las contraseñas deben coincidir y deben contener al menos una MAYUSCULA, un numero y un caracter especial  $ @ $ ! % * ? & y al menos 8 caracteres. Ejemplo: Ejemplo1$";
+    //         event.preventDefault();
+    //     }
+    // } else {
+    //     document.getElementById("msgerror1").innerHTML =
+    //         "El correo debe de tener el siguiente formato correo@correo.correo";
+
+    //     event.preventDefault();
+    // }
 }
 
 function ValidarRegistro(event) {
