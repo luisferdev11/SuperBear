@@ -374,6 +374,28 @@ module.exports = {
             //     };
             //     prod.push(pro);
             // }
+            
+            // ARREGLO PROVISIONAL A NUESTRO ERROR XD
+            // El arreglo mejor es modificar la vista no el back
+            let prod = [];
+            for(let i = 0; i < productos.length; i++){
+                let productoI = {
+                    id_pro: productos[i].id_pro,
+                    nom_pro: productos[i].nom_pro,
+                    can_pro: productos[i].can_pro,
+                    precio_pro: productos[i].precio_pro,
+                    notas_pro: productos[i].notas_pro,
+                    id_tip: productos[i].id_tip,
+                    id_mar: productos[i].Marca,
+                    id_dep: productos[i].nom_dep,
+                    id_uni: productos[i].unidad,
+                    id_sup: productos[i].nom_sup,
+                    id_esProd: productos[i].id_esProd,
+                    id_eli: productos[i].id_eli,
+                }
+                prod.push(productoI);
+            }
+
 
             var endTime = performance.now();
 
@@ -382,7 +404,7 @@ module.exports = {
             );
 
             res.render("consultarProductosDeLista", {
-                productos: productos,
+                productos: prod,
                 idLista: idl,
                 grupo: grupo,
                 name: nomb,
