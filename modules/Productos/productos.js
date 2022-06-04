@@ -316,64 +316,64 @@ module.exports = {
                 id_e.push(miembro);
             }
             const miembro = id_e[0];
-            const productos = await pool.query(
-                "select * from dproducto where id_eli = ?",
-                [miembro]
+            let productos = await pool.query(
+                "select id_pro, nom_pro, can_pro ,precio_pro ,notas_pro,id_tip, cm.Marca, cd.nom_dep, cu.unidad, cs.nom_sup, id_esProd from dproducto dp INNER JOIN cmarca cm ON dp.id_mar = cm.id_mar INNER JOIN cdepartamento cd ON dp.id_dep = cd.id_dep INNER JOIN cunidad cu ON dp.id_uni = cu.id_uni INNER JOIN csupermercado cs ON dp.id_sup = cs.id_sup WHERE dp.id_eli =  ?",
+                eli[0].id_eli
             );
-            var prod = [];
+
+            console.log(productos);
 
             var startTime = performance.now();
+            // for (let i = 0; i < productos.length; i++) {
+            //     let [mar, dep, uni, sup] = await Promise.all([
+            //         pool.query("select Marca from CMarca where id_mar = ?", [
+            //             productos[i].id_mar,
+            //         ]),
+            //         pool.query(
+            //             "select nom_dep from CDepartamento where id_dep = ?",
+            //             [productos[i].id_dep]
+            //         ),
+            //         pool.query("select unidad from CUnidad where id_uni = ?", [
+            //             productos[i].id_uni,
+            //         ]),
+            //         pool.query(
+            //             "select nom_sup from CSupermercado where id_sup = ?",
+            //             [productos[i].id_sup]
+            //         ),
+            //     ]);
+            //     // var mar = await pool.query(
+            //     //     "select Marca from CMarca where id_mar = ?",
+            //     //     [productos[i].id_mar]
+            //     // );
+            //     // var dep = await pool.query(
+            //     //     "select nom_dep from CDepartamento where id_dep = ?",
+            //     //     [productos[i].id_dep]
+            //     // );
+            //     // var uni = await pool.query(
+            //     //     "select unidad from CUnidad where id_uni = ?",
+            //     //     [productos[i].id_uni]
+            //     // );
+            //     // var sup = await pool.query(
+            //     //     "select nom_sup from CSupermercado where id_sup = ?",
+            //     //     [productos[i].id_sup]
+            //     // );
 
-            for (let i = 0; i < productos.length; i++) {
-                let [mar, dep, uni, sup] = await Promise.all([
-                    pool.query("select Marca from CMarca where id_mar = ?", [
-                        productos[i].id_mar,
-                    ]),
-                    pool.query(
-                        "select nom_dep from CDepartamento where id_dep = ?",
-                        [productos[i].id_dep]
-                    ),
-                    pool.query("select unidad from CUnidad where id_uni = ?", [
-                        productos[i].id_uni,
-                    ]),
-                    pool.query(
-                        "select nom_sup from CSupermercado where id_sup = ?",
-                        [productos[i].id_sup]
-                    ),
-                ]);
-                // var mar = await pool.query(
-                //     "select Marca from CMarca where id_mar = ?",
-                //     [productos[i].id_mar]
-                // );
-                // var dep = await pool.query(
-                //     "select nom_dep from CDepartamento where id_dep = ?",
-                //     [productos[i].id_dep]
-                // );
-                // var uni = await pool.query(
-                //     "select unidad from CUnidad where id_uni = ?",
-                //     [productos[i].id_uni]
-                // );
-                // var sup = await pool.query(
-                //     "select nom_sup from CSupermercado where id_sup = ?",
-                //     [productos[i].id_sup]
-                // );
-
-                var pro = {
-                    id_pro: productos[i].id_pro,
-                    nom_pro: productos[i].nom_pro,
-                    can_pro: productos[i].can_pro,
-                    precio_pro: productos[i].precio_pro,
-                    notas_pro: productos[i].notas_pro,
-                    id_tip: productos[i].id_tip,
-                    id_mar: mar[0].Marca,
-                    id_dep: dep[0].nom_dep,
-                    id_uni: uni[0].unidad,
-                    id_sup: sup[0].nom_sup,
-                    id_esProd: productos[i].id_esProd,
-                    id_eli: productos[i].id_eli,
-                };
-                prod.push(pro);
-            }
+            //     var pro = {
+            //         id_pro: productos[i].id_pro,
+            //         nom_pro: productos[i].nom_pro,
+            //         can_pro: productos[i].can_pro,
+            //         precio_pro: productos[i].precio_pro,
+            //         notas_pro: productos[i].notas_pro,
+            //         id_tip: productos[i].id_tip,
+            //         id_mar: mar[0].Marca,
+            //         id_dep: dep[0].nom_dep,
+            //         id_uni: uni[0].unidad,
+            //         id_sup: sup[0].nom_sup,
+            //         id_esProd: productos[i].id_esProd,
+            //         id_eli: productos[i].id_eli,
+            //     };
+            //     prod.push(pro);
+            // }
 
             var endTime = performance.now();
 
@@ -382,7 +382,7 @@ module.exports = {
             );
 
             res.render("consultarProductosDeLista", {
-                productos: prod,
+                productos: productos,
                 idLista: idl,
                 grupo: grupo,
                 name: nomb,
