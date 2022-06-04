@@ -391,7 +391,7 @@ module.exports = {
                     id_uni: productos[i].unidad,
                     id_sup: productos[i].nom_sup,
                     id_esProd: productos[i].id_esProd,
-                    id_eli: productos[i].id_eli,
+                    id_eli: eli[0].id_eli,
                 }
                 prod.push(productoI);
             }
